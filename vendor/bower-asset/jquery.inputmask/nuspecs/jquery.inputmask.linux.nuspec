@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>jQuery.InputMask</id>
+    <version>0.0.0</version>
+    <title>jQuery Input Mask</title>
+    <authors>Robin Herbots</authors>
+    <owners>Robin Herbots</owners>
+    <licenseUrl>http://opensource.org/licenses/mit-license.php</licenseUrl>
+    <projectUrl>https://github.com/RobinHerbots/jquery.inputmask</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <summary>jquery.inputmask is a jquery plugin which create an input mask.</summary>
+    <description>jquery.inputmask is a jquery plugin which create an input mask.</description>
+    <tags>jQuery, plugins, input, form, inputmask, mask</tags>
+  </metadata>
+  <files>
+    <file src="dist/inputmask/inputmask.date.extensions.js"
+      target="content/Scripts/jquery.inputmask/inputmask.date.extensions.js"/>
+    <file src="dist/inputmask/inputmask.extensions.js"
+      target="content/Scripts/jquery.inputmask/inputmask.extensions.js"/>
+    <file src="dist/inputmask/inputmask.numeric.extensions.js"
+      target="content/Scripts/jquery.inputmask/inputmask.numeric.extensions.js"/>
+    <file src="dist/inputmask/inputmask.regex.extensions.js"
+      target="content/Scripts/jquery.inputmask/inputmask.regex.extensions.js"/>
+    <file src="dist/inputmask/inputmask.phone.extensions.js"
+      target="content/Scripts/jquery.inputmask/inputmask.phone.extensions.js"/>
+    <file src="dist/inputmask/jquery.inputmask.js"
+      target="content/Scripts/jquery.inputmask/jquery.inputmask.js"/>
+    <file src="dist/inputmask/inputmask.js"
+      target="content/Scripts/jquery.inputmask/inputmask.js"/>
+    <file src="../nuspecs/Readme.txt" target="Readme.txt" />
+  </files>
+</package>

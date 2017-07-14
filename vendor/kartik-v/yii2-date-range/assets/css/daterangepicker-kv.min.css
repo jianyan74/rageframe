@@ -1,0 +1,11 @@
+/*!
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2015 - 2016
+ * @version 1.6.7
+ *
+ * Custom styling for DateRangePicker
+ * 
+ * Author: Kartik Visweswaran
+ * Copyright: 2014, Kartik Visweswaran, Krajee.com
+ * For more JQuery plugins visit http://plugins.krajee.com
+ * For more Yii related demos visit http://demos.krajee.com
+ */.drp-container .glyphicon,.drp-container .caret{cursor:pointer}

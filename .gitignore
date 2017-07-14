@@ -1,6 +1,5 @@
-assets/*
-!assets/.gitignore
-protected/runtime/*
-!protected/runtime/.gitignore
-protected/data/*.db
-themes/classic/views/
+.idea
+/backend/runtime/*
+/backend/web/assets/*
+/frontend/runtime/*
+/frontend/web/assets/*

@@ -1,0 +1,52 @@
+/** Added by Wangzq**/
+/** ====================================边框==================================== **/
+.borderColorGray {
+  border: 1px solid #e7eaec;
+}
+/** ====================================布局==================================== **/
+/** 伸缩盒子布局 **/
+.flex-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.flex-row > * {
+  display: block;
+}
+.flex-col {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.flex-hAlignCenter {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.flex-hAlignBalance {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.flex-autoWidthRowElem {
+  -webkit-box-flex: initial;
+      -ms-flex: initial;
+          flex: initial;
+  width: auto;
+}
+.flex-vAlignCenter {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.flex-vAlignEnd {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+.flex-vDirection {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}

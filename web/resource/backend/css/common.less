@@ -1,0 +1,46 @@
+/** Added by Wangzq**/
+@border-color-gray: #e7eaec;
+
+/** ====================================边框==================================== **/
+
+.borderColorGray{
+    border: 1px solid @border-color-gray;
+}
+
+/** ====================================布局==================================== **/
+
+/** 伸缩盒子布局 **/
+.flex-row
+{
+    display:flex;
+}
+.flex-row > *{display: block;}
+.flex-col
+{
+    flex:1;
+}
+.flex-hAlignCenter
+{
+    justify-content:center;
+}
+.flex-hAlignBalance
+{
+    justify-content:space-between;
+}
+.flex-autoWidthRowElem
+{
+    flex: initial;
+    width:auto;
+}
+.flex-vAlignCenter
+{
+    align-items:center;
+}
+.flex-vAlignEnd
+{
+    align-items:flex-end;
+}
+.flex-vDirection
+{
+    flex-direction: column;
+}

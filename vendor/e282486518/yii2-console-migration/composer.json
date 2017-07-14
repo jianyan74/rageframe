@@ -1,0 +1,19 @@
+{
+    "name": "e282486518/yii2-console-migration",
+    "description": "yii2命令行中使用migration备份和还原数据库",
+    "type": "yii2-extension",
+    "keywords": ["yii2","console","migration"],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "ccdream",
+            "email": "phphome@qq.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "e282486518\\migration\\": ""
+        }
+    }
+}
