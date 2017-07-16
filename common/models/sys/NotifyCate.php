@@ -48,8 +48,8 @@ class NotifyCate extends ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
      * 关联中间表
+     * @return \yii\db\ActiveQuery
      */
     public function getTagMap()
     {
@@ -71,7 +71,9 @@ class NotifyCate extends ActiveRecord
     }
 
     /**
-     * @param $cate_id
+     * 根据分类id获取分类信息
+     * @param $id
+     * @return string
      */
     public static function getTitle($id)
     {
@@ -97,8 +99,8 @@ class NotifyCate extends ActiveRecord
     }
 
     /**
+     * 行为
      * @return array
-     * 插入时间戳
      */
     public function behaviors()
     {

@@ -85,9 +85,9 @@ class ConfigCate extends ActiveRecord
     }
 
     /**
-     * @param int $parentid
-     * @return array
      * 根据父级ID返回信息
+     * @param int $pid
+     * @return array
      */
     public static function getChildList($pid = 0)
     {
@@ -100,8 +100,8 @@ class ConfigCate extends ActiveRecord
     }
 
     /**
+     * 行为
      * @return array
-     * 行为插入时间戳
      */
     public function behaviors()
     {

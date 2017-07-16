@@ -50,6 +50,7 @@ class AuthItemChild extends \yii\db\ActiveRecord
     }
 
     /**
+     * 重新写入授权
      * @param $parent  -角色名称
      * @param $auth    -所有权限
      * @return bool

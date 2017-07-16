@@ -41,14 +41,14 @@ class Auth extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'member_id' => '用户id',
-            'source' => 'Source',
-            'source_id' => 'Source ID',
+            'source' => '来源',
+            'source_id' => '来源id',
         ];
     }
 
     /**
-     * @return \yii\db\ActiveQuery
      * 关联用户
+     * @return \yii\db\ActiveQuery
      */
     public function getMember()
     {

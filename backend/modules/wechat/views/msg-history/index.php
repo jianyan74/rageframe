@@ -95,7 +95,7 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                         <?php foreach($models as $model){ ?>
                             <tr>
                                 <td><?= $model->id?></td>
-                                <td><?= $model->fans->nickname?></td>
+                                <td><?= $model->fans->nickname ?></td>
                                 <td><?= $model->type?></td>
                                 <td style="max-width:515px; overflow:hidden; word-break:break-all; word-wrap:break-word;"><?= MsgHistory::readMessage($model->type,$model->message)?></td>
                                 <td>

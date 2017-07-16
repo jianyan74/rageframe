@@ -68,10 +68,10 @@ class MsgHistory extends ActiveRecord
     }
 
     /**
+     * 插入历史消息
      * @param $message
      * @param $msg_history
      * @param $reply
-     * 插入历史记录
      */
     public static function add($message,$msg_history,$reply)
     {
@@ -90,6 +90,7 @@ class MsgHistory extends ActiveRecord
             {
                 $add['message'] = self::filtrate($message);
             }
+
             $msgHistory->attributes = $add;
             $msgHistory->save();
         }
@@ -105,9 +106,9 @@ class MsgHistory extends ActiveRecord
     }
 
     /**
+     * 过滤消息信息
      * @param $message
      * @return string
-     * 过滤
      */
     public static function filtrate($message)
     {
@@ -125,36 +126,67 @@ class MsgHistory extends ActiveRecord
     }
 
     /**
-     * @param $type -类别
-     * @param $messgae -内容
+     * 解析微信发过来的消息内容
+     * @param $type
+     * @param $messgae
+     * @return mixed|string
      */
     public static function readMessage($type,$messgae)
     {
         switch ($type)
         {
             case Account::TYPE_TEXT :
-
                 return $messgae;
-
                 break;
-            case Account::TYPE_IMAGE :
 
+            case Account::TYPE_IMAGE :
                 $messgae = unserialize($messgae);
                 return $messgae['PicUrl'];
-
                 break;
-            case Account::TYPE_VIDEO :
 
+            case Account::TYPE_VIDEO :
                 $messgae = unserialize($messgae);
                 return "MediaId【".$messgae['MediaId']."】";
-
                 break;
-            case Account::TYPE_LOCATION :
 
+            case Account::TYPE_LOCATION :
                 $messgae = unserialize($messgae);
                 return '经纬度【'.$messgae['Location_X'].','.$messgae['Location_Y']."】地址:".$messgae['Label'];
+                break;
+
+            case Account::TYPE_CILCK :
+                $messgae = unserialize($messgae);
+                return '单击菜单触发：' . $messgae['EventKey'];
+                break;
+
+            case Account::TYPE_SUBSCRIBE :
+                return '关注公众号';
+                break;
+
+                //触发事件
+            case Account::TYPE_EVENT :
+
+                $messgae = unserialize($messgae);
+                switch ($messgae['Event'])
+                {
+                    case Account::TYPE_UN_SUBSCRIBE :
+                        return '取消关注公众号';
+                        break;
+
+                    case Account::TYPE_EVENT_LOCATION :
+                        return '经纬度【'.$messgae['Latitude'].','.$messgae['Longitude']."】精度:".$messgae['Precision'];
+                        break;
+                    case Account::TYPE_EVENT_VIEW :
+                        return "单击菜单访问：" . $messgae['EventKey'];
+                        break;
+
+                    default :
+                        return serialize($messgae);
+                        break;
+                }
 
                 break;
+
             default :
 
                 return $messgae;
@@ -172,8 +204,8 @@ class MsgHistory extends ActiveRecord
     }
 
     /**
+     * 行为
      * @return array
-     * 行为插入时间戳
      */
     public function behaviors()
     {

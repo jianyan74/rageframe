@@ -74,20 +74,20 @@ class ArticleController extends MController
     public function actionEdit()
     {
         $request        = Yii::$app->request;
-        $article_id     = $request->get('article_id');
-        $model          = $this->findModel($article_id);
+        $id     = $request->get('id');
+        $model          = $this->findModel($id);
 
         //文章标签
         $tags = Tag::find()->with([
             'tagMap' => function($query) {
-                $article_id  = Yii::$app->request->get('article_id');
+                $article_id  = Yii::$app->request->get('id');
                 $query->andWhere(['article_id' => $article_id]);
             },])->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
             //更新文章标签
-            $article_id = $article_id ? $article_id : Yii::$app->db->getLastInsertID();
+            $article_id = $id ? $id : Yii::$app->db->getLastInsertID();
 
             TagMap::addTags($article_id,$request->post('tag'));
 
@@ -112,12 +112,12 @@ class ArticleController extends MController
 
     /**
      * 逻辑删除
-     * @param $article_id
+     * @param $id
      * @return mixed
      */
-    public function actionHide($article_id)
+    public function actionHide($id)
     {
-        $model = $this->findModel($article_id);
+        $model = $this->findModel($id);
         $model->display = Article::DISPLAY_OFF;
 
         if($model->save())
@@ -132,12 +132,12 @@ class ArticleController extends MController
 
     /**
      * 还原
-     * @param $article_id
+     * @param $id
      * @return mixed
      */
-    public function actionShow($article_id)
+    public function actionShow($id)
     {
-        $model = $this->findModel($article_id);
+        $model = $this->findModel($id);
         $model->display = Article::DISPLAY_ON;
 
         if($model->save())
@@ -193,12 +193,12 @@ class ArticleController extends MController
 
     /**
      * 删除
-     * @param null $article_id
+     * @param null $id
      * @return mixed
      */
-    public function actionDelete($article_id)
+    public function actionDelete($id)
     {
-        if($this->findModel($article_id)->delete())
+        if($this->findModel($id)->delete())
         {
             return $this->message("删除成功",$this->redirect(['recycle']));
         }

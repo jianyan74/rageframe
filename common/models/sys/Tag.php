@@ -31,7 +31,7 @@ class Tag extends ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%sys_tag}}';
+        return '{{%sys_article_tag}}';
     }
 
     /**
@@ -40,18 +40,19 @@ class Tag extends ActiveRecord
     public function rules()
     {
         return [
+            [['title','status'], 'required'],
             [['sort', 'status', 'append', 'updated'], 'integer'],
             [['title'], 'string', 'max' => 20],
         ];
     }
 
     /**
-     * @return \yii\db\ActiveQuery
      * 关联中间表
+     * @return \yii\db\ActiveQuery
      */
     public function getTagMap()
     {
-        return $this->hasOne(TagMap::className(), ['tag_id' => 'tag_id']);
+        return $this->hasOne(TagMap::className(), ['tag_id' => 'id']);
     }
 
     /**
@@ -60,7 +61,7 @@ class Tag extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'tag_id'    => 'Tag ID',
+            'tag_id'    => '标签id',
             'title'     => '标题',
             'sort'      => '排序',
             'status'    => '状态',
@@ -70,8 +71,8 @@ class Tag extends ActiveRecord
     }
 
     /**
-     * @return array
      * 插入时间戳
+     * @return array
      */
     public function behaviors()
     {

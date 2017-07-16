@@ -68,9 +68,9 @@ class Provinces extends \yii\db\ActiveRecord
     }
 
     /**
+     * 根据父级ID返回信息
      * @param int $parentid
      * @return array
-     * 根据父级ID返回信息
      */
     public static function getCityList($parentid = 0)
     {
@@ -87,9 +87,18 @@ class Provinces extends \yii\db\ActiveRecord
         return ArrayHelper::map($model,'id','areaname');
     }
 
+    /**
+     * 根据id获取区域名称
+     * @param $id
+     * @return mixed
+     */
     public static function getCityName($id)
     {
-       $provinces =  Provinces::findOne($id);
-        return $provinces['areaname'];
+       if($provinces =  Provinces::findOne($id))
+       {
+           return $provinces['areaname'];
+       }
+
+       return false;
     }
 }

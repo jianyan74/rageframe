@@ -18,6 +18,17 @@ class Account extends \yii\db\ActiveRecord
      * 取消关注事件
      */
     const TYPE_UN_SUBSCRIBE = "unsubscribe";
+
+    /**
+     * 上传地址事件
+     */
+    const TYPE_EVENT_LOCATION = "LOCATION";
+
+    /**
+     * 访问链接事件
+     */
+    const TYPE_EVENT_VIEW = "VIEW";
+
     /**
      * 点击事件
      */
@@ -98,11 +109,11 @@ class Account extends \yii\db\ActiveRecord
     ];
 
     /**
+     * 验证token是否一致
      * @param $signature -微信加密签名，signature结合了开发者填写的token参数和请求中的timestamp参数、nonce参数
      * @param $timestamp -时间戳
      * @param $nonce -随机数
      * @return bool
-     * 验证token是否一致
      */
     public static function verifyToken($signature,$timestamp,$nonce)
     {

@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "{{%tag_map}}".
  *
  * @property integer $tag_id
- * @property integer $article_id
+ * @property integer $id
  */
 class TagMap extends \yii\db\ActiveRecord
 {
@@ -17,7 +17,7 @@ class TagMap extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%sys_tag_map}}';
+        return '{{%sys_article_tag_map}}';
     }
 
     /**
@@ -38,7 +38,7 @@ class TagMap extends \yii\db\ActiveRecord
     static public function addTags($article_id,$tags)
     {
         //删除原有标签关联
-        TagMap::deleteAll(['article_id'=>$article_id]);
+        TagMap::deleteAll(['article_id' => $article_id]);
         if($article_id && $tags)
         {
             $data = [];

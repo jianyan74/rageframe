@@ -85,7 +85,7 @@ class Member extends \common\models\base\User
             'password_hash'         => '登陆密码',
             'auth_key'              => 'auth登录秘钥',
             'password_reset_token'  => '密码重置秘钥',
-            'type'                  => 'Type',
+            'type'                  => '类别',
             'nickname'              => '昵称',
             'realname'              => '真实姓名',
             'head_portrait'         => '头像',
@@ -113,29 +113,14 @@ class Member extends \common\models\base\User
     }
 
     /**
-     * @param bool $insert
-     * @return bool
-     * 自动插入
-     */
-    public function beforeSave($insert)
-    {
-        if($this->isNewRecord)
-        {
-            $this->auth_key   = Yii::$app->security->generateRandomString();
-        }
-
-        return parent::beforeSave($insert);
-    }
-
-    /**
      * @param $data
      * 快速插入会员信息
      */
     public static function add($data)
     {
         $model = new Member();
-        $model->nickname = $data->nickname;
         $model->head_portrait = $data->headimgurl;
+        $model->nickname = $data->nickname;
         isset($data->sex) && $model->sex = $data->sex;
         isset($data->city) && $model->city = $data->city;
         isset($data->province) && $model->province = $data->province;
@@ -146,8 +131,23 @@ class Member extends \common\models\base\User
     }
 
     /**
-     * @return array
+     * 行为
+     * @param bool $insert
+     * @return bool
+     */
+    public function beforeSave($insert)
+    {
+        if($this->isNewRecord)
+        {
+            $this->auth_key = Yii::$app->security->generateRandomString();
+        }
+
+        return parent::beforeSave($insert);
+    }
+
+    /**
      * 行为插入时间戳
+     * @return array
      */
     public function behaviors()
     {

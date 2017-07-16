@@ -31,16 +31,16 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                         </thead>
                         <tbody>
                         <?php foreach($models as $model){ ?>
-                            <tr id="<?= $model['single_id']?>">
-                                <td><?= $model['single_id']?></td>
+                            <tr id="<?= $model['id']?>">
+                                <td><?= $model['id']?></td>
                                 <td><?= $model['title']?></td>
                                 <td><?= $model['name']?></td>
                                 <td><?= $model['view']?></td>
                                 <td class="col-md-1"><input type="text" class="form-control" value="<?= $model['sort']?>" onblur="sort(this)"></td>
                                 <td>
-                                    <a href="<?= Url::to(['edit','single_id'=>$model['single_id']])?>"><span class="btn btn-info btn-sm">编辑</span></a>&nbsp
+                                    <a href="<?= Url::to(['edit','id'=>$model['id']])?>"><span class="btn btn-info btn-sm">编辑</span></a>&nbsp
                                     <?php echo $model['status'] == -1 ? '<span class="btn btn-primary btn-sm" onclick="status(this)">启用</span>': '<span class="btn btn-default btn-sm"  onclick="status(this)">禁用</span>' ;?>
-                                    <a href="<?= Url::to(['delete','single_id'=>$model['single_id']])?>"  onclick="deleted(this);return false;"><span class="btn btn-warning btn-sm">删除</span></a>&nbsp
+                                    <a href="<?= Url::to(['delete','id'=>$model['id']])?>"  onclick="deleted(this);return false;"><span class="btn btn-warning btn-sm">删除</span></a>&nbsp
                                 </td>
                             </tr>
                         <?php } ?>

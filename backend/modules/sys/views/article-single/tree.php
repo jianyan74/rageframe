@@ -7,7 +7,7 @@ use yii\helpers\Url;
             <?= $this->render('tree', [
                 'models'=>$model['-'],
                 'parent_title' =>$model['title'],
-                'pid' => $model['single_id']." ".$pid,
+                'pid' => $model['id']." ".$pid,
             ])?>
     <?php } ?>
 <?php } ?>

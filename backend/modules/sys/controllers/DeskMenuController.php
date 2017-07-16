@@ -21,7 +21,7 @@ class DeskMenuController extends MController
     public function actionIndex()
     {
         $models = DeskMenu::find()->orderBy('sort Asc,append Asc')->asArray()->all();
-        $models = SysArrayHelper::itemsMerge($models,'menu_id');
+        $models = SysArrayHelper::itemsMerge($models,'id');
 
         return $this->render('index', [
             'models' => $models,
@@ -35,11 +35,11 @@ class DeskMenuController extends MController
     public function actionEdit()
     {
         $request  = Yii::$app->request;
-        $menu_id  = $request->get('menu_id');
+        $id  = $request->get('id');
         $level    = $request->get('level');
         $pid      = $request->get('pid');
         $parent_title = $request->get('parent_title','无');
-        $model        = $this->findModel($menu_id);
+        $model        = $this->findModel($id);
 
         !empty($level) && $model->level = $level;//等级
         !empty($pid)   && $model->pid   = $pid;//上级id
@@ -75,9 +75,9 @@ class DeskMenuController extends MController
      * @throws \Exception
      * 删除
      */
-    public function actionDelete($menu_id)
+    public function actionDelete($id)
     {
-        if($this->findModel($menu_id)->delete())
+        if($this->findModel($id)->delete())
         {
             return $this->message("删除成功",$this->redirect(['index']));
         }

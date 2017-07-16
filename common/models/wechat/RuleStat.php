@@ -49,8 +49,8 @@ class RuleStat extends ActiveRecord
     }
 
     /**
-     * @param $rule_id
      * 插入今日规则统计
+     * @param $rule_id
      */
     public static function setStat($rule_id)
     {

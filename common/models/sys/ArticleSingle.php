@@ -95,26 +95,9 @@ class ArticleSingle extends ActiveRecord
     }
 
     /**
-     * @param $model
-     * @return bool
-     *  更新浏览记录
-     */
-    public static function updateView($model)
-    {
-        if($model)
-        {
-            $model->view = $model->view + 1;
-            $model->save();
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
+     * 行为
      * @param bool $insert
      * @return bool
-     * 自动插入
      */
     public function beforeSave($insert)
     {
@@ -127,8 +110,8 @@ class ArticleSingle extends ActiveRecord
     }
 
     /**
+     * 行为
      * @return array
-     * 行为插入时间戳
      */
     public function behaviors()
     {

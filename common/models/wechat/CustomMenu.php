@@ -9,7 +9,7 @@ use yii\behaviors\TimestampBehavior;
  * This is the model class for table "{{%wechat_custom_menu}}".
  *
  * @property integer $id
- * @property string $menu_id
+ * @property string $id
  * @property integer $type
  * @property string $title
  * @property integer $sex
@@ -39,7 +39,7 @@ class CustomMenu extends ActiveRecord
     {
         return [
             [['title'], 'required'],
-            [['menu_id', 'type', 'sex', 'group_id', 'client_platform_type', 'status', 'append', 'updated'], 'integer'],
+            [['id', 'type', 'sex', 'group_id', 'client_platform_type', 'status', 'append', 'updated'], 'integer'],
             [['data','menu_data'], 'string'],
             [['title'], 'string', 'max' => 30],
             [['area'], 'string', 'max' => 50],
@@ -53,7 +53,7 @@ class CustomMenu extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'menu_id' => 'Menu ID',
+            'id' => '菜单id',
             'type' => '菜单类型',
             'title' => '菜单名称',
             'sex' => '性别',

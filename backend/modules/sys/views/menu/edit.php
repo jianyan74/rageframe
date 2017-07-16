@@ -6,7 +6,7 @@ use yii\helpers\Url;
 <?php $form = ActiveForm::begin([
     'id' => $model->formName(),
     'enableAjaxValidation' => true,
-    'validationUrl' => Url::toRoute(['edit','menu_id' => $model['menu_id']]),
+    'validationUrl' => Url::toRoute(['edit','id' => $model['id']]),
 ]); ?>
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>

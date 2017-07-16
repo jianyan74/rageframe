@@ -81,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <?php foreach($tags as $item){ ?>
                                             <label class="checkbox-inline i-checks">
                                                 <div class="icheckbox_square-green" style="position: relative;">
-                                                    <input type="checkbox" value="<?= $item['tag_id']?>" name="tag[]" <?php if(!empty($item['tagMap'])){?>checked="checked"<?php } ?>>
+                                                    <input type="checkbox" value="<?= $item['id']?>" name="tag[]" <?php if(!empty($item['tagMap'])){?>checked="checked"<?php } ?>>
                                                 </div><?= $item['title']?>
                                             </label>
                                         <?php } ?>

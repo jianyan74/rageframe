@@ -46,8 +46,8 @@ class ArticleSingleController extends MController
     public function actionEdit()
     {
         $request   = Yii::$app->request;
-        $single_id = $request->get('single_id');
-        $model     = $this->findModel($single_id);
+        $id = $request->get('id');
+        $model     = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
@@ -71,12 +71,12 @@ class ArticleSingleController extends MController
 
     /**
      * 删除
-     * @param $single_id
+     * @param $id
      * @return mixed
      */
-    public function actionDelete($single_id)
+    public function actionDelete($id)
     {
-        if($this->findModel($single_id)->delete())
+        if($this->findModel($id)->delete())
         {
             return $this->message("删除成功",$this->redirect(['index']));
         }

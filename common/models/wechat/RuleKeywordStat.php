@@ -51,9 +51,9 @@ class RuleKeywordStat extends ActiveRecord
     }
 
     /**
+     * 插入关键字统计
      * @param $rule_id
      * @param $keyword_id
-     * 插入关键字统计
      */
     public static function setStat($rule_id,$keyword_id)
     {

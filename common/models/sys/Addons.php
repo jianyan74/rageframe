@@ -89,32 +89,31 @@ class Addons extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => '模块标识',
-            'title' => '模板名称',
-            'cover' => '封面',
-            'group' => '组别',
-            'type' => '类别',
+            'id'        => 'ID',
+            'name'      => '模块标识',
+            'title'     => '模板名称',
+            'cover'     => '封面',
+            'group'     => '组别',
+            'type'      => '类别',
             'description' => '模块说明',
-            'status' => '状态',
-            'config' => '配置信息',
-            'hook' => '钩子',
-            'setting' => '存在全局设置项',
-            'author' => '作者',
-            'version' => '版本',
+            'status'    => '状态',
+            'config'    => '配置信息',
+            'hook'      => '钩子',
+            'setting'   => '存在全局设置项',
+            'author'    => '作者',
+            'version'   => '版本',
             'wechatMessage' => '微信公众平台消息处理选项',
-            'install' => '模块安装脚本',
+            'install'   => '模块安装脚本',
             'uninstall' => '模块卸载脚本',
-            'upgrade' => '模块升级脚本',
-            'append' => '创建时间',
-            'updated' => '更新',
+            'upgrade'   => '模块升级脚本',
+            'append'    => '创建时间',
+            'updated'   => '更新时间',
         ];
     }
 
     /**
-     * @param string $addon_dir
-     * @return array
      * 获取插件列表
+     * @return array
      */
     public function getList()
     {
@@ -158,9 +157,9 @@ class Addons extends ActiveRecord
     }
 
     /**
+     * 重组数组
      * @param $data
      * @return array
-     * 重组数组
      */
     public static function regroupType($data)
     {
@@ -189,9 +188,9 @@ class Addons extends ActiveRecord
 
 
     /**
+     * 根据模块标识获取模块
      * @param $name
      * @return array|null|ActiveRecord
-     * 根据模块标识获取模块
      */
     public static function getAddon($name)
     {
@@ -224,8 +223,8 @@ class Addons extends ActiveRecord
     }
 
     /**
+     * 行为
      * @return array
-     * 插入时间戳
      */
     public function behaviors()
     {

@@ -85,9 +85,9 @@ class RuleKeyword extends \yii\db\ActiveRecord
     }
 
     /**
-     * @param $content
-     * @return mixed|null
      * 关键字查询匹配
+     * @param $content
+     * @return array|bool
      */
     public static function match($content)
     {

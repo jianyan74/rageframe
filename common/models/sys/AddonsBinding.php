@@ -17,14 +17,14 @@ use Yii;
  */
 class AddonsBinding extends \yii\db\ActiveRecord
 {
-    /**
-     *后台菜单
-     */
     const ENTRY_MENU = 'menu';
-    /**
-     * 首页导航
-     */
+
     const ENTRY_COVER = 'cover';
+
+    public $entry = [
+        self::ENTRY_MENU => '后台菜单',
+        self::ENTRY_COVER => '首页导航',
+    ];
 
     /**
      * @inheritdoc
@@ -53,18 +53,19 @@ class AddonsBinding extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'id'        => 'ID',
             'addons_name' => '插件名称',
-            'entry' => '入口类型',
-            'title' => '标题',
-            'route' => '路由',
-            'icon' => '图标',
+            'entry'     => '入口类型',
+            'title'     => '标题',
+            'route'     => '路由',
+            'icon'      => '图标',
         ];
     }
 
     /**
-     * @param $data
-     * 添加数据
+     * 插入模块导航
+     * @param $data 数据
+     * @param $addons_name 模块名称
      */
     public static function add($data,$addons_name)
     {
@@ -83,7 +84,7 @@ class AddonsBinding extends \yii\db\ActiveRecord
 
     /**
      * 批量删除
-     * @param $addons_name
+     * @param $addons_name 模块名称
      */
     public static function deleted($addons_name)
     {
@@ -93,7 +94,7 @@ class AddonsBinding extends \yii\db\ActiveRecord
 
     /**
      * 获取菜单和导航列表
-     * @param $addons_name
+     * @param $addons_name 模块名称
      * @return array
      */
     public static function getList($addons_name)

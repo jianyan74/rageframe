@@ -35,9 +35,9 @@ return [
             'idParam' => '__admin',
             'as afterLogin' => 'common\behaviors\AfterLogin',
         ],
-
+        // 这是用于在后台登录的会话cookie的名称
         'session' => [
-            'name' => 'advanced-backend',// 这是用于在后台登录的会话cookie的名称
+            'name' => 'advanced-backend',
         ],
 
         'request'=>[

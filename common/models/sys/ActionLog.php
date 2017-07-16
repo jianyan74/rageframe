@@ -19,13 +19,12 @@ use Yii;
  */
 class ActionLog extends \yii\db\ActiveRecord
 {
-    const ACTION_LOGIN = 'login';//登陆
-    const ACTION_LOGOUT = 'logout';//退出
-    const ACTION_FORBID_IP = 'forbid_ip';//ip不正确
+    const ACTION_LOGIN = 'login';
+    const ACTION_LOGOUT = 'logout';
+    const ACTION_FORBID_IP = 'forbid_ip';
 
     /**
      * @var array
-     * 说明
      */
     public static $behavior = [
         self::ACTION_LOGIN => '登陆',
@@ -47,8 +46,8 @@ class ActionLog extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'action_ip', 'record_id', 'status', 'append'], 'integer'],
             [['action_ip'], 'required'],
+            [['manager_id', 'action_ip', 'record_id', 'status', 'append'], 'integer'],
             [['model','country','province','city','action'], 'string', 'max' => 50],
             [['district'], 'string', 'max' => 150],
             [['remark','log_url'], 'string', 'max' => 255],
@@ -62,8 +61,8 @@ class ActionLog extends \yii\db\ActiveRecord
     {
         return [
             'id'        => 'ID',
-            'action' => 'action',
-            'user_id'   => '用户ID',
+            'action'    => '行为',
+            'manager_id'   => '用户ID',
             'action_ip' => 'IP',
             'model'     => '触发行为的表',
             'record_id' => '触发行为的数据id',
@@ -75,19 +74,21 @@ class ActionLog extends \yii\db\ActiveRecord
 
 
     /**
-     * @param $action_id
-     * @param $model
-     * @param null $record_id
      * 插入日志
+     * @param $action
+     * @param $model
+     * @param null $remark
+     * @param null $record_id
      */
     public function addLog($action,$model,$remark=NULL,$record_id = NULL)
     {
         //行为id
         !$record_id && $record_id = 0;
         $logModel = new ActionLog();
-        if (!\Yii::$app->user->isGuest)//判断是否登录
+        //判断是否登录
+        if (!\Yii::$app->user->isGuest)
         {
-            $logModel->user_id      = Yii::$app->user->identity->id;
+            $logModel->manager_id   = Yii::$app->user->identity->id;
             $logModel->username     = Yii::$app->user->identity->username;
         }
 
@@ -112,13 +113,13 @@ class ActionLog extends \yii\db\ActiveRecord
      */
     public function getManager()
     {
-        return $this->hasOne(Manager::className(), ['id' => 'user_id']);
+        return $this->hasOne(Manager::className(), ['id' => 'manager_id']);
     }
 
     /**
+     * 行为
      * @param bool $insert
      * @return bool
-     * 自动插入
      */
     public function beforeSave($insert)
     {

@@ -112,7 +112,7 @@ class SiteController extends Controller
                     if ($member->save())
                     {
                         $auth = new Auth([
-                            'user_id' => $member->id,
+                            'member_id' => $member->id,
                             'source' => $client->getId(),
                             'source_id' => (string)$attributes['id'],
                         ]);
@@ -137,7 +137,7 @@ class SiteController extends Controller
             if (!$auth)
             { // 添加验证提供商（向验证表中添加记录）
                 $auth = new Auth([
-                    'user_id' => Yii::$app->user->id,
+                    'member_id' => Yii::$app->user->id,
                     'source' => $client->getId(),
                     'source_id' => $attributes['id'],
                 ]);

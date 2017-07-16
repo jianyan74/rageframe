@@ -77,10 +77,11 @@ class Setting extends ActiveRecord
      * 特殊消息回复类别-模块
      */
     const SPECIAL_TYPE_MODUL = 2;
+
     /**
-     * @param $name
-     * @return bool|mixed
      * 获取参数消息
+     * @param $name
+     * @return array
      */
     public static function getSetting($name)
     {

@@ -4,7 +4,7 @@ use yii\helpers\Url;
 ?>
 <style>.fa-with{min-width: 15px;}</style>
 <?php foreach($models as $item){ ?>
-    <?php if($item['menu_id'] != 108){ ?>
+    <?php if($item['id'] != 108){ ?>
         <li>
             <?php if(!empty($item['-'])){ ?>
                 <a href="#">

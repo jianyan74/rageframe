@@ -39,8 +39,8 @@ class TagController extends MController
     public function actionEdit()
     {
         $request  = Yii::$app->request;
-        $tag_id   = $request->get('tag_id');
-        $model    = $this->findModel($tag_id);
+        $id   = $request->get('id');
+        $model    = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
@@ -65,12 +65,12 @@ class TagController extends MController
 
     /**
      * 删除
-     * @param $tag_id
+     * @param $id
      * @return mixed
      */
-    public function actionDelete($tag_id)
+    public function actionDelete($id)
     {
-        if($this->findModel($tag_id)->delete())
+        if($this->findModel($id)->delete())
         {
             return $this->message("删除成功",$this->redirect(['index']));
         }

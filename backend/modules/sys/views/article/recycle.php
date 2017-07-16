@@ -71,8 +71,8 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                         </thead>
                         <tbody>
                         <?php foreach($models as $model){ ?>
-                            <tr id = <?= $model->article_id ?>>
-                                <td><?= $model->article_id ?></td>
+                            <tr id = <?= $model->id ?>>
+                                <td><?= $model->id ?></td>
                                 <td><?= $model->title ?></td>
                                 <td><?= $model->author ?></td>
                                 <td><?= $model->view ?></td>
@@ -82,8 +82,8 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <a href="<?= Url::to(['show','article_id'=>$model->article_id])?>"><span class="btn btn-info btn-sm">还原</span></a>&nbsp
-                                    <a href="<?= Url::to(['delete','article_id'=>$model->article_id])?>" onclick="deleted(this);return false;"><span class="btn btn-warning btn-sm">删除</span></a>&nbsp
+                                    <a href="<?= Url::to(['show','id'=>$model->id])?>"><span class="btn btn-info btn-sm">还原</span></a>&nbsp
+                                    <a href="<?= Url::to(['delete','id'=>$model->id])?>" onclick="deleted(this);return false;"><span class="btn btn-warning btn-sm">删除</span></a>&nbsp
                                 </td>
                             </tr>
                         <?php } ?>

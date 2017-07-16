@@ -118,7 +118,7 @@ class WechatController extends BaseController
      * @param $attributes
      * @return array
      */
-    protected function pay($attributes)
+    protected function wechatPay($attributes)
     {
         $order = new Order($attributes);
         $payment = $this->_app->payment;

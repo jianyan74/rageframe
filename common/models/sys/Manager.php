@@ -87,8 +87,8 @@ class Manager extends \common\models\base\User
             'id'                      => 'ID',
             'username'                => '登录名',
             'password_hash'           => '登录密码',
-            'auth_key'                => 'Auth Key',
-            'password_reset_token'    => 'Password Reset Token',
+            'auth_key'                => '授权秘钥',
+            'password_reset_token'    => '密码重置验证秘钥',
             'type'                    => '管理员类型',
             'nickname'                => '昵称',
             'realname'                => '真实姓名',
@@ -115,6 +115,7 @@ class Manager extends \common\models\base\User
     }
 
     /**
+     * 关联权限
      * @return \yii\db\ActiveQuery
      */
     public function getAssignment()
@@ -131,9 +132,9 @@ class Manager extends \common\models\base\User
     }
 
     /**
+     * 行为
      * @param bool $insert
      * @return bool
-     * 自动插入
      */
     public function beforeSave($insert)
     {
@@ -153,6 +154,7 @@ class Manager extends \common\models\base\User
                 $this->password_hash = Yii::$app->security->generatePasswordHash($this->password_hash);
             }
         }
+        
         return parent::beforeSave($insert);
     }
 

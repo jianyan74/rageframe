@@ -9,7 +9,7 @@ use yii\db\ActiveRecord;
 /**
  * This is the model class for table "{{%article}}".
  *
- * @property integer $article_id
+ * @property integer $id
  * @property string $user_id
  * @property string $title
  * @property string $name
@@ -83,7 +83,7 @@ class Article extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'article_id'    => 'Article ID',
+            'id'    => 'Article ID',
             'manager_id'    => '创建者id',
             'title'         => '文章名称',
             'seo_key'       => 'SEO关键字',
@@ -134,23 +134,27 @@ class Article extends ActiveRecord
 
     /**
      * 上一篇
+     * @param $id 当前文章id
+     * @return false|null|string
      */
-    public static function getPrev($article_id)
+    public static function getPrev($id)
     {
-        return self::find()->where(['<','article_id',$article_id])->select('article_id')->orderBy('article_id asc')->scalar();
+        return self::find()->where(['<','id',$id])->select('id')->orderBy('id asc')->scalar();
     }
 
-    /*
+    /**
      * 下一篇
+     * @param $id 当前文章id
+     * @return false|null|string
      */
-    public static function getNext($article_id)
+    public static function getNext($id)
     {
-        return self::find()->where(['>','article_id',$article_id])->select('article_id')->orderBy('article_id asc')->scalar();
+        return self::find()->where(['>','id',$id])->select('id')->orderBy('id asc')->scalar();
     }
 
     /**
      * 生成推荐位的值
-     * @return number 推荐位
+     * @return int|mixed
      */
     protected function getPosition()
     {
@@ -177,9 +181,9 @@ class Article extends ActiveRecord
     }
 
     /**
+     * 行为
      * @param bool $insert
      * @return bool
-     * 自动插入
      */
     public function beforeSave($insert)
     {

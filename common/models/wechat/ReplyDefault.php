@@ -50,11 +50,11 @@ class ReplyDefault extends ActiveRecord
     }
 
     /**
-     * @param string $type  -触发的类型 follow:关注;text:文字信息
-     * @param null $content -用户发送的内容
-     * @return bool|mixed|null|string
-     * 如果是特殊消息进来的的$message是一个对象
      * 返回回复信息
+     * 如果是特殊消息进来的的$message是一个对象
+     * @param string $type-触发的类型 follow:关注;text:文字信息
+     * @param null $message-用户发送的内容
+     * @return array|bool|mixed|null
      */
     public static function defaultReply($type='follow',$message=null)
     {
@@ -122,8 +122,8 @@ class ReplyDefault extends ActiveRecord
     }
 
     /**
-     * @return array|bool|null|ActiveRecord
      * 查询默认回复
+     * @return array|ReplyDefault|null|ActiveRecord
      */
     public static function findDefault()
     {
@@ -131,12 +131,13 @@ class ReplyDefault extends ActiveRecord
         {
             return $model;
         }
+
         return new ReplyDefault();
     }
 
     /**
+     * 行为
      * @return array
-     * 行为插入时间戳
      */
     public function behaviors()
     {

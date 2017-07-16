@@ -119,8 +119,8 @@ class Qrcode extends ActiveRecord
     }
 
     /**
-     * @return int|mixed
      * 返回场景ID
+     * @return int|mixed
      */
     public static function getSceneId()
     {
@@ -133,8 +133,9 @@ class Qrcode extends ActiveRecord
     }
 
     /**
+     * 行为
      * @param bool $insert
-     * @return bool 前置修改
+     * @return bool
      */
     public function beforeSave($insert)
     {
@@ -147,8 +148,8 @@ class Qrcode extends ActiveRecord
     }
 
     /**
-     * @return array
      * 行为
+     * @return array
      */
     public function behaviors()
     {

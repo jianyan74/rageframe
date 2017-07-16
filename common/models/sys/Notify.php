@@ -85,21 +85,21 @@ class Notify extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'title' => '标题',
-            'content' => '消息内容',
-            'type' => '消息类型',
+            'id'            => 'ID',
+            'title'         => '标题',
+            'content'       => '消息内容',
+            'type'          => '消息类型',
             'announce_type' => '消息类型-广告类型',
-            'target' => '目标id',
-            'target_type' => '目标类型',
-            'action' => '动作类型',
-            'sender' => '发送者id',
-            'view' => '浏览量',
+            'target'        => '目标id',
+            'target_type'   => '目标类型',
+            'action'        => '动作类型',
+            'sender'        => '发送者id',
+            'view'          => '浏览量',
             'sender_display' => '发送者删除状态',
             'target_display' => '接收者删除状态',
-            'is_withdraw' => '是否撤回',
-            'updated' => 'Updated',
-            'append' => 'Append',
+            'is_withdraw'   => '是否撤回',
+            'updated'       => 'Updated',
+            'append'        => 'Append',
         ];
     }
 
@@ -121,6 +121,10 @@ class Notify extends \yii\db\ActiveRecord
         return $this->hasOne(Manager::className(),['id'=>'target']);
     }
 
+    /**
+     * 行为
+     * @return array
+     */
     public function behaviors()
     {
         return [

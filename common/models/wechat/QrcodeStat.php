@@ -56,20 +56,20 @@ class QrcodeStat extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'qrcord_id' => 'Qrcord ID',
-            'openid' => 'Openid',
-            'type' => 'Type',
+            'qrcord_id' => '二维码id',
+            'openid' => '用户openid',
+            'type' => '；二维码类别',
             'scene_id' => 'Qr Cid',
             'name' => 'Name',
             'scene_str' => 'Scene Str',
-            'append' => 'Append',
+            'append' => '创建时间',
         ];
     }
 
-
     /**
-     * @param $message
      * 判断二维码扫描事件
+     * @param $message
+     * @return bool|mixed
      */
     public static function scan($message)
     {
@@ -93,6 +93,7 @@ class QrcodeStat extends ActiveRecord
             {
                 $where = ['scene_str'=> $message->EventKey];
             }
+
             $qrCode = Qrcode::find()->where($where)->one();
             if($qrCode)
             {
@@ -105,10 +106,10 @@ class QrcodeStat extends ActiveRecord
     }
 
     /**
+     * 插入扫描记录
      * @param $qrCode
      * @param $openid
      * @param $type
-     * 插入扫描记录
      */
     public static function insertStat($qrCode,$openid,$type)
     {
@@ -131,8 +132,8 @@ class QrcodeStat extends ActiveRecord
     }
 
     /**
+     * 行为
      * @return array
-     * 行为插入时间戳
      */
     public function behaviors()
     {

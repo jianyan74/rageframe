@@ -9,7 +9,7 @@ use common\helpers\SysArrayHelper;
 /**
  * This is the model class for table "{{%menu}}".
  *
- * @property integer $menu_id
+ * @property integer $id
  * @property string $title
  * @property integer $pid
  * @property string $url
@@ -85,7 +85,7 @@ class Menu extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'menu_id'  => 'Menu ID',
+            'id'  => 'Menu ID',
             'title'    => '标题',
             'pid'      => '上级id',
             'url'      => '路由',
@@ -140,7 +140,7 @@ class Menu extends ActiveRecord
             }
         }
 
-        return SysArrayHelper::itemsMerge($models,'menu_id');
+        return SysArrayHelper::itemsMerge($models,'id');
     }
 
     /**

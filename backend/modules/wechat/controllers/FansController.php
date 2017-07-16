@@ -138,7 +138,7 @@ class FansController extends WController
             if (!empty($add_fans))
             {
                 //批量插入数据
-                $field = ['user_id', 'openid','follow','followtime','tag','append','updated'];
+                $field = ['member_id', 'openid','follow','followtime','tag','append','updated'];
                 Yii::$app->db->createCommand()->batchInsert(Fans::tableName(),$field, $add_fans)->execute();
             }
 
@@ -175,7 +175,7 @@ class FansController extends WController
             //关联角色查询
             $data = Fans::find()->where(['follow' => 1]);
             $models = $data->offset($offset)
-                ->orderBy('fan_id desc')
+                ->orderBy('id desc')
                 ->limit($limit)
                 ->asArray()
                 ->all();

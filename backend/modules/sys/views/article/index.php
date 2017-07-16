@@ -73,8 +73,8 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                         </thead>
                         <tbody>
                         <?php foreach($models as $model){ ?>
-                            <tr id = <?= $model->article_id ?>>
-                                <td><?= $model->article_id ?></td>
+                            <tr id = <?= $model->id ?>>
+                                <td><?= $model->id ?></td>
                                 <td><?= $model->title ?></td>
                                 <td><?= $model->author ?></td>
                                 <td class="col-md-1"><input type="text" class="form-control" value="<?= $model['sort']?>" onblur="sort(this)"></td>
@@ -85,9 +85,9 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <a href="<?= Url::to(['edit','article_id'=>$model->article_id])?>"><span class="btn btn-info btn-sm">编辑</span></a>&nbsp
+                                    <a href="<?= Url::to(['edit','id'=>$model->id])?>"><span class="btn btn-info btn-sm">编辑</span></a>&nbsp
                                     <?php echo $model['status'] == -1 ? '<span class="btn btn-primary btn-sm" onclick="status(this)">启用</span>': '<span class="btn btn-default btn-sm"  onclick="status(this)">禁用</span>' ;?>
-                                    <a href="<?= Url::to(['hide','article_id'=>$model->article_id])?>" onclick="deleted(this);return false;"><span class="btn btn-warning btn-sm">删除</span></a>&nbsp
+                                    <a href="<?= Url::to(['hide','id'=>$model->id])?>" onclick="deleted(this);return false;"><span class="btn btn-warning btn-sm">删除</span></a>&nbsp
                                 </td>
                             </tr>
                         <?php } ?>

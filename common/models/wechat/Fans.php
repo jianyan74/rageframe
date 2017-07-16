@@ -11,7 +11,7 @@ use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "{{%wechat_fans}}".
  *
- * @property string $fan_id
+ * @property string $id
  * @property string $unionid
  * @property string $user_id
  * @property string $openid
@@ -57,7 +57,7 @@ class Fans extends ActiveRecord
     public function rules()
     {
         return [
-            [['sex','user_id', 'follow', 'followtime', 'unfollowtime', 'group_id', 'last_updated', 'append', 'updated'], 'integer'],
+            [['sex','member_id', 'follow', 'followtime', 'unfollowtime', 'group_id', 'last_updated', 'append', 'updated'], 'integer'],
             [['openid'], 'required'],
             [['unionid'], 'string', 'max' => 64],
             [['openid', 'nickname'], 'string', 'max' => 50],
@@ -75,9 +75,9 @@ class Fans extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'fan_id'            => 'Fan ID',
+            'id'                => '粉丝id',
             'unionid'           => 'Unionid',
-            'user_id'           => '用户id',
+            'member_id'         => '用户id',
             'openid'            => 'Openid',
             'sex'               => '性别',
             'headimgurl'        => '头像',
@@ -104,7 +104,7 @@ class Fans extends ActiveRecord
      */
     public function getMember()
     {
-        return $this->hasOne(Member::className(), ['id' => 'user_id']);
+        return $this->hasOne(Member::className(), ['id' => 'member_id']);
     }
 
     /**
@@ -181,8 +181,8 @@ class Fans extends ActiveRecord
     }
 
     /**
+     * 行为
      * @return array
-     * 行为插入时间戳
      */
     public function behaviors()
     {

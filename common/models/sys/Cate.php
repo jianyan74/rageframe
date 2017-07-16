@@ -36,7 +36,7 @@ class Cate extends ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%sys_cate}}';
+        return '{{%sys_article_cate}}';
     }
 
     /**

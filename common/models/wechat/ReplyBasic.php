@@ -34,9 +34,9 @@ class ReplyBasic extends \yii\db\ActiveRecord
     }
 
     /**
+     * 行为
      * @param bool $insert
      * @return bool
-     * 前置修改方法
      */
     public function beforeSave($insert)
     {

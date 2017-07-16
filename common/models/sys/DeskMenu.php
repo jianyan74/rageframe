@@ -9,7 +9,7 @@ use yii\db\ActiveRecord;
 /**
  * This is the model class for table "{{%menu}}".
  *
- * @property integer $menu_id
+ * @property integer $id
  * @property string $title
  * @property integer $pid
  * @property string $url
@@ -61,7 +61,7 @@ class DeskMenu extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'menu_id'  => 'Menu ID',
+            'id'  => 'Menu ID',
             'title'    => '标题',
             'cover'    => '封面',
             'pid'      => '上级id',
@@ -75,16 +75,8 @@ class DeskMenu extends ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getMenuChild()
-    {
-        return $this->hasOne(MenuChild::className(), ['menu_id' => 'menu_id']);
-    }
-
-    /**
+     * 行为
      * @return array
-     * 行为插入时间戳
      */
     public function behaviors()
     {

@@ -42,8 +42,8 @@ class FansGroups extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return mixed
      * 获取分组信息
+     * @return mixed
      */
     public function getGroups()
     {
@@ -52,6 +52,7 @@ class FansGroups extends \yii\db\ActiveRecord
             $app = Yii::$app->wechat->getApp();
             $list = $app->user_group->lists();
             $groups = $list['groups'];
+
             $model = new FansGroups();
             $model->groups = serialize($groups);
             $model->save();

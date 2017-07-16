@@ -26,7 +26,7 @@ class MenuController extends MController
             ->asArray()
             ->all();
 
-        $models = SysArrayHelper::itemsMerge($models,'menu_id');
+        $models = SysArrayHelper::itemsMerge($models,'id');
 
         return $this->render('index', [
             'models' => $models,
@@ -42,12 +42,12 @@ class MenuController extends MController
     public function actionEdit()
     {
         $request  = Yii::$app->request;
-        $menu_id  = $request->get('menu_id');
+        $id  = $request->get('id');
         $level    = $request->get('level');
         $pid      = $request->get('pid');
         $parent_title = $request->get('parent_title','无');
         $type = $request->get('type');
-        $model        = $this->findModel($menu_id);
+        $model        = $this->findModel($id);
         $model->type = $type;
 
         //等级
@@ -76,13 +76,13 @@ class MenuController extends MController
 
     /**
      * 删除
-     * @param $menu_id
+     * @param $id
      * @return mixed
      */
-    public function actionDelete($menu_id)
+    public function actionDelete($id)
     {
         $type = Yii::$app->request->get('type');
-        if($this->findModel($menu_id)->delete())
+        if($this->findModel($id)->delete())
         {
             return $this->message("删除成功",$this->redirect(['index','type' => $type]));
         }
