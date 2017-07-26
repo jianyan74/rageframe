@@ -13,6 +13,22 @@ use common\controllers\BaseController;
 class MController extends BaseController
 {
     /**
+     * 不需要RBAC验证的控制器方法
+     * @var array
+     */
+    public $noAuthController = [
+        'wechat/default/index',//微信api
+        'sys/system/index',//系统入口
+        'main/index',//系统主页
+        'main/system',//系统首页
+        'sys/addons/execute',//模块插件渲染
+        'sys/addons/centre',//模块插件基础设置渲染
+        'sys/addons/qr',//模块插件二维码渲染
+        'sys/addons/cover',//模块插件导航
+        'sys/addons/binding',//模块插件入口
+    ];
+
+    /**
      * csrf验证
      * @var bool
      */
@@ -90,8 +106,7 @@ class MController extends BaseController
         }
 
         //验证不需要RBAC判断的控制器
-        $noAuthController = ['wechat/default/index'];
-        if(in_array($permissionName,$noAuthController))
+        if(in_array($permissionName,$this->noAuthController))
         {
             return true;
         }
@@ -172,14 +187,6 @@ class MController extends BaseController
     }
 
     /**
-     * @var array
-     */
-    public static $result = [
-        'flg' => 2,
-        'msg' => '修改失败',
-    ];
-
-    /**
      * 公用的修改排序或者状态
      * @param $model
      * @return array
@@ -187,11 +194,11 @@ class MController extends BaseController
     public function updateModelData($model)
     {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        $result = static::$result;
-
+        $result = [];
         $model->attributes = Yii::$app->request->get();
         if(!$model->save())
         {
+            $result['flg'] = 2;
             $result['msg'] = $this->analysisError($model->getFirstErrors());
             return $result;
         }
