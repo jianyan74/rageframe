@@ -21,7 +21,7 @@ class AddonsBinding extends \yii\db\ActiveRecord
 
     const ENTRY_COVER = 'cover';
 
-    public $entry = [
+    public $entryExplain = [
         self::ENTRY_MENU => '后台菜单',
         self::ENTRY_COVER => '首页导航',
     ];
