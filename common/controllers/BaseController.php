@@ -12,6 +12,18 @@ use yii\web\Controller;
 class BaseController extends Controller
 {
     /**
+     * 默认出错信息
+     * 0 成功
+     * 2001 成功但是未获取到数据
+     * 4001 报错
+     * @var array
+     */
+    public $result = [
+        'code' => 4001,
+        'message' => '出错啦！',
+    ];
+
+    /**
      * 分页大小
      * @var int
      */

@@ -9,6 +9,8 @@ return [
     'exploitVersions'          => '基础版 1.0',
     'exploitSysName'           => 'RageFrame管理框架',
     'exploitOfficialWebsite'   => '<a href="http://www.rageframe.com" target="_blank">www.rageframe.com</a>',
+    'exploitGitHub'            => '<a href="https://github.com/jianyan74/rageframe.git" target="_blank">github.com/jianyan74/rageframe.git</a>',
+    'exploitGit@OSC'           => '<a href="https://git.oschina.net/jianyan94/rageframe.git" target="_blank">git.oschina.net/jianyan94/rageframe.git</a>',
 
     /**-------------------后台网站基础配置-------------------**/
     'siteTitle'              => "RageFrame管理框架",//后台系统名称
@@ -61,4 +63,21 @@ return [
 
     /**-------------------禁止删除的后台菜单id-------------------**/
     'noDeleteMenu' => [65,108],
+
+    /**-------------------微信配置-------------------**/
+    //素材类型
+    'wechatMediaType' => [
+        'news'  => '微信图文',
+        'image' => '图片',
+//        'voice' => '语音',
+//        'video' => '视频',
+    ],
+
+    //微信级别
+    'wechatLevel' => [
+        '1' => '普通订阅号',
+        '2' => '普通服务号',
+        '3' => '认证订阅号',
+        '4' => '认证服务号/认证媒体/政府订阅号',
+    ],
 ];

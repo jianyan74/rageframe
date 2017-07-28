@@ -82,7 +82,7 @@ class Config extends ActiveRecord
     {
         //获取缓存信息
         $info = $this->getConfigInfo();
-        return isset($info[$name]) ? $info[$name] : false;
+        return isset($info[$name]) ? trim($info[$name]) : false;
     }
 
     /**

@@ -44,7 +44,7 @@ class Rule extends ActiveRecord
      */
     public static $module = [
         self::RULE_MODULE_BASE      => '文字回复',
-        //self::RULE_MODULE_NEWS      => '图文回复',
+        self::RULE_MODULE_NEWS      => '图文回复',
         //self::RULE_MODULE_MUSIC     => '音乐回复',
         self::RULE_MODULE_IMAGES    => '图片回复',
         //self::RULE_MODULE_VOICE     => '语音回复',

@@ -7,8 +7,7 @@ use EasyWeChat\Message\Image;
 use EasyWeChat\Message\Video;
 use EasyWeChat\Message\Voice;
 use EasyWeChat\Message\News;
-use EasyWeChat\Message\Article;
-use yii\helpers\ArrayHelper;
+
 /**
  * This is the model class for table "{{%wechat_rule_keyword}}".
  *
@@ -124,7 +123,7 @@ class RuleKeyword extends \yii\db\ActiveRecord
             //列表
             $ruleModels = [
                 Rule::RULE_MODULE_BASE => ReplyBasic::find(),
-                Rule::RULE_MODULE_NEWS => '图文回复',
+                Rule::RULE_MODULE_NEWS => ReplyNews::find()->with('news'),
                 Rule::RULE_MODULE_MUSIC => '音乐回复',
                 Rule::RULE_MODULE_IMAGES => ReplyImages::find(),
                 Rule::RULE_MODULE_VOICE => ReplyVoice::find(),
@@ -148,15 +147,50 @@ class RuleKeyword extends \yii\db\ActiveRecord
                     $result['content'] = $model->content;
 
                     break;
+
+                //图文回复
+                case  Rule::RULE_MODULE_NEWS :
+
+                    $news = $model->news;
+
+                    $news_list = [];
+                    if($news)
+                    {
+                        $count_news = count($news);
+                        foreach ($news as $vo)
+                        {
+                            $new_news = new News([
+                                'title'   => $vo['title'],
+                                'description'  => $vo['digest'],
+                                'url' => $vo['url'],
+                                'image' => $vo['thumb_url'],
+                            ]);
+
+                            //如果是单图文
+                            if($count_news == 1)
+                            {
+                                $news_list = $new_news;
+                            }
+                            else
+                            {
+                                $news_list[] = $new_news;
+                            }
+                        }
+                    }
+
+                    $result['content'] = $news_list;
+
+                    break;
+
                 //图片回复
                 case  Rule::RULE_MODULE_IMAGES :
 
-                    $img = explode('?',$model->mediaid);
                     $result['content'] = new Image([
-                        'media_id' => $img[1],
+                        'media_id' => $model->mediaid,
                     ]);
 
                     break;
+
                 //视频回复
                 case Rule::RULE_MODULE_VIDEO :
 
@@ -167,6 +201,7 @@ class RuleKeyword extends \yii\db\ActiveRecord
                     ]);
 
                     break;
+
                 //语音回复
                 case Rule::RULE_MODULE_VOICE :
 

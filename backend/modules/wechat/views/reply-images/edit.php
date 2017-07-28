@@ -1,6 +1,7 @@
 <?php
-use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
+use common\models\wechat\Attachment;
 
 $this->title = $model->isNewRecord ? '创建' : '编辑';
 $this->params['breadcrumbs'][] = ['label' => '自动回复', 'url' => ['reply/index']];
@@ -24,17 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="ibox-content">
                     <div class="col-sm-12">
-                        <?= $form->field($model, 'title')->textInput() ?>
-                        <?= $form->field($model, 'mediaid')->widget('backend\widgets\webuploader\Image', [
-                            'boxId' => 'mediaid',
-                            'options' => [
-                                'multiple'   => false,
-                            ],
-                            'pluginOptions' => [
-                                'uploadUrl' => Url::to(['/wechat/wechat/upload-images'])
-                            ]
-                        ])?>
-                        <?= $form->field($model, 'description')->textarea() ?>
+                        <?= $form->field($model, 'mediaid')->dropDownList(ArrayHelper::map(Attachment::getList('image'),'media_id','file_name')) ?>
                         <div class="hr-line-dashed"></div>
                     </div>
                     <div class="form-group">　

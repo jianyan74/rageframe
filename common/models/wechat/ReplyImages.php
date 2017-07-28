@@ -30,7 +30,7 @@ class ReplyImages extends \yii\db\ActiveRecord
     {
         return [
             [['rule_id'], 'integer'],
-            [['title', 'description', 'mediaid'], 'required'],
+            [['mediaid'], 'required'],
             [['title'], 'string', 'max' => 50],
             [['description', 'mediaid'], 'string', 'max' => 255],
         ];

@@ -9,7 +9,6 @@ use yii\behaviors\TimestampBehavior;
  * This is the model class for table "{{%wechat_custom_menu}}".
  *
  * @property integer $id
- * @property string $id
  * @property integer $type
  * @property string $title
  * @property integer $sex

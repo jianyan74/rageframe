@@ -18,6 +18,13 @@ class WechatController extends BaseController
     protected $_app;
 
     /**
+     * 网页授权类别
+     * 更多 snsapi_base
+     * @var array
+     */
+    protected $_scopes = ['snsapi_userinfo'];
+
+    /**
      * 当前进入微信用户信息
      * @var
      */
@@ -39,7 +46,7 @@ class WechatController extends BaseController
      * 默认检测到微信进入自动获取用户信息
      * @var bool
      */
-    protected $openGetWechatUser = true;
+    protected $_openGetWechatUser = true;
 
     public function init()
     {
@@ -71,7 +78,7 @@ class WechatController extends BaseController
         /**
          * 获取用户信息
          */
-        $wechatConfig['oauth']['scopes'] = ['snsapi_userinfo'];
+        $wechatConfig['oauth']['scopes'] = $this->_scopes;
         $wechatConfig['oauth']['callback'] = '/wechat';
         /**
          * 微信支付配置
@@ -81,9 +88,9 @@ class WechatController extends BaseController
         $wechatConfig['payment']['cert_path'] = Yii::$app->config->info('WECHAT_APICLIENT_CERT');// XXX: 绝对路径！！！！
         $wechatConfig['payment']['key_path'] = Yii::$app->config->info('WECHAT_APICLIENT_KEY');// XXX: 绝对路径！！！！
         $wechatConfig['payment']['notify_url'] = $this->_notifyUrl;// 你也可以在下单时单独设置来想覆盖它
-        //$wechatConfig['WECHAT']['device_info'] = '';//设备号
-        //$wechatConfig['WECHAT']['sub_app_id'] = '';//子商户公众账号
-        //$wechatConfig['WECHAT']['sub_merchant_id'] = '';//子商户号
+        //$wechatConfig['payment']['device_info'] = '';//设备号
+        //$wechatConfig['payment']['sub_app_id'] = '';//子商户公众账号
+        //$wechatConfig['payment']['sub_merchant_id'] = '';//子商户号
 
         Yii::$app->params['WECHAT'] = $wechatConfig;
         $this->_app = Yii::$app->wechat->getApp();
@@ -91,7 +98,7 @@ class WechatController extends BaseController
         /**
          * 检测到微信进入自动获取用户信息
          */
-        $this->openGetWechatUser && $this->getWechatUser();
+        $this->_openGetWechatUser && $this->getWechatUser();
 
         /**
          * 当前进入微信用户信息

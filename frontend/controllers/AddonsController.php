@@ -14,5 +14,5 @@ class AddonsController extends AddonsBaseController
      * 前台关闭自动获取微信用户信息
      * @var bool
      */
-    protected $openGetWechatUser = false;
+    protected $_openGetWechatUser = false;
 }

@@ -22,6 +22,7 @@ class FansController extends WController
     {
         $request  = Yii::$app->request;
         $follow     = $request->get('follow',1);
+        $group_id     = $request->get('group_id','');
         $keyword  = $request->get('keyword','');
 
         $where = [];
@@ -34,7 +35,9 @@ class FansController extends WController
         $data = Fans::find()
             ->with('member')
             ->where($where)
-            ->andWhere(['follow' => $follow]);
+            ->andWhere(['follow' => $follow])
+            ->andFilterWhere(['group_id'=> $group_id]);
+
         $pages  = new Pagination(['totalCount' =>$data->count(), 'pageSize' =>$this->_pageSize]);
         $models = $data->offset($pages->offset)
             ->orderBy('followtime desc,unfollowtime desc')
@@ -47,7 +50,22 @@ class FansController extends WController
             'pages'   => $pages,
             'follow'  => $follow,
             'keyword' => $keyword,
+            'group_id' => $group_id,
+            'all_fans' =>  Fans::find()->andWhere(['follow' => $follow])->count(),
             'fansGroup' => $fansGroupModel->getGroups(),
+        ]);
+    }
+
+    /**
+     * @return string
+     * 粉丝列表
+     */
+    public function actionView($id)
+    {
+        $model = Fans::findOne($id);
+
+        return $this->renderAjax('view',[
+            'model' => $model
         ]);
     }
 

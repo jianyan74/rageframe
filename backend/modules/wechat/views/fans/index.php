@@ -29,6 +29,7 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                             <label class="col-sm-3 control-label">昵称/openid</label>
                             <div class="col-sm-6">
                                 <div class="input-group m-b">
+                                    <input type="hidden" class="form-control" name="group_id" value="<?= $group_id?>"/>
                                     <input type="text" class="form-control" name="keyword" value="" placeholder="<?= $keyword?>"/>
                                     <span class="input-group-btn">
                                     <button class="btn btn-white"><i class="fa fa-search"></i> 搜索</button>
@@ -43,71 +44,94 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>粉丝列表(总共 <strong class="text-danger"><?= $pages->totalCount ?></strong> 人)</h5>
-                </div>
-                <div class="ibox-content">
-                    <div class="col-sm-12">
-                        <span class="btn btn-white" id="sync"> 同步选中粉丝信息</span>
-                        <span class="btn btn-white" onclick="getAllFans()"> 同步全部粉丝信息</span>
-                    </div>
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th><input type="checkbox" class="check-all"></th>
-                            <th>头像</th>
-                            <th>昵称</th>
-                            <th>性别</th>
-                            <th>是否关注</th>
-                            <th>关注/取消时间</th>
-                            <th>分组</th>
-                        </tr>
-                        </thead>
-                        <tbody id="list">
-                        <?php foreach($models as $model){ ?>
-                            <tr openid = "<?= $model->openid?>">
-                                <td><input type="checkbox" name="openid[]" value="<?= $model['openid']?>"></td>
-                                <td class="feed-element">
-                                    <img src="<?= $model->headimgurl ?>" class="img-circle">
-                                </td>
-                                <td><?= $model->nickname ?></td>
-                                <td><?= $model->sex == 1 ? '男' : '女' ?></td>
-                                <td>
-                                    <?php if($model->follow == Fans::FOLLOW_OFF){ ?>
-                                        <span class="label label-danger">已取消</span>
-                                    <?php }else{ ?>
-                                        <span class="label label-info">已关注</span>
-                                    <?php } ?>
-                                </td>
-                                <td>
-                                    <?php if($model->follow == Fans::FOLLOW_OFF){ ?>
-                                        <?= Yii::$app->formatter->asDatetime($model->unfollowtime) ?>
-                                    <?php }else{ ?>
-                                        <?= Yii::$app->formatter->asDatetime($model->followtime) ?>
-                                    <?php } ?>
-                                </td>
-                                <td>
-                                    <select class="form-control m-b groups">
-                                        <?php foreach ($fansGroup as $value){ ?>
-                                        <option value="<?= $value['id'] ?>" <?php if($value['id'] == $model->group_id){ ?>selected<?php } ?>><?= $value['name'] ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </td>
-                            </tr>
+            <div class="tabs-container">
+                <div class="tabs-right">
+                    <ul class="nav nav-tabs">
+                        <li <?php if($group_id == ''){ ?>class="active"<?php } ?>>
+                            <a href="<?= Url::to(['index'])?>"> 全部粉丝(<strong class="text-danger"><?= $all_fans ?></strong>)</a>
+                        </li>
+                        <?php foreach ($fansGroup as $k => $group){ ?>
+                            <?php if($group['id'] > 1){ ?>
+                                <li <?php if($group['id'] == $group_id){ ?>class="active"<?php } ?>>
+                                    <a href="<?= Url::to(['index','group_id'=> $group['id']])?>"> <?= $group['name'] ?>(<strong class="text-danger"><?= $group['count'] ?></strong>)</a>
+                                </li>
+                            <?php } ?>
                         <?php } ?>
-                        </tbody>
-                    </table>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <?= LinkPager::widget([
-                                'pagination'        => $pages,
-                                'maxButtonCount'    => 5,
-                                'firstPageLabel'    => "首页",
-                                'lastPageLabel'     => "尾页",
-                                'nextPageLabel'     => "下一页",
-                                'prevPageLabel'     => "上一页",
-                            ]);?>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active">
+                            <div class="panel-body">
+                                <div class="col-sm-12">
+                                    <div class="ibox float-e-margins">
+                                        <div class="col-sm-12">
+                                            <span class="btn btn-white" id="sync"> 同步选中粉丝信息</span>
+                                            <span class="btn btn-white" onclick="getAllFans()"> 同步全部粉丝信息</span>
+                                        </div>
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th><input type="checkbox" class="check-all"></th>
+                                                <th>头像</th>
+                                                <th>昵称</th>
+                                                <th>性别</th>
+                                                <th>是否关注</th>
+                                                <th>关注/取消时间</th>
+                                                <th>分组</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="list">
+                                            <?php foreach($models as $model){ ?>
+                                                <tr openid = "<?= $model->openid?>">
+                                                    <td><input type="checkbox" name="openid[]" value="<?= $model['openid']?>"></td>
+                                                    <td class="feed-element">
+                                                        <img src="<?= $model->headimgurl ?>" class="img-circle">
+                                                    </td>
+                                                    <td><?= $model->nickname ?></td>
+                                                    <td><?= $model->sex == 1 ? '男' : '女' ?></td>
+                                                    <td>
+                                                        <?php if($model->follow == Fans::FOLLOW_OFF){ ?>
+                                                            <span class="label label-danger">已取消</span>
+                                                        <?php }else{ ?>
+                                                            <span class="label label-info">已关注</span>
+                                                        <?php } ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php if($model->follow == Fans::FOLLOW_OFF){ ?>
+                                                            <?= Yii::$app->formatter->asDatetime($model->unfollowtime) ?>
+                                                        <?php }else{ ?>
+                                                            <?= Yii::$app->formatter->asDatetime($model->followtime) ?>
+                                                        <?php } ?>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control m-b groups">
+                                                            <?php foreach ($fansGroup as $value){ ?>
+                                                                <option value="<?= $value['id'] ?>" <?php if($value['id'] == $model->group_id){ ?>selected<?php } ?>><?= $value['name'] ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <a href="<?= Url::to(['view','id'=>$model->id])?>" data-toggle='modal' data-target='#ajaxModal'><span class="btn btn-info btn-sm">用户详情</span></a>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
+                                            </tbody>
+                                        </table>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <?= LinkPager::widget([
+                                                    'pagination'        => $pages,
+                                                    'maxButtonCount'    => 5,
+                                                    'firstPageLabel'    => "首页",
+                                                    'lastPageLabel'     => "尾页",
+                                                    'nextPageLabel'     => "下一页",
+                                                    'prevPageLabel'     => "上一页",
+                                                ]);?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -179,7 +203,7 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
             }
         });
 
-       sync('check',0,openids);
+        sync('check',0,openids);
     });
 
     //多选框选择

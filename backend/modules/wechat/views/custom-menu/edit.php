@@ -10,6 +10,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?=Html::cssFile('/resource/backend/css/common.css')?>
 <?=Html::jsFile('/resource/backend/js/vue.min.js')?>
+<?=Html::jsFile('/resource/backend/js/Sortable.min.js')?>
+<?=Html::jsFile('/resource/backend/js/vuedraggable.min.js')?>
 
 <style>
 	.menuView{
@@ -31,7 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div id="vueArea" class="wrapper wrapper-content animated fadeInRight">
     <?php $form = ActiveForm::begin(); ?>
     <div class="row  col-sm-offset-2">
-        <div class="col-sm-4">
+    	<!-- 菜单编辑模式 -->
+        <div class="col-sm-3" v-if="!isSortMode">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>自定义菜单</h5>
@@ -40,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="flex-col"></div>
                     <div>
                         <div class="flex-row">
-                            <div v-for="item in list" class="flex-col custommenu">
+                            <div v-for="(item,index) in list" class="flex-col custommenu">
                                 <div class="custommenu_sub_container">
                                     <div v-for="sub in item.sub">
                                         <a class="btn btn-block btn-white" :class="{active:crtItem === sub}" @click="crtItem = sub">{{sub.name}}</a>
@@ -54,10 +57,43 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <div class="form-group">　
-                        <div class="col-sm-offset-4">
+                    <div class="form-group">
+                        <div class="hAlignCenter">
+                        	<a class="btn btn-white separateFromNextInlineBlockFurther" @click="isSortMode = true" v-show="list.length > 0">排序</a>
                             <a class="btn btn-primary" @click="submitForm">保存</a>
                             <a class="btn btn-white" @click="back">返回</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 菜单排序模式 -->
+        <div class="col-sm-3" v-else>
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>自定义菜单</h5>
+                </div>
+                <div class="flex-row flex-vDirection menuView borderColorGray">
+                    <div class="flex-col"></div>
+                    <div>
+                        <draggable v-model="list" :options="{group:'mainMenu'}" class="flex-row">
+                            <div v-for="(item,index) in list" class="flex-col custommenu">
+                                <div class="custommenu_sub_container">
+                                	<draggable v-model="item.sub" :options="{group:'subMenu' + index}">
+	                                    <div v-for="sub in item.sub">
+	                                        <a class="btn btn-block btn-white" :class="{active:crtItem === sub}" @click="crtItem = sub">{{sub.name}}</a>
+	                                    </div>
+                                    </draggable>
+                                </div>
+                                <a class="btn btn-block btn-white" :class="{active:crtItem === item}" @click="crtItem = item">{{item.name}}</a>
+                            </div>
+                        </draggable>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="form-group">
+                        <div class="col-sm-offset-4">
+                            <a class="btn btn-primary" @click="isSortMode = false">完成</a>
                         </div>
                     </div>
                 </div>
@@ -132,7 +168,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 list: list ? list : [],
                 maxItemCount: 3,
                 maxSubItemCount: 5,
-                crtItem: null
+                crtItem: null,
+                isSortMode: false
             },
             methods: {
                 addItem: function(){

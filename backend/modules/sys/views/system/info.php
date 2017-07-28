@@ -35,9 +35,11 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
             <div class="ibox-content">
                 <p>系统名称　　　　　　　　　　　　　<?= Yii::$app->params['exploitSysName']?></p>
                 <p>系统版本　　　　　　　　　　　　　<?= Yii::$app->params['exploitVersions']?></p>
-                <p>开发者　　　　　　　　　　　　　　<?= Yii::$app->params['exploitName']?></p>
                 <p>官网　　　　　　　　　　　　　　　<?= Yii::$app->params['exploitOfficialWebsite']?></p>
-                <p>联系邮箱(QQ同号)　　　　　　　　　<?= Yii::$app->params['exploitEmail']?></p>
+                <p>Git@OSC　　　　　　　　　　　　&nbsp;&nbsp;<?= Yii::$app->params['exploitGit@OSC']?></p>
+                <p>GitHub　　　　　　　　　　　　　　<?= Yii::$app->params['exploitGitHub']?></p>
+                <p>开发者　　　　　　　　　　　　　　<?= Yii::$app->params['exploitName']?></p>
+                <p>问题反馈(QQ同号)　　　　　　　　　<?= Yii::$app->params['exploitEmail']?></p>
             </div>
         </div>
     </div>

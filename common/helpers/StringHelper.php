@@ -121,8 +121,8 @@ class StringHelper
      * @param string $type
      * @return string
      */
-    public static function clipping($fileName,$type = '.')
+    public static function clipping($fileName,$type = '.',$length = 0)
     {
-        return strtolower(strrchr($fileName, $type));
+        return substr(strtolower(strrchr($fileName, $type)),$length);
     }
 }
