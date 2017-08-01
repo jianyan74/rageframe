@@ -52,7 +52,6 @@ class CustomMenu extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id' => '菜单id',
             'type' => '菜单类型',
             'title' => '菜单名称',
             'sex' => '性别',

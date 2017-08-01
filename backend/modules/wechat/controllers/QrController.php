@@ -71,7 +71,6 @@ class QrController extends WController
             $model->ticket = $result->ticket;
             $model->type = Qrcode::TYPE_SCENE;
             $model->url = $result->url; // 二维码图片解析后的地址，开发者可根据该地址自行生成需要的二维码图片
-
             $model->save();
 
             return $this->redirect(['index']);
@@ -83,8 +82,8 @@ class QrController extends WController
     }
 
     /**
-     * @return array
      * 验证表单
+     * @return array
      */
     public function actionValidateForm()
     {
@@ -96,8 +95,8 @@ class QrController extends WController
     }
 
     /**
-     * @return string|\yii\web\Response
-     * 编辑
+     * ajax编辑
+     * @return string|yii\web\Response
      */
     public function actionEdit()
     {
@@ -114,11 +113,10 @@ class QrController extends WController
         ]);
     }
 
+
     /**
-     * @param $id
-     * @return \yii\web\Response
-     * @throws \Exception
-     * 删除
+     * 删除全部过期的二维码
+     * @return mixed
      */
     public function actionDeleteAll()
     {
@@ -133,10 +131,9 @@ class QrController extends WController
     }
 
     /**
+     * 删除二维码
      * @param $id
-     * @return \yii\web\Response
-     * @throws \Exception
-     * 删除
+     * @return mixed
      */
     public function actionDelete($id)
     {
@@ -167,8 +164,8 @@ class QrController extends WController
     }
 
     /**
-     * 二维码生成
-     * @return string|\yii\web\Response
+     * 长链接二维码
+     * @return string
      */
     public function actionLongQr()
     {
@@ -177,8 +174,7 @@ class QrController extends WController
     }
 
     /**
-     * @return mixed
-     * 返回短连接
+     * 长链接转短连接
      */
     public function actionTransform()
     {
@@ -187,9 +183,7 @@ class QrController extends WController
         $result['msg'] = "二维码转化失败";
 
         $postUrl = Yii::$app->request->post('shortUrl','');
-        /**
-         * 长链接转短链接
-         */
+        //长链接转短链接
         $url = $this->_app->url;
         $shortUrl  = $url->shorten($postUrl);
 
@@ -204,7 +198,7 @@ class QrController extends WController
     }
 
     /**
-     * 转换二维码
+     * 二维码转换
      */
     public function actionQr()
     {

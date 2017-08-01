@@ -3,7 +3,6 @@ namespace backend\modules\sys\controllers;
 
 use yii;
 use yii\data\Pagination;
-use yii\web\NotFoundHttpException;
 use common\models\sys\Tag;
 use backend\controllers\MController;
 
@@ -81,10 +80,9 @@ class TagController extends MController
     }
 
     /**
-     * @param $id
-     * @return null|static
-     * @throws NotFoundHttpException
      * 返回模型
+     * @param $id
+     * @return $this|Tag|static
      */
     protected function findModel($id)
     {

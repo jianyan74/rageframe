@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
         <div class="col-sm-12">
             <div class="tabs-container">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="<?= Url::to(['reply/index'])?>"> 关键字自动回复</a></li>
+                    <li class="active"><a href="<?= Url::to(['rule/index'])?>"> 关键字自动回复</a></li>
                     <li><a href="<?= Url::to(['setting/special-message'])?>"> 非文字消息回复</a></li>
                     <li><a href="<?= Url::to(['reply-default/index'])?>"> 关注/默认回复</a></li>
                 </ul>
@@ -61,16 +61,16 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
                                                 <span class="collapsed"><?= $model->name ?></span>
-                                                <span class="pull-right">
+                                                <span class="pull-right" id="<?= $model->id ?>">
                                                    <?php if(RuleKeyword::verifyTake($model->ruleKeyword)){ ?>
                                                        <?php if($model->status == Rule::STATUS_ON){ ?>
                                                            <span class="label label-info">直接接管</span>
                                                        <?php } ?>
                                                    <?php } ?>
                                                     <?php if($model->status == Rule::STATUS_OFF){ ?>
-                                                        <span class="label label-danger">已禁用</span>
+                                                        <span class="label label-danger" onclick="status(this)">已禁用</span>
                                                     <?php }else{ ?>
-                                                        <span class="label label-info">已启用</span>
+                                                        <span class="label label-info" onclick="status(this)">已启用</span>
                                                     <?php } ?>
                                                 </span>
                                             </div>
@@ -115,3 +115,32 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    //status => 1:启用;-1禁用;
+    function status(obj){
+
+        var id = $(obj).parent().attr('id');
+        var self = $(obj);
+        var status = self.hasClass("label-danger") ? 1 : -1;
+
+        $.ajax({
+            type:"get",
+            url:"<?= Url::to(['update-ajax'])?>",
+            dataType: "json",
+            data: {id:id,status:status},
+            success: function(data){
+                if(data.flg == 1) {
+                    if(self.hasClass("label-danger")){
+                        self.removeClass("label-danger").addClass("label-info");
+                        self.text('已启用');
+                    } else {
+                        self.removeClass("label-info").addClass("label-danger");
+                        self.text('已禁用');
+                    }
+                }else{
+                    alert(data.msg);
+                }
+            }
+        });
+    }
+</script>

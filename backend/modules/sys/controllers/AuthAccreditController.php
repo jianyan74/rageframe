@@ -100,10 +100,9 @@ class AuthAccreditController extends MController
     }
 
     /**
-     * @param $id
-     * @return null|static
-     * @throws NotFoundHttpException
      * 返回模型
+     * @param $id
+     * @return $this|AuthItem|static
      */
     protected function findModel($id)
     {

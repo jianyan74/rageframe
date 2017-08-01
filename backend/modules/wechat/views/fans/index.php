@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                                                 <th>性别</th>
                                                 <th>是否关注</th>
                                                 <th>关注/取消时间</th>
-                                                <th>分组</th>
+                                                <th>粉丝分组</th>
                                                 <th>操作</th>
                                             </tr>
                                             </thead>

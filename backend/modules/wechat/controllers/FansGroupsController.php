@@ -4,34 +4,35 @@ namespace backend\modules\wechat\controllers;
 use yii;
 use common\models\wechat\FansGroups;
 use yii\web\NotFoundHttpException;
+
 /**
+ * 粉丝分组
  * Class FansGroupsController
  * @package backend\modules\wechat\controllers
- * 粉丝分组
  */
 class FansGroupsController extends WController
 {
     /**
+     * 分组首页
      * @return string
-     * 分组列表
      */
     public function actionList()
     {
-        $model = new FansGroups();
         return $this->render('index',[
-            'groups' => $model->getGroups()
+            'groups' => FansGroups::getGroups()
         ]);
     }
 
     /**
-     * @return string
-     * 删除分组
+     * 删除
+     * @param $id
+     * @return mixed
      */
     public function actionDelete($id)
     {
         if($this->_app->user_group->delete($id))
         {
-            $this->updateGroupList();
+            FansGroups::updateGroupList();
             return $this->message("删除成功",$this->redirect(['list']));
         }
         else
@@ -40,11 +41,10 @@ class FansGroupsController extends WController
         }
     }
 
-
     /**
+     * 更新修改数据
      * @return yii\web\Response
      * @throws NotFoundHttpException
-     * 更新修改数据
      */
     public function actionUpdate()
     {
@@ -79,7 +79,7 @@ class FansGroupsController extends WController
                     $this->_app->user_group->create($value);
                 }
             }
-            $this->updateGroupList();
+            FansGroups::updateGroupList();
             return $this->redirect(['list']);
         }
         else
@@ -89,33 +89,18 @@ class FansGroupsController extends WController
     }
 
     /**
-     * @return yii\web\Response
-     * 同步
+     * 同步粉丝
+     * @return mixed
      */
     public function actionSynchro()
     {
-        $this->updateGroupList();
+        FansGroups::updateGroupList();
         return $this->message("粉丝同步成功",$this->redirect(['list']));
     }
 
     /**
-     * 获取分组信息并保存到数据库
-     */
-    public function updateGroupList()
-    {
-        $list = $this->_app->user_group->lists();
-        $groups = $list['groups'];
-        $model = $this->findModel();
-        $model->groups = serialize($groups);
-        $model->save();
-
-        return $groups;
-    }
-
-    /**
-     * @param $id
-     * @return array|FansGroups|null|\yii\db\ActiveRecord
-     * 返回模型
+     * 返回分组模型
+     * @return array|FansGroups|null|yii\db\ActiveRecord
      */
     protected function findModel()
     {

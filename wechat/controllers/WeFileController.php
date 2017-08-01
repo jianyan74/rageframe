@@ -57,9 +57,9 @@ class WeFileController extends WController
     }
 
     /**
-     * @param null $Thumb 是否获取缩略图地址
+     * 获取图片路径
+     * @param null $thumb
      * @return string
-     * 获取文件路径
      */
     public function getImgPath($thumb = null)
     {

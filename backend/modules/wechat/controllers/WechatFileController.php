@@ -158,9 +158,17 @@ class WechatFileController extends WController
     }
 
     /**
-     * 上传文件方法
+     * 上传音频方法
      */
     public function actionVoice()
+    {
+
+    }
+
+    /**
+     * 上传视频方法
+     */
+    public function actionVideo()
     {
 
     }
@@ -199,9 +207,9 @@ class WechatFileController extends WController
     }
 
     /**
-     * @param null $Thumb 是否获取缩略图地址
-     * @return string
      * 获取文件路径
+     * @param null $thumb
+     * @return string
      */
     public function getImgPath($thumb = null)
     {

@@ -5,6 +5,7 @@ namespace common\models\wechat;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
+
 /**
  * This is the model class for table "{{%wechat_rule}}".
  *
@@ -26,6 +27,7 @@ class Rule extends ActiveRecord
      * 状态禁用
      */
     const STATUS_OFF = -1;
+
     /**
      * 模块类别
      */
@@ -38,15 +40,16 @@ class Rule extends ActiveRecord
     const RULE_MODULE_USER_API = 'userapi';
     const RULE_MODULE_WX_CARD = 'wxcard';
     const RULE_MODULE_DEFAULT = 'default';
+
     /**
      * @var array
      * 说明
      */
-    public static $module = [
+    public static $moduleExplain = [
         self::RULE_MODULE_BASE      => '文字回复',
+        self::RULE_MODULE_IMAGES    => '图片回复',
         self::RULE_MODULE_NEWS      => '图文回复',
         //self::RULE_MODULE_MUSIC     => '音乐回复',
-        self::RULE_MODULE_IMAGES    => '图片回复',
         //self::RULE_MODULE_VOICE     => '语音回复',
         //self::RULE_MODULE_VIDEO     => '视频回复',
         //self::RULE_MODULE_USER_API  => '自定义接口回复',
@@ -92,7 +95,6 @@ class Rule extends ActiveRecord
         ];
     }
 
-
     /**
      * 删除其他数据
      */
@@ -104,13 +106,16 @@ class Rule extends ActiveRecord
         switch ($this->module)
         {
             case  self::RULE_MODULE_BASE :
-                ReplyBasic::deleteAll(['rule_id'=>$id]);
+                ReplyBasic::deleteAll(['rule_id' => $id]);
+                break;
+            case  self::RULE_MODULE_NEWS :
+                ReplyNews::deleteAll(['rule_id' => $id]);
                 break;
             case  self::RULE_MODULE_MUSIC :
                // ReplyBasic::deleteAll(['rule_id'=>$id]);
                 break;
             case  self::RULE_MODULE_IMAGES :
-                ReplyImages::deleteAll(['rule_id'=>$id]);
+                ReplyImages::deleteAll(['rule_id' => $id]);
                 break;
             case  self::RULE_MODULE_VOICE :
                 //ReplyBasic::deleteAll(['rule_id'=>$id]);

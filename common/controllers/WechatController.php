@@ -121,7 +121,7 @@ class WechatController extends BaseController
     }
 
     /**
-     * 创建支付订单
+     * 创建微信支付订单
      * @param $attributes
      * @return array
      */

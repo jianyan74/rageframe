@@ -18,7 +18,6 @@ use Yii;
 class AddonsBinding extends \yii\db\ActiveRecord
 {
     const ENTRY_MENU = 'menu';
-
     const ENTRY_COVER = 'cover';
 
     public $entryExplain = [
@@ -90,7 +89,6 @@ class AddonsBinding extends \yii\db\ActiveRecord
     {
         AddonsBinding::deleteAll(['addons_name'=>$addons_name]);
     }
-
 
     /**
      * 获取菜单和导航列表

@@ -176,6 +176,7 @@ class MsgHistory extends ActiveRecord
                     case Account::TYPE_EVENT_LOCATION :
                         return '经纬度【'.$messgae['Latitude'].','.$messgae['Longitude']."】精度:".$messgae['Precision'];
                         break;
+
                     case Account::TYPE_EVENT_VIEW :
                         return "单击菜单访问：" . $messgae['EventKey'];
                         break;
@@ -188,9 +189,7 @@ class MsgHistory extends ActiveRecord
                 break;
 
             default :
-
                 return $messgae;
-
                 break;
         }
     }

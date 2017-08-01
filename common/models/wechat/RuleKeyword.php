@@ -85,7 +85,7 @@ class RuleKeyword extends \yii\db\ActiveRecord
 
     /**
      * 关键字查询匹配
-     * @param $content
+     * @param $content - 内容
      * @return array|bool
      */
     public static function match($content)
@@ -152,7 +152,6 @@ class RuleKeyword extends \yii\db\ActiveRecord
                 case  Rule::RULE_MODULE_NEWS :
 
                     $news = $model->news;
-
                     $news_list = [];
                     if($news)
                     {
@@ -166,15 +165,7 @@ class RuleKeyword extends \yii\db\ActiveRecord
                                 'image' => $vo['thumb_url'],
                             ]);
 
-                            //如果是单图文
-                            if($count_news == 1)
-                            {
-                                $news_list = $new_news;
-                            }
-                            else
-                            {
-                                $news_list[] = $new_news;
-                            }
+                            $count_news == 1 ? $news_list = $new_news : $news_list[] = $new_news;
                         }
                     }
 
@@ -280,12 +271,12 @@ class RuleKeyword extends \yii\db\ActiveRecord
         foreach ($otherKeywords as $key => &$vo)
         {
             $vo = array_unique($vo);
-            if($diff = array_diff($ruleKeywords[$key],$vo))
+            if ($diff = array_diff($ruleKeywords[$key],$vo))
             {
                 $this->removeKeywords($rule_id,$key,array_values($diff));
             }
 
-            if(empty($vo = array_diff($vo,$ruleKeywords[$key])))
+            if (empty($vo = array_diff($vo,$ruleKeywords[$key])))
             {
                 unset($otherKeywords[$key]);
             }
@@ -297,9 +288,9 @@ class RuleKeyword extends \yii\db\ActiveRecord
 
     /**
      * 批量更新
-     * @param $displayorder
-     * @param $status
-     * @param $rule_id
+     * @param $displayorder - 显示顺序
+     * @param $status - 状态
+     * @param $rule_id - 规则id
      */
     public static function updateAllDisplayorder($displayorder,$status,$rule_id)
     {

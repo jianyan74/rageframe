@@ -3,10 +3,11 @@ namespace backend\modules\wechat\controllers;
 
 use yii;
 use common\models\wechat\ReplyDefault;
+
 /**
+ * 系统回复控制器
  * Class ReplyDefaultController
  * @package backend\modules\wechat\controllers
- * 系统回复控制器
  */
 class ReplyDefaultController extends WController
 {
@@ -29,9 +30,8 @@ class ReplyDefaultController extends WController
     }
 
     /**
-     * @param $id
-     * @return array|ReplyDefault|null|\yii\db\ActiveRecord
      * 返回模型
+     * @return array|ReplyDefault|null|yii\db\ActiveRecord
      */
     protected function findModel()
     {

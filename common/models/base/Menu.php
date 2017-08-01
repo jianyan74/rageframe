@@ -31,13 +31,7 @@ class Menu extends ActiveRecord
      */
     const STATUS_OFF = -1;
 
-    /**
-     * 导航菜单
-     */
     const TYPE_MENU  = 'menu';
-    /**
-     * 系统菜单
-     */
     const TYPE_SYS = 'sys';
 
     public static $type = [

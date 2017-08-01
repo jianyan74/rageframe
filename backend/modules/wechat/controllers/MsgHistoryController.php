@@ -5,17 +5,17 @@ use yii;
 use yii\data\Pagination;
 use common\models\wechat\MsgHistory;
 use common\models\wechat\Rule;
-use yii\web\NotFoundHttpException;
+
 /**
+ * 历史消息控制器
  * Class MsgHistoryController
  * @package backend\modules\wechat\controllers
- * 粉丝
  */
 class MsgHistoryController extends WController
 {
     /**
+     * 消息列表
      * @return string
-     * 粉丝列表
      */
     public function actionIndex()
     {
@@ -59,11 +59,9 @@ class MsgHistoryController extends WController
     }
 
     /**
+     * 删除消息
      * @param $id
-     * @return \yii\web\Response
-     * @throws NotFoundHttpException
-     * @throws \Exception
-     * 删除
+     * @return mixed
      */
     public function actionDelete($id)
     {
@@ -78,10 +76,9 @@ class MsgHistoryController extends WController
     }
 
     /**
-     * @param $id
-     * @return null|static
-     * @throws NotFoundHttpException
      * 返回模型
+     * @param $id
+     * @return MsgHistory|static
      */
     protected function findModel($id)
     {

@@ -9,15 +9,15 @@ use common\helpers\SysArrayHelper;
 use backend\controllers\MController;
 
 /**
+ * 分类控制器
  * Class CateController
  * @package backend\modules\sys\controllers
- * 分类控制器
  */
 class CateController extends MController
 {
     /**
-     * @return string
      * 首页
+     * @return string
      */
     public function actionIndex()
     {
@@ -33,10 +33,9 @@ class CateController extends MController
         ]);
     }
 
-
     /**
-     * @return string|\yii\web\Response
-     * 编辑/新增
+     * 编辑
+     * @return array|mixed|string|\yii\web\Response
      */
     public function actionEdit()
     {
@@ -103,11 +102,9 @@ class CateController extends MController
     }
 
     /**
-     * @param $id
-     * @return \yii\web\Response
-     * @throws NotFoundHttpException
-     * @throws \Exception
      * 删除
+     * @param $cate_id
+     * @return mixed
      */
     public function actionDelete($cate_id)
     {
@@ -122,10 +119,9 @@ class CateController extends MController
     }
 
     /**
-     * @param $id
-     * @return null|static
-     * @throws NotFoundHttpException
      * 返回模型
+     * @param $id
+     * @return $this|Cate|static
      */
     protected function findModel($id)
     {

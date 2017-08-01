@@ -2,19 +2,18 @@
 namespace backend\modules\wechat\controllers;
 
 use yii;
-
 use common\models\wechat\Setting;
-use common\models\wechat\Account;
+
 /**
+ * 参数设置控制器
  * Class SettingController
  * @package backend\modules\wechat\controllers
- * 设置控制器
  */
 class SettingController extends WController
 {
     /**
-     * @return string|yii\web\Response
      * 参数设置
+     * @return string|yii\web\Response
      */
     public function actionHistoryStat()
     {
@@ -36,8 +35,8 @@ class SettingController extends WController
     }
 
     /**
-     * @return string|yii\web\Response
      * 特殊消息回复
+     * @return string|yii\web\Response
      */
     public function actionSpecialMessage()
     {

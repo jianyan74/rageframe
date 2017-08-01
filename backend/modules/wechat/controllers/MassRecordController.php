@@ -2,10 +2,9 @@
 namespace backend\modules\wechat\controllers;
 
 use Yii;
-use yii\data\Pagination;
 use common\models\wechat\Attachment;
 use common\models\wechat\MassRecord;
-use yii\helpers\ArrayHelper;
+use common\models\wechat\FansGroups;
 
 /**
  * 群发记录控制器
@@ -25,28 +24,33 @@ class MassRecordController extends WController
         $model = $this->findModel('');
         $model->attach_id = $attachment->id;
         $model->media_id = $attachment->media_id;
-        $model->type = $attachment->type;
+        $model->msg_type = $attachment->type;
 
         if ($model->load(Yii::$app->request->post()))
         {
             $broadcast = $this->_app->broadcast;
 
+
             if(!$model['group'])
             {
+                $model->group_name = '全部粉丝';
                 $result = $broadcast->send($model['type'], $model['media_id']);
             }
             else
             {
+                $model->group = $model['group'];
                 $result = $broadcast->send($model['type'], $model['media_id'], $model['group']);
             }
 
+            $model->final_send_time = time();
+            $model->msg_id = $result['msg_id'];
             $model->save();
 
             return $this->message("发送成功",$this->redirect(['attachment/'.$model['type'].'-index']));
         }
 
-        $list = $this->_app->user_group->lists();
-        $groups = $list['groups'];
+        $groups = FansGroups::updateGroupList();
+        unset($groups[0]);
         unset($groups[1]);
 
         return $this->renderAjax('send-fans',[

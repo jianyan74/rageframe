@@ -3,8 +3,6 @@
 namespace common\widgets;
 
 use yii\authclient\OAuth2;
-use yii\web\HttpException;
-use Yii;
 
 class QQClient extends OAuth2
 {

@@ -3,20 +3,21 @@ namespace backend\modules\wechat\controllers;
 
 use yii;
 use yii\data\Pagination;
+use yii\web\Response;
 use yii\web\NotFoundHttpException;
 use common\models\wechat\Fans;
 use common\models\wechat\FansGroups;
 
 /**
+ * 粉丝管理
  * Class FansController
  * @package backend\modules\wechat\controllers
- * 粉丝
  */
 class FansController extends WController
 {
     /**
+     * 粉丝首页
      * @return string
-     * 粉丝列表
      */
     public function actionIndex()
     {
@@ -44,7 +45,9 @@ class FansController extends WController
             ->limit($pages->limit)
             ->all();
 
-        $fansGroupModel = new FansGroups();
+        $get_groups = FansGroups::getGroups();
+        unset($get_groups[1]);
+
         return $this->render('index',[
             'models'  => $models,
             'pages'   => $pages,
@@ -52,13 +55,14 @@ class FansController extends WController
             'keyword' => $keyword,
             'group_id' => $group_id,
             'all_fans' =>  Fans::find()->andWhere(['follow' => $follow])->count(),
-            'fansGroup' => $fansGroupModel->getGroups(),
+            'fansGroup' => $get_groups,
         ]);
     }
 
     /**
+     * 粉丝详情
+     * @param $id
      * @return string
-     * 粉丝列表
      */
     public function actionView($id)
     {
@@ -70,16 +74,16 @@ class FansController extends WController
     }
 
     /**
-     * @param $openId
-     * @param $groupId
      * 移动分组
+     * @return array
+     * @throws NotFoundHttpException
      */
     public function actionMoveUser()
     {
         $request = Yii::$app->request;
         if($request->isAjax)
         {
-            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            Yii::$app->response->format = Response::FORMAT_JSON;
 
             $result = [];
             $result['flg'] = 2;
@@ -169,7 +173,7 @@ class FansController extends WController
         $result['count'] = !empty($fans_list['data']['openid']) ? $fans_count : 0;
         $result['next_openid'] = $fans_list['next_openid'];
 
-        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        Yii::$app->response->format = Response::FORMAT_JSON;
         return $result;
     }
 
@@ -178,7 +182,7 @@ class FansController extends WController
      */
     public function actionSync()
     {
-        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        Yii::$app->response->format = Response::FORMAT_JSON;
 
         $request = Yii::$app->request;
         $type = $request->post('type','') == 'all' ? 'all' : 'check';

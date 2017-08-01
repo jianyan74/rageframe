@@ -45,7 +45,7 @@ class FansGroups extends \yii\db\ActiveRecord
      * 获取分组信息
      * @return mixed
      */
-    public function getGroups()
+    public static function getGroups()
     {
         if (empty(($model = FansGroups::find()->one())))
         {
@@ -61,5 +61,25 @@ class FansGroups extends \yii\db\ActiveRecord
         }
 
         return unserialize($model->groups);
+    }
+
+    /**
+     * 获取分组信息并保存到数据库
+     */
+    public static function updateGroupList()
+    {
+        $app = Yii::$app->wechat->getApp();
+        $list = $app->user_group->lists();
+
+        $groups = $list['groups'];
+        if (empty(($model = FansGroups::find()->one())))
+        {
+            $model = new FansGroups;
+        }
+
+        $model->groups = serialize($groups);
+        $model->save();
+
+        return $groups;
     }
 }

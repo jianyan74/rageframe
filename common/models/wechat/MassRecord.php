@@ -71,11 +71,6 @@ class MassRecord extends \yii\db\ActiveRecord
         ];
     }
 
-    public function beforeSave($insert)
-    {
-        return parent::beforeSave($insert);
-    }
-
     /**
      * @return array
      * 行为插入时间戳

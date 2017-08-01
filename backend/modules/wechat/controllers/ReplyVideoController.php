@@ -3,19 +3,20 @@ namespace backend\modules\wechat\controllers;
 
 use common\models\wechat\Rule;
 use common\models\wechat\ReplyVideo;
+
 /**
+ * 视频回复控制器
  * Class ReplyVideoController
  * @package backend\modules\wechat\controllers
- * 视频回复控制器
  */
 class ReplyVideoController extends RuleController
 {
     public $_module = Rule::RULE_MODULE_VIDEO;
 
     /**
+     * 返回模型
      * @param $id
      * @return array|ReplyVideo|null|\yii\db\ActiveRecord
-     * 返回模型
      */
     protected function findModel($id)
     {

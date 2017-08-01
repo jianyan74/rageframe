@@ -15,8 +15,8 @@ use backend\controllers\MController;
 class DeskMenuController extends MController
 {
     /**
-     * @return string
      * 首页
+     * @return string
      */
     public function actionIndex()
     {
@@ -69,11 +69,9 @@ class DeskMenuController extends MController
     }
 
     /**
-     * @param $id
-     * @return \yii\web\Response
-     * @throws NotFoundHttpException
-     * @throws \Exception
      * 删除
+     * @param $id
+     * @return mixed
      */
     public function actionDelete($id)
     {
@@ -88,10 +86,9 @@ class DeskMenuController extends MController
     }
 
     /**
-     * @param $id
-     * @return null|static
-     * @throws NotFoundHttpException
      * 返回模型
+     * @param $id
+     * @return $this|DeskMenu|static
      */
     protected function findModel($id)
     {

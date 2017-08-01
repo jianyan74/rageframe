@@ -6,7 +6,7 @@ return [
             'dsn' => 'mysql:host=127.0.0.1;dbname=yii2advanced',
             'username' => 'root',
             'password' => '',
-            'charset' => 'utf8',
+            'charset' => 'utf8mb4',
             'tablePrefix' => 'yl_',
         ],
         'mailer' => [

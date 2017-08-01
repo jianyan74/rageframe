@@ -35,7 +35,7 @@ class AddonsHelp
      */
     public static function getAddons($name)
     {
-        return Yii::getAlias('@addons')."\\{$name}\\";
+        return Yii::getAlias('@addons')."/{$name}/";
     }
 
     /**

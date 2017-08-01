@@ -24,7 +24,7 @@ class BaseController extends Controller
     ];
 
     /**
-     * 分页大小
+     * 默认分页大小
      * @var int
      */
     public $_pageSize = 20;

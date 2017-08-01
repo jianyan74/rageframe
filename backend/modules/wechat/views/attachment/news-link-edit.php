@@ -84,34 +84,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="flex-row">
                                 <div class="borderRightColorGray flex-col">
                                     <div><input class="appInput largeSize fullWidth borderBottomColorGray" placeholder="请输入标题" v-model="crtPost.title"></div>
-                                    <div><input class="appInput fullWidth borderBottomColorGray" placeholder="请输入作者" v-model="crtPost.author"></div>
-                                    <div><input class="appInput fullWidth" placeholder="请输入连接地址" v-model="crtPost.content_source_url"></div>
-                                    <?= UEditor::widget([
-                                        'id' => "content",
-                                        'attribute' => 'content',
-                                        'name' => 'content',
-                                        'value' => '',
-                                        'clientOptions' => [
-                                            //编辑区域大小
-                                            'initialFrameHeight' => '400',
-                                            //定制菜单
-                                            'toolbars' => [
-                                                [
-                                                    'fullscreen', 'source', '|', 'undo', 'redo', '|',
-                                                    'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
-                                                    'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
-                                                    'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
-                                                    'directionalityltr', 'directionalityrtl', 'indent', '|',
-                                                    'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
-                                                    'content_source_url', 'uncontent_source_url', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
-                                                    'simpleupload', 'insertimage', 'emotion', 'insertvideo', 'music', 'attachment', 'map', 'template', 'background', '|',
-                                                    'horizontal', 'date', 'time', 'spechars', 'snapscreen', 'wordimage', '|',
-                                                    'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
-                                                    'searchreplace', 'help', 'drafts'
-                                                ],
-                                            ],
-                                        ]
-                                    ]);?>
+                                    <div><input class="appInput fullWidth borderBottomColorGray" placeholder="请输入连接地址" v-model="crtPost.content_source_url"></div>
                                 </div>
                                 <div style="width:200px;">
                                     <div class="borderBottomColorGray farPadding">
@@ -122,10 +95,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 <div class="uploaderPlaceHolder borderColorGray fontSizeL" v-if="!crtPost.thumb_url">点击上传图片</div>
                                                 <img :src="crtPost.thumb_url" style="max-width:100%;" v-else/>
                                             </div>
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" id="showCoverInTop" v-model="crtPost.show_cover_pic"/>
-                                            <label for="showCoverInTop">在正文顶部显示封面图</label>
                                         </div>
                                     </div>
                                     <div class="borderBottomColorGray farPadding">
@@ -166,25 +135,13 @@ $this->params['breadcrumbs'][] = $this->title;
     function DataPost(){
         this.title = '';
         this.thumb_url = '';
-        this.author = '';
-        this.content = '';
         this.digest = '';
         this.content_source_url = '';
-        this.show_cover_pic = false;
     }
 
     $(function(){
         var ue, thumb_urlImagePreview = $('.uploadedImg'), ueReadyHandlers = [];
         function init(){
-            UE.getEditor('content').ready(function(){
-                ue = this;
-                for(var i=0; i<ueReadyHandlers.length; i++)
-                {
-                    ueReadyHandlers[i]();
-                }
-                ueReadyHandlers.length = 0;
-            });
-
             var vueArea = new Vue({
                 el: '#vueArea',
                 data:{
@@ -221,12 +178,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         this.crtPost = this.postList[nextIndex];
                     },
                     submitForm: function(){
-                        this.crtPost.content = ue.getContent();
 
                         for(var i=0; i<this.postList.length; i++)
                         {
                             var p = this.postList[i];
-                            if(!this.validateFileds([p.title, p.thumb_url, p.author, p.content], ["图文标题不能留空", "请设置图文封面", "请填写图文作者","请填写图文内容"]))
+                            if(!this.validateFileds([p.title, p.thumb_url], ["图文标题不能留空", "请设置图文封面"]))
                             {
                                 return;
                             }
@@ -234,20 +190,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         swalAlert('同步到微信中,请不要关闭当前页面');
 
-                        var cloneAry = this.postList.concat();
-                        for(var i=0; i<cloneAry.length; i++)
-                        {
-                            cloneAry[i].show_cover_pic = cloneAry[i].show_cover_pic ? 1 : 0;
-                        }
-
                         //ajax提交
                         $.ajax({
                             type:"post",
-                            url:"<?= Url::to(['news-edit'])?>",
+                            url:"<?= Url::to(['news-link-edit'])?>",
                             dataType: "json",
                             data: {
                                 attach_id : "<?= $attach_id ?>",
-                                list:JSON.stringify(cloneAry) //图文列表数据
+                                list:JSON.stringify(this.postList) //图文列表数据
                             },
                             success: function(data){
                                 if(data.flg == 1){
@@ -287,11 +237,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     {
                         self.postList = list;
 
-                        for (i=0;i< self.postList.length;i++){
-                            var elem = self.postList[i];
-                            elem.show_cover_pic = parseInt(elem.show_cover_pic) > 0
-                        }
-
                         self.isEditMode = true;
                     }
                     //新建回复规则的情况
@@ -306,8 +251,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 watch: {
                     crtPost: function(v, old){
                         function visitUE(){
-                            old.content = ue.getContent();
-                            ue.setContent(v.content);
                         }
                         ue ? visitUE() : ueReadyHandlers.push(visitUE);
                     }

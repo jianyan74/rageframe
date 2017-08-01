@@ -108,9 +108,9 @@ class Fans extends ActiveRecord
     }
 
     /**
+     * 关注
      * @param $openid
      * @param $app
-     * 关注
      */
     public static function follow($openid,$app)
     {
@@ -128,8 +128,8 @@ class Fans extends ActiveRecord
     }
 
     /**
-     * @param $openid
      * 取消关注
+     * @param $openid
      */
     public static function unFollow($openid)
     {

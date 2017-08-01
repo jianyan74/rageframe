@@ -4,10 +4,11 @@ namespace backend\modules\wechat\controllers;
 use yii;
 use yii\data\Pagination;
 use common\models\wechat\QrcodeStat;
+
 /**
+ * 二维码扫描统计
  * Class QrStatController
  * @package backend\modules\wechat\controllers
- * 二维码扫描统计
  */
 class QrStatController extends WController
 {
@@ -49,10 +50,9 @@ class QrStatController extends WController
     }
 
     /**
-     * @param $id
-     * @return \yii\web\Response
-     * @throws \Exception
      * 删除
+     * @param $id
+     * @return mixed
      */
     public function actionDelete($id)
     {

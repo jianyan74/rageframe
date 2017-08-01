@@ -3,7 +3,6 @@ namespace backend\modules\sys\controllers;
 
 use yii;
 use yii\data\Pagination;
-use yii\web\NotFoundHttpException;
 use common\models\sys\ActionLog;
 use backend\controllers\MController;
 
@@ -50,8 +49,8 @@ class ActionLogController extends MController
     }
 
     /**
-     * @return mixed
      * 一键清空
+     * @return mixed
      */
     public function actionDeleteAll()
     {
@@ -66,10 +65,9 @@ class ActionLogController extends MController
     }
 
     /**
-     * @param $id
-     * @return null|static
-     * @throws NotFoundHttpException
      * 返回模型
+     * @param $id
+     * @return ActionLog|static
      */
     protected function findModel($id)
     {

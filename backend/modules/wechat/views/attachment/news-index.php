@@ -11,9 +11,9 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
 <?= Html::jsFile('/resource/backend/js/plugins/layer/layer.min.js')?>
 
 <style>
-	.postToolbar{
-		font-size: 15px;
-	}
+    .postToolbar{
+        font-size: 15px;
+    }
 </style>
 
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                 <a class="btn btn-primary btn-xs" id="getAllAttachment">
                     <i class="fa fa-cloud-download"></i>  同步图文
                 </a>
-                <a  class="btn btn-primary btn-xs" href="<?php echo Url::to(['news-edit','model'=>'perm'])?>">
+                <a id="createPostBtn" class="btn btn-primary btn-xs">
                     <i class="fa fa-plus"></i>  创建图文
                 </a>
             </div>
@@ -53,14 +53,22 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                                         </div>
                                     <?php } ?>
                                     <div class="halfOpacityBlackBG absoluteFullSize" style="display: none;">
-                                    	<a class="absoluteCenter fontColorWhite" href="<?= $news['url'] ?>" target="_blank">文章预览</a>
+                                        <?php if($item['link_type'] == 1){ ?>
+                                            <a class="absoluteCenter fontColorWhite" href="<?= $news['url'] ?>" target="_blank">文章预览</a>
+                                        <?php }else{ ?>
+                                            <a class="absoluteCenter fontColorWhite" href="<?= $news['url'] ?>" target="_blank">本地预览 <i class="fa fa-question-circle" title="本地文章,不可以群发"></i></a>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             <?php } ?>
                             <div class="flex-row hAlignCenter normalPadding postToolbar">
-                                <div class="flex-col"><a href="<?= Url::to(['mass-record/send-fans','attach_id'=> $item['id']])?>"  title="群发" data-toggle='modal' data-target='#ajaxModal'><i class="fa fa-send"></i></a></div>
-                                <div class="flex-col"><a href="<?= Url::to(['news-edit','attach_id'=> $item['id']])?>" title="编辑"><i class="fa fa-edit"></i></a></div>
-                                <div class="flex-col"><a href="<?= Url::to(['delete','attach_id'=> $item['id']])?>" title="删除"><i class="fa fa-trash"></i></a></div>
+                                <?php if($item['link_type'] == 1){ ?>
+                                    <div class="flex-col"><a href="<?= Url::to(['mass-record/send-fans','attach_id'=> $item['id']])?>"  title="群发" data-toggle='modal' data-target='#ajaxModal'><i class="fa fa-send"></i></a></div>
+                                    <div class="flex-col"><a href="<?= Url::to(['news-edit','attach_id'=> $item['id']])?>" title="编辑"><i class="fa fa-edit"></i></a></div>
+                                <?php }else{ ?>
+                                    <div class="flex-col"><a href="<?= Url::to(['news-link-edit','attach_id'=> $item['id']])?>" title="编辑"><i class="fa fa-edit"></i></a></div>
+                                <?php } ?>
+                                <div class="flex-col"><a href="<?= Url::to(['delete','attach_id'=> $item['id']])?>" onclick="deleted(this);return false;" title="删除"><i class="fa fa-trash"></i></a></div>
                             </div>
                         </div>
                     </div>
@@ -71,43 +79,44 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
 </div>
 
 <script>
-	$(function(){
-		//显示/隐藏“预览文章”按钮
-		$('.postItem').mouseenter(function(e){
-			$(e.currentTarget).find('.halfOpacityBlackBG').show();
-		});
-		$('.postItem').mouseleave(function(e){
-			$(e.currentTarget).find('.halfOpacityBlackBG').hide();
-		});
-		
-		//弹出框选择新建图文类型
-		var postType1Link = "<?php echo Url::to(['news-edit','model'=>'perm'])?>";
-		var postType2Link = "<?php echo Url::to(['news-edit','model'=>'perm'])?>";
-		$('#createPostBtn').click(function(){
-			layer.open({
-				type: 1,
-				title: '新建图文消息',
-				area: ['500px', '340px'],
-				shadeClose: true,
-				content: '<div class="farPadding separateChildren further">' +
-					'<a class="farPadding borderColorGray displayAsBlock" href="' + postType1Link + '">' +
-						'<div class="fontSizeL">创建微信图文</div>' +
-						'<div class="fontColorGray">微信图文消息会自动同步至微信素材库，并可以直接群发给粉丝</div>' +
-					'</a>' + 
-					'<a class="farPadding borderColorGray displayAsBlock" href="' + postType2Link + '">' +
-						'<div class="fontSizeL">创建图文连接</div>' +
-						'<div class="fontColorGray">点击图文直接跳转至指定链接，可用于自动回复及认证号菜单配置，不能同步至微信素材库。</div>' +
-					'</a>' + 
-				'</div>'
-			});
-		});
-		// 
-	})
+    $(function(){
+        //显示/隐藏“预览文章”按钮
+        $('.postItem').mouseenter(function(e){
+            $(e.currentTarget).find('.halfOpacityBlackBG').show();
+        });
+        $('.postItem').mouseleave(function(e){
+            $(e.currentTarget).find('.halfOpacityBlackBG').hide();
+        });
+
+        //弹出框选择新建图文类型
+        var postType1Link = "<?php echo Url::to(['news-edit','model'=>'perm'])?>";
+        var postType2Link = "<?php echo Url::to(['news-link-edit','model'=>'perm'])?>";
+        $('#createPostBtn').click(function(){
+            layer.open({
+                type: 1,
+                title: '新建图文消息',
+                area: ['500px', '340px'],
+                shadeClose: true,
+                content: '<div class="farPadding separateChildren further">' +
+                '<a class="farPadding borderColorGray displayAsBlock" href="' + postType1Link + '">' +
+                '<div class="fontSizeL">创建微信图文</div>' +
+                '<div class="fontColorGray">微信图文消息会自动同步至微信素材库，并可以直接群发给粉丝</div>' +
+                '</a>' +
+                '<a class="farPadding borderColorGray displayAsBlock" href="' + postType2Link + '">' +
+                '<div class="fontSizeL">创建图文连接</div>' +
+                '<div class="fontColorGray">点击图文直接跳转至指定链接，可用于自动回复及认证号菜单配置，不能同步至微信素材库。</div>' +
+                '</a>' +
+                '</div>'
+            });
+        });
+        //
+    })
 </script>
 
 <script>
     //获取资源
     $("#getAllAttachment").click(function(){
+        swalAlert('同步中,请不要关闭当前页面');
         sync();
     });
 

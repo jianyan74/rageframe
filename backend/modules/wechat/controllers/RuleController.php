@@ -2,18 +2,64 @@
 namespace backend\modules\wechat\controllers;
 
 use yii;
+use yii\data\Pagination;
 use common\models\wechat\Rule;
 use common\models\wechat\RuleKeyword;
+
 /**
- * Class ReplyController
+ * 规则控制器
+ * Class RuleController
  * @package backend\modules\wechat\controllers
- * 回复基础控制器
  */
-abstract class RuleController extends WController
+class RuleController extends WController
 {
     /**
-     * @return string|yii\web\Response
+     * @return string
+     * 首页
+     */
+    public function actionIndex()
+    {
+        $request  = Yii::$app->request;
+        $module     = $request->get('module','');
+
+        $type     = $request->get('type','');
+        $keyword  = $request->get('keyword','');
+
+        $where = [];
+        switch ($type)
+        {
+            case '1':
+                $where['status'] = 1;
+                break;
+            case '2':
+                $where['status'] = -1;
+                break;
+        }
+
+        $data   = Rule::find()->with('ruleKeyword')
+            ->andFilterWhere(['module' => $module])
+            ->andFilterWhere($where)
+            ->andFilterWhere(['like', 'name', $keyword]);
+
+        $pages  = new Pagination(['totalCount' =>$data->count(), 'pageSize' =>$this->_pageSize]);
+        $models = $data->offset($pages->offset)
+            ->orderBy('displayorder desc,append desc')
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('index',[
+            'modules'   => Rule::$moduleExplain,
+            'module'   => $module,
+            'models'  => $models,
+            'pages'   => $pages,
+            'type'    => $type,
+            'keyword' => $keyword,
+        ]);
+    }
+
+    /**
      * 编辑
+     * @return mixed|string|yii\web\Response
      */
     public function actionEdit()
     {
@@ -76,15 +122,42 @@ abstract class RuleController extends WController
             'rule'          => $rule,
             'model'         => $model,
             'keyword'       => $keyword,
-            'title'         => Rule::$module[$this->_module],
+            'title'         => Rule::$moduleExplain[$this->_module],
             'ruleKeywords'  => $ruleKeywords,
         ]);
     }
 
     /**
+     * ajax修改
+     * @return array
+     */
+    public function actionUpdateAjax()
+    {
+        $id = Yii::$app->request->get('id');
+        return $this->updateModelData($this->findRuleModel($id));
+    }
+
+    /**
+     * 删除
+     * @param $id
+     * @return mixed
+     */
+    public function actionDelete($id)
+    {
+        if($this->findRuleModel($id)->delete())
+        {
+            return $this->message("删除成功",$this->redirect(['index']));
+        }
+        else
+        {
+            return $this->message("删除失败",$this->redirect(['index']),'error');
+        }
+    }
+
+    /**
+     * 返回模型
      * @param $id
      * @return $this|Rule|static
-     * 返回模型
      */
     protected function findRuleModel($id)
     {

@@ -62,7 +62,7 @@ class Provinces extends \yii\db\ActiveRecord
             'lng'       => 'Lng',
             'lat'       => 'Lat',
             'level'     => '级别',
-            'position'  => 'Position',
+            'position'  => '位置',
             'sort'      => '排序',
         ];
     }

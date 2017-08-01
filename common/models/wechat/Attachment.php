@@ -30,6 +30,31 @@ class Attachment extends \yii\db\ActiveRecord
     const TYPE_CARD = 'card';
     const TYPE_VIDEO = 'video';
 
+    public $typeExplain = [
+        self::TYPE_NEWS => '图文素材',
+        self::TYPE_TEXT => '文字素材',
+        self::TYPE_VOICE => '音频素材',
+        self::TYPE_IMAGE => '图片素材',
+        self::TYPE_CARD => '卡卷素材',
+        self::TYPE_VIDEO => '视频素材',
+    ];
+
+    const MODEL_PERM = 'perm';
+    const MODEL_TMEP = 'tmep';
+
+    public $modeExplain = [
+        self::MODEL_PERM => '永久素材',
+        self::MODEL_TMEP => '临时素材',
+    ];
+
+    const LINK_TYPE_WECHAT = 1;
+    const LINK_TYPE_LOCAL = 2;
+
+    public $linkTypeExplain = [
+        self::LINK_TYPE_WECHAT => '微信图文',
+        self::LINK_TYPE_LOCAL => '本地图文',
+    ];
+
     /**
      * @inheritdoc
      */
@@ -44,8 +69,8 @@ class Attachment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['manager_id', 'media_id', 'type'], 'required'],
-            [['manager_id', 'width', 'height', 'append','updated'], 'integer'],
+            [['manager_id', 'type'], 'required'],
+            [['manager_id', 'width', 'height', 'append','updated','link_type'], 'integer'],
             [['file_name', 'attachment', 'media_id'], 'string', 'max' => 255],
             [['type'], 'string', 'max' => 15],
             [['model'], 'string', 'max' => 10],
@@ -70,12 +95,36 @@ class Attachment extends \yii\db\ActiveRecord
             'height' => '高度',
             'type' => '类别',
             'model' => '是否永久',
+            'link_type' => '是否微信图文',
             'tag' => 'Tag',
             'append' => '创建时间',
             'updated' => '修改时间',
         ];
     }
 
+    /**
+     * 插入素材图片
+     * @param $wxResult - 微信返回的信息
+     * @param $imagePath - 本地的绝对路径
+     */
+    public static function addImage($wxResult,$imagePath)
+    {
+        $prefix =  Yii::getAlias("@rootPath/").'web';
+
+        $img_info = getimagesize($imagePath);
+
+        $image_model = new Attachment();
+        $image_model->media_id = $wxResult['media_id'];
+        $image_model->attachment = str_replace($prefix,'',trim($imagePath));;
+        $image_model->type = self::TYPE_IMAGE;
+        $image_model->width = $img_info[0];
+        $image_model->height = $img_info[1];
+        $image_model->file_name = array_slice(explode('/',$imagePath),-1,1)[0];
+        $image_model->tag = $wxResult['url'];
+        $image_model->manager_id = Yii::$app->user->id;
+
+        return $image_model->save() ? true : false;
+    }
 
     /**
      * 返回素材
@@ -86,7 +135,7 @@ class Attachment extends \yii\db\ActiveRecord
     {
         return self::find()->where(['type'=>$type])
             ->with('news')
-            ->orderBy('id desc')
+            ->orderBy('append desc')
             ->asArray()
             ->all();
     }
@@ -135,8 +184,8 @@ class Attachment extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return array
      * 行为插入时间戳
+     * @return array
      */
     public function behaviors()
     {

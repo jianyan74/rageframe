@@ -61,7 +61,7 @@ class DeskMenu extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id'  => 'Menu ID',
+            'id'       => '导航id',
             'title'    => '标题',
             'cover'    => '封面',
             'pid'      => '上级id',

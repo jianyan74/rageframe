@@ -86,7 +86,7 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                             <th>发送类别</th>
                             <th>内容</th>
                             <th>规则</th>
-                            <th>模块</th>
+                            <th>触发回复</th>
                             <th>时间</th>
                             <th>操作</th>
                         </tr>
@@ -95,7 +95,7 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                         <?php foreach($models as $model){ ?>
                             <tr>
                                 <td><?= $model->id?></td>
-                                <td><?= $model->fans->nickname ?></td>
+                                <td><?= isset($model->fans->nickname) ? $model->fans->nickname : '' ?></td>
                                 <td><?= $model->type?></td>
                                 <td style="max-width:515px; overflow:hidden; word-break:break-all; word-wrap:break-word;"><?= MsgHistory::readMessage($model->type,$model->message)?></td>
                                 <td>
@@ -109,7 +109,7 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                                     <?php if(!$model->module){ ?>
                                         <span class="label label-default">未触发</span>
                                     <?php }else{ ?>
-                                        <span class="label label-info"><?= $model->module ?></span>
+                                        <span class="label label-info"><?= Rule::$moduleExplain[$model->module] ?></span>
                                     <?php } ?>
                                 </td>
                                 <td>

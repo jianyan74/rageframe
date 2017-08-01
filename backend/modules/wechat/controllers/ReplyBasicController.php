@@ -3,19 +3,20 @@ namespace backend\modules\wechat\controllers;
 
 use common\models\wechat\Rule;
 use common\models\wechat\ReplyBasic;
+
 /**
+ * 文字回复控制器
  * Class ReplyBasicController
  * @package backend\modules\wechat\controllers
- * 文字回复控制器
  */
 class ReplyBasicController extends RuleController
 {
     public $_module = Rule::RULE_MODULE_BASE;
 
     /**
+     * 返回模型
      * @param $id
      * @return array|ReplyBasic|null|\yii\db\ActiveRecord
-     * 返回模型
      */
     protected function findModel($id)
     {

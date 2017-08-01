@@ -6,9 +6,9 @@ use yii\data\Pagination;
 use common\models\wechat\CustomMenu;
 
 /**
+ * 自定义菜单
  * Class CustomMenuController
  * @package backend\modules\wechat\controllers
- * 自定义菜单
  */
 class CustomMenuController extends WController
 {
@@ -67,8 +67,8 @@ class CustomMenuController extends WController
     ];
 
     /**
-     * @return string
      * 自定义菜单首页
+     * @return string
      */
     public function actionIndex()
     {
@@ -178,11 +178,9 @@ class CustomMenuController extends WController
     }
 
     /**
+     * 删除自定义菜单
      * @param $id
-     * @return \yii\web\Response
-     * @throws NotFoundHttpException
-     * @throws \Exception
-     * 删除
+     * @return mixed
      */
     public function actionDelete($id)
     {
@@ -216,10 +214,9 @@ class CustomMenuController extends WController
     }
 
     /**
-     * @param $id
-     * @return null|static
-     * @throws NotFoundHttpException
      * 返回模型
+     * @param $id
+     * @return $this|CustomMenu|static
      */
     protected function findModel($id)
     {

@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                             </div>
                             <div class="flex-row hAlignCenter normalPadding postToolbar">
                                 <div class="flex-col"><a href="<?= Url::to(['mass-record/send-fans','attach_id'=> $model['id']])?>"  title="群发" data-toggle='modal' data-target='#ajaxModal'><i class="fa fa-send"></i></a></div>
-                                <div class="flex-col"><a href="<?= Url::to(['delete','attach_id'=> $model['id']])?>" title="删除"><i class="fa fa-trash"></i></a></div>
+                                <div class="flex-col"><a href="<?= Url::to(['delete','attach_id'=> $model['id']])?>" onclick="deleted(this);return false;" title="删除"><i class="fa fa-trash"></i></a></div>
                             </div>
                         </div>
                     </div>
@@ -71,6 +71,7 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
 <script>
     //获取资源
     $("#getAllAttachment").click(function(){
+        swalAlert('同步中,请不要关闭当前页面');
         sync();
     });
 

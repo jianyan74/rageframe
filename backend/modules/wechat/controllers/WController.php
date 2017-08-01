@@ -5,9 +5,9 @@ use yii;
 use backend\controllers\MController;
 
 /**
+ * 微信基类控制器
  * Class WController
  * @package backend\modules\wechat\controllers
- * 微信基类控制器
  */
 class WController extends MController
 {

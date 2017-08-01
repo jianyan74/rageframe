@@ -69,11 +69,11 @@ class AuthAssignment extends \yii\db\ActiveRecord
     {
         $this::deleteAll(['user_id'=>$user_id]);
 
-        $AuthAssignment = new $this;
-        $AuthAssignment->user_id    = $user_id;
-        $AuthAssignment->item_name  = $item_name;
+        $authAssignment = new $this;
+        $authAssignment->user_id    = $user_id;
+        $authAssignment->item_name  = $item_name;
 
-        return $AuthAssignment->save() ? true : false ;
+        return $authAssignment->save() ? true : false ;
     }
 
     /**

@@ -86,7 +86,6 @@ class ManagerController extends MController
         ]);
     }
 
-
     /**
      * 用户账号
      * @return string|yii\web\Response
@@ -111,7 +110,6 @@ class ManagerController extends MController
             'admin' => true,
         ]);
     }
-
 
     /**
      * 删除
