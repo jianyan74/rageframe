@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                             <label class="col-xs-12 col-sm-2 col-md-2 control-label">关键字</label>
                             <div class="col-sm-8 input-group">
                                 <input type="text" class="form-control" name="keyword" value="" placeholder="<?= $keyword ?>"/>
-                                <input type="hidden" class="form-control" name="type" value="<?= $type?>" />
+                                <input type="hidden" class="form-control" name="type" value="<?= $type ?>" />
                                 <span class="input-group-btn">
                                     <button class="btn btn-white"><i class="fa fa-search"></i> 搜索</button>
                                 </span>
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                                         <?= Html::dropDownList('cate_stair',$cate_stair,Cate::getList(),['class' => 'form-control tpl-category-parent','prompt' =>'请选择一级分类']); ?>
                                     </div>
                                     <div class="col-sm-6">
-                                        <?= Html::dropDownList('cate_second',$cate_second,Cate::getList($cate_stair),['class' => 'form-control tpl-category-parent','prompt' =>'请选择二级分类']); ?>
+                                        <?= Html::dropDownList('cate_second',$cate_second,Cate::getList(-1),['class' => 'form-control tpl-category-parent','prompt' =>'请选择二级分类']); ?>
                                     </div>
                                 </div>
                             </div>

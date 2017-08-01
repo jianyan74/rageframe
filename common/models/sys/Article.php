@@ -63,8 +63,8 @@ class Article extends ActiveRecord
     public function rules()
     {
         return [
+            [['title','status','view','display','content'], 'required'],
             [['manager_id', 'display', 'deadline', 'view', 'comment', 'bookmark', 'incontent','sort', 'status', 'append', 'updated'], 'integer'],
-            [['title','status'], 'required'],
             [['content'], 'string'],
             [['cate_stair','cate_second'],'safe'],
             [['title','seo_key'], 'string', 'max' => 50],

@@ -6,6 +6,8 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use common\helpers\SysArrayHelper;
+use backend\modules\sys\models\AuthAssignment as SysAuthAssignment;
+
 /**
  * This is the model class for table "{{%menu}}".
  *
@@ -107,13 +109,13 @@ class Menu extends ActiveRecord
             ->asArray()
             ->all();
 
-        $id = Yii::$app->user->identity->id;
+        $id = Yii::$app->user->id;
 
         //判断是否是管理员
-        if($id != Yii::$app->params['adminAccount'] && Yii::$app->config->info('SYS_MENU_SHOW_TYPE') == 2)
+        if($id != Yii::$app->params['adminAccount'] && Yii::$app->config->info('SYS_MENU_SHOW_TYPE') == 1)
         {
             //查询用户权限
-            $authAssignment = AuthAssignment::find()->with('itemNameChild')->where(['user_id' => $id])->asArray()->one();
+            $authAssignment = SysAuthAssignment::find()->with('itemNameChild')->where(['user_id' => $id])->asArray()->one();
             //匹配菜单
             if(isset($authAssignment['itemNameChild']))
             {

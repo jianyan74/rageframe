@@ -52,6 +52,7 @@ class ArticleSingle extends ActiveRecord
     public function rules()
     {
         return [
+            [['title','status','view','display','content'], 'required'],
             [['manager_id', 'display', 'deadline', 'view', 'comment', 'sort', 'status', 'append', 'updated'], 'integer'],
             [['title','name'], 'required'],
             [['name'], 'unique'],
