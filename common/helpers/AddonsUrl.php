@@ -22,6 +22,15 @@ class AddonsUrl
     }
 
     /**
+     * 通过绝对路径生成模块Url
+     * @return string
+     */
+    public static function toAbsoluteUrl(array $url, $scheme = false)
+    {
+        return urldecode(Yii::$app->urlManager->createUrl(AddonsHelp::regroupUrl($url),$scheme));
+    }
+
+    /**
      * 生成插件前台Url
      * @return string
      */

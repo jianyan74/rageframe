@@ -56,11 +56,30 @@ class FansGroups extends \yii\db\ActiveRecord
             $model = new FansGroups();
             $model->groups = serialize($groups);
             $model->save();
-
-            return $groups;
         }
 
         return unserialize($model->groups);
+    }
+
+    /**
+     * 获取单个分组信息
+     * @param $id
+     * @return array|mixed
+     */
+    public static function getGroup($id)
+    {
+        $group = [];
+
+        $groups = self::getGroups();
+        foreach ($groups as $vo)
+        {
+            if($vo['id'] == $id)
+            {
+                $group = $vo;
+            }
+        }
+
+        return $group;
     }
 
     /**

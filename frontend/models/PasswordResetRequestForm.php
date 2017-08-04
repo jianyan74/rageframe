@@ -24,7 +24,7 @@ class PasswordResetRequestForm extends Model
                 'username' => Yii::$app->config->info('MAILER_USERNAME'),
                 'password' => Yii::$app->config->info('MAILER_PASSWORD'),
                 'port' => Yii::$app->config->info('MAILER_PORT'),
-                'encryption' => 'tls',
+                'encryption' => empty(Yii::$app->config->info('MAILER_PORT')) ? 'tls' : 'ssl',
             ],
         ]);
     }

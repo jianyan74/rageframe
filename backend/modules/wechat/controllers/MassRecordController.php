@@ -24,12 +24,11 @@ class MassRecordController extends WController
         $model = $this->findModel('');
         $model->attach_id = $attachment->id;
         $model->media_id = $attachment->media_id;
-        $model->msg_type = $attachment->type;
+        $model->type = $attachment->type;
 
         if ($model->load(Yii::$app->request->post()))
         {
             $broadcast = $this->_app->broadcast;
-
 
             if(!$model['group'])
             {
@@ -40,6 +39,11 @@ class MassRecordController extends WController
             {
                 $model->group = $model['group'];
                 $result = $broadcast->send($model['type'], $model['media_id'], $model['group']);
+
+                //获取分组信息
+                $group = FansGroups::getGroup($model['group']);
+                $model->group_name = $group['name'];
+                $model->fans_num = $group['count'];
             }
 
             $model->final_send_time = time();
@@ -58,7 +62,6 @@ class MassRecordController extends WController
             'groups' => $groups,
         ]);
     }
-
 
     /**
      * 返回模型

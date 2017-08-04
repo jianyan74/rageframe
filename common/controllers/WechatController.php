@@ -79,7 +79,7 @@ class WechatController extends BaseController
          * 获取用户信息
          */
         $wechatConfig['oauth']['scopes'] = $this->_scopes;
-        $wechatConfig['oauth']['callback'] = '/wechat';
+        $wechatConfig['oauth']['callback'] = Yii::$app->request->getUrl();
         /**
          * 微信支付配置
          */

@@ -9,6 +9,7 @@ use yii\web\Response;
 use EasyWeChat\Message\Article;
 use common\models\wechat\Attachment;
 use common\models\wechat\News;
+use backend\modules\wechat\models\NewsPreview;
 
 /**
  * 素材控制器
@@ -281,6 +282,49 @@ class AttachmentController extends WController
             'attachment' => $attachment,
             'list' => json_encode(News::getList($attach_id)),
             'attach_id' => $attach_id
+        ]);
+    }
+
+    /**
+     * 手机预览
+     * @param $attach_id
+     * @return mixed|string
+     */
+    public function actionNewsPreview($attach_id)
+    {
+        $attachment = Attachment::getOne($attach_id);
+        $model = new NewsPreview();
+        $model->msg_type = $attachment->type;
+        $model->media_id = $attachment->media_id;
+        $model->type = 1;
+
+        if ($model->load(Yii::$app->request->post()))
+        {
+            $broadcast = $this->_app->broadcast;
+
+            try
+            {
+                if($model->type == 1)
+                {
+                    //微信号预览
+                    $broadcast->previewByName($model->msg_type, $model->media_id, $model->content);
+                }
+                else
+                {
+                    //openid预览
+                    $broadcast->preview($model->msg_type, $model->media_id, $model->content);
+                }
+            }
+            catch (\Exception $e)
+            {
+                return $this->message($e->getMessage(),$this->redirect(['attachment/'.$model['msg_type'].'-index']),'error');
+            }
+
+            return $this->message("发送成功",$this->redirect(['attachment/'.$model['msg_type'].'-index']));
+        }
+
+        return $this->renderAjax('news-preview',[
+            'model' => $model,
         ]);
     }
 

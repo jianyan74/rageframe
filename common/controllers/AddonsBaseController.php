@@ -7,11 +7,11 @@ use common\models\sys\Addons;
 use common\helpers\AddonsHelp;
 
 /**
- * 基类控制器
+ * 模块基类控制器
  * Class AddonsController
  * @package common\controllers
  */
-class AddonsBaseController extends WechatController
+class AddonsBaseController extends BaseController
 {
     /**
      * 渲染模块目录
@@ -19,7 +19,7 @@ class AddonsBaseController extends WechatController
     protected static $skipPath = 'home';
 
     /**
-     * 前台插件页面实现
+     * 前台和微信插件页面实现
      */
     public function actionExecute($route,$addon)
     {
@@ -37,25 +37,19 @@ class AddonsBaseController extends WechatController
         $class = $through['class'];
         $actionName = $through['actionName'];
 
-        /**
-         * 检测插件是否存在
-         */
-        if(!Addons::getAddon($through['addon']))
+        //检测插件是否存在
+        if(!($addon = Addons::getAddon($through['addon'])))
         {
             throw new NotFoundHttpException("插件不存在");
         }
 
-        /**
-         * 检测模块是否存在
-         */
+        //检测模块是否存在
         if(!class_exists($class))
         {
             throw new NotFoundHttpException('模块不存在');
         }
 
-        /**
-         * 检测方法是否存在
-         */
+        //检测方法是否存在
         $list = new $class($through['controller'],Yii::$app->module);
         if(!method_exists($list,$actionName))
         {

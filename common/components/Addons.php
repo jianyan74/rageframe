@@ -1,10 +1,12 @@
 <?php
 namespace common\components;
 
+
 use yii;
 use common\helpers\AddonsHelp;
 use common\helpers\StringHelper;
-use common\controllers\BaseController;
+use common\helpers\AddonsUrl;
+use common\controllers\WechatController;
 use common\models\sys\Addons as AddonsModel;
 
 /**
@@ -12,7 +14,7 @@ use common\models\sys\Addons as AddonsModel;
  * Class Addons
  * @package common\components
  */
-class Addons extends BaseController
+class Addons extends WechatController
 {
     /**
      * @var string
@@ -32,6 +34,12 @@ class Addons extends BaseController
     public $_addonName;
 
     /**
+     * 模拟用户信息
+     * @var bool
+     */
+    public $_addonSwitch = false;
+
+    /**
      * 自动运行
      */
     public function init()
@@ -39,7 +47,18 @@ class Addons extends BaseController
         $request  = Yii::$app->request;
         $this->_addonName = $request->get('addon');
         $this->_path = Yii::getAlias('@addonurl') . '/' . $this->_addonName . '/';
+
+        //微信支付回调地址
+        $this->_notifyUrl = Yii::$app->request->hostInfo . AddonsUrl::toAbsoluteUrl(['we-notify/notify']);
+
+        //继承
         parent::init();
+
+        //非微信网页打开时候开启模拟数据
+        if($this->_addonSwitch == true && empty($this->_wechatMember))
+        {
+            $this->_wechatMember = Yii::$app->params['wecahtSimulate']['userInfo'];
+        }
     }
 
     /**

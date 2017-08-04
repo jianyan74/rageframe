@@ -186,7 +186,6 @@ class Addons extends ActiveRecord
         return $list;
     }
 
-
     /**
      * 根据模块标识获取模块
      * @param $name

@@ -10,9 +10,5 @@ use common\controllers\AddonsBaseController;
  */
 class AddonsController extends AddonsBaseController
 {
-    /**
-     * 前台关闭自动获取微信用户信息
-     * @var bool
-     */
-    protected $_openGetWechatUser = false;
+
 }

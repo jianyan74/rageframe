@@ -54,7 +54,12 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                                     <?php } ?>
                                     <div class="halfOpacityBlackBG absoluteFullSize" style="display: none;">
                                         <?php if($item['link_type'] == 1){ ?>
-                                            <a class="absoluteCenter fontColorWhite" href="<?= $news['url'] ?>" target="_blank">文章预览</a>
+                                            <?php if($index == 0){ ?>
+                                                <a class="fontColorWhite" href="<?= $news['url'] ?>" target="_blank" style="left:30%;top: 50%;position: absolute;">文章预览</a>
+                                                <a class="fontColorWhite" href="<?= Url::to(['news-preview','attach_id' => $item['id']])?>"  data-toggle='modal' data-target='#ajaxModal' style="right:30%;top: 50%;position: absolute;">手机预览</a>
+                                            <?php }else{ ?>
+                                                <a class="absoluteCenter fontColorWhite" href="<?= $news['url'] ?>" target="_blank">文章预览</a>
+                                            <?php } ?>
                                         <?php }else{ ?>
                                             <a class="absoluteCenter fontColorWhite" href="<?= $news['url'] ?>" target="_blank">本地预览 <i class="fa fa-question-circle" title="本地文章,不可以群发"></i></a>
                                         <?php } ?>
