@@ -3,9 +3,11 @@
 namespace common\models\sys;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use common\helpers\AddonsHelp;
+
 /**
  * This is the model class for table "{{%sys_addons}}".
  *
@@ -74,7 +76,7 @@ class Addons extends ActiveRecord
             [['name','title','version', 'description','install','uninstall','upgrade'], 'trim'],
             [['name','title', 'type','version', 'description','author'], 'required'],
             [['description', 'config'], 'string'],
-            [['status', 'setting', 'hook','updated', 'append'], 'integer'],
+            [['wxapp_support','status', 'setting', 'hook','updated', 'append'], 'integer'],
             [['name', 'author'], 'string', 'max' => 40],
             [['title', 'version'], 'string', 'max' => 10],
             [['cover','wechat_message'], 'string', 'max' => 1000],
@@ -99,6 +101,7 @@ class Addons extends ActiveRecord
             'status'    => '状态',
             'config'    => '配置信息',
             'hook'      => '钩子',
+            'wxapp_support' => '小程序',
             'setting'   => '存在全局设置项',
             'author'    => '作者',
             'version'   => '版本',
@@ -210,6 +213,15 @@ class Addons extends ActiveRecord
             ->all();
 
         return $models ? $models : [];
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getWxAppList()
+    {
+        $model = self::find()->where(['wxapp_support' => 1,'status' => 1])->all();
+        return ArrayHelper::map($model,'name','title');
     }
 
     /**

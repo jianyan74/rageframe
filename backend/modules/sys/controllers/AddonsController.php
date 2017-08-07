@@ -5,6 +5,7 @@ use Yii;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
+use common\enums\StatusEnum;
 use common\models\sys\Addons;
 use common\models\sys\AddonsBinding;
 use common\helpers\AddonsHelp;
@@ -105,6 +106,7 @@ class AddonsController extends MController
                 $model->type = $addons->type ? $addons->type : 'other';
                 $model->setting = $addons->setting ? Addons::SETTING_TRUE : Addons::SETTING_FALSE;
                 $model->hook = $addons->hook ? Addons::HOOK_TRUE : Addons::HOOK_FALSE;
+                $model->wxapp_support = $addons->wxapp_support ? StatusEnum::ENABLED : StatusEnum::DISABLED;
                 $model->wechat_message = serialize($addons->wechatMessage);
 
                 if($model->save())
@@ -214,12 +216,47 @@ class AddonsController extends MController
             $files[]    =   "{$addon_dir}home/controllers/";
             $files[]    =   "{$addon_dir}home/controllers/{$model->name}Controller.php";
             $files[]    =   "{$addon_dir}home/views/";
+
+            //小程序支持
+            if($model->wxapp_support)
+            {
+                $files[]    =   "{$addon_dir}api/";
+                $files[]    =   "{$addon_dir}api/controllers/";
+                $files[]    =   "{$addon_dir}api/controllers/PagesController.php";
+            }
+
             $model['install'] && $files[] = "{$addon_dir}{$model['install']}";
             $model['uninstall'] && $files[] = "{$addon_dir}{$model['uninstall']}";
             $model['upgrade'] && $files[] = "{$addon_dir}{$model['upgrade']}";
             AddonsHelp::createDirOrFiles($files);
 
-            //钩子
+            /*********************************小程序*********************************/
+
+            $wxapp_support = $model->wxapp_support ? 'true' : 'false';
+            $wxapp_support_str = "";
+            if($model->wxapp_support)
+            {
+                $wxapp_support_str = "<?php
+namespace addons\\{$model->name}\\api\\controllers;
+
+use Yii;
+use common\\components\\WxApp;
+
+/**
+ * 小程序初始化
+ * Class PagesController
+ * @package addons\\api\\controllers\\PagesController
+ */
+class PagesController extends WxApp
+{
+
+}
+            
+            ";
+            }
+
+            /*********************************钩子*********************************/
+
             $hook = 'false';
             $hookStr = "";
             if($model->hook)
@@ -294,6 +331,13 @@ class {$model->name}Addon
      * @var bool
      */
     public \$hook = {$hook};
+    
+     /**
+     * 小程序
+     * [true,false] 开启|关闭
+     * @var bool
+     */
+    public \$wxapp_support = {$wxapp_support};
     
     /**
      * 类别
@@ -413,6 +457,33 @@ class {$model->name} extends ActiveRecord
 }
             ";
 
+            /*********************************前台控制器*********************************/
+
+            $HomeController = "<?php
+namespace addons\\{$model->name}\\home\\controllers;
+
+use yii;
+use common\\components\\Addons;
+use addons\\{$model->name}\\common\\models\\{$model->name};
+
+/**
+ * {$model->title}控制器
+ * Class {$model->name}Controller
+ * @package addons\\{$model->name}\\home\\controllers
+ */
+class {$model->name}Controller extends Addons
+{
+    /**
+    * 首页
+    */
+    public function actionIndex()
+    {
+        return \$this->renderAddon('index',[
+        ]);
+    }
+}
+            ";
+
             /*********************************配置信息*********************************/
 
             $Setting = "<?php
@@ -459,17 +530,21 @@ class WechatMessage extends Addons
             ";
             //写入模块配置
             file_put_contents("{$addon_dir}{$model->name}Addon.php", $Addon);
-            //写入控制器
+            //写入后台控制器
             file_put_contents("{$addon_dir}admin/controllers/{$model->name}Controller.php", $AdminController);
+            //写入前台控制器
+            file_put_contents("{$addon_dir}home/controllers/{$model->name}Controller.php", $HomeController);
             //写入模型
             file_put_contents("{$addon_dir}common/models/{$model->name}.php", $CommonModel);
             //写入参数
             file_put_contents($addon_dir.'Setting.php', $Setting);
+
             //写入文件
             $model['install'] && file_put_contents("{$addon_dir}/{$model['install']}", '<?php');
             $model['uninstall'] && file_put_contents("{$addon_dir}/{$model['uninstall']}", '<?php');
             $model['upgrade'] && file_put_contents("{$addon_dir}/{$model['upgrade']}", '<?php');
             $model->wechatMessage && file_put_contents($addon_dir.'WechatMessage.php', $WechatInfo);
+            $model->wxapp_support && file_put_contents("{$addon_dir}api/controllers/PagesController.php", $wxapp_support_str);
 
             //移动图标
             if($model->cover)

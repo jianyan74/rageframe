@@ -140,6 +140,26 @@ class Fans extends ActiveRecord
     }
 
     /**
+     * 小程序插入用户信息
+     * @param $userinfo
+     */
+    public static function addWxAppFans($userinfo)
+    {
+        $fans = new self;
+        $fans->follow = self::FOLLOW_OFF;
+        $fans->unfollowtime = time();
+        $fans->openid = $userinfo['openId'];
+        $fans->nickname = $userinfo['nickName'];
+        $fans->sex = $userinfo['gender'];
+        $fans->city = $userinfo['city'];
+        $fans->province = $userinfo['province'];
+        $fans->country = $userinfo['country'];
+        $fans->headimgurl = $userinfo['avatarUrl'];
+        $fans->unionid = isset($userinfo['unionId']) ? $userinfo['unionId'] : '';
+        $fans->save();
+    }
+
+    /**
      * 同步关注的用户信息
      * @param $openid
      * @param $app
@@ -158,6 +178,16 @@ class Fans extends ActiveRecord
             $fans->follow = self::FOLLOW_ON;
             $fans->save();
         }
+    }
+
+    /**
+     * 根据openid获取粉丝
+     * @param $openid
+     * @return array|null|ActiveRecord
+     */
+    public static function getFans($openid)
+    {
+        return self::find()->where(['openid'=>$openid])->one();
     }
 
     /**

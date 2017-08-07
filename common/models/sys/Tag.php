@@ -5,6 +5,7 @@ namespace common\models\sys;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+
 /**
  * This is the model class for table "{{%tag}}".
  *

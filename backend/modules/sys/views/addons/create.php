@@ -31,15 +31,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <?= $form->field($model, 'name')->textInput()->hint('模块标识符, 应对应模块文件夹的名称, 系统系统按照此标识符查找模块定义, 只能英文和下划线组成 ') ?>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <?= $form->field($model, 'group')->dropDownList(\yii\helpers\ArrayHelper::map($addonsType,'name','title'))->hint('模块不能使用钩子，插件只能通过钩子访问')?>
+                                                <?= $form->field($model, 'group')->dropDownList(\yii\helpers\ArrayHelper::map($addonsType,'name','title'))->hint('插件用于扩展系统底层，模块用于扩展系统业务功能')?>
                                             </div>
                                             <div class="col-md-6">
-                                                <?= $form->field($model, 'type')->dropDownList($addonsType['plug-in']['child'])->hint('模块的类型, 用于分类展示和查找你的模块') ?>
+                                                <?= $form->field($model, 'type')->dropDownList($addonsType['plug-in']['child']) ?>
                                             </div>
                                         </div>
                                         <?= $form->field($model, 'version')->textInput()->hint('模块当前版本, 此版本号用于模块的版本更新')?>
                                         <?= $form->field($model, 'description')->textarea()->hint('模块详细描述, 详细介绍模块的功能和使用方法 ')?>
                                         <?= $form->field($model, 'author')->textInput()?>
+                                        <?= $form->field($model, 'wxapp_support')->checkbox()->hint('此模块是否支持小程序') ?>
                                         <?= $form->field($model, 'setting')->checkbox()->hint('此模块是否存在全局的配置参数') ?>
                                         <?= $form->field($model, 'hook')->checkbox()->hint('此模块是否存在钩子') ?>
                                         <div class="hr-line-dashed"></div>
@@ -191,15 +192,29 @@ $this->params['breadcrumbs'][] = $this->title;
             str += '<option value="'+key+'">'+option[key]+'</option>';
         }
 
-        $('.field-addons-hook').hide();
         if(value == 'addon'){
             $('.desk-menu').show();
-            $('.field-addons-hook').hide();
+            $('.field-addons-wechatmessage').show();
+            $('.alert-warning').show();
+            $('.alert-warning').next().show();
+            $('.field-addons-wxapp_support').show();
         }else{
             $('.desk-menu').hide();
-            $('.field-addons-hook').show();
+            $('.field-addons-wechatmessage').hide();
+            $('.alert-warning').hide();
+            $('.alert-warning').next().hide();
+            $('.field-addons-wxapp_support').hide();
         }
 
         $('#addons-type').html(str);
-    })
+    });
+
+    function hideInit(){
+        $('.field-addons-wechatmessage').hide();
+        $('.alert-warning').hide();
+        $('.alert-warning').next().hide();
+        $('.field-addons-wxapp_support').hide();
+    }
+
+    hideInit();
 </script>

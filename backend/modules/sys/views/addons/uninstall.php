@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                                             <?php } ?>
                                         </td>
                                         <td>
-                                            <h3><?php echo $vo['title'] ?> <?php if($vo['type'] == 'plug'){ ?><span class="label label-info">功能插件</span><?php } ?> <?php if($vo['hook'] == 1){ ?><span class="label label-info">钩子</span><?php } ?></h3>
+                                            <h3><?php echo $vo['title'] ?> <?php if($vo['wxapp_support'] == true){ ?><span class="label label-info">小程序</span><?php } ?> <?php if($vo['type'] == 'plug'){ ?><span class="label label-info">功能插件</span><?php } ?> <?php if($vo['hook'] == 1){ ?><span class="label label-info">钩子</span><?php } ?></h3>
                                             ( 标识：<?php echo $vo['name'] ?> 版本：<?php echo $vo['version'] ?> 作者：<?php echo $vo['author'] ?> )
                                         </td>
                                         <td>
