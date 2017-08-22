@@ -5,8 +5,8 @@ use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use common\models\sys\ActionLog;
-use backend\modules\sys\models\LoginForm;
+use jianyan\basics\common\models\sys\ActionLog;
+use jianyan\basics\backend\modules\sys\models\LoginForm;
 
 /**
  * 站点控制器
@@ -35,14 +35,14 @@ class SiteController extends Controller
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-                'maxLength' => 5,       //最大显示个数
-                'minLength' => 5,       //最少显示个数
-                'padding'   => 5,       //间距
+                'maxLength' => 5,        //最大显示个数
+                'minLength' => 5,        //最少显示个数
+                'padding'   => 5,        //间距
                 'height'    => 32,       //高度
-                'width'     => 100,     //宽度
-                'offset'    => 4,       //设置字符偏移量 有效果
-                //'backColor' =>0x000000,//背景颜色
-                //'foreColor' =>0xffffff, //字体颜色
+                'width'     => 100,      //宽度
+                'offset'    => 4,        //设置字符偏移量
+                'backColor' => 0xffffff, //背景颜色
+                'foreColor' => 0x1ab394, //字体颜色
             ]
         ];
     }

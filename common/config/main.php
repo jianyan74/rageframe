@@ -17,7 +17,7 @@ return [
 
         /**-------------------网站公共配置--------------------**/
         'config'      => [
-            'class'           => 'common\models\sys\Config',
+            'class'           => 'jianyan\basics\common\models\sys\Config',
         ],
 
         /**-------------------文件缓存配置--------------------**/

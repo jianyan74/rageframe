@@ -19,26 +19,26 @@ class Image extends InputWidget
 {
 
     /**
-     * @var array
      * 基础属性
+     * @var array
      */
     public $options = [];
 
     /**
-     * @var array
      * 更多属性
+     * @var array
      */
     public $pluginOptions = [];
 
     /**
-     * @var
      * 盒子ID
+     * @var
      */
     public $boxId;
 
     /**
-     * @var string
      * 默认名称
+     * @var string
      */
     public $name = 'fileinput';
 

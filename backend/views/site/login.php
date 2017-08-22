@@ -25,14 +25,17 @@ use yii\captcha\Captcha;
                     <h1>[ <?= Yii::$app->params['abbreviation']?> ]</h1>
                 </div>
                 <div class="m-b"></div>
-                <h4>欢迎使用 <strong><?= Yii::$app->params['siteTitle']?></strong></h4>
+                <h4>欢迎使用<strong><?= Yii::$app->params['siteTitle']?></strong></h4>
                 <ul class="m-b">
                     <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势一：基于Yii2框架开发的开源系统</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势二：集成用户权限管理系统(RBAC)</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势三：自定义全局配置,控制器模型都可被重写</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势四：丰富的扩展机制,插件和模块可卸载安装</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势二：多入口模式</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势三：自定义全局配置，控制器模型都可被重写</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势四：升级最小干扰化</li>
                     <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势五：对接了微信公众号SDK</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势六：多入口模式</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势六：集成用户权限管理系统(RBAC)</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势七：丰富的扩展机制，插件和模块可卸载安装</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势八：模块支持小程序开发</li>
+
                 </ul>
             </div>
         </div>

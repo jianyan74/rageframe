@@ -1,5 +1,6 @@
 <?php
 $params = array_merge(
+    require(__DIR__ . '/../../vendor/jianyan74/rageframe-basics/backend/config/params.php'),
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
     require(__DIR__ . '/params.php'),
@@ -13,14 +14,6 @@ return [
     'defaultRoute'         => 'main',//默认控制器
     'bootstrap'            => ['log'],
     'modules'              => [
-        /* 系统 modules */
-        'sys' => [
-            'class' => 'backend\modules\sys\index',
-        ],
-        /* 微信 modules */
-        'wechat' => [
-            'class' => 'backend\modules\wechat\index',
-        ],
         /* 会员 modules */
         'member' => [
             'class' => 'backend\modules\member\index',
@@ -28,22 +21,20 @@ return [
     ],
     'components' => [
         'user' => [
-            'identityClass' => 'common\models\sys\Manager',
+            'identityClass' => 'jianyan\basics\common\models\sys\Manager',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
             'loginUrl' => ['site/login'],
             'idParam' => '__admin',
             'as afterLogin' => 'common\behaviors\AfterLogin',
         ],
-        // 这是用于在后台登录的会话cookie的名称
         'session' => [
             'name' => 'advanced-backend',
+            'timeout' => 7200
         ],
-
         'request'=>[
             'csrfParam'=>'_csrf_backend'
         ],
-
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -81,7 +72,7 @@ return [
 
         /**-------------------后台操作日志-------------------**/
         'actionlog' => [
-            'class' => 'common\models\sys\ActionLog',
+            'class' => 'jianyan\basics\common\models\sys\ActionLog',
         ],
     ],
     'params' => $params,

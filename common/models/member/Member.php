@@ -39,7 +39,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $created_at
  * @property integer $updated_at
  */
-class Member extends \common\models\base\User
+class Member extends \jianyan\basics\common\models\base\User
 {
     /**
      * @inheritdoc

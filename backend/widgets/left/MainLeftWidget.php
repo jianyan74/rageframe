@@ -3,8 +3,8 @@ namespace backend\widgets\left;
 
 use yii;
 use yii\base\Widget;
-use common\models\sys\Addons;
-use backend\modules\sys\models\Menu;
+use jianyan\basics\common\models\sys\Addons;
+use jianyan\basics\backend\modules\sys\models\Menu;
 
 /**
  * Class MainLeftWidget

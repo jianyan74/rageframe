@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e875f46001c192f3cf9f93384bc2d131",
+    "content-hash": "16733139fd72d765d8eeb3609e1c807f",
     "packages": [
         {
             "name": "2amigos/yii2-date-time-picker-widget",
@@ -572,6 +572,60 @@
             "time": "2017-07-22T12:49:21+00:00"
         },
         {
+            "name": "doctrine/lexer",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/lexer.git",
+                "reference": "83893c552fd2045dd78aef794c31e694c37c0b8c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/doctrine/lexer/83893c552fd2045dd78aef794c31e694c37c0b8c.zip",
+                "reference": "83893c552fd2045dd78aef794c31e694c37c0b8c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\Common\\Lexer\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                }
+            ],
+            "description": "Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "lexer",
+                "parser"
+            ],
+            "time": "2014-09-09T13:34:57+00:00"
+        },
+        {
             "name": "e282486518/yii2-console-migration",
             "version": "v1.3.0",
             "source": {
@@ -608,6 +662,63 @@
                 "yii2"
             ],
             "time": "2016-12-01T12:04:39+00:00"
+        },
+        {
+            "name": "egulias/email-validator",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egulias/EmailValidator.git",
+                "reference": "bc31baa11ea2883e017f0a10d9722ef9d50eac1c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/egulias/EmailValidator/bc31baa11ea2883e017f0a10d9722ef9d50eac1c.zip",
+                "reference": "bc31baa11ea2883e017f0a10d9722ef9d50eac1c",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/lexer": "^1.0.1",
+                "php": ">= 5.5"
+            },
+            "require-dev": {
+                "dominicsayers/isemail": "dev-master",
+                "phpunit/phpunit": "^4.8.0",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "suggest": {
+                "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Egulias\\EmailValidator\\": "EmailValidator"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eduardo Gulias Davis"
+                }
+            ],
+            "description": "A library for validating emails against several RFCs",
+            "homepage": "https://github.com/egulias/EmailValidator",
+            "keywords": [
+                "email",
+                "emailvalidation",
+                "emailvalidator",
+                "validation",
+                "validator"
+            ],
+            "time": "2017-01-30T22:07:36+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -986,17 +1097,66 @@
             "time": "2013-07-10T17:25:36+00:00"
         },
         {
-            "name": "kartik-v/yii2-date-range",
-            "version": "v1.6.7",
+            "name": "jianyan74/rageframe-basics",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/kartik-v/yii2-date-range.git",
-                "reference": "c7177cd89cc90772acc96a05fbf5996f67127e4c"
+                "url": "https://github.com/jianyan74/rageframe-basics.git",
+                "reference": "253172857e17b894a62d611b449abdae45a00208"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/kartik-v/yii2-date-range/c7177cd89cc90772acc96a05fbf5996f67127e4c.zip",
-                "reference": "c7177cd89cc90772acc96a05fbf5996f67127e4c",
+                "url": "https://files.phpcomposer.com/files/jianyan74/rageframe-basics/253172857e17b894a62d611b449abdae45a00208.zip",
+                "reference": "253172857e17b894a62d611b449abdae45a00208",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9",
+                "yiisoft/yii2": ">=2.0.6"
+            },
+            "require-dev": {
+                "yiisoft/yii2-codeception": "*",
+                "yiisoft/yii2-debug": "*",
+                "yiisoft/yii2-faker": "*",
+                "yiisoft/yii2-gii": "*"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "jianyan\\basics\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "简言",
+                    "email": "751393839@qq.com"
+                }
+            ],
+            "description": "RageFrame核心包",
+            "homepage": "https://github.com/jianyan74/rageframe-basics",
+            "keywords": [
+                "jianyan74",
+                "rageframe",
+                "yii2"
+            ],
+            "time": "2017-08-17T09:29:35+00:00"
+        },
+        {
+            "name": "kartik-v/yii2-date-range",
+            "version": "1.6.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-date-range.git",
+                "reference": "908e8175f3f8c091d425bcaba6e18871d63291a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/kartik-v/yii2-date-range/908e8175f3f8c091d425bcaba6e18871d63291a0.zip",
+                "reference": "908e8175f3f8c091d425bcaba6e18871d63291a0",
                 "shasum": ""
             },
             "require": {
@@ -1037,7 +1197,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-07-12T07:02:07+00:00"
+            "time": "2017-08-08T04:26:22+00:00"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -1204,12 +1364,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-select2.git",
-                "reference": "690ddac32f6796f63b8317783f26e89ca26fa94a"
+                "reference": "a129c6663078fe0ad14cde2a5d0afd071c7608e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/kartik-v/yii2-widget-select2/690ddac32f6796f63b8317783f26e89ca26fa94a.zip",
-                "reference": "690ddac32f6796f63b8317783f26e89ca26fa94a",
+                "url": "https://files.phpcomposer.com/files/kartik-v/yii2-widget-select2/a129c6663078fe0ad14cde2a5d0afd071c7608e9.zip",
+                "reference": "a129c6663078fe0ad14cde2a5d0afd071c7608e9",
                 "shasum": ""
             },
             "require": {
@@ -1218,7 +1378,7 @@
             "type": "yii2-extension",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
@@ -1249,7 +1409,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-06-21T11:33:04+00:00"
+            "time": "2017-08-07T18:12:36+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-timepicker",
@@ -1760,16 +1920,16 @@
         },
         {
             "name": "overtrue/socialite",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/socialite.git",
-                "reference": "0b943f2b2063c8c4f1672b4d2f4451e57d7415a7"
+                "reference": "fda55f0acef43a144799b1957a8f93d9f5deffce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/overtrue/socialite/0b943f2b2063c8c4f1672b4d2f4451e57d7415a7.zip",
-                "reference": "0b943f2b2063c8c4f1672b4d2f4451e57d7415a7",
+                "url": "https://files.phpcomposer.com/files/overtrue/socialite/fda55f0acef43a144799b1957a8f93d9f5deffce.zip",
+                "reference": "fda55f0acef43a144799b1957a8f93d9f5deffce",
                 "shasum": ""
             },
             "require": {
@@ -1806,31 +1966,32 @@
                 "wechat",
                 "weibo"
             ],
-            "time": "2017-07-27T08:22:56+00:00"
+            "time": "2017-08-04T06:28:22+00:00"
         },
         {
             "name": "overtrue/wechat",
-            "version": "3.3.11",
+            "version": "3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/wechat.git",
-                "reference": "5074d36e1a72df13579c84ed0471d8e0f08122bb"
+                "reference": "c0b35e3b56096d0a77c13f9394d4de945a7ea944"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/overtrue/wechat/5074d36e1a72df13579c84ed0471d8e0f08122bb.zip",
-                "reference": "5074d36e1a72df13579c84ed0471d8e0f08122bb",
+                "url": "https://files.phpcomposer.com/files/overtrue/wechat/c0b35e3b56096d0a77c13f9394d4de945a7ea944.zip",
+                "reference": "c0b35e3b56096d0a77c13f9394d4de945a7ea944",
                 "shasum": ""
             },
             "require": {
-                "doctrine/cache": "~1.4",
+                "doctrine/cache": "~1.6.2",
                 "ext-openssl": "*",
-                "guzzlehttp/guzzle": "~6.2",
+                "ext-simplexml": "*",
+                "guzzlehttp/guzzle": "^6.2",
                 "monolog/monolog": "^1.17",
-                "overtrue/socialite": ">=1.0.25",
+                "overtrue/socialite": "^1.0.25",
                 "php": ">=5.5.0",
-                "pimple/pimple": "~3.0",
-                "symfony/http-foundation": "~2.6|~2.7|~2.8|~3.0",
+                "pimple/pimple": "^3.0",
+                "symfony/http-foundation": "^2.6|^3.0",
                 "symfony/psr-http-message-bridge": "~0.3|^1.0"
             },
             "require-dev": {
@@ -1864,7 +2025,7 @@
                 "weixin",
                 "weixin-sdk"
             ],
-            "time": "2017-07-17T11:09:02+00:00"
+            "time": "2017-08-13T11:54:16+00:00"
         },
         {
             "name": "phpoffice/phpexcel",
@@ -2126,29 +2287,30 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.8",
+            "version": "v6.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517"
+                "reference": "008f088d535ed3333af5ad804dd4c0eaf97c2805"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/swiftmailer/swiftmailer/9a06dc570a0367850280eefd3f1dc2da45aef517.zip",
-                "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517",
+                "url": "https://files.phpcomposer.com/files/swiftmailer/swiftmailer/008f088d535ed3333af5ad804dd4c0eaf97c2805.zip",
+                "reference": "008f088d535ed3333af5ad804dd4c0eaf97c2805",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "egulias/email-validator": "~2.0",
+                "php": ">=7.0.0"
             },
             "require-dev": {
                 "mockery/mockery": "~0.9.1",
-                "symfony/phpunit-bridge": "~3.2"
+                "symfony/phpunit-bridge": "~3.3@dev"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.4-dev"
+                    "dev-master": "6.0-dev"
                 }
             },
             "autoload": {
@@ -2176,11 +2338,11 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2017-05-01T15:54:03+00:00"
+            "time": "2017-05-20T06:20:27+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.25",
+            "version": "v2.8.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -2240,16 +2402,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v3.3.5",
+            "version": "v3.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "e307abe4b79ccbbfdced9b91c132fd128f456bc5"
+                "reference": "49e8cd2d59a7aa9bfab19e46de680c76e500a031"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/http-foundation/e307abe4b79ccbbfdced9b91c132fd128f456bc5.zip",
-                "reference": "e307abe4b79ccbbfdced9b91c132fd128f456bc5",
+                "url": "https://files.phpcomposer.com/files/symfony/http-foundation/49e8cd2d59a7aa9bfab19e46de680c76e500a031.zip",
+                "reference": "49e8cd2d59a7aa9bfab19e46de680c76e500a031",
                 "shasum": ""
             },
             "require": {
@@ -2289,20 +2451,20 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-17T14:07:10+00:00"
+            "time": "2017-07-21T11:04:46+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.4.0",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "f29dca382a6485c3cbe6379f0c61230167681937"
+                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/polyfill-mbstring/f29dca382a6485c3cbe6379f0c61230167681937.zip",
-                "reference": "f29dca382a6485c3cbe6379f0c61230167681937",
+                "url": "https://files.phpcomposer.com/files/symfony/polyfill-mbstring/7c8fae0ac1d216eb54349e6a8baa57d515fe8803.zip",
+                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
                 "shasum": ""
             },
             "require": {
@@ -2314,7 +2476,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -2348,7 +2510,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-09T14:24:12+00:00"
+            "time": "2017-06-14T15:44:48+00:00"
         },
         {
             "name": "symfony/psr-http-message-bridge",
@@ -2834,20 +2996,20 @@
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
-            "version": "2.0.7",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-swiftmailer.git",
-                "reference": "8a03a62cbcb82e7697d3002eb43a8d2637f566ec"
+                "reference": "563570c9aa19ca47c1b22e3032983229378e9274"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/yiisoft/yii2-swiftmailer/8a03a62cbcb82e7697d3002eb43a8d2637f566ec.zip",
-                "reference": "8a03a62cbcb82e7697d3002eb43a8d2637f566ec",
+                "url": "https://files.phpcomposer.com/files/yiisoft/yii2-swiftmailer/563570c9aa19ca47c1b22e3032983229378e9274.zip",
+                "reference": "563570c9aa19ca47c1b22e3032983229378e9274",
                 "shasum": ""
             },
             "require": {
-                "swiftmailer/swiftmailer": "~5.0",
+                "swiftmailer/swiftmailer": "~6.0",
                 "yiisoft/yii2": "~2.0.4"
             },
             "type": "yii2-extension",
@@ -2880,7 +3042,7 @@
                 "swiftmailer",
                 "yii2"
             ],
-            "time": "2017-05-01T08:29:00+00:00"
+            "time": "2017-08-04T10:48:17+00:00"
         }
     ],
     "packages-dev": [
@@ -2913,36 +3075,38 @@
         },
         {
             "name": "fzaninotto/faker",
-            "version": "v1.6.0",
+            "version": "v1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "44f9a286a04b80c76a4e5fb7aad8bb539b920123"
+                "reference": "d3ed4cc37051c1ca52d22d76b437d14809fc7e0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/44f9a286a04b80c76a4e5fb7aad8bb539b920123",
-                "reference": "44f9a286a04b80c76a4e5fb7aad8bb539b920123",
+                "url": "https://files.phpcomposer.com/files/fzaninotto/Faker/d3ed4cc37051c1ca52d22d76b437d14809fc7e0d.zip",
+                "reference": "d3ed4cc37051c1ca52d22d76b437d14809fc7e0d",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.3|^7.0"
+                "php": "^5.3.3 || ^7.0"
             },
             "require-dev": {
                 "ext-intl": "*",
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "~1.5"
+                "phpunit/phpunit": "^4.0 || ^5.0",
+                "squizlabs/php_codesniffer": "^1.5"
             },
             "type": "library",
             "extra": {
-                "branch-alias": []
+                "branch-alias": {
+                    "dev-master": "1.8-dev"
+                }
             },
             "autoload": {
                 "psr-4": {
                     "Faker\\": "src/Faker/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2957,7 +3121,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2016-04-29T12:21:54+00:00"
+            "time": "2017-08-15T16:48:10+00:00"
         },
         {
             "name": "phpspec/php-diff",
@@ -3199,7 +3363,8 @@
         "kartik-v/yii2-widget-select2": 20,
         "phpoffice/phpexcel": 20,
         "crazyfd/yii2-qiniu": 20,
-        "denisogr/yii2-cronjobs": 20
+        "denisogr/yii2-cronjobs": 20,
+        "jianyan74/rageframe-basics": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

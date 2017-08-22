@@ -39,7 +39,8 @@
         "crazyfd/yii2-qiniu": "dev-master",
         "denisogr/yii2-cronjobs": "dev-master",
         "yidashi/yii2-bootstrap-markdown": "*",
-        "e282486518/yii2-console-migration": "*"
+        "e282486518/yii2-console-migration": "*",
+        "jianyan74/rageframe-basics": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

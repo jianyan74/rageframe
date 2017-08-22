@@ -14,13 +14,6 @@ class WController extends WechatController
 {
     public function init()
     {
-        /**
-         * 微信支付回调地址
-         */
-        $this->_notifyUrl = Yii::$app->request->hostInfo . Url::to(['/we-notify/notify']);
-        /**
-         * 继承
-         */
         parent::init();
         /**
          * 非微信网页打开时候开启模拟数据

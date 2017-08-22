@@ -6,8 +6,8 @@ namespace backend\widgets\baseinfo;
 
 use yii;
 use yii\base\Widget;
-use common\models\sys\ActionLog;
-use common\models\sys\Manager;
+use jianyan\basics\common\models\sys\ActionLog;
+use jianyan\basics\common\models\sys\Manager;
 
 class InfoWidget extends Widget
 {

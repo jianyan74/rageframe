@@ -3,8 +3,8 @@ namespace backend\widgets\notify;
 
 use yii;
 use yii\base\Widget;
-use common\models\sys\Notify;
-use common\models\sys\NotifyManager;
+use jianyan\basics\common\models\sys\Notify;
+use jianyan\basics\common\models\sys\NotifyManager;
 use yii\data\Pagination;
 
 class NotifyWidget extends Widget

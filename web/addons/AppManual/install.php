@@ -9,6 +9,7 @@ CREATE TABLE `yl_addon_app_manual` (
   `pid` int(50) DEFAULT '0' COMMENT '上级id',
   `content` longtext COMMENT '链接地址',
   `sort` int(5) DEFAULT '0' COMMENT '排序',
+  `view` int(10) DEFAULT '0' COMMENT '浏览量',
   `status` tinyint(1) DEFAULT '1' COMMENT '是否隐藏',
   `level` tinyint(1) DEFAULT '1' COMMENT '级别',
   `append` int(10) DEFAULT NULL COMMENT '添加时间',

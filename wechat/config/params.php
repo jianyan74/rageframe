@@ -1,9 +1,8 @@
 <?php
 return [
-    /**非微信打开的时候是否开启微信模拟数据**/
+    /** 非微信打开的时候是否开启微信模拟数据 **/
     'wecahtSimulate' => [
         'appSwitch' => false,//微信应用检测开关
-        'addonSwitch' => false,//模块插件检测开关
         'userInfo' => [
             'id' => 'o3y9js8_9fsGha7cf237tmZsz6G9fM',
             'nickname' => '简言',

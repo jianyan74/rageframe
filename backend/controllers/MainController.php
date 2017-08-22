@@ -2,7 +2,7 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\sys\Manager;
+use jianyan\basics\common\models\sys\Manager;
 
 /**
  * 主控制器
