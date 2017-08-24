@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use backend\widgets\left\MainLeftWidget;
-use backend\widgets\notify\NotifyWidget;
+use jianyan\basics\backend\widgets\notify\NotifyWidget;
 use backend\assets\AppAsset;
 
 AppAsset::register($this);
@@ -44,7 +44,7 @@ AppAsset::register($this);
                                 <img src="<?php echo !empty($user['head_portrait']) ? $user['head_portrait'] : "/resource/backend/img/profile.jpg" ?>" class="img-circle" width="64" height="64" id="head_portrait">
                         </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="clear">
+                            <span class="clear">
                                <span class="block m-t-xs">
                                    <strong class="font-bold"><?php echo $user['username'] ?></strong>
                                </span>
@@ -56,7 +56,7 @@ AppAsset::register($this);
                                     <?php } ?>
                                     <b class="caret"></b>
                                 </span>
-                                </span>
+                            </span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li>

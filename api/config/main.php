@@ -12,14 +12,14 @@ return [
     'controllerNamespace' => 'api\controllers',
     'bootstrap' => ['log'],
     'modules' => [
+        //版本
         'v1' => [
             'class' => 'api\modules\v1\index',
         ],
     ],
-
     'components' => [
         'user' => [
-            'identityClass' => 'backend\modules\member\models\User',
+            'identityClass' => 'common\models\member\Member',
             'enableAutoLogin' => true,
         ],
 
@@ -42,7 +42,7 @@ return [
                 #################
                 ## default Api ##
                 #################
-                # http://youliao/api/v1/default
+                # http://rageframe/api/v1/default
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => ['v1/default'],

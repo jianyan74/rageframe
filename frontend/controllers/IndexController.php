@@ -8,7 +8,6 @@ use Yii;
  */
 class IndexController extends IController
 {
-
     /**
      * @return string
      * 默认首页

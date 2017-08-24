@@ -24,6 +24,10 @@ return [
         'session' => [
             'name' => 'advanced-frontend',// 这是用于在前台登录的会话cookie的名称
         ],
+        'request'=>[
+            'csrfParam'=>'_csrf_frontend'
+        ],
+
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -46,10 +50,6 @@ return [
             'rules'           =>[
 
             ],
-        ],
-
-        'request'=>[
-            'csrfParam'=>'_csrf_frontend'
         ],
     ],
     'params' => $params,

@@ -109,7 +109,7 @@ class StringHelper
      * @param null $prefix 判断是否需求前缀
      * @return string
      */
-    public function randomNum($prefix=false,$length=8)
+    public static function randomNum($prefix = false, $length = 8)
     {
         $str = $prefix ? $prefix : '';
         return $str.substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, $length);
@@ -121,8 +121,8 @@ class StringHelper
      * @param string $type
      * @return string
      */
-    public static function clipping($fileName,$type = '.',$length = 0)
+    public static function clipping($fileName, $type = '.', $length = 0)
     {
-        return substr(strtolower(strrchr($fileName, $type)),$length);
+        return substr(strtolower(strrchr($fileName, $type)), $length);
     }
 }

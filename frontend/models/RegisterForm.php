@@ -47,8 +47,10 @@ class RegisterForm extends \common\models\base\LoginForm
      */
     public function validateUser($attribute)
     {
-        if($this->getUser()){
-            if($this->_user){
+        if($this->getUser())
+        {
+            if($this->_user)
+            {
                 $this->addError($attribute,'该账号已经被注册');
             }
         }
@@ -59,7 +61,8 @@ class RegisterForm extends \common\models\base\LoginForm
      */
     protected function getUser()
     {
-        if ($this->_user === null) {
+        if ($this->_user === null)
+        {
             $this->_user = Member::findByUsername($this->username);
         }
 

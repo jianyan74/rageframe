@@ -135,7 +135,8 @@ class SiteController extends Controller
         else // 用户已经登陆
         {
             if (!$auth)
-            { // 添加验证提供商（向验证表中添加记录）
+            {
+                // 添加验证提供商（向验证表中添加记录）
                 $auth = new Auth([
                     'member_id' => Yii::$app->user->id,
                     'source' => $client->getId(),
