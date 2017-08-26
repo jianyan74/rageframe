@@ -3,6 +3,7 @@ namespace backend\controllers;
 
 use yii;
 use common\helpers\ExcelHelper;
+use common\helpers\ArithmeticHelper;
 use jianyan\basics\common\models\sys\ActionLog;
 
 /**
@@ -31,5 +32,23 @@ class TestController extends MController
 
         ExcelHelper::createExcelFromData($fields,$dataList,time().".xls");
         return false;
+    }
+
+    /**
+     * 红包生成测试
+     */
+    public function actionRedPacket()
+    {
+        //切记如果红包数量太多，不要设置为0.1 会导致最后红包金额不对
+        $data = ArithmeticHelper::getRedPackage(100,998,0.01,3);
+
+        $all_money = 0;
+        foreach ($data as $datum)
+        {
+            $all_money += $datum;
+        }
+
+        $this->p($all_money);
+        $this->p($data);
     }
 }

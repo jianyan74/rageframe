@@ -2,7 +2,6 @@
 namespace wechat\controllers;
 
 use Yii;
-use yii\helpers\Url;
 use common\controllers\WechatController;
 
 /**
