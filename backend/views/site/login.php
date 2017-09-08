@@ -1,8 +1,4 @@
 <?php
-
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \common\models\LoginForm */
 $this->title = Yii::$app->params['siteTitle'];
 
 use yii\helpers\Html;
@@ -86,7 +82,7 @@ use yii\captcha\Captcha;
         $(".i-checks").iCheck({
             checkboxClass   :"icheckbox_square-green",
             radioClass      :"iradio_square-green",
-            increaseArea: '20%' // optional
+            increaseArea    : '20%' // optional
 
         })
     });

@@ -13,3 +13,4 @@ Yii::setAlias('@attachment', dirname(dirname(__DIR__)) . '/web/attachment');//�
 Yii::setAlias('@attachurl', '/attachment');//附件二级域名->配置apache
 Yii::setAlias('@staticroot', dirname(dirname(__DIR__)) . '/web/attachment');
 Yii::setAlias('@static', '/attachment');//附件二级域名->配置apache
+Yii::setAlias('@basics', dirname(dirname(__DIR__)) . '/vendor/jianyan74/rageframe-basics');

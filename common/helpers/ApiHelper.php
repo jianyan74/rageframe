@@ -1,6 +1,8 @@
 <?php
 namespace common\helpers;
 
+use linslin\yii2\curl\Curl;
+
 /**
  * api接口帮助类
  * Class ApiHelper
@@ -8,6 +10,9 @@ namespace common\helpers;
  */
 class ApiHelper
 {
+    /**
+     * 新浪IP接口
+     */
     const IP_SINA = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=';
 
     /**
@@ -17,15 +22,17 @@ class ApiHelper
      */
     public static function IpInfoSina($ip)
     {
-        $res = @file_get_contents(self::IP_SINA . $ip);
+        $curl = new Curl();
+        $response = $curl->get(self::IP_SINA . $ip);
+
         //判断是否查询的到ip信息
-        if(empty($res))
+        if(empty($response))
         {
             return false;
         }
 
         $jsonMatches = array();
-        preg_match('#\{.+?\}#', $res, $jsonMatches);
+        preg_match('#\{.+?\}#', $response, $jsonMatches);
         if(!isset($jsonMatches[0]))
         {
             return false;
@@ -41,6 +48,7 @@ class ApiHelper
         {
             return false;
         }
+
         return $json;
     }
 }

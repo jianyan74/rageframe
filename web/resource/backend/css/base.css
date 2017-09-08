@@ -9,5 +9,5 @@
 .tile.tile-2x{width:10em;margin-top: 0.5em}
 .tile.tile-3x{width:15em;}
 .tile:hover{background:#7dacdd; color:#FFF;}
-.tile > i{display:block; font-size:2em; margin:0.3em auto 0 auto;}
+.tile > i{display:block; font-size:2em; margin:0.3em auto 0 auto;padding-bottom:3px;}
 .tile > span{display:block;}

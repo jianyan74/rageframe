@@ -5,6 +5,7 @@ use yii;
 use common\helpers\ExcelHelper;
 use common\helpers\ArithmeticHelper;
 use jianyan\basics\common\models\sys\ActionLog;
+use jianyan\basics\common\models\sys\Manager;
 
 /**
  * 文件图片上传控制器
@@ -50,5 +51,28 @@ class TestController extends MController
 
         $this->p($all_money);
         $this->p($data);
+    }
+
+    /**
+     * 测试接口返回时间
+     * @return array
+     */
+    public function actionApiResult()
+    {
+        $this->setResult();
+        $this->_result->code = 200;
+
+        $data = [];
+        for ($i = 0; $i < 50; $i++)
+        {
+            $user   = Manager::find()
+                ->with('assignment')
+                ->asArray()
+                ->all();
+        }
+
+        $this->_result->data = $data;
+
+        return $this->getResult();
     }
 }

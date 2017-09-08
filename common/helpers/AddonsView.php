@@ -1,4 +1,5 @@
 <?php
+use jianyan\basics\backend\widgets\menu\AddonLeftWidget;
 
 if(Yii::$app->params['addon']['info']['type'] != 'plug')
 {
@@ -6,4 +7,10 @@ if(Yii::$app->params['addon']['info']['type'] != 'plug')
 }
 
 $this->params['breadcrumbs'][] = ['label' => $addonModel['title'],'url' => ['binding','addon' => $addon]];
-echo $this->render($view,$params);
+?>
+<div class="col-sm-2" style="width: 13%; height: 100%;background:#fff;">
+    <?= AddonLeftWidget::widget(); ?>
+</div>
+<div class="col-sm-10" style="width: 87%;padding-left: 0px;padding-right: 0px;">
+    <?= $this->render($view,$params); ?>
+</div>

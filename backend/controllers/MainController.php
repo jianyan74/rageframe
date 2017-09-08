@@ -24,7 +24,7 @@ class MainController extends MController
             ->asArray()
             ->one();
 
-        return $this->renderPartial('index',[
+        return $this->renderPartial('@basics/backend/views/main/index',[
             'user'  => $user,
         ]);
     }

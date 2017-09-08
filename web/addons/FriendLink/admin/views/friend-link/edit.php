@@ -1,14 +1,13 @@
 ﻿<?php
 use yii\widgets\ActiveForm;
 use common\helpers\AddonsHelp;
-use addons\FriendLink\common\models\FriendLink;
 
 $this->title = $model->isNewRecord ? '创建' : '编辑';
 $this->params['breadcrumbs'][] = ['label' => '链接管理', 'url'=> AddonsHelp::regroupUrl(['index'])];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="wrapper wrapper-content animated fadeInRight">
+<div class="wrapper animated fadeInRight">
     <div class="row">
         <div class="col-sm-12">
             <div class="ibox float-e-margins">

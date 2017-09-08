@@ -70,8 +70,8 @@ class AdvLocation extends ActiveRecord
     {
         return $this->hasOne(Adv::className(),['location_id'=>'id'])
             ->where(['status'=> Adv::STATUS_ON])
-            ->andFilterWhere(['>=','start_time',time()])
-            ->andFilterWhere(['<=','end_time',time()]);
+            ->andFilterWhere(['<=','start_time',time()])
+            ->andFilterWhere(['>=','end_time',time()]);
     }
 
     /**
@@ -80,7 +80,10 @@ class AdvLocation extends ActiveRecord
      */
     public static function getAdvLocationList()
     {
-        $advLocation = AdvLocation::find()->orderBy('sort')->all();
+        $advLocation = AdvLocation::find()
+            ->orderBy('sort')
+            ->all();
+
         return ArrayHelper::map($advLocation,'id','title');
     }
 

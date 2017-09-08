@@ -13,14 +13,14 @@ use addons\Adv\common\models\AdvLocation;
 class Setting extends Addons
 {
     /**
-     * @param $addons 模块名字
-     * @param null $config 参数
+     * @param $addons -模块名字
+     * @param null $config -参数
      * @return string
      */
     public function actionHook($addons, $config = null)
     {
         return $this->rederHook($addons,[
-            'model' => AdvLocation::find()->with('adv')->where(['name' => $config])->all()
+            'models' => AdvLocation::find()->with('adv')->where(['name' => $config])->all()
         ]);
     }
 }

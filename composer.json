@@ -35,6 +35,7 @@
         "kucha/ueditor": "*",
         "linslin/yii2-curl": "*",
         "overtrue/wechat": "~3.1",
+        "overtrue/pinyin": "~3.0",
         "maxwen/yii2-easy-wechat": "^1.0",
         "crazyfd/yii2-qiniu": "dev-master",
         "denisogr/yii2-cronjobs": "dev-master",

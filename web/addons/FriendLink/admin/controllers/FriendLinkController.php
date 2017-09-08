@@ -61,7 +61,7 @@ class FriendLinkController extends Addons
         }
 
         return $this->renderAddon('edit', [
-            'model'    => $model,
+            'model'     => $model,
             'linkType'  => FriendLink::$type,
         ]);
     }

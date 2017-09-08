@@ -69,11 +69,6 @@ return [
             'itemChildTable'    => '{{%sys_auth_item_child}}',
             'ruleTable'         => '{{%sys_auth_rule}}',
         ],
-
-        /**-------------------后台操作日志-------------------**/
-        'actionlog' => [
-            'class' => 'jianyan\basics\common\models\sys\ActionLog',
-        ],
     ],
     'params' => $params,
 ];
