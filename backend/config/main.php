@@ -35,6 +35,18 @@ return [
         'request'=>[
             'csrfParam'=>'_csrf_backend'
         ],
+        /**----------------------视图替换--------------------**/
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    //表示@backend/views优先于@basics/backend/views
+                    '@basics/backend/views' => '@backend/views',
+                    '@basics/backend/modules/sys/views' => '@backend/modules/sys/views',
+                    '@basics/backend/modules/wechat/views' => '@backend/modules/wechat/views'
+                ],
+            ],
+        ],
+
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

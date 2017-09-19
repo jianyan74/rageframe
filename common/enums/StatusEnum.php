@@ -1,5 +1,4 @@
 <?php
-
 namespace common\enums;
 
 /**
@@ -16,7 +15,7 @@ class StatusEnum
     /**
      * @var array
      */
-    public static $list = [
+    public static $listExplain = [
         self::ENABLED => '显示',
         self::DISABLED => '隐藏',
         self::DELETE  => '删除',
@@ -26,7 +25,7 @@ class StatusEnum
      * 根据状态返回按钮
      * @var array
      */
-    public static $butList = [
+    public static $listBut = [
         self::DISABLED => '<span class="btn btn-primary btn-sm" onclick="status(this)">启用</span>',
         self::ENABLED => '<span class="btn btn-default btn-sm" onclick="status(this)">禁用</span>',
     ];

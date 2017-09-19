@@ -1,12 +1,22 @@
 <?php
-
 namespace api\modules\v1\controllers;
 
 use api\controllers\AController;
+
 /**
- * Default controller for the `v1` module
+ * Class DefaultController
+ * @package api\modules\v1\controllers
  */
 class DefaultController extends AController
 {
-    public $modelClass = 'backend\models\ActionLog';
+    public $modelClass = 'common\models\member\Member';
+
+    /**
+     * 测试
+     * @return null|\yii\web\IdentityInterface
+     */
+    public function actionSearch()
+    {
+        return '测试查询';
+    }
 }

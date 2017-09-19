@@ -6,6 +6,11 @@ use \PHPExcel_Reader_Excel2007;
 use \PHPExcel_Reader_Excel5;
 use \PHPExcel_IOFactory;
 
+/**
+ * 表格导出辅助类
+ * Class ExcelHelper
+ * @package common\helpers
+ */
 class ExcelHelper
 {
     /**

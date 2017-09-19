@@ -2,56 +2,49 @@
 namespace api\controllers;
 
 use Yii;
-use yii\filters\AccessControl;
-use yii\web\Controller;
-use common\models\LoginForm;
-use yii\filters\VerbFilter;
+use yii\web\NotFoundHttpException;
+use yii\web\TooManyRequestsHttpException;
+use api\models\LoginForm;
+use common\models\base\AccessToken;
 
 /**
- * Site controller
+ * 默认登录控制器
+ * Class SiteController
+ * @package api\controllers
  */
-class SiteController extends Controller
+class SiteController extends AController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['login', 'error'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['logout', 'index'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
+    public $modelClass = '';
 
     /**
-     * @inheritdoc
+     * 登录根据用户信息返回access_token
+     * @param $group
+     * @return bool|mixed|string
+     * @throws NotFoundHttpException
+     * @throws TooManyRequestsHttpException
      */
-    public function actions()
+    public function actionLogin($group = 1)
     {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-        ];
+        if(Yii::$app->request->isPost)
+        {
+            $model = new LoginForm();
+            $model->attributes = Yii::$app->request->post();
+            if($model->validate())
+            {
+                $user = $model->getUser();
+                return [
+                    'accessToken' => AccessToken::setMemberInfo($group, $user['id'])
+                ];
+            }
+            else
+            {
+                //返回数据验证失败
+                return $this->setResponse($this->analysisError($model->getFirstErrors()));
+            }
+        }
+        else
+        {
+            throw new NotFoundHttpException('请求出错!');
+        }
     }
-
-
 }

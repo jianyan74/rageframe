@@ -11,7 +11,7 @@ use linslin\yii2\curl\Curl;
 class ApiHelper
 {
     /**
-     * 新浪IP接口
+     * 新浪IP转地址接口
      */
     const IP_SINA = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=';
 
@@ -31,7 +31,7 @@ class ApiHelper
             return false;
         }
 
-        $jsonMatches = array();
+        $jsonMatches = [];
         preg_match('#\{.+?\}#', $response, $jsonMatches);
         if(!isset($jsonMatches[0]))
         {

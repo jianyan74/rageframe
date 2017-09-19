@@ -1,6 +1,7 @@
 <?php
-
 namespace api\modules\v1;
+
+use Yii;
 
 /**
  * v1 module definition class
@@ -19,6 +20,10 @@ class index extends \yii\base\Module
     {
         parent::init();
 
+        parent::init();
+        # session 设置无效
+        Yii::$app->user->enableSession = false;
+        Yii::$app->user->loginUrl = null;
         // custom initialization code goes here
     }
 }

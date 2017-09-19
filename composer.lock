@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7dd06e8e6d775e6fc918af881b238b65",
+    "content-hash": "432dd1fce96ea7d6477a68ac123b28e2",
     "packages": [
         {
             "name": "2amigos/yii2-date-time-picker-widget",
@@ -208,16 +208,16 @@
         },
         {
             "name": "bower-asset/jquery.inputmask",
-            "version": "3.3.7",
+            "version": "3.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RobinHerbots/Inputmask.git",
-                "reference": "9835731cb78cac749734d94a1cb5bd70da4d3b10"
+                "reference": "791d84990c4a98df1597e9d155be53a3725805dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/9835731cb78cac749734d94a1cb5bd70da4d3b10",
-                "reference": "9835731cb78cac749734d94a1cb5bd70da4d3b10",
+                "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/791d84990c4a98df1597e9d155be53a3725805dd",
+                "reference": "791d84990c4a98df1597e9d155be53a3725805dd",
                 "shasum": ""
             },
             "require": {
@@ -1103,23 +1103,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jianyan74/rageframe-basics.git",
-                "reference": "253172857e17b894a62d611b449abdae45a00208"
+                "reference": "56943b1f5d25d284dcaef00d0a4ff57019b49181"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jianyan74/rageframe-basics/253172857e17b894a62d611b449abdae45a00208.zip",
-                "reference": "253172857e17b894a62d611b449abdae45a00208",
+                "url": "https://files.phpcomposer.com/files/jianyan74/rageframe-basics/56943b1f5d25d284dcaef00d0a4ff57019b49181.zip",
+                "reference": "56943b1f5d25d284dcaef00d0a4ff57019b49181",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.5.9",
                 "yiisoft/yii2": ">=2.0.6"
-            },
-            "require-dev": {
-                "yiisoft/yii2-codeception": "*",
-                "yiisoft/yii2-debug": "*",
-                "yiisoft/yii2-faker": "*",
-                "yiisoft/yii2-gii": "*"
             },
             "type": "project",
             "autoload": {
@@ -1144,7 +1138,7 @@
                 "rageframe",
                 "yii2"
             ],
-            "time": "2017-08-17T09:29:35+00:00"
+            "time": "2017-09-08T04:05:48+00:00"
         },
         {
             "name": "kartik-v/yii2-date-range",
@@ -1311,12 +1305,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-datepicker.git",
-                "reference": "9110ecce9deb59dc116fe6c3dd6df5d7eb439a3c"
+                "reference": "eb7e829b8a0b341dc22ef2dc28d1bb4ff08e3550"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/kartik-v/yii2-widget-datepicker/9110ecce9deb59dc116fe6c3dd6df5d7eb439a3c.zip",
-                "reference": "9110ecce9deb59dc116fe6c3dd6df5d7eb439a3c",
+                "url": "https://files.phpcomposer.com/files/kartik-v/yii2-widget-datepicker/eb7e829b8a0b341dc22ef2dc28d1bb4ff08e3550.zip",
+                "reference": "eb7e829b8a0b341dc22ef2dc28d1bb4ff08e3550",
                 "shasum": ""
             },
             "require": {
@@ -1357,7 +1351,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-04-01T16:03:50+00:00"
+            "time": "2017-09-06T06:18:08+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-select2",
@@ -1365,12 +1359,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-select2.git",
-                "reference": "a129c6663078fe0ad14cde2a5d0afd071c7608e9"
+                "reference": "2c3f47527c783d5d03e778b40d0f1a0f28f6e541"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/kartik-v/yii2-widget-select2/a129c6663078fe0ad14cde2a5d0afd071c7608e9.zip",
-                "reference": "a129c6663078fe0ad14cde2a5d0afd071c7608e9",
+                "url": "https://files.phpcomposer.com/files/kartik-v/yii2-widget-select2/2c3f47527c783d5d03e778b40d0f1a0f28f6e541.zip",
+                "reference": "2c3f47527c783d5d03e778b40d0f1a0f28f6e541",
                 "shasum": ""
             },
             "require": {
@@ -1410,7 +1404,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-08-07T18:12:36+00:00"
+            "time": "2017-09-04T15:30:52+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-timepicker",
@@ -2016,28 +2010,27 @@
         },
         {
             "name": "overtrue/wechat",
-            "version": "3.3.13",
+            "version": "3.3.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/wechat.git",
-                "reference": "c0b35e3b56096d0a77c13f9394d4de945a7ea944"
+                "reference": "8a62343bfdfc332e01b07c0be439f2532c827119"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/overtrue/wechat/c0b35e3b56096d0a77c13f9394d4de945a7ea944.zip",
-                "reference": "c0b35e3b56096d0a77c13f9394d4de945a7ea944",
+                "url": "https://files.phpcomposer.com/files/overtrue/wechat/8a62343bfdfc332e01b07c0be439f2532c827119.zip",
+                "reference": "8a62343bfdfc332e01b07c0be439f2532c827119",
                 "shasum": ""
             },
             "require": {
-                "doctrine/cache": "~1.6.2",
+                "doctrine/cache": "~1.4",
                 "ext-openssl": "*",
-                "ext-simplexml": "*",
-                "guzzlehttp/guzzle": "^6.2",
+                "guzzlehttp/guzzle": "~6.2",
                 "monolog/monolog": "^1.17",
-                "overtrue/socialite": "^1.0.25",
+                "overtrue/socialite": ">=1.0.25",
                 "php": ">=5.5.0",
-                "pimple/pimple": "^3.0",
-                "symfony/http-foundation": "^2.6|^3.0",
+                "pimple/pimple": "~3.0",
+                "symfony/http-foundation": "~2.6|~2.7|~2.8|~3.0",
                 "symfony/psr-http-message-bridge": "~0.3|^1.0"
             },
             "require-dev": {
@@ -2071,7 +2064,7 @@
                 "weixin",
                 "weixin-sdk"
             ],
-            "time": "2017-08-13T11:54:16+00:00"
+            "time": "2017-09-13T03:56:31+00:00"
         },
         {
             "name": "phpoffice/phpexcel",
@@ -2388,7 +2381,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.26",
+            "version": "v2.8.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -3255,16 +3248,16 @@
         },
         {
             "name": "yiisoft/yii2-debug",
-            "version": "2.0.9",
+            "version": "2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-debug.git",
-                "reference": "647be6c9d48dc2f3c2e2f33b9eba0a4ca78abde9"
+                "reference": "372fbf0d47303b7d68275d6720935e5116915418"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/647be6c9d48dc2f3c2e2f33b9eba0a4ca78abde9",
-                "reference": "647be6c9d48dc2f3c2e2f33b9eba0a4ca78abde9",
+                "url": "https://files.phpcomposer.com/files/yiisoft/yii2-debug/372fbf0d47303b7d68275d6720935e5116915418.zip",
+                "reference": "372fbf0d47303b7d68275d6720935e5116915418",
                 "shasum": ""
             },
             "require": {
@@ -3298,7 +3291,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2017-02-21T10:30:50+00:00"
+            "time": "2017-09-05T23:21:05+00:00"
         },
         {
             "name": "yiisoft/yii2-faker",

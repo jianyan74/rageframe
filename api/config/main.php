@@ -16,13 +16,16 @@ return [
         'v1' => [
             'class' => 'api\modules\v1\index',
         ],
+        //例如版本2
+        //'v2' => [
+        //    'class' => 'api\modules\v2\index',
+        //],
     ],
     'components' => [
         'user' => [
-            'identityClass' => 'common\models\member\Member',
+            'identityClass' => 'common\models\base\AccessToken',
             'enableAutoLogin' => true,
         ],
-
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -32,33 +35,45 @@ return [
                 ],
             ],
         ],
-
         'urlManager' => [
             'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' 		=> true,
             'enableStrictParsing' 	=> true,
             'showScriptName' 		=> false,
             'rules' => [
-                #################
-                ## default Api ##
-                #################
-                # http://rageframe/api/v1/default
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['v1/default'],
+                    'controller' => [
+                        /**
+                         * 默认登录测试控制器
+                         * http://当前域名/api/site/login?group=1
+                         */
+                        'site',
+                        /*------------业务相关------------*/
+                        'v1/default',
+
+                    ],
                     'pluralize' => false,
+                    'extraPatterns' => [
+                        'POST login' => 'login',
+                        'GET search' => 'search',
+                    ],
                 ],
             ]
         ],
 
-        'request' => [
-            'class' => '\yii\web\Request',
-            'enableCookieValidation' => false,
-            'parsers' => [
-                'application/json' => 'yii\web\JsonParser',
-            ],
+        'response' => [
+            'class' => 'yii\web\Response',
+            'on beforeSend' => function ($event) {
+                $response = $event->sender;
+                $response->data = [
+                    'code' => $response->getStatusCode(),
+                    'message' => $response->statusText,
+                    'data' => $response->data,
+                ];
+                $response->format = yii\web\Response::FORMAT_JSON;
+            },
         ],
-
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],

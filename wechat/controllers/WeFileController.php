@@ -2,7 +2,6 @@
 namespace wechat\controllers;
 
 use Yii;
-use yii\web\Response;
 use common\helpers\StringHelper;
 use common\helpers\FileHelper;
 
@@ -13,11 +12,6 @@ use common\helpers\FileHelper;
  */
 class WeFileController extends WController
 {
-    public function init()
-    {
-        Yii::$app->response->format = Response::FORMAT_JSON;
-    }
-
     /**
      * 下载微信图片
      * @param $media_id
@@ -25,6 +19,7 @@ class WeFileController extends WController
      */
     public function actionDownloadImage()
     {
+        $result = $this->setResult();
         $media_id = Yii::$app->request->post('media_id');
         $temporary = $this->_app->material_temporary;
         //获取图片信息
@@ -41,19 +36,18 @@ class WeFileController extends WController
         //移动文件
         if (!(file_put_contents($file_path_full, $content) && file_exists($file_path_full))) //移动失败
         {
-            $this->result['data'] = '上传失败';
-            return $this->result;
+            $result->message = '上传失败';
         }
         else //移动成功
         {
-            $this->result = [
-                'code' => 0,
-                'message' => '上传成功',
-                'data' => Yii::getAlias("@attachurl/").$file_path.$file_new_name,
+            $result->code = 200;
+            $result->message = '上传成功';
+            $result->data = [
+                'path' => Yii::getAlias("@attachurl/").$file_path.$file_new_name
             ];
         }
 
-        return $this->result;
+        return $this->getResult();
     }
 
     /**

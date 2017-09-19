@@ -9,6 +9,12 @@ namespace common\helpers;
 class ResultDataHelper
 {
     /**
+     * 状态码
+     * @var
+     */
+    public $code = 404;
+
+    /**
      * 返回的数据格式
      * @var string
      */
@@ -19,10 +25,4 @@ class ResultDataHelper
      * @var array|object|string
      */
     public $data = [];
-
-    /**
-     * 状态码
-     * @var
-     */
-    public $code = 404;
 }
