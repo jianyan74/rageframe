@@ -1,11 +1,15 @@
 <?php
-
 namespace frontend\widgets;
 
 use yii;
 use yii\base\Widget;
-use backend\models\DeskMenu;
+use jianyan\basics\common\models\sys\DeskMenu;
 
+/**
+ * 前台导航widget
+ * Class MenuWidget
+ * @package frontend\widgets
+ */
 class MenuWidget extends Widget
 {
     public function run()
@@ -15,6 +19,7 @@ class MenuWidget extends Widget
             ->orderBy('sort ASC')
             ->asArray()
             ->all();
+
         //控制器
         $controller = Yii::$app->controller->id;
 
@@ -35,5 +40,3 @@ class MenuWidget extends Widget
         ]);
     }
 }
-
-?>

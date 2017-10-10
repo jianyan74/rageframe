@@ -3,7 +3,7 @@
 //表前缀
 $table_prefixion = "yl_addon_sys_";
 //列表
-$table_name = ['adv','location'];
+$table_name = ['adv','adv_location'];
 
 $sql = "";
 foreach ($table_name as $value)

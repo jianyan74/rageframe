@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "432dd1fce96ea7d6477a68ac123b28e2",
+    "content-hash": "485c8b26acabc34a49441e9b68b40c20",
     "packages": [
         {
             "name": "2amigos/yii2-date-time-picker-widget",
@@ -125,6 +125,47 @@
             ],
             "abandoned": "2amigos/qrcode-library",
             "time": "2017-06-21T10:56:44+00:00"
+        },
+        {
+            "name": "aliyuncs/oss-sdk-php",
+            "version": "v2.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aliyun/aliyun-oss-php-sdk.git",
+                "reference": "0b9b85b6c5c38cfc4ef3b0205a5a62d1e36acf2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/aliyun/aliyun-oss-php-sdk/0b9b85b6c5c38cfc4ef3b0205a5a62d1e36acf2e.zip",
+                "reference": "0b9b85b6c5c38cfc4ef3b0205a5a62d1e36acf2e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "OSS\\": "src/OSS"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aliyuncs",
+                    "homepage": "http://www.aliyun.com"
+                }
+            ],
+            "description": "Aliyun OSS SDK for PHP",
+            "homepage": "http://www.aliyun.com/product/oss/",
+            "time": "2017-04-25T09:15:12+00:00"
         },
         {
             "name": "bower-asset/bootstrap",
@@ -328,16 +369,16 @@
         },
         {
             "name": "bower-asset/yii2-pjax",
-            "version": "v2.0.6",
+            "version": "v2.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/jquery-pjax.git",
-                "reference": "60728da6ade5879e807a49ce59ef9a72039b8978"
+                "reference": "885fc8c2d36c93a801b6af0ee8ad55d79df97cb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/60728da6ade5879e807a49ce59ef9a72039b8978",
-                "reference": "60728da6ade5879e807a49ce59ef9a72039b8978",
+                "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/885fc8c2d36c93a801b6af0ee8ad55d79df97cb1",
+                "reference": "885fc8c2d36c93a801b6af0ee8ad55d79df97cb1",
                 "shasum": ""
             },
             "require": {
@@ -1103,12 +1144,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jianyan74/rageframe-basics.git",
-                "reference": "56943b1f5d25d284dcaef00d0a4ff57019b49181"
+                "reference": "f5e98af79d9c6c2baa85c38f795b26c1a39db76b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jianyan74/rageframe-basics/56943b1f5d25d284dcaef00d0a4ff57019b49181.zip",
-                "reference": "56943b1f5d25d284dcaef00d0a4ff57019b49181",
+                "url": "https://files.phpcomposer.com/files/jianyan74/rageframe-basics/f5e98af79d9c6c2baa85c38f795b26c1a39db76b.zip",
+                "reference": "f5e98af79d9c6c2baa85c38f795b26c1a39db76b",
                 "shasum": ""
             },
             "require": {
@@ -1138,7 +1179,7 @@
                 "rageframe",
                 "yii2"
             ],
-            "time": "2017-09-08T04:05:48+00:00"
+            "time": "2017-09-21T11:29:44+00:00"
         },
         {
             "name": "kartik-v/yii2-date-range",
@@ -1546,16 +1587,16 @@
         },
         {
             "name": "lokielse/omnipay-alipay",
-            "version": "v2.3.4",
+            "version": "v2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lokielse/omnipay-alipay.git",
-                "reference": "36e4ba0c5bee2d92bde96f55d5bce532ee17f25b"
+                "reference": "b77ffecbfdacc221b4e18aa826aa0514f9f500aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/lokielse/omnipay-alipay/36e4ba0c5bee2d92bde96f55d5bce532ee17f25b.zip",
-                "reference": "36e4ba0c5bee2d92bde96f55d5bce532ee17f25b",
+                "url": "https://files.phpcomposer.com/files/lokielse/omnipay-alipay/b77ffecbfdacc221b4e18aa826aa0514f9f500aa.zip",
+                "reference": "b77ffecbfdacc221b4e18aa826aa0514f9f500aa",
                 "shasum": ""
             },
             "require": {
@@ -1595,7 +1636,7 @@
                 "payment",
                 "purchase"
             ],
-            "time": "2017-05-10T08:19:53+00:00"
+            "time": "2017-09-28T13:15:43+00:00"
         },
         {
             "name": "lokielse/omnipay-unionpay",
@@ -1650,16 +1691,16 @@
         },
         {
             "name": "lokielse/omnipay-wechatpay",
-            "version": "v1.0.21",
+            "version": "v1.0.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lokielse/omnipay-wechatpay.git",
-                "reference": "7b298db87602420c3343a630c950273f60573356"
+                "reference": "025ef36d26048c78221a6d852d9156649a5569a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/lokielse/omnipay-wechatpay/7b298db87602420c3343a630c950273f60573356.zip",
-                "reference": "7b298db87602420c3343a630c950273f60573356",
+                "url": "https://files.phpcomposer.com/files/lokielse/omnipay-wechatpay/025ef36d26048c78221a6d852d9156649a5569a3.zip",
+                "reference": "025ef36d26048c78221a6d852d9156649a5569a3",
                 "shasum": ""
             },
             "require": {
@@ -1698,7 +1739,7 @@
                 "wechat",
                 "微信支付"
             ],
-            "time": "2017-03-30T18:54:01+00:00"
+            "time": "2017-09-28T13:25:12+00:00"
         },
         {
             "name": "maxwen/yii2-easy-wechat",
@@ -2010,16 +2051,16 @@
         },
         {
             "name": "overtrue/wechat",
-            "version": "3.3.15",
+            "version": "3.3.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/wechat.git",
-                "reference": "8a62343bfdfc332e01b07c0be439f2532c827119"
+                "reference": "73bec904e511b2f588f6e559db2d981b6b52ba98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/overtrue/wechat/8a62343bfdfc332e01b07c0be439f2532c827119.zip",
-                "reference": "8a62343bfdfc332e01b07c0be439f2532c827119",
+                "url": "https://files.phpcomposer.com/files/overtrue/wechat/73bec904e511b2f588f6e559db2d981b6b52ba98.zip",
+                "reference": "73bec904e511b2f588f6e559db2d981b6b52ba98",
                 "shasum": ""
             },
             "require": {
@@ -2064,7 +2105,7 @@
                 "weixin",
                 "weixin-sdk"
             ],
-            "time": "2017-09-13T03:56:31+00:00"
+            "time": "2017-09-20T09:22:38+00:00"
         },
         {
             "name": "phpoffice/phpexcel",
@@ -2552,6 +2593,55 @@
             "time": "2017-06-14T15:44:48+00:00"
         },
         {
+            "name": "symfony/process",
+            "version": "v3.3.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "07432804942b9f6dd7b7377faf9920af5f95d70a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/symfony/process/07432804942b9f6dd7b7377faf9920af5f95d70a.zip",
+                "reference": "07432804942b9f6dd7b7377faf9920af5f95d70a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "https://symfony.com",
+            "time": "2017-07-13T13:05:09+00:00"
+        },
+        {
             "name": "symfony/psr-http-message-bridge",
             "version": "v1.0.0",
             "source": {
@@ -2610,6 +2700,43 @@
                 "psr-7"
             ],
             "time": "2016-09-14T18:37:20+00:00"
+        },
+        {
+            "name": "xj/yii2-oauth",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xjflyttp/yii2-oauth.git",
+                "reference": "8996cace4818b9308a1895e6faaa7fdf3b98904e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/xjflyttp/yii2-oauth/8996cace4818b9308a1895e6faaa7fdf3b98904e.zip",
+                "reference": "8996cace4818b9308a1895e6faaa7fdf3b98904e",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.0",
+                "yiisoft/yii2-authclient": "~2.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "xj\\oauth\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "xjflyttp",
+                    "email": "xjflyttp@gmail.com"
+                }
+            ],
+            "description": "yii2-oauth",
+            "time": "2016-09-07T10:49:02+00:00"
         },
         {
             "name": "yidashi/yii2-bootstrap-markdown",
@@ -2984,6 +3111,83 @@
                 "yii2"
             ],
             "time": "2016-09-04T15:14:08+00:00"
+        },
+        {
+            "name": "yiisoft/yii2-queue",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-queue.git",
+                "reference": "30647cc5710480b7ef600c33d1ae07f657daaaa3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/yiisoft/yii2-queue/30647cc5710480b7ef600c33d1ae07f657daaaa3.zip",
+                "reference": "30647cc5710480b7ef600c33d1ae07f657daaaa3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0",
+                "symfony/process": "*",
+                "yiisoft/yii2": "~2.0.10"
+            },
+            "require-dev": {
+                "jeremeamia/superclosure": "*",
+                "pda/pheanstalk": "*",
+                "php-amqplib/php-amqplib": "*",
+                "phpunit/phpunit": "~4.4",
+                "yiisoft/yii2-debug": "*",
+                "yiisoft/yii2-gii": "*",
+                "yiisoft/yii2-redis": "*"
+            },
+            "suggest": {
+                "ext-gearman": "Need for Gearman queue.",
+                "ext-pcntl": "Need for process signals.",
+                "pda/pheanstalk": "Need for Beanstalk queue.",
+                "php-amqplib/php-amqplib": "Need for AMQP queue.",
+                "yiisoft/yii2-redis": "Need for Redis queue."
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\queue\\": "src",
+                    "yii\\queue\\amqp\\": "src/drivers/amqp",
+                    "yii\\queue\\beanstalk\\": "src/drivers/beanstalk",
+                    "yii\\queue\\db\\": "src/drivers/db",
+                    "yii\\queue\\file\\": "src/drivers/file",
+                    "yii\\queue\\gearman\\": "src/drivers/gearman",
+                    "yii\\queue\\redis\\": "src/drivers/redis",
+                    "yii\\queue\\sync\\": "src/drivers/sync"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Zhuravlev",
+                    "email": "zhuravljov@gmail.com"
+                }
+            ],
+            "description": "Yii2 Queue Extension which supported DB, Redis, RabbitMQ, Beanstalk and Gearman",
+            "keywords": [
+                "async",
+                "beanstalk",
+                "db",
+                "gearman",
+                "gii",
+                "queue",
+                "rabbitmq",
+                "redis",
+                "yii"
+            ],
+            "time": "2017-07-15T15:53:28+00:00"
         },
         {
             "name": "yiisoft/yii2-redis",

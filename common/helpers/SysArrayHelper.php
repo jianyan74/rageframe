@@ -10,13 +10,13 @@ class SysArrayHelper
 {
     /**
      * 递归数组
-     * @param $items
+     * @param array $items
      * @param string $id
      * @param int $pid
      * @param string $pidName
      * @return array
      */
-    public static function itemsMerge($items,$id="id",$pid = 0,$pidName='pid')
+    public static function itemsMerge(array $items, $id = "id", $pid = 0, $pidName = 'pid')
     {
         $arr = array();
         foreach($items as $v)
@@ -27,16 +27,17 @@ class SysArrayHelper
                 $arr[] = $v;
             }
         }
+
         return $arr;
     }
 
     /**
      * 传递一个子分类ID返回所有的父级分类
-     * @param $cate
-     * @param int $pid
+     * @param array $items
+     * @param $id
      * @return array
      */
-    public static function getParents($items,$id)
+    public static function getParents(array $items, $id)
     {
         $arr = array();
         foreach ($items as $v)
@@ -56,7 +57,7 @@ class SysArrayHelper
      * @param int $pid
      * @return array
      */
-    public static function getChildsId($cate,$pid)
+    public static function getChildsId($cate, $pid)
     {
         $arr = array();
         foreach ($cate as $v)
@@ -106,8 +107,8 @@ class SysArrayHelper
         }
         else
         {
-            $keysvalue = array();
-            $new_array = array();
+            $keysvalue = [];
+            $new_array = [];
 
             foreach ($arr as $k => $v)
             {

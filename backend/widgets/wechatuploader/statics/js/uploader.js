@@ -101,17 +101,20 @@ $(function() {
 
             //当文件上传成功时触发
             uploader.on('uploadSuccess', function(file, data) {
-                if (data.state !== 'success') {
+                if (data.code != 200) {
                     var progressObj = parentObj.children(".upload-progress");
-                    progressObj.children(".txt").html(data.msg);
-                }
-                if (data.state == 'success') {
+                    progressObj.children(".txt").html(data.message);
+                    alert(data.message);
+                }else{
+                    data = data.data;
                     //如果是单文件上传，则赋值相应的表单
-                    addImage(parentObj, data.url, data.url, p.name,p.multiple);
-					$(document).trigger('setUploadedImg', [p.name, data.url]);
+                    addImage(parentObj, data.urlPath, data.urlPath, p.name,p.multiple);
                     var progressObj = parentObj.children(".upload-progress");
                     progressObj.children(".txt").html("上传成功");
+                    //vue绑定
+                    $(document).trigger('setUploadedImg', [p.name, data.urlPath]);
                 }
+
                 uploader.removeFile(file); //从队列中移除
             });
 

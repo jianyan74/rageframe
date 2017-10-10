@@ -9,6 +9,38 @@ namespace common\helpers;
 class StringHelper
 {
     /**
+     * XML 字符串载入对象中
+     * @param string $string 必需。规定要使用的 XML 字符串
+     * @param string $class_name 可选。规定新对象的 class
+     * @param int $options 可选。规定附加的 Libxml 参数
+     * @param string $ns
+     * @param bool $is_prefix
+     * @return bool|\SimpleXMLElement
+     */
+    public static function simplexmlLoadString($string, $class_name = 'SimpleXMLElement', $options = 0, $ns = '', $is_prefix = false)
+    {
+        libxml_disable_entity_loader(true);
+        if (preg_match('/(\<\!DOCTYPE|\<\!ENTITY)/i', $string))
+        {
+            return false;
+        }
+
+        return simplexml_load_string($string, $class_name, $options, $ns, $is_prefix);
+    }
+
+    /**
+     * 字符串提取汉字
+     * @param $string
+     * @return mixed
+     */
+    public static function strToChineseCharacters($string)
+    {
+        preg_match_all("/[\x{4e00}-\x{9fa5}]+/u", $string, $chinese);
+
+        return $chinese;
+    }
+
+    /**
      * 返回字符串在另一个字符串中第一次出现的位置
      * @param $string
      * @param $find
@@ -69,7 +101,7 @@ class StringHelper
         $result = '';
         foreach($array as $value)
         {
-            $result.= ucfirst($value);
+            $result .= ucfirst($value);
         }
 
         return $result;
@@ -101,6 +133,7 @@ class StringHelper
         {
             $hash .= $seed{mt_rand(0, $max)};
         }
+
         return $hash;
     }
 

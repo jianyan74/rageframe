@@ -88,10 +88,10 @@ class ActiveController extends \yii\rest\ActiveController
      * 返回模型验证失败
      * @param $message
      */
-    public function setResponse($message)
+    public function setResponse($message ,$code = 422)
     {
         $this->response = Yii::$app->getResponse();
-        $this->response->setStatusCode(422, $message);
+        $this->response->setStatusCode($code, $message);
     }
 
     /**

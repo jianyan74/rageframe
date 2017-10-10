@@ -18,7 +18,14 @@ class DebrisAddon
      * @var bool
      */
     public $hook = true;
-    
+
+    /**
+     * 小程序
+     * [true,false] 开启|关闭
+     * @var bool
+     */
+    public $wxappSupport = false;
+
     /**
      * 类别
      * @var string 
@@ -48,6 +55,7 @@ class DebrisAddon
     public $info = [
         'name' => 'Debris',
         'title' => '碎片管理',
+        'brief_introduction' => '碎片管理',
         'description' => '碎片管理,网站内有些碎片信息可以进行统一管理如图片、单文章、文字。',
         'author' => '简言',
         'version' => '1.0'

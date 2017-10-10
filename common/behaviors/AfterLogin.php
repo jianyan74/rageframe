@@ -36,7 +36,6 @@ class AfterLogin extends Behavior
         $model->visit_count += 1;;
         $model->last_time = time();
         $model->last_ip = Yii::$app->getRequest()->getUserIP();
-
-        return $model->save() ? true : false;
+        return $model->save();
     }
 }

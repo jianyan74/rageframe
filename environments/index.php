@@ -33,12 +33,12 @@ return [
         'path' => 'dev',
         'setWritable' => [
             'backend/runtime',
-            'web/backend/assets',
-            'frontend/runtime',
-            'web/assets',
             'api/runtime',
-            'web/api/assets',
+            'frontend/runtime',
             'wechat/runtime',
+            'web/assets',
+            'web/api/assets',
+            'web/backend/assets',
             'web/wechat/assets',
         ],
         'setExecutable' => [
@@ -56,12 +56,12 @@ return [
         'path' => 'prod',
         'setWritable' => [
             'backend/runtime',
-            'web/backend/assets',
-            'frontend/runtime',
-            'web/assets',
             'api/runtime',
-            'web/api/assets',
+            'frontend/runtime',
             'wechat/runtime',
+            'web/assets',
+            'web/api/assets',
+            'web/backend/assets',
             'web/wechat/assets',
         ],
         'setExecutable' => [

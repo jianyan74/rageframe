@@ -2,9 +2,9 @@
 namespace api\controllers;
 
 use Yii;
-use common\controllers\ActiveController;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
+use common\controllers\ActiveController;
 
 /**
  * 基类控制器
@@ -99,8 +99,13 @@ class AController extends ActiveController
      */
     protected function findModel($id)
     {
+        if (empty($id))
+        {
+            throw new NotFoundHttpException('请求的页面不存在.');
+        }
+
         $modelClass = $this->modelClass;
-        if (($model = $modelClass::findOne($id)) !== null)
+        if (empty(($model = $modelClass::findOne($id))))
         {
             return $model->loadDefaultValues();
         }

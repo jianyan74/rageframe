@@ -13,6 +13,11 @@ use common\helpers\FileHelper;
 class WeFileController extends WController
 {
     /**
+     * 图片配置名称
+     */
+    const IMAGES_CONFIG = 'imagesUpload';
+
+    /**
      * 下载微信图片
      * @param $media_id
      * @return array
@@ -20,18 +25,20 @@ class WeFileController extends WController
     public function actionDownloadImage()
     {
         $result = $this->setResult();
+        $uploadConfig = Yii::$app->params[self::IMAGES_CONFIG];
+
         $media_id = Yii::$app->request->post('media_id');
         $temporary = $this->_app->material_temporary;
         //获取图片信息
         $content = $temporary->getStream($media_id);
         //图片后缀
-        $file_exc   = ".jpg";
+        $file_exc = ".jpg";
         //图片路径
-        $file_path      = $this->getImgPath();
+        $file_path = $this->getPath(self::IMAGES_CONFIG);
         //保存的图片名
-        $file_new_name  = Yii::$app->params['imagesUpload']['imgPrefix'].StringHelper::random(10).$file_exc;
+        $file_new_name  = $uploadConfig['prefix'] . StringHelper::random(10) . $file_exc;
         //完整路径
-        $file_path_full = Yii::getAlias("@attachment/").$file_path.$file_new_name;
+        $file_path_full = Yii::getAlias("@attachment/") . $file_path.$file_new_name;
 
         //移动文件
         if (!(file_put_contents($file_path_full, $content) && file_exists($file_path_full))) //移动失败
@@ -51,18 +58,20 @@ class WeFileController extends WController
     }
 
     /**
-     * 获取图片路径
-     * @param null $thumb
+     * 获取文件路径
+     * @param $type
      * @return string
      */
-    public function getImgPath($thumb = null)
+    public function getPath($type)
     {
-        $file_path   = empty($thumb) ? Yii::$app->params['imagesUpload']['imgPath'] : Yii::$app->params['imagesUpload']['imgThumbPath'];//图片路径
-        $img_sub_name  = Yii::$app->params['imagesUpload']['imgSubName'];//图片子路径
-        $path    = $file_path.date($img_sub_name,time())."/";
-        $addPath = Yii::getAlias("@attachment/").$path;
-        FileHelper::mkdirs($addPath);//创建路径
-
+        //文件路径
+        $file_path = Yii::$app->params[$type]['path'];
+        //子路径
+        $sub_name = Yii::$app->params[$type]['subName'];
+        $path = $file_path . date($sub_name,time()) . "/";
+        $add_path = Yii::getAlias("@attachment/") . $path;
+        //创建路径
+        FileHelper::mkdirs($add_path);
         return $path;
     }
 }

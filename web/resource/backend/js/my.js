@@ -22,6 +22,7 @@ function swalAlert(msg){
     })
 }
 
+//删除确认提示
 function appConfirm(title, txt, onConfirm){
 	swal({
         title: title,

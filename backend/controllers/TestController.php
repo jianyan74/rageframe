@@ -4,7 +4,7 @@ namespace backend\controllers;
 use yii;
 use common\helpers\ExcelHelper;
 use common\helpers\ArithmeticHelper;
-use jianyan\basics\common\models\sys\ActionLog;
+use jianyan\basics\common\models\sys\Provinces;
 use jianyan\basics\common\models\sys\Manager;
 
 /**
@@ -14,24 +14,34 @@ use jianyan\basics\common\models\sys\Manager;
  */
 class TestController extends MController
 {
-    /**
-     * 测试导出
-     */
-    public function actionExport()
+    public function actionUploadImg()
     {
-        $fields = [
-            ['key' => 'action', 'name' => '动作', 'required' => false],
-            ['key' => 'username', 'name' => '账号', 'required' => true],
-            ['key' => 'action_ip', 'name' => 'ip地址', 'required' => false],
-            ['key' => 'append', 'name' => '创建时间', 'required' => false]
-         ];
+        $model = new Manager();
 
-        $dataList = ActionLog::find()
-            ->select('action,username,action_ip,append')
+        return $this->render('upload-img', [
+            'model'  => $model,
+        ]);
+    }
+
+    /**
+     * 待优化
+     * 测试csv导出
+     */
+    public function actionCsvExport()
+    {
+        $header = [
+            'areaname' => '编号',
+            'parentid' =>  '名称',
+            'level' => '年龄',
+            'position' => '金额',
+        ];
+
+        $dataList = Provinces::find()
             ->asArray()
+            ->limit(10000)
             ->all();
 
-        ExcelHelper::createExcelFromData($fields,$dataList,time().".xls");
+        ExcelHelper::exportCSVData($dataList,$header);
         return false;
     }
 

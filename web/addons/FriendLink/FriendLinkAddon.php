@@ -3,13 +3,14 @@ namespace addons\FriendLink;
 
 class FriendLinkAddon
 {
-/**
+    /**
      * @var bool
      * 参数配置
      * [true,false] 开启|关闭
      * 显示目录在当前文件下的Setting.php
      */
     public $setting = false;
+
     /**
      * @var bool
      * 钩子
@@ -17,6 +18,14 @@ class FriendLinkAddon
      * 显示目录在当前文件下的Setting.php
      */
     public $hook = true;
+
+    /**
+     * 小程序
+     * [true,false] 开启|关闭
+     * @var bool
+     */
+    public $wxappSupport = false;
+
     /**
      * @var string 类别
      * [
@@ -31,6 +40,7 @@ class FriendLinkAddon
      * ]
      */
     public $type = 'plug';
+
     /**
      * @var array
      * 配置信息
@@ -38,6 +48,7 @@ class FriendLinkAddon
     public $info = [
         'name' => 'FriendLink',
         'title' => '友情链接',
+        'brief_introduction' => '友情链接',
         'description' => '友情链接',
         'author' => '简言',
         'version' => '1.0'

@@ -18,7 +18,14 @@ class BottomMenuAddon
      * [true,false] 开启|关闭
      */
     public $hook = true;
-    
+
+    /**
+     * 小程序
+     * [true,false] 开启|关闭
+     * @var bool
+     */
+    public $wxappSupport = false;
+
     /**
      * @var string 类别
      * [
@@ -41,6 +48,7 @@ class BottomMenuAddon
     public $info = [
         'name' => 'BottomMenu',
         'title' => '底部导航',
+        'brief_introduction' => '底部导航',
         'description' => '底部导航',
         'author' => '简言',
         'version' => '1.0'

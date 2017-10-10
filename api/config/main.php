@@ -14,12 +14,12 @@ return [
     'modules' => [
         //版本
         'v1' => [
-            'class' => 'api\modules\v1\index',
+            'class' => 'api\modules\v1\Module',
         ],
-        //例如版本2
-        //'v2' => [
-        //    'class' => 'api\modules\v2\index',
-        //],
+        //版本2
+        'v2' => [
+            'class' => 'api\modules\v2\Module',
+        ],
     ],
     'components' => [
         'user' => [
@@ -51,7 +51,6 @@ return [
                         'site',
                         /*------------业务相关------------*/
                         'v1/default',
-
                     ],
                     'pluralize' => false,
                     'extraPatterns' => [
@@ -75,7 +74,7 @@ return [
             },
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'message/error',
         ],
     ],
 

@@ -18,6 +18,13 @@ class DebrisGroupAddon
      * [true,false] 开启|关闭
      */
     public $hook = true;
+
+    /**
+     * 小程序
+     * [true,false] 开启|关闭
+     * @var bool
+     */
+    public $wxappSupport = false;
     
     /**
      * @var string 类别
@@ -41,6 +48,7 @@ class DebrisGroupAddon
     public $info = [
         'name' => 'DebrisGroup',
         'title' => '碎片组别',
+        'brief_introduction' => '碎片组别',
         'description' => '碎片组别',
         'author' => '简言',
         'version' => '1.0'

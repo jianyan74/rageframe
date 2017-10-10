@@ -26,7 +26,7 @@ class FileHelper
      * @param $path
      * @param $content
      */
-     public static function writeLog($path,$content)
+     public static function writeLog($path, $content)
      {
          file_put_contents($path, "\r\n".$content, FILE_APPEND);
      }

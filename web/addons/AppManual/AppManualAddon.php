@@ -18,7 +18,14 @@ class AppManualAddon
      * @var bool
      */
     public $hook = false;
-    
+
+    /**
+     * 小程序
+     * [true,false] 开启|关闭
+     * @var bool
+     */
+    public $wxappSupport = false;
+
     /**
      * 类别
      * @var string 
@@ -48,6 +55,7 @@ class AppManualAddon
     public $info = [
         'name' => 'AppManual',
         'title' => '开发手册',
+        'brief_introduction' => '开发手册',
         'description' => '网站说明文档，支持马克笔记编写',
         'author' => '简言',
         'version' => '1.0'

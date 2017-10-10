@@ -16,7 +16,10 @@ return [
         'user' => [
             'identityClass' => 'common\models\member\Member',
             'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
+            'identityCookie' => [
+                'name' => '_identity-frontend',
+                'httpOnly' => true
+            ],
             'loginUrl' => ['site/login'],
             'idParam' => '__user',
             'as afterLogin' => 'common\behaviors\AfterLogin',

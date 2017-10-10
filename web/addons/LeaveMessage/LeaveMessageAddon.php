@@ -3,13 +3,14 @@ namespace addons\LeaveMessage;
 
 class LeaveMessageAddon
 {
-/**
+    /**
      * @var bool
      * 参数配置
      * [true,false] 开启|关闭
      * 显示目录在当前文件下的Setting.php
      */
     public $setting = false;
+
     /**
      * @var bool
      * 钩子
@@ -17,6 +18,14 @@ class LeaveMessageAddon
      * 显示目录在当前文件下的Setting.php
      */
     public $hook = true;
+
+    /**
+     * 小程序
+     * [true,false] 开启|关闭
+     * @var bool
+     */
+    public $wxappSupport = false;
+
     /**
      * @var string 类别
      * [
@@ -38,6 +47,7 @@ class LeaveMessageAddon
     public $info = [
         'name' => 'LeaveMessage',
         'title' => '留言管理',
+        'brief_introduction' => '投诉留言插件',
         'description' => '投诉留言插件',
         'author' => '简言',
         'version' => '1.0'

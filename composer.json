@@ -15,12 +15,13 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
-        "yiisoft/yii2": ">=2.0.6",
+        "yiisoft/yii2": ">=2.0.12",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-redis": "^2.0",
         "yiisoft/yii2-swiftmailer": "^2.0",
         "yiisoft/yii2-imagine": "~2.0.0",
         "yiisoft/yii2-authclient": "~2.1.0",
+        "yiisoft/yii2-queue": "~2.0.0",
         "lokielse/omnipay-alipay": "^2.0",
         "lokielse/omnipay-wechatpay": "^1.0",
         "lokielse/omnipay-unionpay": "dev-master",
@@ -31,6 +32,7 @@
         "kartik-v/yii2-date-range": "*",
         "2amigos/yii2-qrcode-helper": "~1.0",
         "2amigos/yii2-date-time-picker-widget" : "*",
+        "aliyuncs/oss-sdk-php": "~2.0",
         "phpoffice/phpexcel": "dev-develop",
         "kucha/ueditor": "*",
         "linslin/yii2-curl": "*",
@@ -41,7 +43,8 @@
         "denisogr/yii2-cronjobs": "dev-master",
         "yidashi/yii2-bootstrap-markdown": "*",
         "e282486518/yii2-console-migration": "*",
-        "jianyan74/rageframe-basics": "dev-master"
+        "jianyan74/rageframe-basics": "dev-master",
+        "xj/yii2-oauth": "~2.0.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

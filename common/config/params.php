@@ -36,18 +36,41 @@ return [
         ],
     ],
 
-    //图片上传
+    //图片上传配置
     'imagesUpload' => [
-        'imgMaxSize'    => 2097152,//图片最大上传大小,默认2M
-        'imgMaxExc'     => [".png", ".jpg", ".jpeg", ".gif", ".bmp"],//后缀
-        'imgPath'       => 'images/',//图片创建路径
-        'imgThumbPath'  => 'thumb/',//图片创建缩略图路径
-        'imgSubName'    => 'Y/m-d',//图片上传子目录规则
-        'imgPrefix'     => 'img_',//图片名称前缀
+        'maxSize'    => 1024 * 1024 * 2,//图片最大上传大小,默认2M
+        'maxExc'     => [".png", ".jpg", ".jpeg", ".gif", ".bmp"],//可上传图片后缀不填写即为不限
+        'path'       => 'images/',//图片创建路径
+        'thumbPath'  => 'thumb/',//图片创建缩略图路径
+        'subName'    => 'Y/m/d',//图片上传子目录规则
+        'prefix'     => 'image_',//图片名称前缀
     ],
 
-    //文件上传
-    'fileUpload' => [
+    //视频上传配置
+    'videosUpload' => [
+        'maxSize'    => 1024 * 1024 * 10,//最大上传大小,默认10M
+        'maxExc'     => [],//可上传文件后缀不填写即为不限
+        'path'       => 'voices/',//创建路径
+        'subName'    => 'Y/m/d',//上传子目录规则
+        'prefix'     => 'video_',//名称前缀
+    ],
+
+    //语音上传配置
+    'voicesUpload' => [
+        'maxSize'    => 1024 * 1024 * 50,//最大上传大小,默认50M
+        'maxExc'     => [],//可上传文件后缀不填写即为不限
+        'path'       => 'voices/',//创建路径
+        'subName'    => 'Y/m/d',//上传子目录规则
+        'prefix'     => 'voice_',//名称前缀
+    ],
+
+    //文件上传配置
+    'filesUpload' => [
+        'maxSize'    => 1024 * 1024 * 50,//最大上传大小,默认50M
+        'maxExc'     => [],//可上传文件后缀不填写即为不限
+        'path'       => 'file/',//创建路径
+        'subName'    => 'Y/m/d',//上传子目录规则
+        'prefix'     => 'file_',//名称前缀
     ],
 
     //上传状态映射表

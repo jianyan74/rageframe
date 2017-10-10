@@ -8,12 +8,12 @@ $params = array_merge(
 );
 
 return [
-    'id'                   => 'app-backend',
-    'basePath'             => dirname(__DIR__),
-    'controllerNamespace'  => 'backend\controllers',
-    'defaultRoute'         => 'main',//默认控制器
-    'bootstrap'            => ['log'],
-    'modules'              => [
+    'id' => 'app-backend',
+    'basePath' => dirname(__DIR__),
+    'controllerNamespace' => 'backend\controllers',
+    'defaultRoute' => 'main',//默认控制器
+    'bootstrap' => ['log'],
+    'modules' => [
         /* 会员 modules */
         'member' => [
             'class' => 'backend\modules\member\index',
@@ -23,7 +23,10 @@ return [
         'user' => [
             'identityClass' => 'jianyan\basics\common\models\sys\Manager',
             'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+            'identityCookie' => [
+                'name' => '_identity-backend',
+                'httpOnly' => true
+            ],
             'loginUrl' => ['site/login'],
             'idParam' => '__admin',
             'as afterLogin' => 'common\behaviors\AfterLogin',

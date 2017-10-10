@@ -24,7 +24,7 @@ class WxAppAddon
      * [true,false] 开启|关闭
      * @var bool
      */
-    public $wxapp_support = true;
+    public $wxappSupport = true;
     
     /**
      * 类别
@@ -55,6 +55,7 @@ class WxAppAddon
     public $info = [
         'name' => 'WxApp',
         'title' => '小程序',
+        'brief_introduction' => '小程序测试',
         'description' => '小程序测试',
         'author' => '简言',
         'version' => '1.0'

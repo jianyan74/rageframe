@@ -3,7 +3,6 @@ namespace api\controllers;
 
 use Yii;
 use yii\web\NotFoundHttpException;
-use yii\web\TooManyRequestsHttpException;
 use api\models\LoginForm;
 use common\models\base\AccessToken;
 
@@ -17,11 +16,11 @@ class SiteController extends AController
     public $modelClass = '';
 
     /**
-     * 登录根据用户信息返回access_token
-     * @param $group
-     * @return bool|mixed|string
+     * 登录根据用户信息返回accessToken
+     * 1:默认是系统会员
+     * @param int $group
+     * @return array|void
      * @throws NotFoundHttpException
-     * @throws TooManyRequestsHttpException
      */
     public function actionLogin($group = 1)
     {
@@ -47,4 +46,6 @@ class SiteController extends AController
             throw new NotFoundHttpException('请求出错!');
         }
     }
+
+    //....可以是设置其他用户登陆
 }

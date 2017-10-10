@@ -10,6 +10,7 @@ class AdvAddon
      * 显示目录在当前文件下的Setting.php
      */
     public $setting = false;
+
     /**
      * @var bool
      * 钩子
@@ -17,6 +18,14 @@ class AdvAddon
      * 显示目录在当前文件下的Setting.php
      */
     public $hook = true;
+
+    /**
+     * 小程序
+     * [true,false] 开启|关闭
+     * @var bool
+     */
+    public $wxappSupport = false;
+
     /**
      * @var string 类别
      * [
@@ -31,6 +40,7 @@ class AdvAddon
      * ]
      */
     public $type = 'plug';
+
     /**
      * @var array
      * 配置信息
@@ -38,10 +48,12 @@ class AdvAddon
     public $info = [
         'name' => 'Adv',
         'title' => '广告管理',
+        'brief_introduction' => '广告插件',
         'description' => '广告插件',
         'author' => '简言',
         'version' => '1.0'
     ];
+
     /**
      * @var array
      * 后台菜单
