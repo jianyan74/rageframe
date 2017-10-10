@@ -31,6 +31,38 @@ RageFrame项目创建于2016年4月16日，基于Yii2框架开发的应用开发
 - 能查看日志和Debug技能
 - 一定要仔细走一遍文档
 
+### 官网
+
+http://rageframe.com
+
+### 开发文档
+
+[RageFrame 开发文档](http://rageframe.com/addons/execute.html?route=manual/index&addon=AppManual)
+
+### Demo
+
+http://demo.rageframe.com/backend
+
+账号：demo
+
+密码：1234567
+
+> demo限制了一些功能,为了更好的体验功能请下载安装体验
+
+### 问题反馈
+
+在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
+
+QQ群：[655084090](https://jq.qq.com/?_wv=1027&k=4BeVA2r)
+
+Email：751393839@qq.com
+
+论坛：http://forum.rageframe.com
+
+Github：https://github.com/jianyan74/rageframe.git
+
+Git@OSC：https://git.oschina.net/jianyan94/rageframe.git
+
 ### 特别鸣谢
 
 感谢以下的项目,排名不分先后
