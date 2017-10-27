@@ -5,8 +5,8 @@ return [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=127.0.0.1;dbname=rageframe',
             'username' => 'root',
-            'password' => '',
-            'charset' => 'utf8',
+            'password' => 'root',
+            'charset' => 'utf8mb4',
             'tablePrefix' => 'yl_',
         ],
         'mailer' => [

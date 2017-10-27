@@ -67,13 +67,14 @@ class Image extends InputWidget
 
         $_pluginOptions = [
             'uploadUrl'        => Url::to(['/file/upload-images']),
-            'uploadMaxSize'    => 1024 * 2,
+            'uploadMaxSize'    => Yii::$app->params['imagesUpload']['maxSize'],
             'previewWidth'     => '112',
             'previewHeight'    => '112',
         ];
 
         $this->options = ArrayHelper::merge($_options, $this->options);
         $this->pluginOptions = ArrayHelper::merge($_pluginOptions, $this->pluginOptions);
+        $this->options['uploadType'] = 'imagesUpload';
 
         if ($this->hasModel())
         {
@@ -91,18 +92,29 @@ class Image extends InputWidget
     public function run()
     {
         $this->registerClientScript();
-
         $attribute = str_replace("[]","",$this->attribute);
-
         $value = trim($this->hasModel() ? Html::getAttributeValue($this->model, $attribute) : $this->value);
 
-        return $this->render('index', [
+        $name = $this->hasModel() ? Html::getInputName($this->model, $this->attribute) : $this->name;
+        $config = [
+            'boxId' => $this->boxId,
+            'name' => $name,
+            'filesize' => $this->pluginOptions['uploadMaxSize'],
+            'server' => $this->pluginOptions['uploadUrl'],
+            'mimeTypes' => "*",
+            'multiple'  => $this->options['multiple'],
+            'extensions' => $this->options['extensions'],
+            'uploadType' => $this->options['uploadType'],
+        ];
+
+        return $this->render('image', [
             'name'          => $this->hasModel() ? Html::getInputName($this->model, $this->attribute) : $this->name,
             'value'         => $this->options['multiple'] == true ? unserialize($value) : $value,
             'options'       => $this->options,
             'boxId'         => $this->boxId,
             'pluginOptions' => $this->pluginOptions,
             'hiddenInput'   => $this->hiddenInput,
+            'config' => json_encode($config),
         ]);
     }
 

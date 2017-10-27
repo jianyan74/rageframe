@@ -31,6 +31,7 @@ class AController extends ActiveController
     {
         $modelClass = $this->modelClass;
         $query = $modelClass::find();
+
         return new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -43,7 +44,7 @@ class AController extends ActiveController
     public function actionCreate()
     {
         $model = new $this->modelClass();
-        $model->load(Yii::$app->getRequest()->getBodyParams(), '');
+        $model->attributes = Yii::$app->request->post();
         if (!$model->save())
         {
             //返回数据验证失败
@@ -61,7 +62,7 @@ class AController extends ActiveController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $model->load(Yii::$app->getRequest()->getBodyParams(), '');
+        $model->attributes = Yii::$app->request->post();
         if (!$model->save())
         {
             //返回数据验证失败

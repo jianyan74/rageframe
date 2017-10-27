@@ -15,7 +15,6 @@ class LoginForm extends Model
 
     protected $_user;
 
-
     /**
      * @inheritdoc
      */
@@ -39,6 +38,7 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors())
         {
+            /* @var $user \common\models\base\User */
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password))
             {

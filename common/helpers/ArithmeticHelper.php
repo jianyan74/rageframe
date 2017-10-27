@@ -10,10 +10,10 @@ class ArithmeticHelper
 {
     /**
      * 生成红包算法
-     * @param $money - 红包总金额
-     * @param $num - 生成的红包数量
-     * @param $min - 红包最小金额
-     * @param $max - 红包最大金额
+     * @param number $money 红包总金额
+     * @param number $num 生成的红包数量
+     * @param number $min 红包最小金额
+     * @param number $max 红包最大金额
      * @return array
      */
     public static function getRedPackage($money, $num, $min, $max)

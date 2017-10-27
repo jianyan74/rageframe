@@ -5,10 +5,12 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 ?>
-<link href="/resource/backend/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
-<link href="/resource/backend/css/animate.min.css" rel="stylesheet">
-<link href="/resource/backend/css/style.min.css" rel="stylesheet">
-<link href="/resource/backend/css/login.min.css" rel="stylesheet">
+
+<?= Html::cssFile('/resource/backend/css/font-awesome.min.css'); ?>
+<?= Html::cssFile('/resource/backend/css/animate.min.css'); ?>
+<?= Html::cssFile('/resource/backend/css/style.min.css'); ?>
+<?= Html::cssFile('/resource/backend/css/login.min.css'); ?>
+
 <script>
     if(window.top!==window.self){window.top.location=window.location};
 </script>
@@ -24,14 +26,12 @@ use yii\captcha\Captcha;
                 <h4>欢迎使用<strong><?= Yii::$app->params['siteTitle']?></strong></h4>
                 <ul class="m-b">
                     <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势一：基于Yii2框架开发的开源系统</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势二：多入口模式</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势三：自定义全局配置，控制器模型都可被重写</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势四：升级最小干扰化</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势五：对接了微信公众号SDK</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势六：集成用户权限管理系统(RBAC)</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势七：丰富的扩展机制，插件和模块可卸载安装</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势八：模块支持小程序开发</li>
-
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势二：集成微信营销管理，可直接对接微信公众号</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势三：集成用户权限管理系统</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势四：丰富的扩展机制，插件和模块可卸载安装</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势五：模块支持小程序开发</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势六：整合第三方登录和支付</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势七：RESTful API可直接对接APP开发</li>
                 </ul>
             </div>
         </div>
@@ -83,7 +83,6 @@ use yii\captcha\Captcha;
             checkboxClass   :"icheckbox_square-green",
             radioClass      :"iradio_square-green",
             increaseArea    : '20%' // optional
-
         })
     });
 </script>

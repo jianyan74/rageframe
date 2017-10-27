@@ -8,9 +8,9 @@ if(Yii::$app->params['addon']['info']['type'] != 'plug')
 
 $this->params['breadcrumbs'][] = ['label' => $addonModel['title'],'url' => ['binding','addon' => $addon]];
 ?>
-<div class="col-sm-2" style="width: 13%; height: 100%;background:#fff;">
+<div class="col-sm-2" style="width: 15%; height: 100%;background:#fff;">
     <?= AddonLeftWidget::widget(); ?>
 </div>
-<div class="col-sm-10" style="width: 87%;padding-left: 0px;padding-right: 0px;">
+<div class="col-sm-10" style="width: 85%;padding-left: 0;padding-right: 0;">
     <?= $this->render($view,$params); ?>
 </div>

@@ -16,7 +16,7 @@ return [
     'modules' => [
         /* 会员 modules */
         'member' => [
-            'class' => 'backend\modules\member\index',
+            'class' => 'backend\modules\member\Module',
         ],
     ],
     'components' => [
@@ -38,7 +38,7 @@ return [
         'request'=>[
             'csrfParam'=>'_csrf_backend'
         ],
-        /**----------------------视图替换--------------------**/
+        /**--------------------*视图替换--------------------**/
         'view' => [
             'theme' => [
                 'pathMap' => [
@@ -49,7 +49,6 @@ return [
                 ],
             ],
         ],
-
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -59,8 +58,7 @@ return [
                 ],
             ],
         ],
-
-        /**----------------------路由配置--------------------**/
+        /**--------------------*路由配置--------------------**/
         'urlManager' => [
             'class'           => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,  //这个是生成路由 ?r=site/about--->/site/about
@@ -70,13 +68,11 @@ return [
 
             ],
         ],
-
-        /**-------------------错误定向页-------------------**/
+        /**--------------------*错误定向页--------------------**/
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
-        /**-------------------RBAC配置-------------------**/
+        /**--------------------*RBAC配置--------------------**/
         'authManager' => [
             'class'             => 'yii\rbac\DbManager',
             'itemTable'         => '{{%sys_auth_item}}',

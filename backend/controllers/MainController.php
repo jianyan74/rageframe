@@ -17,8 +17,8 @@ class MainController extends MController
     public function actionIndex()
     {
         //用户ID
-        $id     = Yii::$app->user->identity->id;
-        $user   = Manager::find()
+        $id = Yii::$app->user->id;
+        $user = Manager::find()
             ->where(['id' => $id])
             ->with('assignment')
             ->asArray()

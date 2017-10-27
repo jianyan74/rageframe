@@ -19,7 +19,7 @@ class SiteController extends AController
      * 登录根据用户信息返回accessToken
      * 1:默认是系统会员
      * @param int $group
-     * @return array|void
+     * @return array
      * @throws NotFoundHttpException
      */
     public function actionLogin($group = 1)

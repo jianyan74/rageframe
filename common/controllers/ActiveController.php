@@ -40,9 +40,8 @@ class ActiveController extends \yii\rest\ActiveController
                     'tokenParam' => 'accessToken'
                 ],
             ],
-            'optional' => [
-                'login',
-            ],
+            //不进行认证登录
+            'optional' => Yii::$app->params['user.optional'],
         ];
 
         /**
@@ -62,20 +61,22 @@ class ActiveController extends \yii\rest\ActiveController
     /**
      * 前置操作验证token有效期
      * @param \yii\base\Action $action
+     * @return bool
+     * @throws BadRequestHttpException
      */
     public function beforeAction($action)
     {
         parent::beforeAction($action);
 
-        $token = Yii::$app->request->get('accessToken');
-        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
-        $expire = Yii::$app->params['user.accessTokenExpire'];
-
         //判断验证token有效性是否开启
         if(Yii::$app->params['user.accessTokenValidity'] == true)
         {
+            $token = Yii::$app->request->get('accessToken');
+            $timestamp = (int) substr($token, strrpos($token, '_') + 1);
+            $expire = Yii::$app->params['user.accessTokenExpire'];
+
             //验证有效期
-            if($timestamp + $expire >= time())
+            if($timestamp + $expire <= time() && !in_array($action->id,Yii::$app->params['user.optional']))
             {
                 throw new BadRequestHttpException('请重新登陆');
             }
@@ -85,8 +86,10 @@ class ActiveController extends \yii\rest\ActiveController
     }
 
     /**
-     * 返回模型验证失败
+     * 返回错误状态码
+     * 默认 数据验证失败
      * @param $message
+     * @param int $code
      */
     public function setResponse($message ,$code = 422)
     {

@@ -1,6 +1,8 @@
 <?php
 namespace common\helpers;
 
+use yii\helpers\ArrayHelper;
+
 /**
  * 数组帮助类
  * Class ArrayHelper
@@ -124,5 +126,56 @@ class SysArrayHelper
 
             return $new_array;
         }
+    }
+
+    /**
+     * 根据级别和数组返回字符串
+     * @param $level
+     * @param array $models
+     * @param $k
+     * @return bool|string
+     */
+    public static function itemsLevel($level, array $models, $k)
+    {
+        $str = '';
+        for ($i = 1; $i < $level; $i++)
+        {
+            $str .= '　　';
+            if($i == $level - 1)
+            {
+                if(isset($models[$k + 1]))
+                {
+                    return $str . "├──";
+                }
+
+                return $str . "└──";
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * 必须经过递归才能进行重组为下拉框
+     * @param $models
+     * @return array
+     */
+    public static function itemsMergeDropDown($models)
+    {
+        $arr = [];
+        foreach ($models as $k => $model)
+        {
+            $arr[] = [
+                'id' => $model['id'],
+                'title' => self::itemsLevel($model['level'], $models, $k) . " " . $model['title'],
+            ];
+
+            if(!empty($model['-']))
+            {
+                $arr = ArrayHelper::merge($arr, self::itemsMergeDropDown($model['-']));
+            }
+        }
+
+        return $arr;
     }
 }

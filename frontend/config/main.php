@@ -8,8 +8,8 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
-    'basePath'      => dirname(__DIR__),
-    'bootstrap'     => ['log'],
+    'basePath' => dirname(__DIR__),
+    'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'defaultRoute'         => 'index',//默认控制器
     'components' => [

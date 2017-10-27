@@ -40,6 +40,9 @@ return [
             'web/api/assets',
             'web/backend/assets',
             'web/wechat/assets',
+            'web/attachment',
+            'web/addons',
+            'common/backup',
         ],
         'setExecutable' => [
             'yii',
@@ -63,6 +66,9 @@ return [
             'web/api/assets',
             'web/backend/assets',
             'web/wechat/assets',
+            'web/attachment',
+            'web/addons',
+            'common/backup',
         ],
         'setExecutable' => [
             'yii',

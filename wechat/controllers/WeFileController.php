@@ -72,6 +72,7 @@ class WeFileController extends WController
         $add_path = Yii::getAlias("@attachment/") . $path;
         //创建路径
         FileHelper::mkdirs($add_path);
+
         return $path;
     }
 }

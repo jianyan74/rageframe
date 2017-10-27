@@ -1,0 +1,48 @@
+/*文件框样式*/
+.file-list{margin: 0;padding: 0;}
+.file-list .file-default-box:hover .file-delimg{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 0;
+    right: 0;
+    background: url(./delete.png) no-repeat;
+    background-size:25px 25px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* 文件上传 */
+.file-list .webuploader-pick{
+    line-height: 110px;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    width: 110px;height: 34px;
+    padding: 0;cursor: pointer;text-align: center;
+    background:#FFFFFF;
+    color: inherit;
+    border: 1px solid #e5e6e7;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background: url(./file-input.png) no-repeat center center;
+}
+
+.file-default-box{
+    line-height: 110px;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    width: 110px;height: 110px;
+    padding: 0;
+    margin-top: 15px;
+    margin-right: 10px;
+    text-align: center;
+    color: #333;
+    border: 1px #ddd dashed;
+}
+
+.file-default-box i{
+    font-size: 30px;
+    color: #999999;
+}

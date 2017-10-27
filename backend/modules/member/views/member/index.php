@@ -90,7 +90,7 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                                 <td>
                                     <a href="<?= Url::to(['edit','id'=>$model->id])?>"><span class="btn btn-info btn-sm">账号管理</span></a>&nbsp
                                     <a href="<?= Url::to(['personal','id'=>$model->id])?>"><span class="btn btn-info btn-sm">信息编辑</span></a>&nbsp
-                                    <a href="<?= Url::to(['delete','id'=>$model->id])?>"  onclick="deleted(this);return false;"><span class="btn btn-warning btn-sm">删除</span></a>&nbsp
+                                    <a href="<?= Url::to(['delete','id'=>$model->id])?>"  onclick="rfDelete(this);return false;"><span class="btn btn-warning btn-sm">删除</span></a>&nbsp
                                 </td>
                             </tr>
                         <?php } ?>

@@ -2,17 +2,12 @@ $(function() {
     //初始化绑定默认的属性
     $.upLoadDefaults = $.upLoadDefaults || {};
     $.upLoadDefaults.property = {
-        multiple    : false, //是否多文件
-        water       : false, //是否加水印
+        water       : false, //是否加水印InitMultiUploader
         thumbnail   : false, //是否生成缩略图
-        server      : null, //发送地址
-        mimeTypes   : 'image/*',
-        extensions  : "jpg,jpge,png,gif", //文件类型
-        filesize    : "2048", //文件大小
         btntext     : "", //上传按钮的文字
-        swf         : null, //SWF上传控件相对地址
-        name        : 'hidden_photo' //图片名称
+        swf         : null //SWF上传控件相对地址
     };
+
     //初始化上传控件
     $.fn.InitMultiUploader = function(b) {
         var fun = function(parentObj) {
@@ -38,7 +33,7 @@ $(function() {
                     // 'DelFilePath': '' //定义参数
                 },
                 fileVal             : 'file', //上传域的名称
-                fileSingleSizeLimit : p.filesize * 1024 //文件大小
+                fileSingleSizeLimit : p.filesize //文件大小
             });
 
             //当validate不通过时，会以派送错误事件的形式通知
@@ -77,7 +72,7 @@ $(function() {
                     var fileProgressObj = $('<div class="upload-progress"></div>').appendTo(parentObj);
                     var progressText = $('<span class="txt">正在上传...</span>').appendTo(fileProgressObj);
                     var progressBar = $('<span class="bar"><b></b></span>').appendTo(fileProgressObj);
-                    var progressCancel = $('<a class="close " title="取消上传" style="font-size:15px ">关闭</a>').appendTo(fileProgressObj);
+                    var progressCancel = $('<a class="close " title="取消上传" style="font-size:14px;color: #000000">关闭</a>').appendTo(fileProgressObj);
                     //绑定点击事件
                     progressCancel.click(function() {
                         uploader.cancelFile(file);
@@ -108,7 +103,14 @@ $(function() {
                 }else{
                     data = data.data;
                     //如果是单文件上传，则赋值相应的表单
-                    addImage(parentObj, data.urlPath, data.urlPath, p.name,p.multiple);
+
+                    if(p.uploadType == 'filesUpload'){
+                        addFile(parentObj, data.urlPath, data.urlPath, p.name,p.multiple);
+                    }else if(p.uploadType == 'imagesUpload'){
+                        addImage(parentObj, data.urlPath, data.urlPath, p.name,p.multiple);
+                    }
+
+
                     var progressObj = parentObj.children(".upload-progress");
                     progressObj.children(".txt").html("上传成功");
                 }
@@ -180,4 +182,46 @@ $(document).on("click",".delimg",function(){
     }
 
     parentObj.remove();
+});
+
+/* 文件处理事件*/
+function addFile(targetObj, originalSrc, thumbSrc, hidden_photo,multiple) {
+
+    console.log(targetObj);
+    var newDiv = '<div class="file-default-box">'
+        + '<input type="hidden" name="'+hidden_photo+'" value="'+originalSrc+'" />'
+        + '<i class="fa fa-file"></i>'
+        + '<div class="file-delimg" data-multiple="'+ multiple +'"></div>'
+        + '</div>';
+
+    //查找文本框并移除
+    var name = targetObj.parent().parent().parent().attr('data-name');
+    var boxId = targetObj.parent().parent().parent().attr('data-boxId');
+    //判断是否是多图上传
+    if(multiple == false){
+        targetObj.parent().parent().parent().find('#'+boxId).html('');
+    }
+
+    targetObj.parent().parent().parent().find('.file-default').remove();
+    targetObj.parent().parent().parent().find('#'+boxId).prepend(newDiv);
+}
+
+//删除文件节点
+$(document).on("click",".file-delimg",function(){
+
+    var name = $(this).parent().parent().parent().attr('data-name');
+    var html = '<div class="file-default-box file-default">'
+            +'<input type="hidden" name="' + name + '" value=""/>'
+        +'<i class="fa fa-cloud-upload"></i>'
+        +'</div>';
+    //移除当前的选择
+    var parentObj = $(this).parent();
+
+    //判断增加默认数据
+    var length = $(this).parent().parent().find('.file-default-box').length;
+    if(length == 1){
+        $(this).parent().parent().html(html);
+    }else{
+        parentObj.remove();
+    }
 });

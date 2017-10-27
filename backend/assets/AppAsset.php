@@ -28,6 +28,7 @@ class AppAsset extends AssetBundle
         '/resource/backend/css/plugins/iCheck/grey.css',
         '/resource/backend/css/base.css',
     ];
+
     public $js = [
         '/resource/backend/js/bootstrap.min.js?v=3.3.5',
         '/resource/backend/js/plugins/metisMenu/jquery.metisMenu.js',
@@ -41,8 +42,10 @@ class AppAsset extends AssetBundle
         '/resource/backend/js/template.js',
         '/resource/backend/js/my.js',
     ];
+
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+        'backend\assets\HeadJsAsset',
     ];
 }

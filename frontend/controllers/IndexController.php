@@ -9,8 +9,8 @@ use Yii;
 class IndexController extends IController
 {
     /**
+     * 系统首页
      * @return string
-     * 默认首页
      */
     public function actionIndex()
     {

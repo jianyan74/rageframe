@@ -8,9 +8,17 @@ $params = array_merge(
 return [
     'id' => 'app-console',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log'
+    ],
     'controllerNamespace' => 'console\controllers',
     'components' => [
+        'redis'      => [
+            'class'          => 'yii\redis\Connection',
+            'hostname'       => 'localhost',
+            'port'           => 6379,
+            'database'       => 0,
+        ],
         'log' =>[
             # 追踪级别
             # 消息跟踪级别

@@ -13,7 +13,7 @@ class DefaultController extends AController
 
     /**
      * 测试
-     * @return null|\yii\web\IdentityInterface
+     * @return string
      */
     public function actionSearch()
     {

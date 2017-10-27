@@ -14,6 +14,45 @@ use jianyan\basics\common\models\sys\Manager;
  */
 class TestController extends MController
 {
+    /**
+     * 默认禁止使用测试
+     * @var bool
+     */
+    public $visitAuth = true;
+
+    public function init()
+    {
+        if($this->visitAuth == false)
+        {
+            die();
+        }
+
+        parent::init();
+    }
+
+    /**
+     * 队列测试
+     */
+    public function actionQueue()
+    {
+//        Yii::$app->queue->push(new DownloadJob([
+//            'url' => 'http://example.com/image.jpg',
+//            'file' => '/tmp/rageframe/image.jpg',
+//        ]));
+
+        echo '推送队列成功';
+
+        //将作业推送到队列中延时5分钟运行:
+//        Yii::$app->queue->delay(5 * 60)->push(new DownloadJob([
+//            'url' => 'http://example.com/image.jpg',
+//            'file' => '/tmp/image.jpg',
+//        ]));
+    }
+
+    /**
+     * 上传图片测试
+     * @return string
+     */
     public function actionUploadImg()
     {
         $model = new Manager();
@@ -24,25 +63,16 @@ class TestController extends MController
     }
 
     /**
-     * 待优化
-     * 测试csv导出
+     * 上传文件测试
+     * @return string
      */
-    public function actionCsvExport()
+    public function actionUploadFile()
     {
-        $header = [
-            'areaname' => '编号',
-            'parentid' =>  '名称',
-            'level' => '年龄',
-            'position' => '金额',
-        ];
+        $model = new Manager();
 
-        $dataList = Provinces::find()
-            ->asArray()
-            ->limit(10000)
-            ->all();
-
-        ExcelHelper::exportCSVData($dataList,$header);
-        return false;
+        return $this->render('upload-file', [
+            'model'  => $model,
+        ]);
     }
 
     /**
@@ -84,5 +114,83 @@ class TestController extends MController
         $this->_result->data = $data;
 
         return $this->getResult();
+    }
+
+    /**
+     * 写入缓存
+     * 经过测试如果设置了缓存为yii系统组件则可以进行写入例下
+     *    'cache'      => [
+     *        'class' => 'yii\redis\Cache',
+     *     ],
+     * 一般数据0.0001秒
+     * @param $key
+     * @param $value
+     */
+    public function actionSetRedis($key, $value, $time = 60)
+    {
+        $startTime = microtime(true);
+        Yii::$app->redis->set($key, $value);
+        //配置过成为yii系统组件可用
+        //Yii::$app->cache->set($key, $value, $time);
+        $endTime = microtime(true);
+        $elapsed = number_format($endTime - $startTime, 4);
+
+        $this->p('写入缓存成功');
+        $this->p($elapsed);
+    }
+
+    /**
+     * 输出redis并获取获得速度
+     * @param $key
+     */
+    public function actionGetRedis($key)
+    {
+        $startTime = microtime(true);
+        $rsp = Yii::$app->redis->get($key);
+        $endTime = microtime(true);
+        $elapsed = number_format($endTime - $startTime, 4);
+
+        $this->p($rsp);
+        $this->p($elapsed);
+    }
+
+    /**
+     * memcache写入缓存
+     * 一般数据0.0005左右
+     * @param $key
+     * @param $value
+     */
+    public function actionSetMemCache($key, $value, $time = 60)
+    {
+        $startTime = microtime(true);
+        Yii::$app->memcache->set($key, $value, $time);
+        $endTime = microtime(true);
+        $elapsed = number_format($endTime - $startTime, 4);
+
+        $this->p('写入缓存成功');
+        $this->p($elapsed);
+    }
+
+    /**
+     * memcache输出测试
+     * @param $key
+     */
+    public function actionGetMemCache($key)
+    {
+        $startTime = microtime(true);
+        $rsp = Yii::$app->memcache->get($key);
+        $endTime = microtime(true);
+        $elapsed = number_format($endTime - $startTime, 4);
+
+        $this->p($rsp);
+        $this->p($elapsed);
+    }
+
+    /**
+     * 输出phpinfo
+     */
+    public function actionPhpInfo()
+    {
+        echo phpinfo();
     }
 }

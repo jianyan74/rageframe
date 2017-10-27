@@ -29,9 +29,8 @@ class LoginForm extends \common\models\base\LoginForm
     }
 
     /**
-     * email 邮箱登录
-     * @user onyony
-     * @return bool|null|static
+     * 用户登陆
+     * @return null|static
      */
     public function getUser()
     {

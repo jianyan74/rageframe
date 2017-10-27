@@ -17,8 +17,5 @@ class Module extends \yii\base\Module
     public function init()
     {
         parent::init();
-        //session 设置无效
-        Yii::$app->user->enableSession = false;
-        Yii::$app->user->loginUrl = null;
     }
 }

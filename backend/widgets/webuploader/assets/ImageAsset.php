@@ -20,7 +20,7 @@ class ImageAsset extends AssetBundle {
     public $sourcePath = '@backend/widgets/webuploader/statics/';
 
     public $css = [
-        'css/style.css',
+        'css/image.css',
         'fancybox/jquery.fancybox.css',//弹出图片css
     ];
 

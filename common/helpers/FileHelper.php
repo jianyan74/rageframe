@@ -23,11 +23,39 @@ class FileHelper
 
     /**
      * 写入日志
-     * @param $path
+     * @param string $path 路径
      * @param $content
      */
      public static function writeLog($path, $content)
      {
-         file_put_contents($path, "\r\n".$content, FILE_APPEND);
+         file_put_contents($path, "\r\n" . $content, FILE_APPEND);
      }
+
+    /**
+     * 获取文件夹大小
+     * @param string $dir 根文件夹路径
+     * @return int
+     */
+    public static function getDirSize($dir)
+    {
+        $handle = opendir($dir);
+        $sizeResult = 0;
+        while (false !== ($FolderOrFile = readdir($handle)))
+        {
+            if($FolderOrFile != "." && $FolderOrFile != "..")
+            {
+                if(is_dir("$dir/$FolderOrFile"))
+                {
+                    $sizeResult += self::getDirSize("$dir/$FolderOrFile");
+                }
+                else
+                {
+                    $sizeResult += filesize("$dir/$FolderOrFile");
+                }
+            }
+        }
+
+        closedir($handle);
+        return $sizeResult;
+    }
 }

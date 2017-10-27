@@ -99,26 +99,18 @@ class ExcelHelper
     /**
      * 导出Excel
      * @param array $list
-     * $list = [
-     *     [
-     *          'no' => '1',
-     *          'name' =>  '张三',
-     *          'year' => '20',
-     *          'money' => '100.00',
-     *      ]
-     * ];
      * @param array $header
-     * $header = [
-     *      'no' => '编号',
-     *      'name' =>  '名称',
-     *      'year' => '年龄',
-     *      'money' => '金额',
-     *  ];
+     *  $header = [
+     *        ['field' => 'a', 'name' =>  '文本', 'type' => 'text'],
+     *        ['field' => 'a.child.num', 'name' =>  '文本', 'type' => 'text'],//表示读取数组['a']['child']['num']
+     *        ['field' => 'b', 'name' =>  '创建日期', 'type' => 'date', 'rule' => 'Y-m-d H:i:s'],
+     *        ['field' => 'c', 'name' =>  '选择内容', 'type' => 'selectd', 'rule' => ['1' => '选择一','2' => '选择二']],
+     * ];
      * @param string $title
      * @param string $filename
      * @return bool
      */
-    public static function exportExcelData ($list = [], $header = [], $title = 'simple', $filename = '')
+    public static function exportExcelData ($list = [], $header = [], $filename = '', $title = 'simple')
     {
         if (!is_array ($list) || !is_array ($header)) return false;
         //默认文件名称
@@ -138,7 +130,7 @@ class ExcelHelper
         foreach ($header as $k => $v)
         {
             $colum = \PHPExcel_Cell::stringFromColumnIndex($hk);
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue($colum.'1', $v);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue($colum.'1', $v['name']);
             $hk += 1;
         }
 
@@ -154,8 +146,10 @@ class ExcelHelper
                 $span = 0;
                 foreach($header as $key => $value)
                 {
+                    $resultData = trim(self::formattingField($row, $value['field']));
+                    $realData = self::formatting($header[$key], $resultData);
                     $j = \PHPExcel_Cell::stringFromColumnIndex($span);
-                    $objActSheet->setCellValue($j.$column, trim($row[$key]));
+                    $objActSheet->setCellValue($j . $column, $realData);
                     $span++;
                 }
 
@@ -177,21 +171,13 @@ class ExcelHelper
     /**
      * 导出csv
      * @param array $list
-     * $list = [
-     *     [
-     *          'no' => '1',
-     *          'name' =>  '张三',
-     *          'year' => '20',
-     *          'money' => '100.00',
-     *      ]
-     * ];
      * @param array $header
-     * $header = [
-     *      'no' => '编号',
-     *      'name' =>  '名称',
-     *      'year' => '年龄',
-     *      'money' => '金额',
-     *  ];
+     *  $header = [
+     *        ['field' => 'a', 'name' =>  '文本', 'type' => 'text'],
+     *        ['field' => 'a.child.num', 'name' =>  '文本', 'type' => 'text'],//表示读取数组['a']['child']['num']
+     *        ['field' => 'b', 'name' =>  '创建日期', 'type' => 'date', 'rule' => 'Y-m-d H:i:s'],
+     *        ['field' => 'c', 'name' =>  '选择内容', 'type' => 'selectd', 'rule' => ['1' => '选择一','2' => '选择二']],
+     * ];
      * @param string $title
      * @param string $filename
      * @return bool
@@ -202,13 +188,10 @@ class ExcelHelper
         //默认文件名称
         !$filename && $filename = time();
 
-        $keys = array_keys($header);
-
         $html = "\xEF\xBB\xBF";
-
         foreach($header as $li)
         {
-            $html .= $li . "\t ,";
+            $html .= $li['name'] . "\t ,";
         }
 
         $html .= "\n";
@@ -223,9 +206,11 @@ class ExcelHelper
                 foreach($buffer as $row)
                 {
                     $data = [];
-                    foreach($keys as $key)
+                    foreach($header as $key => $value)
                     {
-                        $data[] = str_replace(PHP_EOL,'', $row[$key]);
+                        $resultData = trim(self::formattingField($row, $value['field']));
+                        $realData = self::formatting($header[$key], $resultData);
+                        $data[] = str_replace(PHP_EOL,'', $realData);
                     }
 
                     $info[] = implode("\t ,", $data) . "\t ,";
@@ -240,5 +225,62 @@ class ExcelHelper
         header("Content-Disposition:attachment; filename={$filename}.csv");
         echo $html;
         exit();
+    }
+
+    /**
+     * 格式化内容
+     * @param array $array 头部规则
+     * @return false|mixed|null|string 内容值
+     */
+    protected static function formatting(array $array, $value)
+    {
+        switch ($array['type'])
+        {
+            //文本
+            case 'text' :
+                return $value;
+                break;
+
+            //日期
+            case  'date' :
+                return date($array['rule'], $value);
+                break;
+
+            //选择框
+            case  'selectd' :
+                return  isset($array['rule'][$value])  ? $array['rule'][$value] : null ;
+                break;
+        }
+
+        return null;
+    }
+
+    /**
+     * 解析字段
+     * @param $row
+     * @param $field
+     * @return mixed
+     */
+    protected static function formattingField($row, $field)
+    {
+        $newField = explode('.', $field);
+        if(count($newField) == 1)
+        {
+            return $row[$field];
+        }
+
+        foreach ($newField as $item)
+        {
+            if(isset($row[$item]))
+            {
+                $row = $row[$item];
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        return $row;
     }
 }
