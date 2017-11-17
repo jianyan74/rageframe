@@ -7,6 +7,7 @@ use common\models\member\Member;
 
 /**
  * 用户控制器
+ *
  * Class MemberController
  * @package backend\modules\member\controllers
  */
@@ -37,7 +38,7 @@ class MemberController extends UController
                 break;
         }
 
-        //关联角色查询
+        // 关联角色查询
        $data   = Member::find()->where($where);
        $pages  = new Pagination(['totalCount' =>$data->count(), 'pageSize' =>$this->_pageSize]);
        $models = $data->offset($pages->offset)
@@ -64,16 +65,16 @@ class MemberController extends UController
         $id       = $request->get('id');
         $model    = $this->findModel($id);
 
-        $pass     = $model->password_hash;//原密码
+        $pass     = $model->password_hash;// 原密码
         if ($model->load(Yii::$app->request->post()))
         {
-            //验证密码是否修改
+            // 验证密码是否修改
             if($model->password_hash != $pass)
             {
                 $model->password_hash = Yii::$app->security->generatePasswordHash($model->password_hash);
             }
 
-            //提交创建
+            // 提交创建
             if($model->save())
             {
                 return $this->redirect(['index']);
@@ -112,7 +113,7 @@ class MemberController extends UController
         $id       = $request->get('id');
         $model    = $this->findModel($id);
 
-        //提交表单
+        // 提交表单
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
             return $this->redirect(['index']);

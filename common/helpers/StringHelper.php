@@ -3,6 +3,7 @@ namespace common\helpers;
 
 /**
  * 字符串操作类
+ *
  * Class StringHelper
  * @package common\helpers
  */
@@ -10,6 +11,7 @@ class StringHelper
 {
     /**
      * XML 字符串载入对象中
+     *
      * @param string $string 必需。规定要使用的 XML 字符串
      * @param string $class_name 可选。规定新对象的 class
      * @param int $options 可选。规定附加的 Libxml 参数
@@ -30,6 +32,7 @@ class StringHelper
 
     /**
      * 字符串提取汉字
+     *
      * @param $string
      * @return mixed
      */
@@ -42,6 +45,7 @@ class StringHelper
 
     /**
      * 返回字符串在另一个字符串中第一次出现的位置
+     *
      * @param $string
      * @param $find
      * @return bool
@@ -54,6 +58,7 @@ class StringHelper
 
     /**
      * 字符首字母转大小写
+     *
      * @param $str
      * @return mixed
      */
@@ -64,6 +69,7 @@ class StringHelper
 
     /**
      * 驼峰命名法转下划线风格
+     *
      * @param $str
      * @return string
      */
@@ -92,6 +98,7 @@ class StringHelper
 
     /**
      * 下划线风格转驼峰命名法
+     *
      * @param $str
      * @return string
      */
@@ -109,6 +116,7 @@ class StringHelper
 
     /**
      * 获取随机字符串
+     *
      * @param $length
      * @param bool $numeric
      * @return string
@@ -139,7 +147,9 @@ class StringHelper
 
     /**
      * 获取数字随机字符串
-     * @param null $prefix 判断是否需求前缀
+     *
+     * @param bool $prefix 判断是否需求前缀
+     * @param int $length 长度
      * @return string
      */
     public static function randomNum($prefix = false, $length = 8)
@@ -150,9 +160,11 @@ class StringHelper
 
     /**
      * 获取字符串后面的字符串
+     *
      * @param $fileName
      * @param string $type
-     * @return string
+     * @param int $length
+     * @return bool|string
      */
     public static function clipping($fileName, $type = '.', $length = 0)
     {

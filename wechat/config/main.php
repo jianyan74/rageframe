@@ -1,5 +1,6 @@
 <?php
 $params = array_merge(
+    require(__DIR__ . '/../../vendor/jianyan74/rageframe-basics/wechat/config/params.php'),
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
     require(__DIR__ . '/params.php'),
@@ -11,15 +12,14 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'wechat\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
     'components' => [
+        'request'=>[
+            'csrfParam'=>'_csrf-wechat'
+        ],
         'user' => [
             'identityClass' => 'common\models\member\Member',
             'enableAutoLogin' => true,
-            'identityCookie' => [
-                'name' => '_identity-wechat',
-                'httpOnly' => true
-            ],
+            'identityCookie' => ['name' => '_identity-wechat', 'httpOnly' => true],
             'loginUrl' => ['site/login'],
             'idParam' => '__wechat',
             'as afterLogin' => 'common\behaviors\AfterLogin',
@@ -27,10 +27,6 @@ return [
         'session' => [
             'name' => 'advanced-wechat',// 这是用于在微信登录的会话cookie的名称
         ],
-        'request'=>[
-            'csrfParam'=>'_csrf_wechat'
-        ],
-
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -40,12 +36,10 @@ return [
                 ],
             ],
         ],
-
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
-        /**----------------------路由配置--------------------**/
+        /** ------ 路由配置 ------ **/
         'urlManager' => [
             'class'           => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,  //这个是生成路由 ?r=site/about--->/site/about
@@ -55,5 +49,12 @@ return [
             ],
         ],
     ],
+    'controllerMap' => [
+        //插件渲染默认控制器
+        'addons' => [
+            'class' => 'jianyan\basics\common\controllers\AddonsBaseController',
+        ]
+    ],
+    'modules' => [],
     'params' => $params,
 ];

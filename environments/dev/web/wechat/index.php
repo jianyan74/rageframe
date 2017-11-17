@@ -26,5 +26,13 @@ if(is_array($yiiClassMap) && !empty($yiiClassMap)){
     }
 }
 
-$application = new yii\web\Application($config);
-$application->run();
+/**
+ * 打印
+ * @param $array
+ */
+function p($array){
+    echo "<pre>";
+    print_r($array);
+}
+
+(new yii\web\Application($config))->run();

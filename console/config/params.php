@@ -1,8 +1,7 @@
 <?php
 return [
-    //每分钟定时运行脚本
-    'cron'      => '* * * * *',
-
+    /** ------ 每分钟定时运行脚本 ------ **/
+    'cron' => '* * * * *',
     /**
      * 'test/example' => [
      *          'cron'      => '* * * * *',
@@ -15,8 +14,8 @@ return [
         //每天凌晨执行一次
         'msg-history/index' => [
             'cron' => '0 0 * * *',
-            'cron-stdout'=> '/tmp/rageframe/cron/MsgHistory.log',
-            'cron-stderr'=> '/tmp/rageframe/cron/MsgHistoryError.log',
+            'cron-stdout'=> '/tmp/rageframe/cron/MsgHistory.log',//成功日志
+            'cron-stderr'=> '/tmp/rageframe/cron/MsgHistoryError.log',//错误日志
         ]
         //......更多的定时任务
     ],

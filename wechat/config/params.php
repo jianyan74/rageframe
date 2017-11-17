@@ -1,6 +1,6 @@
 <?php
 return [
-    /** 非微信打开的时候是否开启微信模拟数据 **/
+    /** ------ 非微信打开的时候是否开启微信模拟数据 ------ **/
     'wecahtSimulate' => [
         'appSwitch' => false,//微信应用检测开关
         'userInfo' => [

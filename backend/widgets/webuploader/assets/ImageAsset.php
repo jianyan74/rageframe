@@ -21,12 +21,12 @@ class ImageAsset extends AssetBundle {
 
     public $css = [
         'css/image.css',
-        'fancybox/jquery.fancybox.css',//弹出图片css
+        'fancybox/jquery.fancybox.min.css',// 弹出图片css
     ];
 
     public $js = [
         'js/uploader.js',
-        'fancybox/jquery.fancybox.js',//图片弹出js
+        'fancybox/jquery.fancybox.min.js',// 图片弹出js
     ];
 
     public $depends = [

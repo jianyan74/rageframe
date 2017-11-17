@@ -3,6 +3,7 @@ namespace backend\controllers;
 
 /**
  * 后台基类控制器
+ *
  * Class MController
  * @package backend\controllers
  */

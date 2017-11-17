@@ -3,6 +3,7 @@ namespace backend\modules\member\controllers;
 
 /**
  * Class DefaultController
+ *
  * @package backend\modules\member\controllers
  */
 class DefaultController extends UController

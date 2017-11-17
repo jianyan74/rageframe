@@ -7,6 +7,7 @@ use common\helpers\FileHelper;
 
 /**
  * 微信文件上传控制器
+ *
  * Class WeFileController
  * @package wechat\controllers
  */
@@ -19,6 +20,7 @@ class WeFileController extends WController
 
     /**
      * 下载微信图片
+     *
      * @param $media_id
      * @return array
      */
@@ -59,6 +61,7 @@ class WeFileController extends WController
 
     /**
      * 获取文件路径
+     *
      * @param $type
      * @return string
      */

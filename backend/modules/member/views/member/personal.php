@@ -24,13 +24,13 @@ $this->params['breadcrumbs'][] = ['label' => '信息编辑'];
                             'layout'=>'{picker}{input}',
                             'pluginOptions' => [
                                 'format'         => 'yyyy-mm-dd',
-                                'todayHighlight' => true,//今日高亮
-                                'autoclose'      => true,//选择后自动关闭
-                                'todayBtn'       => true,//今日按钮显示
+                                'todayHighlight' => true,// 今日高亮
+                                'autoclose'      => true,// 选择后自动关闭
+                                'todayBtn'       => true,// 今日按钮显示
                             ],
                             'options'=>[
                                 'class'     => 'form-control no_bor',
-                                'readonly'  => 'readonly',//禁止输入
+                                'readonly'  => 'readonly',// 禁止输入
                             ]
                         ]); ?>
                         <?= $form->field($model, 'sex')->radioList(['0'=>'男','1'=>'女']) ?>

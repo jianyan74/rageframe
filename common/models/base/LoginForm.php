@@ -5,12 +5,32 @@ use Yii;
 use yii\base\Model;
 
 /**
- * Login form
+ * 登陆注册基类
+ *
+ * Class LoginForm
+ * @package common\models\base
  */
-class LoginForm extends Model
+abstract class LoginForm extends Model
 {
+    /**
+     * 账号
+     *
+     * @var
+     */
     public $username;
+
+    /**
+     * 密码
+     *
+     * @var
+     */
     public $password;
+
+    /**
+     * 记住自己
+     *
+     * @var bool
+     */
     public $rememberMe = true;
 
     protected $_user;
@@ -31,7 +51,13 @@ class LoginForm extends Model
     }
 
     /**
+     * @return mixed
+     */
+    abstract public function getUser();
+
+    /**
      * 验证账号密码
+     *
      * @param $attribute
      */
     public function validatePassword($attribute)
@@ -49,6 +75,7 @@ class LoginForm extends Model
 
     /**
      * 登陆
+     *
      * @return bool
      */
     public function login()

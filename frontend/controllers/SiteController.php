@@ -176,16 +176,9 @@ class SiteController extends Controller
         $model = new RegisterForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate())
         {
-            $member = new Member;
-            $member->attributes = Yii::$app->request->post('RegisterForm');
-            $member->password_hash =  Yii::$app->security->generatePasswordHash($model->password);
-
-            if($member->save())
+            if ($user = $model->signup())
             {
-                //登陆
-                $login = new LoginForm();
-                $login->attributes = Yii::$app->request->post('RegisterForm');
-                $login->login();
+                Yii::$app->user->login($user);
                 return $this->goHome();
             }
         }

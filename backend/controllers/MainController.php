@@ -6,6 +6,7 @@ use jianyan\basics\common\models\sys\Manager;
 
 /**
  * 主控制器
+ *
  * Class MainController
  * @package backend\controllers
  */
@@ -16,7 +17,7 @@ class MainController extends MController
      */
     public function actionIndex()
     {
-        //用户ID
+        // 用户ID
         $id = Yii::$app->user->id;
         $user = Manager::find()
             ->where(['id' => $id])

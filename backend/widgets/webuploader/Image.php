@@ -101,7 +101,7 @@ class Image extends InputWidget
             'name' => $name,
             'filesize' => $this->pluginOptions['uploadMaxSize'],
             'server' => $this->pluginOptions['uploadUrl'],
-            'mimeTypes' => "*",
+            'mimeTypes' => $this->options['mimeTypes'],
             'multiple'  => $this->options['multiple'],
             'extensions' => $this->options['extensions'],
             'uploadType' => $this->options['uploadType'],

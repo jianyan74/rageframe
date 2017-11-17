@@ -139,7 +139,7 @@ function addImage(targetObj, originalSrc, thumbSrc, hidden_photo,multiple) {
     var newLi = $('<li class="social-avatar">'
         + '<input type="hidden" name="'+hidden_photo+'" value="'+originalSrc+'" />'
         + '<div class="img-box">'
-        + '<a class="fancybox" href="'+ originalSrc +'">'
+        + '<a data-fancybox="gallery" href="'+ originalSrc +'">'
         + '<img src="' + thumbSrc + '"/>'
         + '</a>'
         + '<i class="delimg" data-multiple="'+ multiple +'"></i>'
@@ -147,7 +147,7 @@ function addImage(targetObj, originalSrc, thumbSrc, hidden_photo,multiple) {
         + '</li>');
 
     //判断是否是多图上传
-    if(multiple == false){
+    if(multiple == 'false' || multiple == false){
         targetObj.hide();
     }
 
@@ -168,7 +168,7 @@ $(document).on("click",".delimg",function(){
     var input = '<input type="hidden" name="' + name + '" value="" id="'+boxId +'"/>';
 
     //判断是否是多图上传
-    if(multiple == false){
+    if(multiple == 'false' || multiple == false){
         //增加值为空的隐藏域
         $(this).parent().parent().parent().append(input);
         //显示上传图片按钮
@@ -204,12 +204,16 @@ function addFile(targetObj, originalSrc, thumbSrc, hidden_photo,multiple) {
 
     targetObj.parent().parent().parent().find('.file-default').remove();
     targetObj.parent().parent().parent().find('#'+boxId).prepend(newDiv);
+
+    var length = targetObj.parent().parent().parent().find('.file-default-box').length;
+    $('#file-default-' + boxId).val('已选择' + length + '个文件');
 }
 
 //删除文件节点
 $(document).on("click",".file-delimg",function(){
 
     var name = $(this).parent().parent().parent().attr('data-name');
+    var boxId = $(this).parent().parent().parent().attr('data-boxId');
     var html = '<div class="file-default-box file-default">'
             +'<input type="hidden" name="' + name + '" value=""/>'
         +'<i class="fa fa-cloud-upload"></i>'
@@ -218,10 +222,17 @@ $(document).on("click",".file-delimg",function(){
     var parentObj = $(this).parent();
 
     //判断增加默认数据
-    var length = $(this).parent().parent().find('.file-default-box').length;
+    var length = parentObj.parent().find('.file-default-box').length;
     if(length == 1){
-        $(this).parent().parent().html(html);
+        parentObj.parent().html(html);
     }else{
         parentObj.remove();
+    }
+
+    var sum = length - 1;
+    if(sum == 0){
+        $('#file-default-' + boxId).val('');
+    }else{
+        $('#file-default-' + boxId).val('已选择' + sum + '个文件');
     }
 });

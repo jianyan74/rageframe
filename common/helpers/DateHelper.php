@@ -2,7 +2,8 @@
 namespace common\helpers;
 
 /**
- * ajax数据格式返回
+ * 日期数据格式返回
+ *
  * Class ResultDataHelper
  * @package common\helpers
  */
@@ -10,6 +11,7 @@ class DateHelper
 {
     /**
      * 获取今日开始时间戳和结束时间戳
+     *
      * 语法：mktime(hour,minute,second,month,day,year) => (小时,分钟,秒,月份,天,年)
      */
    public static function today()
@@ -22,6 +24,7 @@ class DateHelper
 
     /**
      * 昨日
+     *
      * @return array
      */
     public static function yesterDay()
@@ -34,6 +37,7 @@ class DateHelper
 
     /**
      * 这周
+     *
      * @return array
      */
     public static function thisWeek()
@@ -46,6 +50,7 @@ class DateHelper
 
     /**
      * 上周
+     *
      * @return array
      */
     public static function lastWeek()
@@ -58,6 +63,7 @@ class DateHelper
 
     /**
      * 本月
+     *
      * @return array
      */
     public static function thisMonth()
@@ -70,6 +76,7 @@ class DateHelper
 
     /**
      * 上个月
+     *
      * @return array
      */
     public static function lastMonth()
@@ -82,6 +89,7 @@ class DateHelper
 
     /**
      * 格式化时间戳
+     *
      * @param $time
      * @return string
      */

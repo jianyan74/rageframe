@@ -8,6 +8,7 @@ use common\models\base\AccessToken;
 
 /**
  * 默认登录控制器
+ *
  * Class SiteController
  * @package api\controllers
  */
@@ -17,8 +18,11 @@ class SiteController extends AController
 
     /**
      * 登录根据用户信息返回accessToken
-     * 1:默认是系统会员
-     * @param int $group
+     *
+     * 默认是系统会员
+     * 其他类型自行扩展
+     *
+     * @param int $group 组别 默认是1
      * @return array
      * @throws NotFoundHttpException
      */
@@ -37,15 +41,13 @@ class SiteController extends AController
             }
             else
             {
-                //返回数据验证失败
+                // 返回数据验证失败
                 return $this->setResponse($this->analysisError($model->getFirstErrors()));
             }
         }
-        else
-        {
-            throw new NotFoundHttpException('请求出错!');
-        }
+
+        throw new NotFoundHttpException('请求出错!');
     }
 
-    //....可以是设置其他用户登陆
+    // ....可以是设置其他用户登陆
 }

@@ -3,6 +3,7 @@ namespace common\enums;
 
 /**
  * 状态枚举
+ *
  * Class StatusEnum
  * @package common\enum
  */
@@ -23,6 +24,7 @@ class StatusEnum
 
     /**
      * 根据状态返回按钮
+     *
      * @var array
      */
     public static $listBut = [

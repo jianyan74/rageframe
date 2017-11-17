@@ -2,7 +2,10 @@
 namespace wechat\controllers;
 
 /**
- * Site controller
+ * 默认首页控制器
+ *
+ * Class SiteController
+ * @package wechat\controllers
  */
 class SiteController extends WController
 {
@@ -20,6 +23,7 @@ class SiteController extends WController
 
     /**
      * 微信首页
+     *
      * @return string
      */
     public function actionIndex()
@@ -29,6 +33,7 @@ class SiteController extends WController
 
     /**
      * 验证登录根据openid
+     *
      */
     public function actionLogin()
     {

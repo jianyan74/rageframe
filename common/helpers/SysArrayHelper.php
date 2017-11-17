@@ -5,6 +5,7 @@ use yii\helpers\ArrayHelper;
 
 /**
  * 数组帮助类
+ *
  * Class ArrayHelper
  * @package common\helpers
  */
@@ -12,6 +13,7 @@ class SysArrayHelper
 {
     /**
      * 递归数组
+     *
      * @param array $items
      * @param string $id
      * @param int $pid
@@ -35,6 +37,7 @@ class SysArrayHelper
 
     /**
      * 传递一个子分类ID返回所有的父级分类
+     *
      * @param array $items
      * @param $id
      * @return array
@@ -55,6 +58,7 @@ class SysArrayHelper
 
     /**
      * 传递一个父级分类ID返回所有子分类ID
+     *
      * @param $cate
      * @param int $pid
      * @return array
@@ -75,6 +79,7 @@ class SysArrayHelper
 
     /**
      * 传递一个父级分类ID返回所有子分类
+     *
      * @param $cate
      * @param int $pid
      * @return array
@@ -95,6 +100,7 @@ class SysArrayHelper
 
     /**
      * php二维数组排序 按照指定的key 对数组进行排序
+     *
      * @param array $arr 将要排序的数组
      * @param string $keys 指定排序的key
      * @param string $type 排序类型 asc | desc
@@ -116,6 +122,7 @@ class SysArrayHelper
             {
                 $keysvalue[$k] = $v[$keys];
             }
+
             $type == 'asc' ? asort($keysvalue) : arsort($keysvalue);
             reset($keysvalue);
 
@@ -130,6 +137,7 @@ class SysArrayHelper
 
     /**
      * 根据级别和数组返回字符串
+     *
      * @param $level
      * @param array $models
      * @param $k
@@ -157,6 +165,7 @@ class SysArrayHelper
 
     /**
      * 必须经过递归才能进行重组为下拉框
+     *
      * @param $models
      * @return array
      */

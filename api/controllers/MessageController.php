@@ -4,6 +4,8 @@ namespace api\controllers;
 use yii\web\Controller;
 
 /**
+ * 消息报错
+ *
  * Class MessageController
  * @package api\controllers
  */

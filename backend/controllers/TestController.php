@@ -2,13 +2,12 @@
 namespace backend\controllers;
 
 use yii;
-use common\helpers\ExcelHelper;
 use common\helpers\ArithmeticHelper;
-use jianyan\basics\common\models\sys\Provinces;
 use jianyan\basics\common\models\sys\Manager;
 
 /**
- * 文件图片上传控制器
+ * 测试控制器
+ *
  * Class FileController
  * @package backend\modules\sys\controllers
  */
@@ -16,6 +15,7 @@ class TestController extends MController
 {
     /**
      * 默认禁止使用测试
+     *
      * @var bool
      */
     public $visitAuth = true;
@@ -31,6 +31,23 @@ class TestController extends MController
     }
 
     /**
+     * 存储过程测试
+     */
+    public function actionStoredProcedure()
+    {
+        /**
+         * 创建的存储过程
+         */
+
+        $reg = "davafy@davafy.com";
+        $cmd = Yii::$app->db->createCommand("call test_table(:reg, @s)");
+        $cmd->bindParam(':reg',$reg,\PDO::PARAM_STR,50);
+        $res = $cmd->queryOne();
+
+        $ret = Yii::$app->db->createCommand("select @s")->queryOne();
+    }
+
+    /**
      * 队列测试
      */
     public function actionQueue()
@@ -42,7 +59,7 @@ class TestController extends MController
 
         echo '推送队列成功';
 
-        //将作业推送到队列中延时5分钟运行:
+        // 将作业推送到队列中延时5分钟运行:
 //        Yii::$app->queue->delay(5 * 60)->push(new DownloadJob([
 //            'url' => 'http://example.com/image.jpg',
 //            'file' => '/tmp/image.jpg',
@@ -51,6 +68,7 @@ class TestController extends MController
 
     /**
      * 上传图片测试
+     *
      * @return string
      */
     public function actionUploadImg()
@@ -64,11 +82,17 @@ class TestController extends MController
 
     /**
      * 上传文件测试
+     *
      * @return string
      */
     public function actionUploadFile()
     {
         $model = new Manager();
+
+        if(Yii::$app->request->isPost)
+        {
+            $this->p(Yii::$app->request->post());die();
+        }
 
         return $this->render('upload-file', [
             'model'  => $model,
@@ -80,7 +104,7 @@ class TestController extends MController
      */
     public function actionRedPacket()
     {
-        //切记如果红包数量太多，不要设置为0.1 会导致最后红包金额不对
+        // 切记如果红包数量太多，不要设置为0.1 会导致最后红包金额不对
         $data = ArithmeticHelper::getRedPackage(100,998,0.01,3);
 
         $all_money = 0;
@@ -130,8 +154,8 @@ class TestController extends MController
     {
         $startTime = microtime(true);
         Yii::$app->redis->set($key, $value);
-        //配置过成为yii系统组件可用
-        //Yii::$app->cache->set($key, $value, $time);
+        // 配置过成为yii系统组件可用
+        // Yii::$app->cache->set($key, $value, $time);
         $endTime = microtime(true);
         $elapsed = number_format($endTime - $startTime, 4);
 

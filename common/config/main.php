@@ -5,10 +5,10 @@ return [
     'sourceLanguage' => 'zh-cn',
     'timeZone' => 'Asia/Shanghai',
     'bootstrap' => [
-        'queue'//队列系统
+        'queue'// 队列系统
     ],
     'components' => [
-        /**--------------------*格式化时间--------------------**/
+        /** ------ 格式化时间 ------ **/
         'formatter' => [
             'dateFormat' => 'yyyy-MM-dd',
             'datetimeFormat' => 'yyyy-MM-dd HH:mm:ss',
@@ -16,23 +16,23 @@ return [
             'thousandSeparator' => ' ',
             'currencyCode' => 'CNY',
         ],
-        /**--------------------*网站公共配置--------------------**/
-        'config'      => [
+        /** ------ 网站公共配置 ------ **/
+        'config' => [
             'class' => 'jianyan\basics\common\models\sys\Config',
         ],
-        /**--------------------*文件缓存配置--------------------**/
-        'cache'      => [
+        /** ------ 文件缓存配置 ------ **/
+        'cache' => [
+            // 'class' => 'yii\redis\Cache', // redis缓存
             'class' => 'yii\caching\FileCache',
-            'cachePath' => '@backend/runtime/cache'//缓存路径
         ],
-        /**--------------------*redis配置--------------------**/
+        /** ------ redis配置 ------ **/
         'redis' => [
             'class' => 'yii\redis\Connection',
             'hostname' => 'localhost',
             'port' => 6379,
             'database' => 0,
         ],
-        /**--------------------*MemCache缓存配置--------------------**/
+        /** ------ MemCache缓存配置 ------ **/
         'memcache' => [
             'class' => 'yii\caching\MemCache',
             'servers' => [
@@ -46,42 +46,49 @@ return [
                     'port' => 11211,
                     'weight' => 50,
                 ],
+                'useMemcached' => false , // true:memcached, false:memcache
             ],
         ],
-        /**--------------------*队列设置--------------------**/
+        /** ------ 队列设置 ------ **/
         'queue' => [
             'class' => 'yii\queue\redis\Queue',
             'redis' => 'redis', // 连接组件或它的配置
             'channel' => 'queue', // Queue channel key
-            'as log' => 'yii\queue\LogBehavior',//日志
+            'as log' => 'yii\queue\LogBehavior',// 日志
         ],
-        /**--------------------*微信路由配置--------------------**/
+        /** ------ 微信路由配置 ------ **/
         'urlManagerWechat' => [
             'class' => 'yii\web\urlManager',
-            'scriptUrl' => '/wechat', //代替'baseUrl'
+            'scriptUrl' => '/wechat', // 代替'baseUrl'
             'enablePrettyUrl' => true,
             'showScriptName' => true,
-            'suffix' => '.html',//静态
+            'suffix' => '.html',// 静态
         ],
-        /**--------------------*前台路由配置--------------------**/
+        /** ------ 前台路由配置 ------ **/
         'urlManagerFrontend' => [
             'class' => 'yii\web\urlManager',
-            'scriptUrl' => '/index.php', //代替'baseUrl'
+            'scriptUrl' => '/index.php', // 代替'baseUrl'
             'enablePrettyUrl' => true,
             'showScriptName' => true,
-            'suffix' => '.html',//静态
+            'suffix' => '.html',// 静态
         ],
-        /**--------------------*资源创建管理--------------------**/
+        /** ------ 资源创建管理 ------ **/
         'assetManager' => [
-            //线上建议将forceCopy设置成false，如果访问量不大无所谓
+            // 线上建议将forceCopy设置成false，如果访问量不大无所谓
             'forceCopy' => true,
         ],
-        /**--------------------*微信SDK--------------------**/
+        /** ------ 微信SDK ------ **/
         'wechat' => [
             'class' => 'maxwen\easywechat\Wechat',
-             'userOptions' => [],  # 用户身份类参数
-             'sessionParam' => 'wechatUser', # 微信用户信息将存储在会话在这个密钥
-             'returnUrlParam' => '_wechatReturnUrl', # returnUrl 存储在会话中
+             'userOptions' => [],  // 用户身份类参数
+             'sessionParam' => 'wechatUser', // 微信用户信息将存储在会话在这个密钥
+             'returnUrlParam' => '_wechatReturnUrl', // returnUrl 存储在会话中
         ],
+    ],
+    'controllerMap' => [
+        // 文件上传公共控制器
+        'file' => [
+            'class' => 'jianyan\basics\common\controllers\FileBaseController',
+        ]
     ],
 ];

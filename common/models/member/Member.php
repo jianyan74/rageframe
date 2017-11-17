@@ -55,8 +55,8 @@ class Member extends \common\models\base\User
     public function rules()
     {
         return [
-            //[['password_hash','username'], 'required'],
-            //['username', 'unique','message'=>'用户账户已经占用'],
+            // [['password_hash','username'], 'required'],
+            // ['username', 'unique','message'=>'用户账户已经占用'],
             [['type', 'sex', 'user_integral', 'address_id', 'visit_count', 'role', 'status', 'last_time', 'created_at', 'updated_at'], 'integer'],
             [['birthday'], 'safe'],
             [['user_money', 'accumulate_money', 'frozen_money'], 'number'],

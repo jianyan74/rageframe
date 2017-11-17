@@ -3,6 +3,7 @@ namespace common\helpers;
 
 /**
  * 文件帮助类
+ *
  * Class FileHelper
  * @package common\helpers
  */
@@ -10,6 +11,7 @@ class FileHelper
 {
     /**
      * 检测目录并循环创建目录
+     *
      * @param $path
      */
     public static function mkdirs($path)
@@ -23,6 +25,7 @@ class FileHelper
 
     /**
      * 写入日志
+     *
      * @param string $path 路径
      * @param $content
      */
@@ -33,6 +36,7 @@ class FileHelper
 
     /**
      * 获取文件夹大小
+     *
      * @param string $dir 根文件夹路径
      * @return int
      */

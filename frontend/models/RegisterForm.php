@@ -59,7 +59,7 @@ class RegisterForm extends \common\models\base\LoginForm
     /**
      * @return mixed
      */
-    protected function getUser()
+    public function getUser()
     {
         if ($this->_user === null)
         {
@@ -67,5 +67,21 @@ class RegisterForm extends \common\models\base\LoginForm
         }
 
         return $this->_user;
+    }
+
+    /**
+     * 注册
+     *
+     * @return Member|null
+     */
+    public function signup()
+    {
+        $user = new Member();
+        $user->username = $this->username;
+        $user->email = $this->email;
+        $user->setPassword($this->password);
+        $user->generateAuthKey();
+
+        return $user->save() ? $user : null;
     }
 }

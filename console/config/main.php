@@ -57,7 +57,7 @@ return [
         //数据库命令行备份
         'migrates' => [
             'class' => 'e282486518\migration\ConsoleController',
-        ],
+        ]
     ],
     'params' => $params,
 ];

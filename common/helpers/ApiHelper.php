@@ -20,12 +20,12 @@ class ApiHelper
      * @param $ip
      * @return bool|mixed
      */
-    public static function IpInfoSina($ip)
+    public static function ipInfoSina($ip)
     {
         $curl = new Curl();
         $response = $curl->get(self::IP_SINA . $ip);
 
-        //判断是否查询的到ip信息
+        // 判断是否查询的到ip信息
         if(empty($response))
         {
             return false;

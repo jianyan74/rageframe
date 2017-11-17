@@ -1,4 +1,5 @@
 <?php
+use yii\widgets\Pjax;
 use yii\widgets\LinkPager;
 use common\helpers\AddonsUrl;
 

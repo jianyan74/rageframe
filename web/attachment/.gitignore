@@ -1,6 +1,2 @@
-/images/*
-/files/*
-/videos/*
-/voices/*
-/upload/*
-/thumb/*
+*
+!.gitignore

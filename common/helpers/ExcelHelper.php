@@ -19,35 +19,35 @@ class ExcelHelper
      * @dateTime 2017-06-12T09:39:01+0800
      * @param    string $filePath excel文件路径
      * @param    integer $startRow 开始的行数
-     * @return   array
+     * @return   array|bool
      */
     public static function getExcelData($filePath, $startRow = 1)
     {
         $PHPExcel = new PHPExcel();
         /**默认用excel2007读取excel，若格式不对，则用之前的版本进行读取*/
         $PHPReader = new PHPExcel_Reader_Excel2007();
-        //setReadDataOnly Set read data only 只读单元格的数据，不格式化 e.g. 读时间会变成一个数据等
+        // setReadDataOnly Set read data only 只读单元格的数据，不格式化 e.g. 读时间会变成一个数据等
         $PHPReader->setReadDataOnly(TRUE);
         if (!$PHPReader->canRead($filePath))
         {
             $PHPReader = new PHPExcel_Reader_Excel5();
-            //setReadDataOnly Set read data only 只读单元格的数据，不格式化 e.g. 读时间会变成一个数据等
+            // setReadDataOnly Set read data only 只读单元格的数据，不格式化 e.g. 读时间会变成一个数据等
             $PHPReader->setReadDataOnly(TRUE);
             if (!$PHPReader->canRead($filePath))
             {
                 echo '不能读取excel';
-                return;
+                return false;
             }
         }
 
         $PHPExcel = $PHPReader->load($filePath);
-        //获取sheet的数量
+        // 获取sheet的数量
         $sheetCount = $PHPExcel->getSheetCount();
-        //获取sheet的名称
+        // 获取sheet的名称
         $sheetNames = $PHPExcel->getSheetNames();
 
-        //获取所有的sheet表格数据
-        $excleDatas = array();
+        // 获取所有的sheet表格数据
+        $excleDatas = [];
         $emptyRowNum = 0;
         for ($i = 0; $i < $sheetCount; $i++)
         {
@@ -58,7 +58,7 @@ class ExcelHelper
             /**取得一共有多少行*/
             $allRow = $currentSheet->getHighestRow();
 
-            $arr = array();
+            $arr = [];
             for ($currentRow = $startRow; $currentRow <= $allRow; $currentRow++)
             {
                 /**从第A列开始输出*/
@@ -68,7 +68,7 @@ class ExcelHelper
                     $arr[$currentRow][] = trim($val);
                 }
                 $arr[$currentRow] = array_filter($arr[$currentRow]);
-                //统计连续空行
+                // 统计连续空行
                 if(empty($arr[$currentRow]) && $emptyRowNum <= 50)
                 {
                     $emptyRowNum++ ;
@@ -77,32 +77,33 @@ class ExcelHelper
                 {
                     $emptyRowNum = 0;
                 }
-                //防止坑队友的同事在excel里面弄出很多的空行，陷入很漫长的循环中，设置如果连续超过50个空行就退出循环，返回结果
-                //连续50行数据为空，不再读取后面行的数据，防止读满内存
+                // 防止坑队友的同事在excel里面弄出很多的空行，陷入很漫长的循环中，设置如果连续超过50个空行就退出循环，返回结果
+                // 连续50行数据为空，不再读取后面行的数据，防止读满内存
                 if($emptyRowNum > 50)
                 {
                     break;
                 }
             }
-            $excleDatas[$i] = $arr; //多个sheet的数组的集合
+            $excleDatas[$i] = $arr; // 多个sheet的数组的集合
         }
 
-        //这里我只需要用到第一个sheet的数据，所以只返回了第一个sheet的数据
+        // 这里我只需要用到第一个sheet的数据，所以只返回了第一个sheet的数据
         $returnData = $excleDatas ? array_shift($excleDatas) : [];
 
-        //第一行数据就是空的，为了保留其原始数据，第一行数据就不做array_fiter操作；
+        // 第一行数据就是空的，为了保留其原始数据，第一行数据就不做array_fiter操作；
         $returnData = $returnData && isset($returnData[$startRow]) && !empty($returnData[$startRow])  ? array_filter($returnData) : $returnData;
         return $returnData;
-        //return $excleDatas  ? array_filter(array_shift($excleDatas)) : [];
+        // return $excleDatas  ? array_filter(array_shift($excleDatas)) : [];
     }
 
     /**
      * 导出Excel
+     *
      * @param array $list
      * @param array $header
      *  $header = [
      *        ['field' => 'a', 'name' =>  '文本', 'type' => 'text'],
-     *        ['field' => 'a.child.num', 'name' =>  '文本', 'type' => 'text'],//表示读取数组['a']['child']['num']
+     *        ['field' => 'a.child.num', 'name' =>  '文本', 'type' => 'text'],// 表示读取数组['a']['child']['num']
      *        ['field' => 'b', 'name' =>  '创建日期', 'type' => 'date', 'rule' => 'Y-m-d H:i:s'],
      *        ['field' => 'c', 'name' =>  '选择内容', 'type' => 'selectd', 'rule' => ['1' => '选择一','2' => '选择二']],
      * ];
@@ -113,7 +114,7 @@ class ExcelHelper
     public static function exportExcelData ($list = [], $header = [], $filename = '', $title = 'simple')
     {
         if (!is_array ($list) || !is_array ($header)) return false;
-        //默认文件名称
+        // 默认文件名称
         !$filename && $filename = time();
         $objPHPExcel = new \PHPExcel();
         // 设置属性
@@ -125,7 +126,7 @@ class ExcelHelper
 
         // 添加一些数据
         $objPHPExcel->setActiveSheetIndex(0);
-        //写入头部
+        // 写入头部
         $hk = 0;
         foreach ($header as $k => $v)
         {
@@ -170,11 +171,12 @@ class ExcelHelper
 
     /**
      * 导出csv
+     *
      * @param array $list
      * @param array $header
      *  $header = [
      *        ['field' => 'a', 'name' =>  '文本', 'type' => 'text'],
-     *        ['field' => 'a.child.num', 'name' =>  '文本', 'type' => 'text'],//表示读取数组['a']['child']['num']
+     *        ['field' => 'a.child.num', 'name' =>  '文本', 'type' => 'text'],// 表示读取数组['a']['child']['num']
      *        ['field' => 'b', 'name' =>  '创建日期', 'type' => 'date', 'rule' => 'Y-m-d H:i:s'],
      *        ['field' => 'c', 'name' =>  '选择内容', 'type' => 'selectd', 'rule' => ['1' => '选择一','2' => '选择二']],
      * ];
@@ -185,7 +187,7 @@ class ExcelHelper
     public static function exportCSVData($list = [], $header = [], $filename = '')
     {
         if (!is_array ($list) || !is_array ($header)) return false;
-        //默认文件名称
+        // 默认文件名称
         !$filename && $filename = time();
 
         $html = "\xEF\xBB\xBF";
@@ -229,6 +231,7 @@ class ExcelHelper
 
     /**
      * 格式化内容
+     *
      * @param array $array 头部规则
      * @return false|mixed|null|string 内容值
      */
@@ -236,17 +239,17 @@ class ExcelHelper
     {
         switch ($array['type'])
         {
-            //文本
+            // 文本
             case 'text' :
                 return $value;
                 break;
 
-            //日期
+            // 日期
             case  'date' :
                 return date($array['rule'], $value);
                 break;
 
-            //选择框
+            // 选择框
             case  'selectd' :
                 return  isset($array['rule'][$value])  ? $array['rule'][$value] : null ;
                 break;
@@ -257,6 +260,7 @@ class ExcelHelper
 
     /**
      * 解析字段
+     *
      * @param $row
      * @param $field
      * @return mixed

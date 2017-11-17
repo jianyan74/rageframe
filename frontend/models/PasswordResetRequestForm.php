@@ -15,6 +15,7 @@ class PasswordResetRequestForm extends Model
     public function init()
     {
         parent::init();
+
         Yii::$app->set('mailer', [
             'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@common/mail',
@@ -24,7 +25,7 @@ class PasswordResetRequestForm extends Model
                 'username' => Yii::$app->config->info('MAILER_USERNAME'),
                 'password' => Yii::$app->config->info('MAILER_PASSWORD'),
                 'port' => Yii::$app->config->info('MAILER_PORT'),
-                'encryption' => empty(Yii::$app->config->info('MAILER_PORT')) ? 'tls' : 'ssl',
+                'encryption' => empty(Yii::$app->config->info('MAILER_ENCRYPTION')) ? 'tls' : 'ssl',
             ],
         ]);
     }

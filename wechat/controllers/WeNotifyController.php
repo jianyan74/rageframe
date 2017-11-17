@@ -8,6 +8,7 @@ use common\helpers\FileHelper;
 
 /**
  * 微信支付回调控制器
+ *
  * Class WeNotifyController
  * @package wechat\controllers
  */

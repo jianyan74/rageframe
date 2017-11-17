@@ -2,15 +2,14 @@
     <div class="file-list clearfix">
         <div class="form-group" data-name ="<?= $name?>" data-boxId ="<?= $boxId?>">
             <div class="col-sm-12 input-group">
-                <input class="form-control" disabled placeholder="请选择文件进行上传" type="text">
-                <input name="<?= $name?>" value="<?= $value?>" type="hidden">
+                <input id="file-default-<?= $boxId?>" type="text" class="form-control" placeholder="请选择文件进行上传" value="<?php if(!empty($value)){ echo '已选择' . count($value) . '个文件'; } ?>" disabled>
                 <span class="input-group-btn">
                     <span class="upload-album-<?= $boxId?> btn-white"> 文件上传</span>
                 </span>
             </div>
             <div class="col-sm-12" id="<?= $boxId?>">
                 <?php if($value){ ?>
-                <?php if($options['multiple'] == true){ ?>
+                    <?php if($options['multiple'] == true){ ?>
                         <?php foreach ($value as $vo){ ?>
                             <div class="file-default-box">
                                 <input name="<?= $name?>" value="<?= $vo?>" type="hidden">

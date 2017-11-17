@@ -4,7 +4,8 @@ namespace addons\AppExample;
 class AppExampleAddon
 {
     /**
-     * 参数配置 
+     * 参数配置
+     *
      * [true,false] 开启|关闭
      * 使用方法在当前文件下的Setting.php
      * @var bool
@@ -13,6 +14,7 @@ class AppExampleAddon
     
     /**
      * 钩子
+     *
      * [true,false] 开启|关闭
      * 使用方法在当前文件下的Setting.php
      * @var bool
@@ -21,13 +23,23 @@ class AppExampleAddon
     
      /**
      * 小程序
+      *
      * [true,false] 开启|关闭
      * @var bool
      */
     public $wxappSupport = false;
+
+    /**
+     * 规则管理
+     *
+     * [true,false] 开启|关闭
+     * @var bool
+     */
+    public $is_rule = false;
     
     /**
      * 类别
+     *
      * @var string 
      * [
      *      'plug'      => "功能插件",  
@@ -44,12 +56,14 @@ class AppExampleAddon
     
      /**
      * 微信接收消息类别
+      *
      * @var array 
      */
     public $wechatMessage = [];
     
     /**
      * 配置信息
+     *
      * @var array
      */
     public $info = [
@@ -63,6 +77,7 @@ class AppExampleAddon
     
     /**
      * 后台菜单
+     *
      * 例如
      * public $bindings = [
      *      'cover' => [
@@ -88,18 +103,8 @@ class AppExampleAddon
                 'icon' => ''
             ],
             [
-                'title' => 'Ajax表格',
-                'route' => 'curd-ajax/index',
-                'icon' => ''
-            ],
-            [
-                'title' => '一键表格',
-                'route' => 'curd-ghost/index',
-                'icon' => ''
-            ],
-            [
-                'title' => '递归表格',
-                'route' => 'curd-recursion/index',
+                'title' => 'Grid表格',
+                'route' => 'curd-grid/index',
                 'icon' => ''
             ],
         ]
@@ -107,6 +112,7 @@ class AppExampleAddon
     
     /**
      * 保存在当前模块的根目录下面
+     *
      * 例如 public $install = 'install.php';
      * 安装SQL,只支持php文件
      * @var string
@@ -115,12 +121,14 @@ class AppExampleAddon
     
     /**
      * 卸载SQL
+     *
      * @var string
      */
     public $uninstall = 'uninstall.php';
     
     /**
      * 更新SQL
+     *
      * @var string
      */
     public $upgrade = 'upgrade.php';

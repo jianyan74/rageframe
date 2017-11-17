@@ -18,6 +18,7 @@ class AccessToken extends User implements RateLimitInterface
 
     /**
      * 组别
+     *
      * @var array
      */
     public static $groupExplain = [
@@ -58,6 +59,7 @@ class AccessToken extends User implements RateLimitInterface
 
     /**
      * 速度控制
+     *
      * @param \yii\web\Request $request
      * @param \yii\base\Action $action
      * @return mixed
@@ -69,6 +71,7 @@ class AccessToken extends User implements RateLimitInterface
 
     /**
      * 返回剩余的允许的请求和相应的UNIX时间戳数 当最后一次速率限制检查时。
+     *
      * @param \yii\web\Request $request
      * @param \yii\base\Action $action
      * @return array
@@ -93,6 +96,7 @@ class AccessToken extends User implements RateLimitInterface
 
     /**
      * access_token 找到identity
+     *
      * @param mixed $token
      * @param null $type
      * @return static
@@ -104,8 +108,9 @@ class AccessToken extends User implements RateLimitInterface
 
     /**
      * 获取token
-     * @param $group 组别
-     * @param $user_id 用户ID
+     *
+     * @param integer $group 组别
+     * @param integer $user_id 用户ID
      * @return string
      */
     public static function generateAccessToken($group, $user_id)
@@ -126,6 +131,7 @@ class AccessToken extends User implements RateLimitInterface
 
     /**
      * 获取当前用户的信息
+     *
      * @param $group
      * @return bool|mixed
      */
@@ -141,8 +147,9 @@ class AccessToken extends User implements RateLimitInterface
 
     /**
      * 创建用户信息
-     * @param $group
-     * @param $user_id
+     *
+     * @param integer $group 组别
+     * @param integer $user_id 用户ID
      */
     public static function setMemberInfo($group,$user_id)
     {

@@ -18,29 +18,30 @@ class ActiveController extends \yii\rest\ActiveController
 {
     /**
      * 行为验证
+     *
      * @return array
      */
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        //跨域支持
+        // 跨域支持
         $behaviors['class'] = Cors::className();
         $behaviors['authenticator'] = [
             'class' => CompositeAuth::className(),
             'authMethods' => [
-                /*下面是三种验证access_token方式*/
-                //1.HTTP 基本认证: access token 当作用户名发送，应用在access token可安全存在API使用端的场景，例如，API使用端是运行在一台服务器上的程序。
-                //HttpBasicAuth::className(),
-                //2.OAuth : 使用者从认证服务器上获取基于OAuth2协议的access token，然后通过 HTTP Bearer Tokens 发送到API 服务器。
-                //HttpBearerAuth::className(),
-                //3.请求参数: access token 当作API URL请求参数发送，这种方式应主要用于JSONP请求，因为它不能使用HTTP头来发送access token
-                //http://rageframe.com/user/index/index?access-token=123
+                /* 下面是三种验证access_token方式 */
+                // 1.HTTP 基本认证: access token 当作用户名发送，应用在access token可安全存在API使用端的场景，例如，API使用端是运行在一台服务器上的程序。
+                // HttpBasicAuth::className(),
+                // 2.OAuth : 使用者从认证服务器上获取基于OAuth2协议的access token，然后通过 HTTP Bearer Tokens 发送到API 服务器。
+                // HttpBearerAuth::className(),
+                // 3.请求参数: access token 当作API URL请求参数发送，这种方式应主要用于JSONP请求，因为它不能使用HTTP头来发送access token
+                // http://rageframe.com/user/index/index?accessToken=123
                 [
                     'class' => QueryParamAuth::className(),
                     'tokenParam' => 'accessToken'
                 ],
             ],
-            //不进行认证登录
+            // 不进行认证登录
             'optional' => Yii::$app->params['user.optional'],
         ];
 
@@ -53,13 +54,14 @@ class ActiveController extends \yii\rest\ActiveController
          * 你可以禁用这些头信息通过配置 yii\filters\RateLimiter::enableRateLimitHeaders 为false, 就像在上面的代码示例所示。
          */
         $behaviors['rateLimiter']['enableRateLimitHeaders'] = false;
-        //定义返回格式是：JSON
+        // 定义返回格式是：JSON
         $behaviors['contentNegotiator']['formats']['text/html'] = Response::FORMAT_JSON;
         return $behaviors;
     }
 
     /**
      * 前置操作验证token有效期
+     *
      * @param \yii\base\Action $action
      * @return bool
      * @throws BadRequestHttpException
@@ -68,14 +70,14 @@ class ActiveController extends \yii\rest\ActiveController
     {
         parent::beforeAction($action);
 
-        //判断验证token有效性是否开启
+        // 判断验证token有效性是否开启
         if(Yii::$app->params['user.accessTokenValidity'] == true)
         {
             $token = Yii::$app->request->get('accessToken');
             $timestamp = (int) substr($token, strrpos($token, '_') + 1);
             $expire = Yii::$app->params['user.accessTokenExpire'];
 
-            //验证有效期
+            // 验证有效期
             if($timestamp + $expire <= time() && !in_array($action->id,Yii::$app->params['user.optional']))
             {
                 throw new BadRequestHttpException('请重新登陆');
@@ -87,11 +89,12 @@ class ActiveController extends \yii\rest\ActiveController
 
     /**
      * 返回错误状态码
+     *
      * 默认 数据验证失败
-     * @param $message
-     * @param int $code
+     * @param string $message 消息内容
+     * @param int $code 状态码
      */
-    public function setResponse($message ,$code = 422)
+    public function setResponse($message, $code = 422)
     {
         $this->response = Yii::$app->getResponse();
         $this->response->setStatusCode($code, $message);
@@ -99,17 +102,20 @@ class ActiveController extends \yii\rest\ActiveController
 
     /**
      * 解析Yii2错误信息
+     *
      * @param $errors
      * @return string
      */
     protected function analysisError($errors)
     {
         $errors = array_values($errors)[0];
+
         return $errors ? $errors : '操作失败';
     }
 
     /**
      * 打印调试
+     *
      * @param $array
      */
     protected function p($array)

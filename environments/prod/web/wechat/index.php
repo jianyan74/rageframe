@@ -1,6 +1,6 @@
 <?php
-defined('YII_DEBUG') or define('YII_DEBUG', true);
-defined('YII_ENV') or define('YII_ENV', 'dev');
+defined('YII_DEBUG') or define('YII_DEBUG', false);
+defined('YII_ENV') or define('YII_ENV', 'prod');
 
 require(__DIR__ . '/../../vendor/autoload.php');
 require(__DIR__ . '/../../vendor/yiisoft/yii2/Yii.php');
@@ -26,5 +26,4 @@ if(is_array($yiiClassMap) && !empty($yiiClassMap)){
     }
 }
 
-$application = new yii\web\Application($config);
-$application->run();
+(new yii\web\Application($config))->run();

@@ -8,7 +8,7 @@
                             <li class="social-avatar">
                                 <input name="<?= $name?>" value="<?= $vo?>" type="hidden">
                                 <div class="img-box">
-                                    <a class="fancybox" href="<?= trim($vo) ?>">
+                                    <a href="<?= trim($vo) ?>" data-fancybox="gallery">
                                         <img src="<?= $vo?>">
                                     </a>
                                     <i class="delimg" data-multiple="<?= $options['multiple']?>"></i>
@@ -23,7 +23,7 @@
                     <li class="social-avatar">
                         <input name="<?= $name?>" value="<?= $value?>" type="hidden">
                         <div class="img-box">
-                            <a class="fancybox" href="<?= $value ?>">
+                            <a href="<?= $value ?>" data-fancybox="gallery">
                                 <img src="<?= $value?>">
                             </a>
                             <i class="delimg" data-multiple="<?= $options['multiple']?>"></i>
@@ -36,13 +36,20 @@
     </div>
 </div>
 <?php $this->registerJs(<<<Js
-$(".upload-album-{$boxId}").InitMultiUploader({$config});
-
-//图片弹出框
-$(".fancybox").fancybox({
-    openEffect:"none",
-    closeEffect:"none"
-});
+    $(".upload-album-{$boxId}").InitMultiUploader({$config});
+    
+    $("[data-fancybox]").fancybox({
+        // Options will go here
+        toolbar  : true,//工具栏
+        buttons : [
+            'slideShow',
+            'fullScreen',
+            'thumbs',
+            //'download',
+            //'share',
+            'close'
+        ]
+    });
 Js
 );
 ?>

@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="ibox-content">
                     <div class="col-sm-12">
+
                         <?php $form = ActiveForm::begin([]); ?>
                         <?= $form->field($model, 'title')->textInput(); ?>
                         <?= $form->field($model, 'description')->textarea(); ?>
