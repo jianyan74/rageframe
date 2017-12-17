@@ -17,8 +17,8 @@ class DateHelper
    public static function today()
    {
        return [
-           'start' => mktime(0,0,0,date('m'),date('d'),date('Y')),
-           'end' => mktime(0,0,0,date('m'),date('d') + 1,date('Y')) - 1,
+           'start' => mktime(0, 0, 0, date('m'), date('d'), date('Y')),
+           'end' => mktime(0, 0, 0, date('m'), date('d') + 1, date('Y')) - 1,
        ];
    }
 
@@ -30,8 +30,8 @@ class DateHelper
     public static function yesterDay()
     {
         return [
-            'start' => mktime(0,0,0,date('m'),date('d')-1,date('Y')),
-            'end' => mktime(0,0,0,date('m'),date('d'),date('Y'))-1,
+            'start' => mktime(0, 0, 0, date('m'), date('d') - 1, date('Y')),
+            'end' => mktime(0, 0, 0, date('m'), date('d'), date('Y')) - 1,
         ];
     }
 
@@ -43,8 +43,8 @@ class DateHelper
     public static function thisWeek()
     {
         return [
-            'start' => mktime(0,0,0,date('m'),date('d')-date('w')+1,date('Y')),
-            'end' => mktime(23,59,59,date('m'),date('d')-date('w')+7,date('Y')),
+            'start' => mktime(0, 0, 0, date('m'), date('d') - date('w') + 1, date('Y')),
+            'end' => mktime(23, 59, 59, date('m'), date('d') - date('w') + 7, date('Y')),
         ];
     }
 
@@ -56,8 +56,8 @@ class DateHelper
     public static function lastWeek()
     {
         return [
-            'start' => mktime(0,0,0,date('m'),date('d') - date('w') + 1 - 7,date('Y')),
-            'end' => mktime(23,59,59,date('m'),date('d') - date('w') + 7 - 7,date('Y')),
+            'start' => mktime(0, 0, 0,date('m'),date('d') - date('w') + 1 - 7, date('Y')),
+            'end' => mktime(23, 59, 59,date('m'),date('d') - date('w') + 7 - 7, date('Y')),
         ];
     }
 
@@ -69,8 +69,8 @@ class DateHelper
     public static function thisMonth()
     {
         return [
-            'start' => mktime(0,0,0,date('m'),1,date('Y')),
-            'end' => mktime(23,59,59,date('m'),date('t'),date('Y')),
+            'start' => mktime(0, 0, 0, date('m'), 1, date('Y')),
+            'end' => mktime(23, 59, 59, date('m'), date('t'), date('Y')),
         ];
     }
 
@@ -82,8 +82,22 @@ class DateHelper
     public static function lastMonth()
     {
         return [
-            'start' => mktime(0,0,0,date('m') - 2,1,date('Y')),
-            'end' => mktime(23,59,59,date('m') - 1,date('t'),date('Y')),
+            'start' => mktime(0, 0, 0, date('m') - 1, 1, date('Y')),
+            'end' => mktime(23, 59, 59, date('m') - 1, date('t'), date('Y')),
+        ];
+    }
+
+    /**
+     * 几个月前
+     *
+     * @param integer $month 月份
+     * @return array
+     */
+    public static function monthsAgo($month)
+    {
+        return [
+            'start' => mktime(0, 0, 0, date('m') - $month, 1, date('Y')),
+            'end' => mktime(23, 59, 59, date('m') - $month, date('t'), date('Y')),
         ];
     }
 

@@ -22,8 +22,8 @@ return [
         ],
         /** ------ 文件缓存配置 ------ **/
         'cache' => [
-            // 'class' => 'yii\redis\Cache', // redis缓存
             'class' => 'yii\caching\FileCache',
+            'cachePath' => '@backend//runtime/cache' // 注意如果要改成redis请删除
         ],
         /** ------ redis配置 ------ **/
         'redis' => [
@@ -75,7 +75,7 @@ return [
         /** ------ 资源创建管理 ------ **/
         'assetManager' => [
             // 线上建议将forceCopy设置成false，如果访问量不大无所谓
-            'forceCopy' => true,
+            'forceCopy' => false,
         ],
         /** ------ 微信SDK ------ **/
         'wechat' => [

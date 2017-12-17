@@ -18,12 +18,14 @@ class SiteController extends Controller
 {
     /**
      * 默认布局文件
+     *
      * @var string
      */
     public $layout  = "default";
 
     /**
      * 统一加载
+     *
      * @return array
      */
     public function actions()
@@ -50,6 +52,7 @@ class SiteController extends Controller
 
     /**
      * 行为控制
+     *
      */
     public function behaviors()
     {
@@ -79,6 +82,7 @@ class SiteController extends Controller
 
     /**
      * 后台登陆
+     *
      * @return string|\yii\web\Response
      */
     public function actionLogin()
@@ -104,6 +108,7 @@ class SiteController extends Controller
 
     /**
      * 退出登陆
+     *
      * @return \yii\web\Response
      */
     public function actionLogout()
@@ -111,6 +116,7 @@ class SiteController extends Controller
         // 插入日志
         Yii::$app->actionlog->addLog(ActionLog::ACTION_LOGOUT,"manager");
         Yii::$app->user->logout();
+
         return $this->goHome();
     }
 }

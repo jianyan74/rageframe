@@ -7,6 +7,7 @@ return [
     // 不需要token验证的方法
     'user.optional' => [
         'login',
+        'refresh',
     ],
     // 速度控制6秒内访问3次，注意，数组的第一个不要设置1，设置1会出问题，一定要大于2，譬如下面  6秒内只能访问三次
     'user.rateLimit' => [3, 6],

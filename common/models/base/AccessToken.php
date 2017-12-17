@@ -13,8 +13,8 @@ use jianyan\basics\common\models\sys\Manager;
  */
 class AccessToken extends User implements RateLimitInterface
 {
-    const GROUP_MANAGER = 1;
-    const GROUP_MEMBER = 2;
+    const GROUP_MEMBER = 1;
+    const GROUP_MANAGER = 2;
 
     /**
      * 组别
@@ -22,8 +22,8 @@ class AccessToken extends User implements RateLimitInterface
      * @var array
      */
     public static $groupExplain = [
-        self::GROUP_MANAGER => '后台用户',
         self::GROUP_MEMBER => '会员',
+        self::GROUP_MANAGER => '后台用户',
     ];
 
     /**
@@ -43,7 +43,7 @@ class AccessToken extends User implements RateLimitInterface
             [['group', 'user_id', 'status', 'allowance', 'allowance_updated_at', 'updated_at', 'created_at'], 'integer'],
             [['allowance', 'allowance_updated_at'], 'required'],
             [['access_token'], 'string', 'max' => 60],
-            [['access_token'], 'unique'],
+            [['access_token', 'refresh_token'], 'unique'],
         ];
     }
 
@@ -107,29 +107,6 @@ class AccessToken extends User implements RateLimitInterface
     }
 
     /**
-     * 获取token
-     *
-     * @param integer $group 组别
-     * @param integer $user_id 用户ID
-     * @return string
-     */
-    public static function generateAccessToken($group, $user_id)
-    {
-        $access_token = Yii::$app->security->generateRandomString() . '_' . time();
-        $model = self::find()
-            ->where(['user_id' => $user_id, 'group' => $group])
-            ->andWhere(['access_token' => $access_token])
-            ->one();
-
-        if($model)
-        {
-            $access_token = self::generateAccessToken($group, $user_id);
-        }
-
-        return $access_token;
-    }
-
-    /**
      * 获取当前用户的信息
      *
      * @param $group
@@ -137,9 +114,10 @@ class AccessToken extends User implements RateLimitInterface
      */
     public static function getMemberInfo($group)
     {
+        $user_id = Yii::$app->user->identity->user_id;
         $groupModel = [
-            self::GROUP_MANAGER => Manager::find()->where(['user_id' => Yii::$app->user->identity->user_id, 'status' => self::STATUS_ACTIVE])->one(),
-            self::GROUP_MEMBER => Member::find()->where(['user_id' => Yii::$app->user->identity->user_id, 'status' => self::STATUS_ACTIVE])->one(),
+            self::GROUP_MANAGER => Manager::find()->where(['user_id' => $user_id, 'status' => self::STATUS_ACTIVE])->one(),
+            self::GROUP_MEMBER => Member::find()->where(['user_id' => $user_id, 'status' => self::STATUS_ACTIVE])->one(),
         ];
 
         return isset($groupModel[$group]) ? $groupModel[$group] : false;
@@ -151,9 +129,9 @@ class AccessToken extends User implements RateLimitInterface
      * @param integer $group 组别
      * @param integer $user_id 用户ID
      */
-    public static function setMemberInfo($group,$user_id)
+    public static function setMemberInfo($group, $user_id)
     {
-        if(!($model = self::find()->where(['user_id' => $user_id, 'group' => $group])->one()))
+        if (!($model = self::find()->where(['user_id' => $user_id, 'group' => $group])->one()))
         {
             $model = new self;
         }
@@ -162,7 +140,19 @@ class AccessToken extends User implements RateLimitInterface
         $model->user_id = $user_id;
         $model->allowance = 2;
         $model->allowance_updated_at = time();
-        $model->access_token = self::generateAccessToken($group, $user_id);
-        return $model->save() ? $model->access_token : false;
+        $model->refresh_token = Yii::$app->security->generateRandomString();
+        $model->access_token = Yii::$app->security->generateRandomString() . '_' . time();
+
+        $result = [];
+        $result['refresh_token'] = $model->refresh_token;
+        $result['access_token'] = $model->access_token;
+        $result['expiration_time'] = Yii::$app->params['user.accessTokenExpire'];
+
+        if (!$model->save())
+        {
+            $result = self::setMemberInfo($group, $user_id);
+        }
+
+        return $result;
     }
 }

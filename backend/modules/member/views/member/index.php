@@ -74,7 +74,7 @@ $this->params['breadcrumbs'][] = ['label' =>  $this->title];
                                 <td><?= $model->id?></td>
                                 <td class="feed-element">
                                     <?php if($model->head_portrait){ ?>
-                                        <img src="/resource/backend/img/default-head.png" class="img-circle">
+                                        <img src="<?= $model->head_portrait; ?>" class="img-circle">
                                     <?php }else{ ?>
                                         <img src="/resource/backend/img/default-head.png" class="img-circle">
                                     <?php } ?>

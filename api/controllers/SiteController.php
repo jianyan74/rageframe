@@ -35,9 +35,7 @@ class SiteController extends AController
             if($model->validate())
             {
                 $user = $model->getUser();
-                return [
-                    'accessToken' => AccessToken::setMemberInfo($group, $user['id'])
-                ];
+                return AccessToken::setMemberInfo($group, $user['id']);
             }
             else
             {
@@ -47,6 +45,27 @@ class SiteController extends AController
         }
 
         throw new NotFoundHttpException('请求出错!');
+    }
+
+    /**
+     * 重置令牌
+     *
+     * @param $refresh_token
+     * @return array
+     * @throws NotFoundHttpException
+     */
+    public function actionRefresh($refresh_token)
+    {
+        $user = AccessToken::find()
+            ->where(['refresh_token' => $refresh_token])
+            ->one();
+
+        if (!$user)
+        {
+            throw new NotFoundHttpException('令牌错误，找不到用户!');
+        }
+
+        return AccessToken::setMemberInfo($user['group'], $user['user_id']);
     }
 
     // ....可以是设置其他用户登陆

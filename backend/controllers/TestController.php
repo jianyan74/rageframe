@@ -3,6 +3,10 @@ namespace backend\controllers;
 
 use yii;
 use common\helpers\ArithmeticHelper;
+use common\helpers\DataDictionaryHelper;
+use common\helpers\RsaEncryptionHelper;
+use jianyan\basics\common\models\sys\Config;
+use jianyan\basics\common\models\sys\ConfigCate;
 use jianyan\basics\common\models\sys\Manager;
 
 /**
@@ -30,8 +34,57 @@ class TestController extends MController
         parent::init();
     }
 
+    public function actionConfig()
+    {
+        // 所有的配置信息
+        $list = Config::find()
+            ->where(['status' => 1])
+            ->orderBy('cate asc,sort asc')
+            ->asArray()
+            ->all();
+
+        // 获取全部分类并压缩到分类中
+        $configCateAll = ConfigCate::getListAll();
+        foreach ($configCateAll as &$item)
+        {
+            foreach ($list as $vo)
+            {
+                if($item['id'] == $vo['cate_child'])
+                {
+                    $item['config'][] = $vo;
+                }
+            }
+        }
+
+        $str = '';
+        $i = 0;
+        foreach ($configCateAll as $key => $datum)
+        {
+            if(isset($datum['config']))
+            {
+                $str .= "### {$datum['title']}" . "\n\r";
+                $str .= "参数 | 描述 " . "\n";
+                $str .= "---|---" . "\n";
+
+                foreach ($datum['config'] as $item)
+                {
+                    $str .= "{$item['title']} | {$item['name']}" . "\n";
+                }
+
+                $str .= "\r";
+                $i++;
+            }
+        }
+
+        echo "<pre>";
+        echo $str;
+        exit();
+
+
+    }
+
     /**
-     * 存储过程测试
+     * 测试输出马克笔记格式的数据
      */
     public function actionStoredProcedure()
     {
@@ -45,6 +98,15 @@ class TestController extends MController
         $res = $cmd->queryOne();
 
         $ret = Yii::$app->db->createCommand("select @s")->queryOne();
+    }
+
+    /**
+     * 导出马克笔记
+     */
+    public function actionDataDictionary()
+    {
+        $model = new DataDictionaryHelper();
+        $model->getMarkTableData();
     }
 
     /**

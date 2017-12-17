@@ -28,7 +28,7 @@ class StatusEnum
      * @var array
      */
     public static $listBut = [
-        self::DISABLED => '<span class="btn btn-primary btn-sm" onclick="status(this)">启用</span>',
-        self::ENABLED => '<span class="btn btn-default btn-sm" onclick="status(this)">禁用</span>',
+        self::DISABLED => '<span class="btn btn-primary btn-sm" onclick="rfStatus(this)">启用</span>',
+        self::ENABLED => '<span class="btn btn-default btn-sm" onclick="rfStatus(this)">禁用</span>',
     ];
 }

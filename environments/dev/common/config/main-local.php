@@ -9,6 +9,22 @@ return [
             'charset' => 'utf8mb4',
             'tablePrefix' => 'yl_',
         ],
+        /**
+        'cache' => [
+            // redis缓存
+            'class' => 'yii\redis\Cache',
+        ],
+        // session写入缓存配置
+        'session' => [
+            'class' => 'yii\redis\Session',
+            'redis' => [
+                'class' => 'yii\redis\Connection',
+                'hostname' => 'localhost',
+                'port' => 6379,
+                'database' => 0,
+            ],
+        ],
+         */
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@common/mail',

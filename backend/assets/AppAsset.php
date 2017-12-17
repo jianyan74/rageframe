@@ -42,7 +42,7 @@ class AppAsset extends AssetBundle
         '/resource/backend/js/hplus.min.js?v=4.0.0',
         '/resource/backend/js/contabs.min.js',
         '/resource/backend/js/template.js',
-        '/resource/backend/js/my.js',
+        '/resource/backend/js/rageframe.js',
     ];
 
     public $depends = [

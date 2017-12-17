@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = ['label' => '信息编辑'];
                                 'readonly'  => 'readonly',// 禁止输入
                             ]
                         ]); ?>
-                        <?= $form->field($model, 'sex')->radioList(['0'=>'男','1'=>'女']) ?>
+                        <?= $form->field($model, 'sex')->radioList(['1' => '男','2' => '女']) ?>
                         <div class="hr-line-dashed"></div>
                     </div>
                     <div class="form-group">

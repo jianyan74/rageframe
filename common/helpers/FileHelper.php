@@ -62,4 +62,24 @@ class FileHelper
         closedir($handle);
         return $sizeResult;
     }
+
+    /**
+     * 基于数组创建目录
+     *
+     * @param $files
+     */
+    public static function createDirOrFiles($files)
+    {
+        foreach ($files as $key => $value)
+        {
+            if(substr($value, -1) == '/')
+            {
+                @mkdir($value);
+            }
+            else
+            {
+                @file_put_contents($value, '');
+            }
+        }
+    }
 }

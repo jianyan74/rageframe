@@ -57,6 +57,7 @@ class MemberController extends UController
 
     /**
      * 编辑/新增
+     *
      * @return string|\yii\web\Response
      */
     public function actionEdit()
@@ -88,6 +89,7 @@ class MemberController extends UController
 
     /**
      * 删除
+     *
      * @param $id
      * @return mixed
      */
@@ -105,6 +107,7 @@ class MemberController extends UController
 
     /**
      * 修改个人资料
+     *
      * @return string|yii\web\Response
      */
     public function actionPersonal()
@@ -126,6 +129,7 @@ class MemberController extends UController
 
     /**
      * 返回模型
+     *
      * @param $id
      * @return Member|static
      */

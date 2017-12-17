@@ -1,16 +1,15 @@
 {
-    "name": "yiisoft/yii2-app-advanced",
-    "description": "Yii 2 Advanced Project Template",
-    "keywords": ["yii2", "framework", "advanced", "project template"],
-    "homepage": "http://www.yiiframework.com/",
+    "name": "jianyan74/rageframe",
+    "description": "RageFrame应用开发引擎",
+    "keywords": ["yii2", "framework", "advanced", "project template", "yii", "rageframe", "php"],
+    "homepage": "http://www.rageframe.com/",
     "type": "project",
-    "license": "BSD-3-Clause",
+    "license": "Apache-2.0",
     "support": {
-        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
-        "forum": "http://www.yiiframework.com/forum/",
-        "wiki": "http://www.yiiframework.com/wiki/",
-        "irc": "irc://irc.freenode.net/yii",
-        "source": "https://github.com/yiisoft/yii2"
+        "issues": "https://github.com/jianyan74/rageframe/issues?state=open",
+        "forum": "http://www.rageframe.com/",
+        "wiki": "http://www.rageframe.com/",
+        "source": "https://github.com/jianyan74/rageframe"
     },
     "minimum-stability": "stable",
     "require": {

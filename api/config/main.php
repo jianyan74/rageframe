@@ -39,7 +39,7 @@ return [
             // 是否在URL中显示入口脚本。是对美化功能的进一步补充。
             'showScriptName' => false,
             // 指定续接在URL后面的一个后缀，如 .html 之类的。仅在 enablePrettyUrl 启用时有效。
-            "suffix" => "",
+            'suffix' => '',
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule',
@@ -55,6 +55,7 @@ return [
                     'pluralize' => false,// 是否启用复数形式，注意index的复数indices，开启后不直观
                     'extraPatterns' => [
                         'POST login' => 'login',
+                        'GET refresh' => 'refresh',
                         'GET search' => 'search',
                     ],
                 ],

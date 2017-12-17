@@ -44,7 +44,7 @@ class SysArrayHelper
      */
     public static function getParents(array $items, $id)
     {
-        $arr = array();
+        $arr = [];
         foreach ($items as $v)
         {
             if ($v['id'] == $id)
@@ -65,7 +65,7 @@ class SysArrayHelper
      */
     public static function getChildsId($cate, $pid)
     {
-        $arr = array();
+        $arr = [];
         foreach ($cate as $v)
         {
             if ($v['pid'] == $pid)
@@ -74,6 +74,7 @@ class SysArrayHelper
                 $arr = array_merge($arr, self::getChildsId($cate, $v['id']));
             }
         }
+
         return $arr;
     }
 
@@ -84,9 +85,9 @@ class SysArrayHelper
      * @param int $pid
      * @return array
      */
-    public static function getChilds($cate,$pid)
+    public static function getChilds($cate, $pid)
     {
-        $arr = array();
+        $arr = [];
         foreach ($cate as $v)
         {
             if ($v['pid'] == $pid)
@@ -95,6 +96,7 @@ class SysArrayHelper
                 $arr = array_merge($arr, self::getChilds($cate, $v['id']));
             }
         }
+
         return $arr;
     }
 
