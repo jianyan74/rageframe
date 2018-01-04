@@ -138,6 +138,24 @@ class SysArrayHelper
     }
 
     /**
+     * 获取数组指定的字段为key
+     *
+     * @param array $arr 数组
+     * @param string $field 要成为key的字段名
+     * @return array
+     */
+    public static function arrayKey(array $arr, $field)
+    {
+        $new_array = [];
+        foreach ($arr as $value)
+        {
+            $new_array[$value[$field]] = $value;
+        }
+
+        return $new_array;
+    }
+
+    /**
      * 根据级别和数组返回字符串
      *
      * @param $level

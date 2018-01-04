@@ -84,7 +84,7 @@ class StringHelper
             }
             else
             {
-                if($i>0)
+                if($i > 0)
                 {
                     $array[] = '-';
                 }
@@ -155,7 +155,7 @@ class StringHelper
     public static function randomNum($prefix = false, $length = 8)
     {
         $str = $prefix ? $prefix : '';
-        return $str.substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, $length);
+        return $str . substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, $length);
     }
 
     /**

@@ -66,7 +66,7 @@ class Image extends InputWidget
         ];
 
         $_pluginOptions = [
-            'uploadUrl'        => Url::to(['/file/upload-images']),
+            'uploadUrl'        => !empty(Yii::$app->params['uploadDefaultImageUrl']) ? Yii::$app->params['uploadDefaultImageUrl'] : Url::to(['/file/upload-images']),
             'uploadMaxSize'    => Yii::$app->params['imagesUpload']['maxSize'],
             'previewWidth'     => '112',
             'previewHeight'    => '112',

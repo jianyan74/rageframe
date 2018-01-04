@@ -16,12 +16,12 @@ class WeatherApi implements \jianyan\basics\common\interfaces\WxMsgInterface
      * 天气接口
      *
      * 请在自定义接口设置匹配关键字  (.+)天气$
-     * @param object $message 微信用户传递过来的消息
+     * @param array $message 微信用户传递过来的消息
      * @return string
      */
     public function run($message)
     {
-        $ret = preg_match('/(.+)天气/i', $message->Content, $matchs);
+        $ret = preg_match('/(.+)天气/i', $message['Content'], $matchs);
         if(!$ret)
         {
             return '请输入合适的格式, 城市+天气, 例如: 北京天气';

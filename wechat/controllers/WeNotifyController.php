@@ -5,6 +5,7 @@ use Yii;
 use yii\web\Controller;
 use yii\helpers\ArrayHelper;
 use common\helpers\FileHelper;
+use common\components\WechatPayConfig;
 
 /**
  * 微信支付回调控制器
@@ -14,13 +15,17 @@ use common\helpers\FileHelper;
  */
 class WeNotifyController extends Controller
 {
+    use WechatPayConfig;
+
     /**
      * 回调通知
+     *
      * @return mixed
      */
     public function actionNotify()
     {
-        $response = $this->_app->payment->handleNotify(function($notify, $successful)
+        $app = $this->getPayApp();
+        $response = $app->handlePaidNotify(function($notify, $successful)
         {
             //记录写入日志
             $logFolder = Yii::getAlias('@wechat')."/runtime/pay_log/".date('Y_m_d')."/";

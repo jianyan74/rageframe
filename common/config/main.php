@@ -23,7 +23,7 @@ return [
         /** ------ 文件缓存配置 ------ **/
         'cache' => [
             'class' => 'yii\caching\FileCache',
-            'cachePath' => '@backend//runtime/cache' // 注意如果要改成redis请删除
+            'cachePath' => '@backend/runtime/cache' // 注意如果要改成redis请删除，否则会报错
         ],
         /** ------ redis配置 ------ **/
         'redis' => [
@@ -79,7 +79,7 @@ return [
         ],
         /** ------ 微信SDK ------ **/
         'wechat' => [
-            'class' => 'maxwen\easywechat\Wechat',
+            'class' => 'jianyan\basics\common\components\Wechat',
              'userOptions' => [],  // 用户身份类参数
              'sessionParam' => 'wechatUser', // 微信用户信息将存储在会话在这个密钥
              'returnUrlParam' => '_wechatReturnUrl', // returnUrl 存储在会话中

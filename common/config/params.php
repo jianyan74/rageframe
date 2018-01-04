@@ -12,6 +12,11 @@ return [
 
     /** ------ 上传配置 ------ **/
 
+    // 默认上传文件路由
+    'uploadDefaultFileUrl' => '',
+    // 默认上传图片路由
+    'uploadDefaultImageUrl' => '',
+
     // 百度编辑器
     'ueditorConfig' => [
         'class' => 'kucha\ueditor\UEditorAction',
@@ -83,4 +88,12 @@ return [
         "ERROR_HTTP_LINK"          => "链接不是http链接",
         "ERROR_HTTP_CONTENTTYPE"   => "链接contentType不正确"
     ],
+
+    /** ------ 微信配置 ------ **/
+
+    // 微信配置 具体可参考EasyWechat
+    'wechatConfig' => [],
+
+    // 微信支付配置 具体可参考EasyWechat
+    'wechatPayConfig' => [],
 ];

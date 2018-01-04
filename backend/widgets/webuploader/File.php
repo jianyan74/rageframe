@@ -1,7 +1,4 @@
 <?php
-/**
- * 多图上传
- */
 namespace backend\widgets\webuploader;
 
 use Yii;
@@ -67,7 +64,7 @@ class File extends InputWidget
         ];
 
         $_pluginOptions = [
-            'uploadUrl'        => Url::to(['/file/upload-files']),
+            'uploadUrl'        => !empty(Yii::$app->params['uploadDefaultFileUrl']) ? Yii::$app->params['uploadDefaultFileUrl'] :  Url::to(['/file/upload-files']),
             'uploadMaxSize'    => Yii::$app->params['filesUpload']['maxSize'],
         ];
 

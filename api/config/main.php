@@ -35,6 +35,7 @@ return [
             // 是否启用严格解析，如启用严格解析，要求当前请求应至少匹配1个路由规则，
             // 否则认为是无效路由。
             // 这个选项仅在 enablePrettyUrl 启用后才有效。启用容易出错
+            // 注意:如果不需要严格解析路由请直接删除此行代码
             'enableStrictParsing' => true,
             // 是否在URL中显示入口脚本。是对美化功能的进一步补充。
             'showScriptName' => false,
@@ -71,7 +72,7 @@ return [
                     'data' => $response->data,
                 ];
                 // 格式化报错输入格式 默认为格式500状态码 其他可自行修改
-                if($response->statusCode == 500){
+                if ($response->statusCode == 500) {
                     if (YII_DEBUG){
                         $exception = Yii::$app->getErrorHandler()->exception;
                         $response->data['data'] = [
@@ -83,10 +84,10 @@ return [
                             'stack-trace' => explode("\n", $exception->getTraceAsString()),
                         ];
 
-                        if($exception instanceof Exception){
+                        if ($exception instanceof Exception){
                             $response->data['data']['error-info'] = $exception->errorInfo;
                         }
-                    }else{
+                    } else {
                         $response->data['data'] = '内部服务器错误';
                     }
                 }

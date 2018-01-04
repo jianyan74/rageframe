@@ -50,7 +50,7 @@ class SiteController extends AController
     /**
      * 重置令牌
      *
-     * @param $refresh_token
+     * @param string$refresh_token 重置token
      * @return array
      * @throws NotFoundHttpException
      */

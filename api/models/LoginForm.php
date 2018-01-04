@@ -30,15 +30,17 @@ class LoginForm extends \common\models\base\LoginForm
 
     /**
      * 用户登陆
-     * @return null|static
+     *
+     * @return mixed|null|static
      */
     public function getUser()
     {
         if ($this->_user == false)
         {
+            // email 登录
             if (strpos($this->username, "@"))
             {
-                $this->_user = Member::findOne(['email'=>$this->username]); //email 登录
+                $this->_user = Member::findOne(['email' => $this->username]);
             }
             else
             {
