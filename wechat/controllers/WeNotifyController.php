@@ -5,7 +5,6 @@ use Yii;
 use yii\web\Controller;
 use yii\helpers\ArrayHelper;
 use common\helpers\FileHelper;
-use common\components\WechatPayConfig;
 
 /**
  * 微信支付回调控制器
@@ -15,8 +14,6 @@ use common\components\WechatPayConfig;
  */
 class WeNotifyController extends Controller
 {
-    use WechatPayConfig;
-
     /**
      * 回调通知
      *
@@ -24,14 +21,14 @@ class WeNotifyController extends Controller
      */
     public function actionNotify()
     {
-        $app = $this->getPayApp();
-        $response = $app->handlePaidNotify(function($notify, $successful)
+        $payment = Yii::$app->wechat->getPayApp();
+        $response = $payment->handlePaidNotify(function($notify, $successful)
         {
             //记录写入日志
-            $logFolder = Yii::getAlias('@wechat')."/runtime/pay_log/".date('Y_m_d')."/";
+            $logFolder = Yii::getAlias('@wechat') . "/runtime/pay_log/" . date('Y_m_d') . "/";
             //创建日志目录
             FileHelper::mkdirs($logFolder);
-            FileHelper::writeLog($logFolder.$notify->openid.'.txt',json_encode(ArrayHelper::toArray($notify)));
+            FileHelper::writeLog($logFolder . $notify->openid . '.txt',json_encode(ArrayHelper::toArray($notify)));
 
             // 使用通知里的 "微信支付订单号" 或者 "商户订单号" 去自己的数据库找到订单
             //$notify->out_trade_no;

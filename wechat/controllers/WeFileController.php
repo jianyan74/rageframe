@@ -30,9 +30,8 @@ class WeFileController extends WController
         $uploadConfig = Yii::$app->params[self::IMAGES_CONFIG];
 
         $media_id = Yii::$app->request->post('media_id');
-        $temporary = $this->_app->material_temporary;
-        //获取图片信息
-        $content = $temporary->getStream($media_id);
+        $stream = $this->_app->media->get($media_id);
+
         //图片后缀
         $file_exc = ".jpg";
         //图片路径
@@ -40,10 +39,10 @@ class WeFileController extends WController
         //保存的图片名
         $file_new_name  = $uploadConfig['prefix'] . StringHelper::random(10) . $file_exc;
         //完整路径
-        $file_path_full = Yii::getAlias("@attachment/") . $file_path.$file_new_name;
+        $file_path_full = Yii::getAlias("@attachment/") . $file_path;
 
         //移动文件
-        if (!(file_put_contents($file_path_full, $content) && file_exists($file_path_full))) //移动失败
+        if (! $stream->save($file_path_full, $file_new_name)) //移动失败
         {
             $result->message = '上传失败';
         }
@@ -52,7 +51,7 @@ class WeFileController extends WController
             $result->code = 200;
             $result->message = '上传成功';
             $result->data = [
-                'path' => Yii::getAlias("@attachurl/").$file_path.$file_new_name
+                'path' => Yii::getAlias("@attachurl/") . $file_path . $file_new_name
             ];
         }
 

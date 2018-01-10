@@ -35,6 +35,7 @@
         </ul>
     </div>
 </div>
+
 <?php $this->registerJs(<<<Js
     $(".upload-album-{$boxId}").InitMultiUploader({$config});
     

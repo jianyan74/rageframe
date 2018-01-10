@@ -11,6 +11,7 @@ use backend\widgets\webuploader\assets\WebuploaderAsset;
 
 /**
  * 多文件上传
+ *
  * Class File
  * @package backend\widgets\webuploader
  */

@@ -1,7 +1,4 @@
 <?php
-/**
- * 多图上传
- */
 namespace backend\widgets\webuploader;
 
 use Yii;
@@ -13,31 +10,38 @@ use backend\widgets\webuploader\assets\ImageAsset;
 use backend\widgets\webuploader\assets\WebuploaderAsset;
 
 /**
- * 多图上传
+ * 图片上传
+ *
+ * Class Image
+ * @package backend\widgets\webuploader
  */
 class Image extends InputWidget
 {
 
     /**
      * 基础属性
+     *
      * @var array
      */
     public $options = [];
 
     /**
      * 更多属性
+     *
      * @var array
      */
     public $pluginOptions = [];
 
     /**
      * 盒子ID
+     *
      * @var
      */
     public $boxId;
 
     /**
      * 默认名称
+     *
      * @var string
      */
     public $name = 'fileinput';
@@ -63,6 +67,7 @@ class Image extends InputWidget
             'multiple'   => true,
             'mimeTypes'  => 'image/*',
             'extensions' => 'gif,jpg,jpeg,bmp,png',
+            'vueMaterial'   => false, // 无需理会，仅供素材使用
         ];
 
         $_pluginOptions = [
@@ -105,6 +110,7 @@ class Image extends InputWidget
             'multiple'  => $this->options['multiple'],
             'extensions' => $this->options['extensions'],
             'uploadType' => $this->options['uploadType'],
+            'vueMaterial' => $this->options['vueMaterial'],
         ];
 
         return $this->render('image', [

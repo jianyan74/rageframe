@@ -33,6 +33,7 @@ class ApiController extends AddonsBaseController
      * @param string $route
      * @param string $addon
      * @return bool
+     * @throws \yii\web\UnauthorizedHttpException
      */
     public function actionExecute($route, $addon)
     {

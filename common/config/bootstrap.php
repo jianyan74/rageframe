@@ -11,6 +11,4 @@ Yii::setAlias('@addons', dirname(dirname(__DIR__)) . '/web/addons');// 插件绝
 Yii::setAlias('@addonurl', '/addons');// 插件url
 Yii::setAlias('@attachment', dirname(dirname(__DIR__)) . '/web/attachment');// 附件路径
 Yii::setAlias('@attachurl', '/attachment');// 附件二级域名->配置apache
-Yii::setAlias('@staticroot', dirname(dirname(__DIR__)) . '/web/attachment');
-Yii::setAlias('@static', '/attachment');// 附件二级域名->配置apache
 Yii::setAlias('@basics', dirname(dirname(__DIR__)) . '/vendor/jianyan74/rageframe-basics');

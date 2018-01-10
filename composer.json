@@ -33,7 +33,6 @@
         "2amigos/yii2-date-time-picker-widget" : "*",
         "aliyuncs/oss-sdk-php": "~2.0",
         "phpoffice/phpexcel": "dev-develop",
-        "kucha/ueditor": "*",
         "linslin/yii2-curl": "*",
         "overtrue/wechat": "~4.0",
         "overtrue/pinyin": "~3.0",
@@ -42,7 +41,8 @@
         "yidashi/yii2-bootstrap-markdown": "*",
         "e282486518/yii2-console-migration": "*",
         "jianyan74/rageframe-basics": "dev-master",
-        "xj/yii2-oauth": "~2.0.0"
+        "xj/yii2-oauth": "~2.0.0",
+        "crazydb/yii2-ueditor": "^1.6"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

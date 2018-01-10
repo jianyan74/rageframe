@@ -75,7 +75,7 @@ return [
         /** ------ 资源创建管理 ------ **/
         'assetManager' => [
             // 线上建议将forceCopy设置成false，如果访问量不大无所谓
-            'forceCopy' => false,
+            'forceCopy' => true,
         ],
         /** ------ 微信SDK ------ **/
         'wechat' => [

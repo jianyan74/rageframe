@@ -16,7 +16,7 @@ RageFrame项目创建于2016年4月16日，基于Yii2框架开发的应用开发
 6. RBAC(权限)管理系统，RBAC和菜单功能的无缝对接，实现无权限的菜单不对用户显示，具体参考权限和菜单添加的规则文档。
 7. 插件和模块机制，安装和卸载不会对原来的系统产生影响，具体可参考RageFrame插件模块使用文档。
 8. 整合了第三方登录，目前有QQ、微信、微博、GitHub。
-9. 整合了第三方支付，目前只有微信支付，后续会接入其它支付。
+9. 整合了第三方支付，目前有微信支付、支付宝支付、银联支付。
 10. 框架模块支持小程序的开发。
 11. 集成RESTful API，支持前后端分离接口开发和app接口开发，可直接上手开发业务。
 12. 详细的文档说明，利于开发者的二次开发。
@@ -79,6 +79,6 @@ RageFrame遵循Apache2开源协议发布，并提供免费使用。
 
 本项目包含的第三方源码和二进制文件之版权信息另行标注。
 
-版权所有Copyright © 2016-2017 by RageFrame [www.rageframe.com](http://www.rageframe.com)
+版权所有Copyright © 2016-2018 by RageFrame [www.rageframe.com](http://www.rageframe.com)
 
 All rights reserved。

@@ -17,28 +17,6 @@ return [
     // 默认上传图片路由
     'uploadDefaultImageUrl' => '',
 
-    // 百度编辑器
-    'ueditorConfig' => [
-        'class' => 'kucha\ueditor\UEditorAction',
-        'config' => [
-            // 图片
-            "imageUrlPrefix"  => Yii::getAlias("@attachurl"),// 图片访问路径前缀
-            "imagePathFormat" => "/upload/image/{yyyy}/{mm}/{dd}/{time}{rand:6}", // 上传保存路径
-            "imageRoot"       => Yii::getAlias("@attachment"),// 根目录地址
-            // 视频
-            "videoUrlPrefix"  => Yii::getAlias("@attachurl"),
-            "videoPathFormat" => "/upload/video/{yyyy}/{mm}/{dd}/{time}{rand:6}",
-            "videoRoot"       => Yii::getAlias("@attachment"),
-            // 文件
-            "fileUrlPrefix"  => Yii::getAlias("@attachurl"),
-            "filePathFormat" => "/upload/file/{yyyy}/{mm}/{dd}/{time}{rand:6}",
-            "fileRoot"       => Yii::getAlias("@attachment"),
-            // 涂鸦
-            "scrawlUrlPrefix"  => Yii::getAlias("@attachurl"),
-            "scrawlPathFormat" => "/upload/file/{yyyy}/{mm}/{dd}/{time}{rand:6}",
-            "scrawlRoot"       => Yii::getAlias("@attachment"),
-        ],
-    ],
     // 图片上传配置
     'imagesUpload' => [
         'maxSize'    => 1024 * 1024 * 2,// 图片最大上传大小,默认2M

@@ -8,6 +8,7 @@ if(Yii::$app->params['addon']['info']['type'] != 'plug')
 
 $this->params['breadcrumbs'][] = ['label' => $addonModel['title'],'url' => ['binding','addon' => $addon]];
 ?>
+
 <div class="col-sm-2" style="width: 15%; height: 100%;background:#fff;">
     <?= AddonLeftWidget::widget(); ?>
 </div>

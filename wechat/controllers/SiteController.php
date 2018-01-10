@@ -39,20 +39,4 @@ class SiteController extends WController
     {
 
     }
-
-    public function actionTest()
-    {
-        $user = $this->_wechatMember;
-
-        $result = $this->wechatPay([
-            'body' => '腾讯充值中心-QQ会员充值',
-            'out_trade_no' => '20150806125346',
-            'total_fee' => 88,
-            'notify_url' => 'https://pay.weixin.qq.com/wxpay/pay.action', // 支付结果通知网址，如果不设置则会使用配置里的默认地址
-            'openid' => $user['id'],
-        ]);
-
-        // 测试
-        p($result);
-    }
 }

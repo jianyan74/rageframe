@@ -103,13 +103,16 @@ $(function() {
                 }else{
                     data = data.data;
                     //如果是单文件上传，则赋值相应的表单
-
                     if(p.uploadType == 'filesUpload'){
                         addFile(parentObj, data.urlPath, data.urlPath, p.name,p.multiple);
                     }else if(p.uploadType == 'imagesUpload'){
+                        if(p.vueMaterial == true){
+                            //vue绑定
+                            $(document).trigger('setUploadedImg', [p.name, data.urlPath]);
+                        }
+
                         addImage(parentObj, data.urlPath, data.urlPath, p.name,p.multiple);
                     }
-
 
                     var progressObj = parentObj.children(".upload-progress");
                     progressObj.children(".txt").html("上传成功");
