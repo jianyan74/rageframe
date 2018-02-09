@@ -35,7 +35,7 @@ class ApiController extends AddonsBaseController
      * @return bool
      * @throws \yii\web\UnauthorizedHttpException
      */
-    public function actionExecute($route, $addon)
+    public function actionExecute($route = null, $addon = null)
     {
         !$route && $route = Yii::$app->request->post('route','');
         !$addon && $addon = Yii::$app->request->post('addon','');

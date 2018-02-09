@@ -85,10 +85,4 @@ return [
              'returnUrlParam' => '_wechatReturnUrl', // returnUrl 存储在会话中
         ],
     ],
-    'controllerMap' => [
-        // 文件上传公共控制器
-        'file' => [
-            'class' => 'jianyan\basics\common\controllers\FileBaseController',
-        ]
-    ],
 ];

@@ -9,6 +9,7 @@ use yii\filters\auth\HttpBasicAuth;
 use yii\filters\auth\HttpBearerAuth;
 use yii\filters\auth\QueryParamAuth;
 use yii\web\BadRequestHttpException;
+use common\models\base\ApiLog;
 
 /**
  * Class ActiveController
@@ -60,11 +61,12 @@ class ActiveController extends \yii\rest\ActiveController
     }
 
     /**
-     * 前置操作验证token有效期
+     * 前置操作验证token有效期和记录日志
      *
-     * @param \yii\base\Action $action
+     * @param $action
      * @return bool
      * @throws BadRequestHttpException
+     * @throws \yii\base\InvalidConfigException
      */
     public function beforeAction($action)
     {
@@ -82,6 +84,19 @@ class ActiveController extends \yii\rest\ActiveController
             {
                 throw new BadRequestHttpException('请重新登陆');
             }
+        }
+
+        // 记录日志
+        if (Yii::$app->params['debug'] == true)
+        {
+            $model = new ApiLog();
+            $model->url = Yii::$app->request->getUrl();
+            $model->get_data = json_encode(Yii::$app->request->get());
+            $model->post_data = json_encode(Yii::$app->request->post());
+            $model->method = Yii::$app->request->method;
+            $model->ip = Yii::$app->request->userIP;
+            $model->append = time();
+            $model->save();
         }
 
         return true;
@@ -110,7 +125,7 @@ class ActiveController extends \yii\rest\ActiveController
     {
         $errors = array_values($errors)[0];
 
-        return $errors ? $errors : '操作失败';
+        return $errors ?? '操作失败';
     }
 
     /**

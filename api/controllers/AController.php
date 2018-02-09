@@ -109,17 +109,17 @@ class AController extends ActiveController
     {
         if (empty($id))
         {
-            throw new NotFoundHttpException('请求的页面不存在.');
+            throw new NotFoundHttpException('请求的数据失败.');
         }
 
         $modelClass = $this->modelClass;
-        if (empty(($model = $modelClass::findOne($id))))
+        if ($model = $modelClass::findOne($id))
         {
             return $model->loadDefaultValues();
         }
         else
         {
-            throw new NotFoundHttpException('请求的页面不存在.');
+            throw new NotFoundHttpException('请求的数据失败.');
         }
     }
 }

@@ -55,6 +55,9 @@ return [
         //插件渲染默认控制器
         'addons' => [
             'class' => 'jianyan\basics\common\controllers\AddonsBaseController',
+        ],
+        'file' => [
+            'class' => 'jianyan\basics\common\controllers\FileBaseController',
         ]
     ],
     'params' => $params,

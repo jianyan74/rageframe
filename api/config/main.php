@@ -50,14 +50,20 @@ return [
                          * http://当前域名/api/site/login?group=1
                          */
                         'site',
+                        'file',
                         /** ------ 业务相关 ------ **/
                         'v1/default',
                     ],
                     'pluralize' => false,// 是否启用复数形式，注意index的复数indices，开启后不直观
                     'extraPatterns' => [
-                        'POST login' => 'login',
-                        'GET refresh' => 'refresh',
-                        'GET search' => 'search',
+                        'POST login' => 'login',// 登录获取token
+                        'GET refresh' => 'refresh',// 重置token
+                        'GET search' => 'search',// 测试查询
+                        'POST upload-images' => 'upload-images', // 图片上传
+                        'POST upload-videos' => 'upload-videos', // 视频上传
+                        'POST upload-voices' => 'upload-voices', // 语音上传
+                        'POST upload-files' => 'upload-files', // 文件上传
+                        'POST upload-base64-img' => 'upload-base64-img', // base64上传 其他上传权限自己添加
                     ],
                 ],
             ]

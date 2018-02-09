@@ -78,5 +78,11 @@ return [
             'class' => 'backend\modules\member\Module',
         ],
     ],
+    'controllerMap' => [
+        // 文件上传公共控制器
+        'file' => [
+            'class' => 'jianyan\basics\common\controllers\FileBaseController',
+        ]
+    ],
     'params' => $params,
 ];

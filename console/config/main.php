@@ -55,9 +55,25 @@ return [
             'class' => 'denisog\cronjobs\CronController'
         ],
         //数据库命令行备份
-        'migrates' => [
+        'migrate' => [
             'class' => 'e282486518\migration\ConsoleController',
-        ]
+        ],
+        // webSocket
+        'web-socket' => [
+            'class' => 'console\controllers\WebSocketController',
+            'host' => '0.0.0.0',// 监听地址
+            'port' => 9501,// 监听端口
+            'config' => [// 标准的swoole配置项都可以再此加入
+                'daemonize' => false,// 守护进程执行
+                'heartbeat_check_interval' => 60,// 心跳检测秒数
+                'heartbeat_idle_time' => 600,// 检查最近一次发送数据的时间和当前时间的差，大于则强行关闭
+                'ssl_cert_file' => '',
+                'ssl_key_file' => '',
+                'pid_file' => __DIR__ . '/../../backend/runtime/logs/server.pid',
+                'log_file' => __DIR__ . '/../../backend/runtime/logs/swoole.log',
+                'log_level' => 0,
+            ],
+        ],
     ],
     'params' => $params,
 ];
