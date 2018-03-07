@@ -23,7 +23,7 @@ class AppExampleAddon
     
      /**
      * 小程序
-      *
+     *
      * [true,false] 开启|关闭
      * @var bool
      */
@@ -35,7 +35,7 @@ class AppExampleAddon
      * [true,false] 开启|关闭
      * @var bool
      */
-    public $is_rule = false;
+    public $isRule = false;
     
     /**
      * 类别

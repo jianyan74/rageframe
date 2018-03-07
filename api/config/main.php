@@ -50,6 +50,7 @@ return [
                          * http://当前域名/api/site/login?group=1
                          */
                         'site',
+                        'room',
                         'file',
                         /** ------ 业务相关 ------ **/
                         'v1/default',

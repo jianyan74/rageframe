@@ -33,7 +33,7 @@ class ApiLog extends \yii\db\ActiveRecord
         return [
             [['get_data', 'post_data'], 'string'],
             [['append'], 'integer'],
-            [['url'], 'string', 'max' => 100],
+            [['url'], 'string', 'max' => 1000],
             [['method'], 'string', 'max' => 20],
             [['ip'], 'string', 'max' => 16],
         ];
@@ -53,5 +53,22 @@ class ApiLog extends \yii\db\ActiveRecord
             'ip' => 'IP地址',
             'append' => '创建时间',
         ];
+    }
+
+    /**
+     * 日志记录
+     *
+     * @throws \yii\base\InvalidConfigException
+     */
+    public static function add()
+    {
+        $model = new self();
+        $model->url = Yii::$app->request->getUrl();
+        $model->get_data = json_encode(Yii::$app->request->get());
+        $model->post_data = json_encode(Yii::$app->request->post());
+        $model->method = Yii::$app->request->method;
+        $model->ip = Yii::$app->request->userIP;
+        $model->append = time();
+        $model->save();
     }
 }

@@ -12,6 +12,9 @@ class PasswordResetRequestForm extends Model
 {
     public $email;
 
+    /**
+     * @throws \yii\base\InvalidConfigException
+     */
     public function init()
     {
         parent::init();
@@ -49,7 +52,9 @@ class PasswordResetRequestForm extends Model
 
     /**
      * 发送密码到邮箱
+     *
      * @return bool
+     * @throws \yii\base\Exception
      */
     public function sendEmail()
     {

@@ -128,6 +128,8 @@ class AccessToken extends User implements RateLimitInterface
      *
      * @param integer $group 组别
      * @param integer $user_id 用户ID
+     * @return array
+     * @throws \yii\base\Exception
      */
     public static function setMemberInfo($group, $user_id)
     {

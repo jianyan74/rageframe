@@ -58,7 +58,8 @@ class MemberController extends UController
     /**
      * 编辑/新增
      *
-     * @return string|\yii\web\Response
+     * @return string|yii\web\Response
+     * @throws yii\base\Exception
      */
     public function actionEdit()
     {
@@ -92,6 +93,9 @@ class MemberController extends UController
      *
      * @param $id
      * @return mixed
+     * @throws \Exception
+     * @throws \Throwable
+     * @throws yii\db\StaleObjectException
      */
     public function actionDelete($id)
     {
@@ -131,7 +135,7 @@ class MemberController extends UController
      * 返回模型
      *
      * @param $id
-     * @return Member|static
+     * @return Member|null|static
      */
     protected function findModel($id)
     {
@@ -140,7 +144,7 @@ class MemberController extends UController
             return new Member;
         }
 
-        if (empty(($model = Member::findOne($id))))
+        if (empty($model = Member::findOne($id)))
         {
             return new Member;
         }

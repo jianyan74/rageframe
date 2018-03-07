@@ -6,6 +6,7 @@ use common\controllers\WechatController;
 
 /**
  * 微信应用基类
+ *
  * Class WController
  * @package wechat\controllers
  */

@@ -18,7 +18,7 @@ use frontend\models\ResetPasswordForm;
 class SiteController extends Controller
 {
     /**
-     * 自动运行
+     * @throws \yii\base\InvalidConfigException
      */
     public function init()
     {
@@ -71,7 +71,10 @@ class SiteController extends Controller
 
     /**
      * oauth登陆
+     *
      * @param $client
+     * @throws \yii\base\Exception
+     * @throws \yii\db\Exception
      */
     public function onAuthSuccess($client)
     {
@@ -170,6 +173,9 @@ class SiteController extends Controller
 
     /**
      * 注册
+     *
+     * @return string|\yii\web\Response
+     * @throws \yii\base\Exception
      */
     public function actionRegister()
     {
@@ -199,7 +205,9 @@ class SiteController extends Controller
 
     /**
      * 忘记密码
+     *
      * @return string|\yii\web\Response
+     * @throws \yii\base\Exception
      */
     public function actionRequestPasswordReset()
     {
@@ -225,8 +233,10 @@ class SiteController extends Controller
 
     /**
      * 修改密码
+     *
      * @param $token
      * @return string|\yii\web\Response
+     * @throws BadRequestHttpException
      */
     public function actionResetPassword($token)
     {
@@ -241,7 +251,7 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword())
         {
-            Yii::$app->getSession()->setFlash('success', 'New password was saved.');
+            Yii::$app->session->setFlash('success', 'New password was saved.');
             return $this->goHome();
         }
 

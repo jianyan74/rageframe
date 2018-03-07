@@ -13,7 +13,7 @@ use crazydb\ueditor\Uploader;
 class UeditorController extends \crazydb\ueditor\UEditorController
 {
     public $config = [
-        //server config @see http://fex-team.github.io/ueditor/#server-config
+        // server config @see http://fex-team.github.io/ueditor/#server-config
         'imagePathFormat' => '/upload/image/{yyyy}/{mm}/{dd}/{time}_{rand:6}',
         'scrawlPathFormat' => '/upload/image/{yyyy}/{mm}/{dd}/{time}_{rand:6}',
         'snapscreenPathFormat' => '/upload/image/{yyyy}/{mm}{dd}/{time}_{rand:6}',

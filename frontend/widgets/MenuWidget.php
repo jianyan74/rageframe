@@ -3,6 +3,7 @@ namespace frontend\widgets;
 
 use yii;
 use yii\base\Widget;
+use common\enums\StatusEnum;
 use jianyan\basics\common\models\sys\DeskMenu;
 
 /**
@@ -15,7 +16,7 @@ class MenuWidget extends Widget
     public function run()
     {
         $models = DeskMenu::find()
-            ->where(['status' => DeskMenu::STATUS_ON])
+            ->where(['status' => StatusEnum::ENABLED])
             ->orderBy('sort ASC')
             ->asArray()
             ->all();

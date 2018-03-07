@@ -73,6 +73,7 @@ class RegisterForm extends \common\models\base\LoginForm
      * 注册
      *
      * @return Member|null
+     * @throws \yii\base\Exception
      */
     public function signup()
     {

@@ -7,6 +7,7 @@ use common\controllers\BaseController;
 
 /**
  * 前台基类控制器
+ *
  * Class IController
  * @package frontend\controllers
  */
@@ -19,7 +20,7 @@ class IController extends BaseController
     public $enableCsrfValidation = true;
 
     /**
-     * 自动运行
+     * @throws NotFoundHttpException
      */
     public function init()
     {

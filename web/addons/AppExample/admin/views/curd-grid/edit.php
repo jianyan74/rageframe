@@ -83,28 +83,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'multiple'   => false,
                             ]
                         ]); ?>
-                        <?= $form->field($model,'content')->widget('kucha\ueditor\UEditor',[
-                            'clientOptions' => [
-                                //编辑区域大小
-                                'initialFrameHeight' => '300',
-                                //定制菜单
-                                'toolbars' => [
-                                    [
-                                        'fullscreen', 'source', '|', 'undo', 'redo', '|',
-                                        'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
-                                        'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
-                                        'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
-                                        'directionalityltr', 'directionalityrtl', 'indent', '|',
-                                        'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
-                                        'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
-                                        'simpleupload', 'insertimage', 'emotion', 'insertvideo', 'music', 'attachment', 'map', 'insertframe', 'insertcode', 'pagebreak', 'template', 'background', '|',
-                                        'horizontal', 'date', 'time', 'spechars', 'snapscreen', 'wordimage', '|',
-                                        'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
-                                        'searchreplace', 'help', 'drafts'
-                                    ],
-                                ],
-                            ]
-                        ]);?>
+                        <?= $form->field($model, 'content')->widget(\crazydb\ueditor\UEditor::className()) ?>
                         <?= $form->field($model, 'status')->radioList(['1'=>'启用','-1'=>'禁用']); ?>
                         <div class="hr-line-dashed"></div>
                     </div>

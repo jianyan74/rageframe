@@ -162,7 +162,9 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * 设置密码
+     *
      * @param $password
+     * @throws \yii\base\Exception
      */
     public function setPassword($password)
     {
@@ -171,6 +173,8 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * 设置授权码
+     *
+     * @throws \yii\base\Exception
      */
     public function generateAuthKey()
     {
@@ -179,6 +183,8 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * 设置密码重置秘钥
+     *
+     * @throws \yii\base\Exception
      */
     public function generatePasswordResetToken()
     {

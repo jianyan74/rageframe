@@ -13,7 +13,7 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=7.0",
         "yiisoft/yii2": "~2.0.6",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "*",
@@ -41,6 +41,7 @@
         "yidashi/yii2-bootstrap-markdown": "*",
         "e282486518/yii2-console-migration": "*",
         "jianyan74/rageframe-basics": "dev-master",
+        "jianyan74/yii2-websocket": "^1.0",
         "xj/yii2-oauth": "~2.0.0",
         "crazydb/yii2-ueditor": "^1.6"
     },

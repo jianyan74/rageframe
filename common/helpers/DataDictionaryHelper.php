@@ -18,6 +18,7 @@ class DataDictionaryHelper
 
     /**
      * DataDictionaryHelper constructor.
+     * @throws \yii\db\Exception
      */
     public function __construct()
     {

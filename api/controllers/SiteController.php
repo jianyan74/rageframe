@@ -50,9 +50,10 @@ class SiteController extends AController
     /**
      * 重置令牌
      *
-     * @param string$refresh_token 重置token
+     * @param $refresh_token
      * @return array
      * @throws NotFoundHttpException
+     * @throws \yii\base\Exception
      */
     public function actionRefresh($refresh_token)
     {

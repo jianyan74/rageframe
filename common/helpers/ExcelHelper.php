@@ -15,11 +15,12 @@ class ExcelHelper
 {
     /**
      * 读取excel表格中的数据
-     * @author xxx
-     * @dateTime 2017-06-12T09:39:01+0800
-     * @param    string $filePath excel文件路径
-     * @param    integer $startRow 开始的行数
-     * @return   array|bool
+     *
+     * @param string $filePath excel文件路径
+     * @param int $startRow 开始的行数
+     * @return array|bool|mixed
+     * @throws \PHPExcel_Exception
+     * @throws \PHPExcel_Reader_Exception
      */
     public static function getExcelData($filePath, $startRow = 1)
     {
@@ -107,9 +108,11 @@ class ExcelHelper
      *        ['field' => 'b', 'name' =>  '创建日期', 'type' => 'date', 'rule' => 'Y-m-d H:i:s'],
      *        ['field' => 'c', 'name' =>  '选择内容', 'type' => 'selectd', 'rule' => ['1' => '选择一','2' => '选择二']],
      * ];
-     * @param string $title
      * @param string $filename
+     * @param string $title
      * @return bool
+     * @throws \PHPExcel_Exception
+     * @throws \PHPExcel_Writer_Exception
      */
     public static function exportExcelData ($list = [], $header = [], $filename = '', $title = 'simple')
     {

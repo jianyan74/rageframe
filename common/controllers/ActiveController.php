@@ -18,6 +18,35 @@ use common\models\base\ApiLog;
 class ActiveController extends \yii\rest\ActiveController
 {
     /**
+     * 当前页码
+     * @var
+     */
+    protected $_page;
+    /**
+     * 每页数量
+     *
+     * @var int
+     */
+    protected $_pageSize = 10;
+
+    protected $_offset;
+
+    protected $_limit;
+
+    /**
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function init()
+    {
+        // 分页
+        $this->_page = Yii::$app->request->get('page', 1);
+        $this->_offset = ($this->_page - 1) * $this->_pageSize;
+        $this->_limit = Yii::$app->request->get('per-page', $this->_pageSize);
+
+        parent::init();
+    }
+
+    /**
      * 行为验证
      *
      * @return array
@@ -82,21 +111,14 @@ class ActiveController extends \yii\rest\ActiveController
             // 验证有效期
             if($timestamp + $expire <= time() && !in_array($action->id,Yii::$app->params['user.optional']))
             {
-                throw new BadRequestHttpException('请重新登陆');
+                throw new BadRequestHttpException('您的登录验证已经过期，请重新登陆');
             }
         }
 
         // 记录日志
         if (Yii::$app->params['debug'] == true)
         {
-            $model = new ApiLog();
-            $model->url = Yii::$app->request->getUrl();
-            $model->get_data = json_encode(Yii::$app->request->get());
-            $model->post_data = json_encode(Yii::$app->request->post());
-            $model->method = Yii::$app->request->method;
-            $model->ip = Yii::$app->request->userIP;
-            $model->append = time();
-            $model->save();
+            ApiLog::add();
         }
 
         return true;
@@ -105,14 +127,15 @@ class ActiveController extends \yii\rest\ActiveController
     /**
      * 返回错误状态码
      *
-     * 默认 数据验证失败
-     * @param string $message 消息内容
      * @param int $code 状态码
+     * @param string $message 消息内容
+     * @param array $data
      */
-    public function setResponse($message, $code = 422)
+    public function setResponse($message, $code = 422, $data = [])
     {
         $this->response = Yii::$app->getResponse();
         $this->response->setStatusCode($code, $message);
+        $this->response->data = $data;
     }
 
     /**

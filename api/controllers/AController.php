@@ -47,7 +47,9 @@ class AController extends ActiveController
     public function actionCreate()
     {
         $model = new $this->modelClass();
+        $model->member_id = Yii::$app->user->identity->user_id;
         $model->attributes = Yii::$app->request->post();
+
         if (!$model->save())
         {
             // 返回数据验证失败
@@ -61,7 +63,8 @@ class AController extends ActiveController
      * 更新
      *
      * @param $id
-     * @return mixed
+     * @return mixed|void
+     * @throws NotFoundHttpException
      */
     public function actionUpdate($id)
     {
@@ -81,6 +84,7 @@ class AController extends ActiveController
      *
      * @param $id
      * @return mixed
+     * @throws NotFoundHttpException
      */
     public function actionDelete($id)
     {
@@ -88,10 +92,11 @@ class AController extends ActiveController
     }
 
     /**
-     * 显示单个
+     * 详情
      *
      * @param $id
      * @return mixed
+     * @throws NotFoundHttpException
      */
     public function actionView($id)
     {

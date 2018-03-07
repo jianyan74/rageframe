@@ -38,19 +38,19 @@ use yii\captcha\Captcha;
         <div class="col-sm-5">
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
             <p class="no-margins">欢迎您登录到<?= Yii::$app->params['siteTitle']?></p>
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true,'placeholder'=>'用户名','class'=>'form-control uname'])->label(false) ?>
-            <?= $form->field($model, 'password')->passwordInput(['placeholder'=>'密码','class'=>'form-control pword m-b'])->label(false) ?>
+            <?= $form->field($model, 'username')->textInput(['autofocus' => true,'placeholder' => '用户名','class' => 'form-control uname'])->label(false) ?>
+            <?= $form->field($model, 'password')->passwordInput(['placeholder' => '密码','class' => 'form-control pword m-b'])->label(false) ?>
 
             <?php if ($model->scenario == 'captchaRequired'){ ?>
                 <?= $form->field($model,'verifyCode')->widget(Captcha::className(),[
                     'template' => '<div class="row"><div class="col-lg-6">{input}</div><div class="col-lg-5">{image}</div></div>',
-                    'imageOptions'=>[
-                        'alt'  => '点击换图',
-                        'title'=> '点击换图',
-                        'style'=> 'cursor:pointer'
+                    'imageOptions' => [
+                        'alt' => '点击换图',
+                        'title' => '点击换图',
+                        'style' => 'cursor:pointer'
                     ],
-                    'options'=>[
-                        'class'       => 'form-control verifyCode',
+                    'options' => [
+                        'class' => 'form-control verifyCode',
                         'placeholder' => '验证码',
                     ],
                 ])->label(false)?>
@@ -72,7 +72,7 @@ use yii\captcha\Captcha;
     </div>
     <div class="signup-footer">
         <div class="pull-left">
-            <?php echo Yii::$app->config->info('WEB_COPYRIGHT_ALL')?>
+            <?= Yii::$app->config->info('WEB_COPYRIGHT_ALL')?>
         </div>
     </div>
 </div>

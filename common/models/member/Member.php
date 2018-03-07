@@ -131,9 +131,9 @@ class Member extends \common\models\base\User
     }
 
     /**
-     * 行为
      * @param bool $insert
      * @return bool
+     * @throws \yii\base\Exception
      */
     public function beforeSave($insert)
     {

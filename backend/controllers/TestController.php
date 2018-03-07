@@ -143,6 +143,16 @@ class TestController extends MController
     }
 
     /**
+     * @return string
+     */
+    public function actionWebsocket()
+    {
+        return $this->render('websocket', [
+
+        ]);
+    }
+
+    /**
      * 上传文件测试
      *
      * @return string
