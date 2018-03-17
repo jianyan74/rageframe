@@ -85,4 +85,16 @@ return [
              'returnUrlParam' => '_wechatReturnUrl', // returnUrl 存储在会话中
         ],
     ],
+    /** ------ 服务层 ------ **/
+    'services' => [
+        'test' => [
+            'class' => 'common\servers\Test',
+            // 子服务
+            'childService' => [
+                'test' => [
+                    'class' => 'common\servers\test\Test',
+                ],
+            ],
+        ],
+    ]
 ];

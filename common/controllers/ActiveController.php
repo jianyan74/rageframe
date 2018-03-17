@@ -9,6 +9,7 @@ use yii\filters\auth\HttpBasicAuth;
 use yii\filters\auth\HttpBearerAuth;
 use yii\filters\auth\QueryParamAuth;
 use yii\web\BadRequestHttpException;
+use yii\web\UnauthorizedHttpException;
 use common\models\base\ApiLog;
 
 /**
@@ -32,6 +33,13 @@ class ActiveController extends \yii\rest\ActiveController
     protected $_offset;
 
     protected $_limit;
+
+    /**
+     * 无权限访问的方法
+     *
+     * @var array
+     */
+    public $notAuthAction = [];
 
     /**
      * @throws \yii\base\InvalidConfigException
@@ -90,16 +98,23 @@ class ActiveController extends \yii\rest\ActiveController
     }
 
     /**
-     * 前置操作验证token有效期和记录日志
+     * 前置操作验证token有效期和记录日志和检查curd权限
      *
      * @param $action
      * @return bool
      * @throws BadRequestHttpException
+     * @throws UnauthorizedHttpException
      * @throws \yii\base\InvalidConfigException
      */
     public function beforeAction($action)
     {
         parent::beforeAction($action);
+
+        // 开放curd权限检查
+        if (in_array($action->id, $this->notAuthAction))
+        {
+            throw new UnauthorizedHttpException('没有权限访问');
+        }
 
         // 判断验证token有效性是否开启
         if(Yii::$app->params['user.accessTokenValidity'] == true)
@@ -115,11 +130,8 @@ class ActiveController extends \yii\rest\ActiveController
             }
         }
 
-        // 记录日志
-        if (Yii::$app->params['debug'] == true)
-        {
-            ApiLog::add();
-        }
+        // 记录接口日志
+        Yii::$app->params['debug'] == true && ApiLog::add();
 
         return true;
     }
@@ -148,7 +160,7 @@ class ActiveController extends \yii\rest\ActiveController
     {
         $errors = array_values($errors)[0];
 
-        return $errors ?? '操作失败';
+        return $errors ?? '获取不到错误信息';
     }
 
     /**

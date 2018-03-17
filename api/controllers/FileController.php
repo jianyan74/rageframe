@@ -211,10 +211,8 @@ class FileController extends AController
                         'urlPath' => Yii::getAlias("@attachurl/") . $filePath,
                     ];
                 }
-                else
-                {
-                    return $this->setResponse('文件移动错误');
-                }
+
+                return $this->setResponse('文件移动错误');
             }
         }
 

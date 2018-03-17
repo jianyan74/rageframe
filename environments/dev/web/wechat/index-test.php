@@ -9,10 +9,13 @@ defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'test');
 
 require(__DIR__ . '/../../vendor/autoload.php');
-require(__DIR__ . '/../../vendor/yiisoft/yii2/Yii.php');
+require(__DIR__ . '/../../vendor/jianyan74/rageframe-basics/yii/Yii.php');
 require(__DIR__ . '/../../common/config/bootstrap.php');
 require(__DIR__ . '/../../wechat/config/bootstrap.php');
 
 $config = require(__DIR__ . '/../../wechat/config/test-local.php');
+
+new jianyan\basics\services\Application($config['services']);
+unset($config['services']);
 
 (new yii\web\Application($config))->run();

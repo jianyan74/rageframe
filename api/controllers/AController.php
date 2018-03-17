@@ -117,14 +117,11 @@ class AController extends ActiveController
             throw new NotFoundHttpException('请求的数据失败.');
         }
 
-        $modelClass = $this->modelClass;
-        if ($model = $modelClass::findOne($id))
+        if ($model = $this->modelClass::findOne($id))
         {
-            return $model->loadDefaultValues();
+            return $model;
         }
-        else
-        {
-            throw new NotFoundHttpException('请求的数据失败.');
-        }
+
+        throw new NotFoundHttpException('请求的数据失败.');
     }
 }

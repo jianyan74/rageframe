@@ -86,6 +86,7 @@ class MController extends ActiveController
      *
      * @param $id
      * @return mixed
+     * @throws NotFoundHttpException
      */
     public function actionDelete($id)
     {
@@ -99,6 +100,7 @@ class MController extends ActiveController
      *
      * @param $id
      * @return mixed
+     * @throws NotFoundHttpException
      */
     public function actionView($id)
     {
@@ -119,14 +121,11 @@ class MController extends ActiveController
             throw new NotFoundHttpException('请求的数据不存在.');
         }
 
-        $modelClass = $this->modelClass;
-        if ($model = $modelClass::find()->where(['id' => $id, 'status' => StatusEnum::ENABLED, 'member_id' => Yii::$app->user->identity->user_id])->one())
+        if ($model = $this->modelClass::find()->where(['id' => $id, 'status' => StatusEnum::ENABLED, 'member_id' => Yii::$app->user->identity->user_id])->one())
         {
-            return $model->loadDefaultValues();
+            return $model;
         }
-        else
-        {
-            throw new NotFoundHttpException('请求的数据不存在.');
-        }
+
+        throw new NotFoundHttpException('请求的数据不存在.');
     }
 }
