@@ -15,6 +15,17 @@ require(__DIR__ . '/../../wechat/config/bootstrap.php');
 
 $config = require(__DIR__ . '/../../wechat/config/test-local.php');
 
+/**
+ * 通过配置重写类
+ * yii class Map Custom
+ */
+$yiiClassMap = require(__DIR__ . '/../../common/config/YiiClassMap.php');
+if(is_array($yiiClassMap) && !empty($yiiClassMap)){
+    foreach($yiiClassMap as $namespace => $filePath){
+        Yii::$classMap[$namespace] = $filePath;
+    }
+}
+
 new jianyan\basics\services\Application($config['services']);
 unset($config['services']);
 
