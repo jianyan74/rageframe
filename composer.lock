@@ -329,7 +329,8 @@
                 "jquery",
                 "mask",
                 "plugins"
-            ]
+            ],
+            "time": "2017-11-21T11:46:23+00:00"
         },
         {
             "name": "bower-asset/jquery",
@@ -1367,12 +1368,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jianyan74/rageframe-basics.git",
-                "reference": "26fc75b3dc91f605ccf2c31225767bed4d13cab1"
+                "reference": "448d736c584e88a6d80ee81ba3859b7c4891d198"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jianyan74/rageframe-basics/26fc75b3dc91f605ccf2c31225767bed4d13cab1.zip",
-                "reference": "26fc75b3dc91f605ccf2c31225767bed4d13cab1",
+                "url": "https://files.phpcomposer.com/files/jianyan74/rageframe-basics/448d736c584e88a6d80ee81ba3859b7c4891d198.zip",
+                "reference": "448d736c584e88a6d80ee81ba3859b7c4891d198",
                 "shasum": ""
             },
             "require": {
@@ -1406,20 +1407,20 @@
                 "yii",
                 "yii2"
             ],
-            "time": "2018-02-09T09:30:31+00:00"
+            "time": "2018-03-17T03:35:11+00:00"
         },
         {
             "name": "jianyan74/yii2-websocket",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jianyan74/yii2-websocket.git",
-                "reference": "6f3df78e72689aa636d490b5116db795f9791079"
+                "reference": "3e8f05bc2bd4551329fc1a8f465f5cc6d9c751dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jianyan74/yii2-websocket/6f3df78e72689aa636d490b5116db795f9791079.zip",
-                "reference": "6f3df78e72689aa636d490b5116db795f9791079",
+                "url": "https://files.phpcomposer.com/files/jianyan74/yii2-websocket/3e8f05bc2bd4551329fc1a8f465f5cc6d9c751dc.zip",
+                "reference": "3e8f05bc2bd4551329fc1a8f465f5cc6d9c751dc",
                 "shasum": ""
             },
             "require": {
@@ -1452,20 +1453,20 @@
                 "yii",
                 "yii2"
             ],
-            "time": "2018-03-03T08:12:59+00:00"
+            "time": "2018-03-07T01:46:41+00:00"
         },
         {
             "name": "kartik-v/yii2-date-range",
-            "version": "1.6.8",
+            "version": "v1.6.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-date-range.git",
-                "reference": "908e8175f3f8c091d425bcaba6e18871d63291a0"
+                "reference": "ed12260339f4699c363360465a22a46c714eb6be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/kartik-v/yii2-date-range/908e8175f3f8c091d425bcaba6e18871d63291a0.zip",
-                "reference": "908e8175f3f8c091d425bcaba6e18871d63291a0",
+                "url": "https://files.phpcomposer.com/files/kartik-v/yii2-date-range/ed12260339f4699c363360465a22a46c714eb6be.zip",
+                "reference": "ed12260339f4699c363360465a22a46c714eb6be",
                 "shasum": ""
             },
             "require": {
@@ -1506,7 +1507,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-08-08T04:26:22+00:00"
+            "time": "2018-03-15T08:22:53+00:00"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -3385,16 +3386,16 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.14.1",
+            "version": "2.0.14.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "d99969394c66dc3606134af092b8ec561ea5d7c6"
+                "reference": "ef74f3783e964cea477f06e6d6ce209df1f37881"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/yiisoft/yii2-framework/d99969394c66dc3606134af092b8ec561ea5d7c6.zip",
-                "reference": "d99969394c66dc3606134af092b8ec561ea5d7c6",
+                "url": "https://files.phpcomposer.com/files/yiisoft/yii2-framework/ef74f3783e964cea477f06e6d6ce209df1f37881.zip",
+                "reference": "ef74f3783e964cea477f06e6d6ce209df1f37881",
                 "shasum": ""
             },
             "require": {
@@ -3481,7 +3482,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2018-02-24T20:23:06+00:00"
+            "time": "2018-03-13T14:15:01+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -3746,12 +3747,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-queue.git",
-                "reference": "35ae835f14f9018d43783d2b43a6379281aa126e"
+                "reference": "fe279cbfdf513ba55e52193da374403c83d3c596"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/yiisoft/yii2-queue/35ae835f14f9018d43783d2b43a6379281aa126e.zip",
-                "reference": "35ae835f14f9018d43783d2b43a6379281aa126e",
+                "url": "https://files.phpcomposer.com/files/yiisoft/yii2-queue/fe279cbfdf513ba55e52193da374403c83d3c596.zip",
+                "reference": "fe279cbfdf513ba55e52193da374403c83d3c596",
                 "shasum": ""
             },
             "require": {
@@ -3818,7 +3819,7 @@
                 "redis",
                 "yii"
             ],
-            "time": "2018-02-22T14:21:09+00:00"
+            "time": "2018-03-14T22:41:38+00:00"
         },
         {
             "name": "yiisoft/yii2-redis",
@@ -4098,16 +4099,16 @@
         },
         {
             "name": "codeception/phpunit-wrapper",
-            "version": "6.0.5",
+            "version": "6.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/phpunit-wrapper.git",
-                "reference": "44e2100c300413a6b40cf8874ad402695010f443"
+                "reference": "e18f3ea1f841bfd2cecaf6e183e584127b9d467b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/Codeception/phpunit-wrapper/44e2100c300413a6b40cf8874ad402695010f443.zip",
-                "reference": "44e2100c300413a6b40cf8874ad402695010f443",
+                "url": "https://files.phpcomposer.com/files/Codeception/phpunit-wrapper/e18f3ea1f841bfd2cecaf6e183e584127b9d467b.zip",
+                "reference": "e18f3ea1f841bfd2cecaf6e183e584127b9d467b",
                 "shasum": ""
             },
             "require": {
@@ -4115,6 +4116,13 @@
                 "phpunit/phpunit": ">=4.8.28 <5.0.0 || >=5.6.3 <7.0",
                 "sebastian/comparator": ">1.1 <3.0",
                 "sebastian/diff": ">=1.4 <4.0"
+            },
+            "replace": {
+                "codeception/phpunit-wrapper": "*"
+            },
+            "require-dev": {
+                "codeception/specify": "*",
+                "vlucas/phpdotenv": "^2.4"
             },
             "type": "library",
             "autoload": {
@@ -4133,7 +4141,7 @@
                 }
             ],
             "description": "PHPUnit classes used by Codeception",
-            "time": "2018-02-19T13:24:40+00:00"
+            "time": "2018-03-16T10:17:47+00:00"
         },
         {
             "name": "codeception/stub",

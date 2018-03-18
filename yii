@@ -23,6 +23,8 @@ $config = yii\helpers\ArrayHelper::merge(
     require(__DIR__ . '/console/config/main-local.php')
 );
 
+unset($config['services']);
+
 $application = new yii\console\Application($config);
 $exitCode = $application->run();
 exit($exitCode);
