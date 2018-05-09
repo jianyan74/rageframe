@@ -1,6 +1,8 @@
 <?php
 namespace common\helpers;
 
+use Ramsey\Uuid\Uuid;
+
 /**
  * 字符串操作类
  *
@@ -9,6 +11,41 @@ namespace common\helpers;
  */
 class StringHelper
 {
+    /**
+     * 生成Uuid
+     *
+     * @param int $type
+     * @return string
+     */
+    public static function uuid($type = 'time', $name = 'php.net')
+    {
+        switch ($type)
+        {
+            // 生成版本1（基于时间的）UUID对象
+            case  'time' :
+                $uuid = Uuid::uuid1();
+
+                break;
+            // 生成第三个版本（基于名称的和散列的MD5）UUID对象
+            case  'md5' :
+                $uuid = Uuid::uuid3(Uuid::NAMESPACE_DNS, $name);
+
+                break;
+            // 生成版本4（随机）UUID对象
+            case  'random' :
+                $uuid = Uuid::uuid4();
+
+                break;
+            // 产生一个版本5（基于名称和散列的SHA1）UUID对象
+            case  'sha1' :
+                $uuid = Uuid::uuid5(Uuid::NAMESPACE_DNS, $name);
+
+                break;
+        }
+
+        return $uuid->toString();
+    }
+
     /**
      * XML 字符串载入对象中
      *
@@ -156,24 +193,6 @@ class StringHelper
     {
         $str = $prefix ? $prefix : '';
         return $str . substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, $length);
-    }
-
-    /**
-     * 生成uuid
-     *
-     * @param string $prefix
-     * @return string
-     */
-    public static function uuid($prefix = "")
-    {
-        $str = md5(uniqid(mt_rand(), true));
-        $uuid  = substr($str,0,8) . '-';
-        $uuid .= substr($str,8,4) . '-';
-        $uuid .= substr($str,12,4) . '-';
-        $uuid .= substr($str,16,4) . '-';
-        $uuid .= substr($str,20,12);
-
-        return $prefix . $uuid;
     }
 
     /**

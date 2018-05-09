@@ -56,6 +56,14 @@ return [
             'channel' => 'queue', // Queue channel key
             'as log' => 'yii\queue\LogBehavior',// 日志
         ],
+        /** ------ 全文搜索引擎 ------ **/
+        'elasticsearch' => [
+            'class' => 'yii\elasticsearch\Connection',
+            'nodes' => [
+                ['http_address' => '127.0.0.1:9200'],
+                // configure more hosts if you have a cluster
+            ],
+        ],
         /** ------ 微信路由配置 ------ **/
         'urlManagerWechat' => [
             'class' => 'yii\web\urlManager',
@@ -80,10 +88,14 @@ return [
         /** ------ 微信SDK ------ **/
         'wechat' => [
             'class' => 'jianyan\basics\common\components\Wechat',
-             'userOptions' => [],  // 用户身份类参数
-             'sessionParam' => 'wechatUser', // 微信用户信息将存储在会话在这个密钥
-             'returnUrlParam' => '_wechatReturnUrl', // returnUrl 存储在会话中
+            'userOptions' => [],  // 用户身份类参数
+            'sessionParam' => 'wechatUser', // 微信用户信息将存储在会话在这个密钥
+            'returnUrlParam' => '_wechatReturnUrl', // returnUrl 存储在会话中
         ],
+        /** ------ 公用支付 ------ **/
+        'pay' => [
+            'class' => 'jianyan\basics\common\components\Pay',
+        ]
     ],
     /** ------ 服务层 ------ **/
     'services' => [

@@ -27,12 +27,12 @@ class MsgHistoryController extends Controller
                 $time = time() - $one_day * $history['msg_history_date']['value'];
                 MsgHistory::deleteAll(['<=', 'append', $time]);
 
-                echo date('Y-m-d H:i:s') . ' --- ' . '清理成功;';
+                echo date('Y-m-d H:i:s') . ' --- ' . '清理成功;' . PHP_EOL;
                 exit();
             }
         }
 
-        echo date('Y-m-d H:i:s') . ' --- ' . '数据设置未清除;';
+        echo date('Y-m-d H:i:s') . ' --- ' . '数据设置未清除;' . PHP_EOL;
         exit();
     }
 }

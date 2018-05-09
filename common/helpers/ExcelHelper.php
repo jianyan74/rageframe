@@ -134,7 +134,7 @@ class ExcelHelper
         foreach ($header as $k => $v)
         {
             $colum = \PHPExcel_Cell::stringFromColumnIndex($hk);
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue($colum.'1', $v['name']);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue($colum . '1', $v['name']);
             $hk += 1;
         }
 

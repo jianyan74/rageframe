@@ -14,8 +14,8 @@ return [
         //每天凌晨执行一次
         'msg-history/index' => [
             'cron' => '0 0 * * *',
-            'cron-stdout'=> '/tmp/rageframe/cron/MsgHistory.log',//成功日志
-            'cron-stderr'=> '/tmp/rageframe/cron/MsgHistoryError.log',//错误日志
+            'cron-stdout'=> '/tmp/MsgHistory.log',//成功日志
+            'cron-stderr'=> '/tmp/MsgHistoryError.log',//错误日志
         ]
         //......更多的定时任务
     ],

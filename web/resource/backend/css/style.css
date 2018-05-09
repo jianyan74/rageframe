@@ -3479,6 +3479,7 @@ code {
     border-width: 1px 0;
     color: inherit;
     padding: 15px 20px 20px;
+    overflow: auto;
 }
 
 table.table-mail tr td {
@@ -6953,4 +6954,9 @@ body.skin-3 {
         width: 12.5%;
         font-size: 12px
     }
+}
+
+.ibox-content-ajax{
+    padding-top: 20px;
+    padding-left: 15px
 }

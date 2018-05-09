@@ -1,6 +1,5 @@
 <?php
 use yii\widgets\ActiveForm;
-use backend\models\Provinces;
 
 $this->params['breadcrumbs'][] = ['label' => '用户管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => '信息编辑'];
@@ -40,7 +39,7 @@ $this->params['breadcrumbs'][] = ['label' => '信息编辑'];
                         <div class="col-sm-4 text-center">
                             <button class="btn btn-primary" type="submit">保存内容</button>
                             <span class="btn btn-white" onclick="history.go(-1)">返回</span>
-                        </div>　
+                        </div>
                     </div>
                     <?php ActiveForm::end(); ?>
                 </div>

@@ -20,7 +20,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="ibox-content">
                     <div class="col-sm-12">
-
                         <?php $form = ActiveForm::begin([]); ?>
                         <?= $form->field($model, 'title')->textInput(); ?>
                         <?= $form->field($model, 'description')->textarea(); ?>
@@ -31,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'provincesName' => 'provinces',
                             'cityName' => 'city',
                             'areaName' => 'area',
-                        ])?>
+                        ]); ?>
                         <div class="row">
                             <div class="col-sm-6">
                                 <?= $form->field($model, 'stat_time')->widget(DateTimePicker::className(), [
@@ -93,7 +92,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <button class="btn btn-primary" type="submit">保存内容</button>
                             <span class="btn btn-white" onclick="history.go(-1)">返回</span>
                         </div>
-                    </div>　
+                    </div>
                     <?php ActiveForm::end(); ?>
                 </div>
             </div>

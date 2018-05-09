@@ -1,6 +1,9 @@
 <?php
 namespace backend\controllers;
 
+use common\helpers\ResultDataHelper;
+use common\helpers\StringHelper;
+use jianyan\basics\common\models\sys\Article;
 use yii;
 use common\helpers\ArithmeticHelper;
 use common\helpers\DataDictionaryHelper;
@@ -8,6 +11,8 @@ use common\helpers\RsaEncryptionHelper;
 use jianyan\basics\common\models\sys\Config;
 use jianyan\basics\common\models\sys\ConfigCate;
 use jianyan\basics\common\models\sys\Manager;
+use jianyan\basics\common\payment\AliPay;
+use jianyan\websocket\live\Room;
 
 /**
  * 测试控制器
@@ -32,6 +37,29 @@ class TestController extends MController
         }
 
         parent::init();
+    }
+
+    public function actionPay()
+    {
+        $order = [
+            'out_trade_no' => date('YmdHis') . mt_rand(1000, 9999),
+            'total_amount' => 0.01,
+            'subject'      => 'test',
+        ];
+
+        $config = [
+
+        ];
+
+        $order = [
+            'out_trade_no' => date('YmdHis') . mt_rand(1000, 9999),
+            'total_fee' => 100,
+            'body'      => 'test',
+        ];
+
+        $config = Yii::$app->pay->wechat($config)->mweb($order,true);
+
+        p($config);die();
     }
 
     public function actionConfig()

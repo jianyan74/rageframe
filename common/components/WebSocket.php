@@ -1,13 +1,15 @@
 <?php
 namespace common\components;
 
+use Yii;
+
 /**
  * 长连接
  *
- * Class WebSocket
- * @package common\components
+ * Class WebSocketController
+ * @package console\controllers
  */
-class WebSocket extends \jianyan\websocket\server\WebSocketServer
+class WebSocket extends \jianyan\websocket\WebSocketServer
 {
 
 }

@@ -31,9 +31,7 @@ class RoomController extends AController
     }
 
     /**
-     * 创建
-     *
-     * @return bool
+     * @return bool|void
      */
     public function actionCreate()
     {
@@ -111,11 +109,9 @@ class RoomController extends AController
         $modelClass = $this->modelClass;
         if ($model = $modelClass::findOne($id))
         {
-            return $model->loadDefaultValues();
+            return $model;
         }
-        else
-        {
-            throw new NotFoundHttpException('请求的数据失败.');
-        }
+
+        throw new NotFoundHttpException('请求的数据失败.');
     }
 }
