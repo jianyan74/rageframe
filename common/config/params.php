@@ -71,7 +71,8 @@ return [
 
     // 微信配置 具体可参考EasyWechat
     'wechatConfig' => [],
-
     // 微信支付配置 具体可参考EasyWechat
-    'wechatPayConfig' => [],
+    'wechatPaymentConfig' => [],
+    // 微信小程序配置 具体可参考EasyWechat
+    'wechatMiniProgramConfig' => [],
 ];
