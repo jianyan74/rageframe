@@ -2,6 +2,10 @@
 
 为二次开发而生，让开发变得更简单。
 
+[![Latest Stable Version](https://poser.pugx.org/jianyan74/rageframe-basics/v/stable)](https://packagist.org/packages/jianyan74/rageframe-basics)
+[![Total Downloads](https://poser.pugx.org/jianyan74/rageframe-basics/downloads)](https://packagist.org/packages/jianyan74/rageframe-basics)
+[![License](https://poser.pugx.org/jianyan74/rageframe-basics/license)](https://packagist.org/packages/jianyan74/rageframe-basics)
+
 ### 前言
 
 RageFrame项目创建于2016年4月16日，基于Yii2框架开发的应用开发引擎，目前正在成长中，目的是为了集成更多的基础功能，不在为相同的基础功能重复制造轮子，开箱即用，让开发变得更加简单。
