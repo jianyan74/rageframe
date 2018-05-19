@@ -35,7 +35,6 @@
         "aliyuncs/oss-sdk-php": "~2.0",
         "phpoffice/phpexcel": "dev-develop",
         "linslin/yii2-curl": "*",
-        "overtrue/wechat": "~4.0",
         "overtrue/pinyin": "~3.0",
         "crazyfd/yii2-qiniu": "*",
         "denisogr/yii2-cronjobs": "dev-master",
@@ -45,13 +44,14 @@
         "ramsey/uuid": "^3.7",
         "moontoast/math": "^1.1",
         "jianyan74/rageframe-basics": "dev-master",
-        "jianyan74/yii2-websocket": "^1.0"
+        "jianyan74/yii2-websocket": "^1.0",
+        "unclead/yii2-multiple-input": "~2.0",
+        "jianyan74/yii2-easy-wechat": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
         "yiisoft/yii2-gii": "~2.0.0",
         "yiisoft/yii2-faker": "~2.0.0",
-
         "codeception/base": "^2.2.3",
         "codeception/verify": "~0.3.1"
     },

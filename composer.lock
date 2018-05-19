@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc14dcbd0dbc65f4c2e7add023c6dad3",
+    "content-hash": "61c553e5b5dc203dc67c12f4e97bf588",
     "packages": [
         {
             "name": "2amigos/qrcode-library",
@@ -329,7 +329,8 @@
                 "jquery",
                 "mask",
                 "plugins"
-            ]
+            ],
+            "time": "2017-11-21T11:46:23+00:00"
         },
         {
             "name": "bower-asset/jquery",
@@ -1259,6 +1260,50 @@
                 "yii2"
             ],
             "time": "2018-05-09T04:15:25+00:00"
+        },
+        {
+            "name": "jianyan74/yii2-easy-wechat",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jianyan74/yii2-easy-wechat.git",
+                "reference": "6bcb1c1205d8e1b15396e22449fdb3686d074a9b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/jianyan74/yii2-easy-wechat/6bcb1c1205d8e1b15396e22449fdb3686d074a9b.zip",
+                "reference": "6bcb1c1205d8e1b15396e22449fdb3686d074a9b",
+                "shasum": ""
+            },
+            "require": {
+                "overtrue/wechat": "~4.0",
+                "php": ">=7.0",
+                "yiisoft/yii2": "~2.0.6"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "jianyan\\easywechat\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jianyan74"
+                }
+            ],
+            "description": "WeChat SDK for yii2, 基于 overtrue/easywechat",
+            "keywords": [
+                "easywechat",
+                "jianyan74",
+                "php",
+                "wechat",
+                "yii2"
+            ],
+            "time": "2018-05-19T02:20:50+00:00"
         },
         {
             "name": "jianyan74/yii2-websocket",
@@ -3211,6 +3256,55 @@
                 "psr-7"
             ],
             "time": "2017-12-19T00:31:44+00:00"
+        },
+        {
+            "name": "unclead/yii2-multiple-input",
+            "version": "2.14.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/unclead/yii2-multiple-input.git",
+                "reference": "dbfd58641ed2338c3771561fb8f726f56e337351"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/unclead/yii2-multiple-input/dbfd58641ed2338c3771561fb8f726f56e337351.zip",
+                "reference": "dbfd58641ed2338c3771561fb8f726f56e337351",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii2": ">=2.0.13"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.7.*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "unclead\\multipleinput\\examples\\": "examples/",
+                    "unclead\\multipleinput\\": "src/",
+                    "unclead\\multipleinput\\tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Eugene Tupikov",
+                    "email": "unclead.nsk@gmail.com"
+                }
+            ],
+            "description": "Widget for handle multiple inputs for an attribute of Yii2 framework model",
+            "keywords": [
+                "yii2",
+                "yii2 array input",
+                "yii2 multiple field",
+                "yii2 multiple input",
+                "yii2 tabular input"
+            ],
+            "time": "2018-03-09T15:27:43+00:00"
         },
         {
             "name": "xj/yii2-oauth",
