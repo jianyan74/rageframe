@@ -1368,12 +1368,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jianyan74/rageframe-basics.git",
-                "reference": "adf5611d07cab6d03b13d8509dbe3d3bbf18101c"
+                "reference": "b3194f085214b907d7a96a23d51280e906011007"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jianyan74/rageframe-basics/adf5611d07cab6d03b13d8509dbe3d3bbf18101c.zip",
-                "reference": "adf5611d07cab6d03b13d8509dbe3d3bbf18101c",
+                "url": "https://files.phpcomposer.com/files/jianyan74/rageframe-basics/b3194f085214b907d7a96a23d51280e906011007.zip",
+                "reference": "b3194f085214b907d7a96a23d51280e906011007",
                 "shasum": ""
             },
             "require": {
@@ -1407,20 +1407,20 @@
                 "yii",
                 "yii2"
             ],
-            "time": "2018-05-19T03:06:17+00:00"
+            "time": "2018-05-19T04:54:14+00:00"
         },
         {
             "name": "jianyan74/yii2-easy-wechat",
-            "version": "1.0.3",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jianyan74/yii2-easy-wechat.git",
-                "reference": "6bcb1c1205d8e1b15396e22449fdb3686d074a9b"
+                "reference": "393233dbd2d0e53196ba0335dc2bc1244b7763f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jianyan74/yii2-easy-wechat/6bcb1c1205d8e1b15396e22449fdb3686d074a9b.zip",
-                "reference": "6bcb1c1205d8e1b15396e22449fdb3686d074a9b",
+                "url": "https://files.phpcomposer.com/files/jianyan74/yii2-easy-wechat/393233dbd2d0e53196ba0335dc2bc1244b7763f3.zip",
+                "reference": "393233dbd2d0e53196ba0335dc2bc1244b7763f3",
                 "shasum": ""
             },
             "require": {
@@ -1451,7 +1451,7 @@
                 "wechat",
                 "yii2"
             ],
-            "time": "2018-05-19T02:20:50+00:00"
+            "time": "2018-05-19T04:30:27+00:00"
         },
         {
             "name": "jianyan74/yii2-websocket",
