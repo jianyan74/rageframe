@@ -21,7 +21,7 @@ class WeNotifyController extends Controller
      */
     public function actionNotify()
     {
-        $payment = Yii::$app->wechat->getPayApp();
+        $payment = Yii::$app->wechat->paymeny;
         $response = $payment->handlePaidNotify(function($notify, $successful)
         {
             //记录写入日志
