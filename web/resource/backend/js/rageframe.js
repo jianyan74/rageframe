@@ -94,3 +94,34 @@ function closeCountDown() {
         $('.alert').children('.close').click();
     }
 }
+
+/**
+ * Override the default yii confirm dialog. This function is
+ * called by yii when a confirmation is requested.
+ *
+ * For example:
+ *
+ * <?= Html::a('删除', ['delete', 'id' => $model->id], [
+ *    'class' => 'btn btn-danger',
+ *    'data' => [
+ *        'confirm' => '删除后将无法恢复，您确定要删除吗?',
+ *        'method' => 'post',
+ *    ],
+ * ]) ?>
+ *
+ * @param string message the message to display
+ * @param string ok callback triggered when confirmation is true
+ * @param string cancelCallback callback triggered when cancelled
+ */
+yii.confirm = function (message, okCallback, cancelCallback) {
+   swal({
+       title: message,
+       type: 'warning',
+       showCancelButton: true,
+       closeOnConfirm: true,
+       confirmButtonText: "删除",
+       confirmButtonColor: "#DD6B55",
+       cancelButtonText: '取消',
+       allowOutsideClick: true
+   }, okCallback);
+};
