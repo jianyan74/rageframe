@@ -6,6 +6,9 @@
 [![Total Downloads](https://poser.pugx.org/jianyan74/rageframe-basics/downloads)](https://packagist.org/packages/jianyan74/rageframe-basics)
 [![License](https://poser.pugx.org/jianyan74/rageframe-basics/license)](https://packagist.org/packages/jianyan74/rageframe-basics)
 
+> 该版本为 1.0 版本已不在更新新功能，只修复BUG，功能已全部重构转移到 2.0 版本，更方便二次开发  
+> 2.0项目地址：https://github.com/jianyan74/rageframe2
+
 ### 前言
 
 RageFrame项目创建于2016年4月16日，基于Yii2框架开发的应用开发引擎，目前正在成长中，目的是为了集成更多的基础功能，不在为相同的基础功能重复制造轮子，开箱即用，让开发变得更加简单。
