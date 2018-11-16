@@ -65,7 +65,7 @@ class ExcelHelper
                 /**从第A列开始输出*/
                 for ($currentColumn = 'A'; $currentColumn <= $allColumn; $currentColumn++)
                 {
-                    $val = $currentSheet->getCellByColumnAndRow(ord($currentColumn) - 65, $currentRow)->getValue();
+                    $val = $currentSheet->getCellByColumnAndRow(ord($currentColumn) - 64, $currentRow)->getValue();
                     $arr[$currentRow][] = trim($val);
                 }
                 $arr[$currentRow] = array_filter($arr[$currentRow]);

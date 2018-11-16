@@ -12,7 +12,7 @@ use common\helpers\FileHelper;
  * Class WeNotifyController
  * @package wechat\controllers
  */
-class WeNotifyController extends Controller
+class WeNotifyController extends WController
 {
     /**
      * 回调通知
@@ -21,7 +21,7 @@ class WeNotifyController extends Controller
      */
     public function actionNotify()
     {
-        $payment = Yii::$app->wechat->paymeny;
+        $payment = Yii::$app->wechat->payment;
         $response = $payment->handlePaidNotify(function($notify, $successful)
         {
             //记录写入日志

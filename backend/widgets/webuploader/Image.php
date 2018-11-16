@@ -37,7 +37,7 @@ class Image extends InputWidget
      *
      * @var
      */
-    public $boxId;
+    public $boxId = 'cover';
 
     /**
      * 默认名称

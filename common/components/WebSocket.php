@@ -9,7 +9,7 @@ use Yii;
  * Class WebSocketController
  * @package console\controllers
  */
-class WebSocket extends \jianyan\websocket\server\WebSocketServer
+class WebSocket extends \jianyan\websocket\WebSocketServer
 {
 
 }
